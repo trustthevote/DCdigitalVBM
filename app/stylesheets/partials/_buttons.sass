@@ -1,0 +1,28 @@
+$green: darken(#57b42c, 8)
+$blue: adjust_hue($green, 110)
+$red: adjust_hue($green, -100)
+$orange: #F58E12
+$fb_radius: 2px
+
+
+.button, button, form.formtastic input.button
+  +fancy-button-structure
+  +fancy-button-colors
+  margin: 0 2px
+  padding: 5px 18px
+  vertical-align: middle
+  font-size: 14px
+  font-weight: normal
+  &.light
+    +fancy-button-colors-matte(#ddd)
+  &.orange
+    +fancy-button-colors-matte($orange)
+  &.matte-blue
+    +fancy-button-colors-matte($blue)
+  &.green
+    +fancy-button-colors($green)
+  &.red
+    +fancy-button-colors($red)
+    color: white !important
+  &.yellow
+    +fancy-button-colors(darken(desaturate(yellow, 35), 5))

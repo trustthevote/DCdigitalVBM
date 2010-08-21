@@ -1,0 +1,127 @@
+--- 
+dependencies: 
+  faker: 
+    group: 
+    - :test
+    version: ">= 0"
+  compass-colors: 
+    group: 
+    - :default
+    version: ">= 0"
+  compass: 
+    group: 
+    - :default
+    version: ">= 0"
+  fancy-buttons: 
+    group: 
+    - :default
+    version: ">= 0"
+  mongrel: 
+    group: 
+    - :development
+    version: ">= 0"
+  rails: 
+    group: 
+    - :default
+    version: = 2.3.8
+  mysql: 
+    group: 
+    - :default
+    version: ">= 0"
+  haml: 
+    group: 
+    - :default
+    version: ">= 0"
+  timecop: 
+    group: 
+    - :test
+    version: ">= 0"
+  rspec: 
+    group: 
+    - :test
+    version: ">= 0"
+  rspec-rails: 
+    group: 
+    - :test
+    version: ">= 0"
+  factory_girl: 
+    group: 
+    - :test
+    version: ">= 0"
+  simple_form: 
+    group: 
+    - :default
+    version: = 1.0.2
+  mocha: 
+    group: 
+    - :test
+    version: ">= 0"
+    require: []
+
+  hoptoad_notifier: 
+    group: 
+    - :default
+    version: ">= 0"
+  RedCloth: 
+    group: 
+    - :default
+    version: ">= 0"
+specs: 
+- rake: 
+    version: 0.8.7
+- RedCloth: 
+    version: 4.2.3
+- activesupport: 
+    version: 2.3.8
+- rack: 
+    version: 1.1.0
+- actionpack: 
+    version: 2.3.8
+- actionmailer: 
+    version: 2.3.8
+- activerecord: 
+    version: 2.3.8
+- activeresource: 
+    version: 2.3.8
+- cgi_multipart_eof_fix: 
+    version: 2.5.0
+- haml: 
+    version: 3.0.17
+- compass: 
+    version: 0.10.4
+- compass-colors: 
+    version: 0.3.1
+- daemons: 
+    version: 1.1.0
+- factory_girl: 
+    version: 1.3.2
+- faker: 
+    version: 0.3.1
+- fancy-buttons: 
+    version: 0.5.5
+- fastthread: 
+    version: 1.0.7
+- gem_plugin: 
+    version: 0.2.3
+- hoptoad_notifier: 
+    version: 2.3.5
+- mocha: 
+    version: 0.9.8
+- mongrel: 
+    version: 1.1.5
+- mysql: 
+    version: 2.8.1
+- rails: 
+    version: 2.3.8
+- rspec: 
+    version: 1.3.0
+- rspec-rails: 
+    version: 1.3.2
+- simple_form: 
+    version: 1.0.2
+- timecop: 
+    version: 0.3.5
+hash: 219c98b827f6ccb7bd36a569668e4c6b57746561
+sources: 
+- Rubygems: 
+    uri: http://gemcutter.org

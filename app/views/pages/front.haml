@@ -1,0 +1,16 @@
+%h3= t :organization
+%h4= t :date
+.intro= t '.intro'
+
+#options
+  %p= t '.prompt'
+
+  - %w( physical digital ).each do |option|
+    .option{ :class => option }
+      .num= t ".#{option}.num"
+      .title= t ".#{option}.title"
+      .summary= t ".#{option}.summary"
+      %ul.steps
+        - t(".#{option}.steps").split('|').each do |step|
+          %li= step
+      .commit= link_to "I want to try this option", overview_path(option), :class => "orange button"

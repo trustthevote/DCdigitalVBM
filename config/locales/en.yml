@@ -1,0 +1,58 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  organization: District of Columbia General Election
+  date: "November 2, 2010"
+
+  layouts:
+    header:
+      headline: Digital Vote-by-Mail Service
+
+  pages:
+    front:
+      intro: "<p>District of Columbia Digital Vote-by-Mail is a new service to the overseas and military voters of the District of Columbia. We’ve designed this service to make it easier for you to receive your voting materials and help you return your completed ballot more quickly.</p><p>Thank you for your participation in this election.</p><p>District of Columbia Board of Election and Ethics (BOEE)</p>"
+      prompt: "The service offers two options:"
+      physical:
+        num: "01"
+        title: Physical Ballot Return
+        summary: Complete your ballot and return materials <strong>by mail or express delivery service</strong>.
+        steps: Obtain your blank ballot and other vote-by-mail materials|Complete them online|Return materials by mail or express delivery service
+      digital:
+        num: "02"
+        title: Digital Ballot Return
+        summary: Complete your ballot and return it electronically. This pilot project allows you to return your ballot through the Internet. (We suggest this method if you are concerned that your ballot will arrive too late to be counted.)
+        steps: Obtain your blank ballot and other vote-by-mail materials|Complete them online|Return completed ballot online
+
+    overview:
+      physical:
+        title: Overview of Voting Process
+        summary: You have elected to complete your vote-by-mail materials online and return them by mail or express delivery service.<br/>If you would like to return them through the internet, click here.
+        step_1:
+          title: Check In
+          summary: "Enter name, address, PIN"
+        step_2:
+          title: Confirm Identity
+          summary: Confirm your identity|Download your attestation document|View your attestation document|Print your attestation document
+        step_3:
+          title: Complete Ballot
+          summary: Download your ballot|View your ballot|Mark your ballot|Save your ballot
+        step_4:
+          title: Send Ballot
+          summary: Find your ballot|Upload your ballot|Send your ballot
+      digital:
+        title: Overview of Voting Process
+        summary: You have electer digital method.
+        step_1:
+          title: Check In
+          summary: "Enter name, address, PIN"
+        step_2:
+          title: Confirm Identity
+          summary: Confirm your identity|Download your attestation document|View your attestation document|Print your attestation document
+        step_3:
+          title: Complete Ballot
+          summary: Download your ballot|View your ballot|Mark your ballot|Save your ballot
+        step_4:
+          title: Send Ballot
+          summary: Find your ballot|Upload your ballot|Send your ballot
+        

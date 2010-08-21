@@ -1,0 +1,6 @@
+app_name:   Voter
+from_email: support@voter.com
+domain:     voter.com
+
+development:
+  domain: localhost

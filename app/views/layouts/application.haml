@@ -1,0 +1,26 @@
+!!! Strict
+%html{ "xmlns" => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", "lang" => "en" }
+  %head
+    %meta{ "http-equiv" => "content-type", "content" => "text/html;charset=UTF-8" }
+    %title= @page_title ? "#{@page_title} | #{AppConfig['app_name']}" : AppConfig['app_name']
+
+    %link{:href => "/images/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon"}
+    %link{:href => "/images/favicon.ico", :rel => "icon", :type => "image/x-icon"}
+
+    = stylesheet_link_tag "compiled/screen.css", :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
+
+    /[if IE]
+      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
+    /[if lte IE 7]
+      = stylesheet_link_tag 'compiled/ie6.css', :media => 'screen, projection'
+    /[if IE 6]
+      = javascript_include_tag 'plugins/unitpngfix'
+
+    = javascript_include_tag 'jquery-1.4.2.min', 'plugins/jquery.textPlaceholder', 'application', :cache => true
+
+  %body{ :class => "#{controller.controller_path.gsub('/', ' ')} #{params[:action]}" }
+    .container
+      #header= render :partial => "layouts/header"
+      #content= yield
+      #footer= render :partial => "layouts/footer"

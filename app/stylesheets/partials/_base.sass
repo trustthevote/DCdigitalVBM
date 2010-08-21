@@ -1,0 +1,21 @@
+$blueprint-font-size  = 13px
+
+// Columns
+
+$sidebar_columns      = 5
+$area_columns         = $blueprint-grid-columns - $sidebar_columns
+$icon_columns         = 7
+$main_columns         = $area_columns - $icon_columns
+
+// Colors
+
+$v_gray               = #e8e8e8
+
+@mixin link-list
+  margin: 1em 0 0 0
+  padding: 0
+  li
+    float: left
+    display: block
+    padding: 0 0 0 1em
+    margin: 0

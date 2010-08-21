@@ -1,0 +1,17 @@
+#step
+  .title= tt ".title"
+  .summary= tt ".summary"
+  
+#steps
+  - 4.times do |sn|
+    - skey = ".step_#{sn + 1}"
+    .step
+      .num= (sn + 1).to_s.rjust(2, '0')
+      .title= tt "#{skey}.title"
+      .summary= pipe_list(tkey("#{skey}.summary"))
+
+= render :partial => "shared/key_dates"
+
+#navigation
+  = link_to "Back", front_path, :class => "orange button"
+  = link_to "Continue", "#", :class => "orange button"

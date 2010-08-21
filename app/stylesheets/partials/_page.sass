@@ -1,0 +1,30 @@
+#step
+  +column($area_columns, true)
+  +prepend($sidebar_columns)
+  overflow: hidden
+  .title
+    font-weight: bold
+  .summary
+
+#navigation
+  +prepend($sidebar_columns)
+  +column($area_columns, true)
+
+.last
+  +last
+
+.sidebar
+  +column($sidebar_columns)
+  &.key
+    margin-top: 8em
+    font-size: 85%
+    h4
+      margin-bottom: 0
+
+#area
+  +column($area_columns, true)
+  .main
+    +column($main_columns)
+  .icon
+    +column($icon_columns, true)
+    
