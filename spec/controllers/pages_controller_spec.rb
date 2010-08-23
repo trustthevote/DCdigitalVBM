@@ -31,6 +31,18 @@ describe PagesController do
       get :check_in
       response.should render_template(:check_in)
     end
+    
+    it "should return to the check in form if record wasn't found" do
+      post :check_in, :registration => { :pin => "unknown" }
+      response.should render_template(:check_in)
+      assigns(:registration).should be_nil
+    end
+    
+    it "should move on to the confirm page when record was found" do
+      r = Factory(:registration)
+      post :check_in, :registration => { :pin => r.pin, :name => r.name }
+      response.should redirect_to(confirm_url)
+    end
   end
   
 end
