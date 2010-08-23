@@ -28,31 +28,27 @@ en:
       physical:
         title: Overview of Voting Process
         summary: You have elected to complete your vote-by-mail materials online and return them by mail or express delivery service.<br/>If you would like to return them through the internet, click here.
-        step_1:
-          title: Check In
-          summary: "Enter name, address, PIN"
-        step_2:
-          title: Confirm Identity
-          summary: Confirm your identity|Download your attestation document|View your attestation document|Print your attestation document
-        step_3:
-          title: Complete Ballot
-          summary: Download your ballot|View your ballot|Mark your ballot|Save your ballot
-        step_4:
-          title: Send Ballot
-          summary: Find your ballot|Upload your ballot|Send your ballot
       digital:
         title: Overview of Voting Process
         summary: You have electer digital method.
-        step_1:
-          title: Check In
-          summary: "Enter name, address, PIN"
-        step_2:
-          title: Confirm Identity
-          summary: Confirm your identity|Download your attestation document|View your attestation document|Print your attestation document
-        step_3:
-          title: Complete Ballot
-          summary: Download your ballot|View your ballot|Mark your ballot|Save your ballot
-        step_4:
-          title: Send Ballot
-          summary: Find your ballot|Upload your ballot|Send your ballot
+
+    check_in:
+      title: Check In
+      summary: Please check in so that we can match you to your current voter record.
+      info: "<p>Your name and address information must match the information we have in your current voter record; the PIN number must exactly match the number that was provided to you by the BOEE before the election.</p><p>You can find your official name, address, and PIN in the letter that was sent to you by the BOEE before the election.</p><p>All fields are required.</p>"
+      prompt: "Please enter your name, address, and PIN."
         
+  shared:
+    menu:
+      step_1:
+        title: Check In
+        summary: "Enter name, address, PIN"
+      step_2:
+        title: Confirm Identity
+        summary: Confirm your identity|Download your attestation document|View your attestation document|Print your attestation document
+      step_3:
+        title: Complete Ballot
+        summary: Download your ballot|View your ballot|Mark your ballot|Save your ballot
+      step_4:
+        title: Send Ballot
+        summary: Find your ballot|Upload your ballot|Send your ballot

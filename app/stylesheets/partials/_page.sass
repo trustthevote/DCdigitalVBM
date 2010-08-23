@@ -1,6 +1,7 @@
 #step
   +column($area_columns, true)
   +prepend($sidebar_columns)
+  margin: 0 0 2em 0
   overflow: hidden
   .title
     font-weight: bold
@@ -9,22 +10,46 @@
 #navigation
   +prepend($sidebar_columns)
   +column($area_columns, true)
+  padding-top: 2em
 
 .last
   +last
 
 .sidebar
   +column($sidebar_columns)
-  &.key
-    margin-top: 8em
+  .key
+    +column($sidebar_columns, true)
+    margin-top: 10em
     font-size: 85%
     h4
       margin-bottom: 0
 
+  .step
+    +column($sidebar_columns, true)
+    border-top: 1px solid $c_border_color
+    padding: 0.5em 0
+    height: 5em
+    &.selected
+      background: $c_bg_fill
+    &.last
+      border-bottom: 1px solid $c_border_color
+    .num
+      +column(1)
+      font-size: 1.5em
+      text-align: center
+    .title
+      +column($sidebar_columns - 1, true)
+      font-size: 1.5em
+
 #area
   +column($area_columns, true)
+  border-top: 1px solid $c_border_color
+  background: $c_bg_fill
+  padding: 2em 0
+  min-height: 700px
   .main
     +column($main_columns)
+    +prepend(1)
   .icon
     +column($icon_columns, true)
-    
+

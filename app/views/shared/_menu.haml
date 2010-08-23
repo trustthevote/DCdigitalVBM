@@ -1,0 +1,5 @@
+- selected ||= -1
+- 4.times do |sn|
+  .step{ :class => [(sn == selected) ? 'selected' : nil, (sn == 3) ? 'last' : nil].compact.join(' ') }
+    .num= (sn + 1).to_s.rjust(2, '0')
+    .title= tt ".step_#{sn + 1}.title"

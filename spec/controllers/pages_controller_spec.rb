@@ -25,4 +25,12 @@ describe PagesController do
       @controller.voting_type.should == "physical"
     end
   end
+  
+  describe "when checking in" do
+    it "should display form" do
+      get :check_in
+      response.should render_template(:check_in)
+    end
+  end
+  
 end
