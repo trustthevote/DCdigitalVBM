@@ -40,6 +40,19 @@ en:
 
       not_found: Could Not Find Record
       explanation: "<p>Sorry, we couldn’t find your record. Try again. Provide the information you used when you registered to vote.</p>"
+
+    confirm:
+      title: Confirm Identity
+      summary: To confirm your identity, follow the steps below. Keep this page open.
+      step_1:
+        title: Confirm
+        instruction: Confirm Identity
+        summary: "Confirm your identity. If you are the person named to the right, check the box. If this isn't you, press the cancel button and try again."
+        check: Check the box to certify that you are the person indicated.
+      step_2:
+        title: Open
+        instruction: Open and View Attestation Document (Optional)
+        summary: "If you would like to view your attestation document, click the PDF icon at the right. The document will open in your default PDF viewing application, on top of your web browser."
         
   shared:
     menu:

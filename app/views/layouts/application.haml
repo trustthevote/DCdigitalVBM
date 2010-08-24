@@ -17,7 +17,7 @@
     /[if IE 6]
       = javascript_include_tag 'plugins/unitpngfix'
 
-    = javascript_include_tag 'jquery-1.4.2.min', 'plugins/jquery.textPlaceholder', 'application', :cache => true
+    = javascript_include_tag 'jquery-1.4.2.min', 'plugins/jquery.textPlaceholder', 'plugins/jquery.qtip-1.0.0-rc3.min', 'application', :cache => true
 
   %body{ :class => "#{controller.controller_path.gsub('/', ' ')} #{params[:action]}" }
     .container

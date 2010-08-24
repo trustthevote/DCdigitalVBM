@@ -1,1 +1,46 @@
-Confirm: #{@registration.name}
+#step
+  .title= tt ".title"
+  .summary= tt ".summary"
+
+.sidebar
+  = render :partial => "shared/menu", :locals => { :selected => 1 }
+  = render :partial => "shared/key_dates"
+
+#area.nopadding
+  .section
+    .main_1
+      %h3= tt ".step_1.title"
+      %h4= tt ".step_1.instruction"
+      = tt ".step_1.summary"
+    .main_2
+      .name Mike O'Conner
+      .addr 9 Colenso St
+      .addr Washington DC, 20004
+    .icon
+      .box
+        = tt ".step_1.check"
+        %br
+        = check_box_tag "confirm", 1, false, :id => "confirm"
+
+  .section
+    .main
+      %h3= tt ".step_2.title"
+      %h4= tt ".step_2.instruction"
+      = tt ".step_2.summary"
+    .icon
+      .box.centered
+        = link_to image_tag("open_attestation.gif"), "#", :id => "attestation"
+      
+#navigation
+  = link_to "Back", overview_path(voting_type), :class => "button"
+  = link_to "Continue", "/complete", :class => "disabled button", :id => "continue"
+
+:javascript
+  $(function() {
+    var docs = $("#continue, #attestation");
+
+    disableLink(docs);
+    $("#confirm").change(function() {
+      if (this.checked) enableLink(docs); else disableLink(docs);
+    });
+  });
