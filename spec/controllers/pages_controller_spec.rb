@@ -39,8 +39,8 @@ describe PagesController do
     end
     
     it "should move on to the confirm page when record was found" do
-      r = Factory(:registration)
-      post :check_in, :registration => { :pin => r.pin, :name => r.name }
+      r = Factory(:registration, :pin => "1234")
+      post :check_in, :registration => { :pin => "1234", :name => r.name, :zip => r.zip, :voter_id => r.voter_id }
       response.should redirect_to(confirm_url)
     end
   end

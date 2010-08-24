@@ -13,11 +13,15 @@ ActiveRecord::Schema.define(:version => 20100823131318) do
 
   create_table "registrations", :force => true do |t|
     t.string   "name"
-    t.string   "pin"
+    t.string   "zip"
+    t.string   "pin_hash"
+    t.string   "voter_id"
+    t.integer  "precinct_split_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "registrations", ["pin", "name"], :name => "index_registrations_on_pin_and_name", :unique => true
+  add_index "registrations", ["pin_hash", "voter_id", "name", "zip"], :name => "index_registrations_on_pin_hash_and_voter_id_and_name_and_zip", :unique => true
+  add_index "registrations", ["precinct_split_id"], :name => "index_registrations_on_precinct_split_id"
 
 end

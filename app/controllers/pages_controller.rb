@@ -26,7 +26,7 @@ class PagesController < ApplicationController
     return if r.nil?
     
     # Find the registration and remember it
-    @registration = Registration.first(:conditions => { :name => r[:name], :pin => r[:pin] })
+    @registration = Registration.match(r)
     if @registration
       session[:rid] = @registration.id
       redirect_to confirm_url
