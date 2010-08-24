@@ -10,7 +10,9 @@
   .section
     .main_1
       %h3= tt ".step_1.title"
-      %h4= tt ".step_1.instruction"
+      %h4
+        = tt ".step_1.instruction"
+        = tip(tt(".step_1.tip"))
       = tt ".step_1.summary"
     .main_2
       .name Mike O'Conner
@@ -25,7 +27,9 @@
   .section
     .main
       %h3= tt ".step_2.title"
-      %h4= tt ".step_2.instruction"
+      %h4
+        = tt ".step_2.instruction"
+        = tip(tt(".step_2.tip"))
       = tt ".step_2.summary"
     .icon
       .box.centered

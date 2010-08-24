@@ -9,3 +9,7 @@ function enableLink(l) {
   l.removeClass('disabled');
   l.unbind('click');
 }
+
+$(function() {
+  $("img.tip[title]").tipTip();
+});

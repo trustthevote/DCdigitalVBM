@@ -16,4 +16,9 @@ module ApplicationHelper
   def pipe_list(items)
     content_tag(:ul, items.split('|').map { |l| content_tag(:li, l) })
   end
+  
+  # Displays a standard tip
+  def tip(text)
+    image_tag "question.gif", :title => text, :class => "tip"
+  end
 end
