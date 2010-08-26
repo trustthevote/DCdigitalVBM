@@ -1,0 +1,14 @@
+%h3 Thank You!
+%p Your ballot is completed!
+
+.meta
+  Ballot Sent<br/>
+  = Time.now.to_s(:detailed)
+
+.details
+  %p If you need to fill out your ballot again and reprint it, return to the <a href="/">Start Page</a>.
+  %p Check the status of your ballot at any time <a href="#">here</a>.
+  %p Learn more about the ballot counting process, or the Digital vote-by-mail voting process, in the <a href="/help">Help</a> pages.
+
+.sidebar
+  = render :partial => "shared/key_dates"

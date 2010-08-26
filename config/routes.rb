@@ -7,5 +7,6 @@ ActionController::Routing::Routes.draw do |map|
     o.confirm   '/confirm',   :action => "confirm"
     o.complete  '/complete',  :action => "complete"
     o.return    '/return',    :action => "return"
+    o.thanks    '/thanks',    :action => "thanks"
   end
 end

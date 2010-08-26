@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  before_filter :load_registration, :only => [ :confirm, :complete, :return ]
+  before_filter :load_registration, :only => [ :confirm, :complete, :return, :thanks ]
 
   def front
   end
@@ -23,6 +23,10 @@ class PagesController < ApplicationController
   end
   
   def return
+    redirect_to thanks_url if request.post?
+  end
+  
+  def thanks
   end
   
   private

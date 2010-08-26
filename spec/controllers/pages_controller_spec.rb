@@ -65,6 +65,14 @@ describe PagesController do
     it "should accept the file"
     it "should render the page again if the file is not provided"
   end
+
+  describe "when viewing thanks" do
+    it "should render the page" do
+      stub_registration
+      get :thanks
+      response.should render_template(:thanks)
+    end
+  end
   
   def stub_registration
     @r = Factory(:registration)
