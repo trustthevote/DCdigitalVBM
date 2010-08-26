@@ -21,4 +21,24 @@ module ApplicationHelper
   def tip(text)
     image_tag "question.gif", :title => text, :class => "tip"
   end
+  
+  def step_section(options = {})
+    step = options[:step]
+    icon = options[:icon]
+    
+    icon_box = nil
+    if icon
+      icon_link = options[:icon_link]
+      box_class = [ "box", "centered" ]
+      box_class << "passive" unless icon_link
+      icon_box = content_tag(:div, icon_link ? link_to(image_tag(icon), icon_link, :id => options[:icon_id]) : image_tag(icon), :class => box_class.join(' '))
+    end
+    
+    content_tag(:div, [
+      content_tag(:div, [
+        content_tag(:h3, tt(".step_#{step}.title")),
+        content_tag(:h4, tt(".step_#{step}.instruction") + " " + tip(tt(".step_#{step}.tip"))),
+        tt(".step_#{step}.summary")], :class => "main"),
+      content_tag(:div, [ icon_box ].compact, :class => "icon") ], :class => 'section')
+  end
 end

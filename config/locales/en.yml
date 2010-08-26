@@ -56,7 +56,72 @@ en:
         tip: Here come instructions for the step 2
         instruction: Open and View Attestation Document (Optional)
         summary: "If you would like to view your attestation document, click the PDF icon at the right. The document will open in your default PDF viewing application, on top of your web browser."
+
+    complete:
+      title: Complete Ballot
+      step_1:
+        title: Download
+        instruction: Download and View Ballot
+        tip: Tip for the download step
+        summary: Click the PDF icon at the right to download your ballot. The ballot PDF will open in your default PDF viewing application, on top of your web browser.
+      step_2:
+        title: Mark
+        instruction: Mark Ballot
+        tip: Tip for the mark step
+      step_3:
+        title: Save
+        instruction: Save Ballot
+        tip: Tip for the save step
+        summary: "Save your ballot when you have completed it. Save the PDF on your desktop by selecting File/Save As in your default PDF viewing application."
+
+      digital:
+        summary: "To complete your ballot, follow these 3 steps. Keep this page open until you have saved your marked ballot."
+        step_2:
+          summary: "<p>To complete the ballot online, click on the circles next to your candidates to select them. You can also type in candidates where indicated. You can find complete instructions for filling out the ballot in the ballot PDF.</p><p>Note: If you prefer to print your ballot and return your vote-by-mail materials by mail, return to the <a href=\"/\">Start Page</a>.</p>"
+      physical:
+        summary: "To complete your ballot, follow these 4 steps. Keep this page open until you have printed your completed ballot."
+        step_2:
+          summary: "<p>To complete the ballot online, click on the circles next to your candidates to select them. You can also type in candidates where indicated. You can find complete instructions for filling out the ballot in the ballot PDF.</p><p>If you prefer to return your ballot electronically, return to the <a href=\"/\">Start Page</a>.</p>"
+        step_4:
+          title: Print
+          instruction: Print Your Ballot
+          tip: Tip for the print step
+          summary: "Print the ballot by selecting the PRINT button in the PDF. You can also select File/Print in your default PDF viewing application."
+
+    return:
+      title: Return Ballot
+
+      digital:
+        summary: To return your ballot digitally, find and upload the ballot PDF.
+        step_1:
+          title: Send
+          instruction: Locate Ballot PDF and Send
+          tip: Tip for the send step
+          summary: "<p>On the web page that is open, select the Choose File button to browse for your ballot PDF. In the dialog box that opens, navigate to the saved PDF and select it. Press Continue.</p><p>A confirmation message will appear on the next web page to let you know your ballot has been delivered.</p><p>You can check your ballot status to find out when it has been counted.</p>"
+          prompt: "Choose Ballot PDF:"
         
+      physical:
+        summary: To return your vote-by-mail materials, follow these 4 steps.
+        step_1:
+          title: Secure Ballot
+          instruction: Put Printed Ballot in Security Envelope
+          tip: Tip for the secure ballot step
+          summary: Place your ballot in a secure sealed envelope.
+        step_2:
+          title: Return Envelope
+          instruction: Place Attestation Document in Return Envelope
+          tip: Tip for the return envelope step
+          summary: In a larger return envelope, place your attestation document and the sealed envelope with your ballot.
+        step_3:
+          title: Return Service
+          instruction: Choose Your Return Service
+          tip: Tip for the return service step
+          summary: Mail back your vote-by-mail return envelope via your local civilian or mili- tary postal service. You can also use an express mail service. Find out about express mail service options <a href="/faq" target="_blank">here</a>.
+        step_4:
+          title: Mail
+          instruction: Mail the Return Envelope
+          tip: Tip for the mail step
+          summary: "<p>Send your return envelope as soon as possible, to ensure that it will arrive in time to be counted. Here is the correct address:</p><p class='address'>D.C. Board of Elections and Ethics<br/>441 4th Street, NW<br/>Suite 250 North<br/>Washington, DC 20001</p><p>If you use an express mail service, the packaging will provide the correct BOEE mailing address.</p>"
   shared:
     menu:
       step_1:

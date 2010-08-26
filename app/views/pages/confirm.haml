@@ -15,29 +15,20 @@
         = tip(tt(".step_1.tip"))
       = tt ".step_1.summary"
     .main_2
-      .name Mike O'Conner
-      .addr 9 Colenso St
-      .addr Washington DC, 20004
+      .name= h(@registration.name)
+      .addr= h(@registration.address)
+      .addr #{h(@registration.city)} #{h(@registration.state)}, #{h(@registration.zip)}
     .icon
       .box
         = tt ".step_1.check"
         %br
         = check_box_tag "confirm", 1, false, :id => "confirm"
 
-  .section
-    .main
-      %h3= tt ".step_2.title"
-      %h4
-        = tt ".step_2.instruction"
-        = tip(tt(".step_2.tip"))
-      = tt ".step_2.summary"
-    .icon
-      .box.centered
-        = link_to image_tag("open_attestation.gif"), "#", :id => "attestation"
+  = step_section(:step => 2, :icon => "open_attestation.gif", :icon_id => "attestation", :icon_link => "#")
       
 #navigation
-  = link_to "Back", overview_path(voting_type), :class => "button"
-  = link_to "Continue", "/complete", :class => "disabled button", :id => "continue"
+  = link_to "Back", check_in_path, :class => "button"
+  = link_to "Continue", complete_path, :class => "disabled button", :id => "continue"
 
 :javascript
   $(function() {

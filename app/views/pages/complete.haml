@@ -1,0 +1,18 @@
+#step
+  .title= tt ".title"
+  .summary= tt ".summary"
+
+.sidebar
+  = render :partial => "shared/menu", :locals => { :selected => 2 }
+  = render :partial => "shared/key_dates"
+
+#area.nopadding
+  = step_section(:step => 1, :icon => "open_ballot.gif", :icon_link => '#')
+  = step_section(:step => 2, :icon => "mark.gif")
+  = step_section(:step => 3, :icon => "save.gif")
+  - if physical?
+    = step_section(:step => 4, :icon => "print.gif")
+
+#navigation
+  = link_to "Back", confirm_path, :class => "button"
+  = link_to "Continue", return_path, :class => "button"

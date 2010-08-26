@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  before_filter :load_registration, :only => :confirm
+  before_filter :load_registration, :only => [ :confirm, :complete, :return ]
 
   def front
   end
@@ -17,6 +17,12 @@ class PagesController < ApplicationController
   def confirm
     # This line is necessary as we call the method from #perform_check
     render :confirm
+  end
+  
+  def complete
+  end
+  
+  def return
   end
   
   private

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
-  helper_method :voting_type
+  helper_method :voting_type, :physical?, :digital?
 
   def voting_type=(type)
     session[:voting_type] = type.to_s if %w( digital physical ).include?(type.to_s)
@@ -18,4 +18,12 @@ class ApplicationController < ActionController::Base
     session[:voting_type] || "physical"
   end
 
+  def physical?
+    voting_type == "physical"
+  end
+  
+  def digital?
+    !physical?
+  end
+  
 end

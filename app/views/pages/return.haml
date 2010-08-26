@@ -1,0 +1,42 @@
+#step
+  .title= tt ".title"
+  .summary= tt ".summary"
+
+.sidebar
+  = render :partial => "shared/menu", :locals => { :selected => 3 }
+  = render :partial => "shared/key_dates"
+
+- if physical?
+  #area.nopadding
+    = step_section(:step => 1, :icon => "open_ballot.gif")
+    = step_section(:step => 2, :icon => "mark.gif")
+    = step_section(:step => 3, :icon => "save.gif")
+    = step_section(:step => 4, :icon => "print.gif")
+
+- if digital?
+  #area
+    .main_half
+      %h3= tt ".step_1.title"
+      %h4
+        = tt ".step_1.instruction"
+        = tip(tt(".step_1.tip"))
+      = tt ".step_1.summary"
+    .main_half.last
+      .box.wide
+        - form_tag return_path, :multipart => true, :id => "send_form" do
+          %h4= tt ".step_1.prompt"
+          = file_field_tag "ballot"
+          
+
+#navigation
+  = link_to "Back", complete_path, :class => "button"
+  = link_to_function "Continue", "if ($('#ballot').val() != '') $('#send_form').submit()", :class => "disabled button", :id => "continue"
+
+:javascript
+  $(function() {
+    var docs = $("#continue");
+    $("#ballot").change(function() {
+      if (this.value != '') enableLink(docs); else disableLink(docs);
+    });
+    disableLink(docs);
+  });

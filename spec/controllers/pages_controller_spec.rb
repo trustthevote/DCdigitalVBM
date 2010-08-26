@@ -45,4 +45,29 @@ describe PagesController do
     end
   end
   
+  describe "when confirming" do
+    it "should render the page" do
+      stub_registration
+      get :confirm
+      response.should render_template(:confirm)
+    end
+  end
+
+  describe "when completing" do
+    it "should render the page" do
+      stub_registration
+      get :complete
+      response.should render_template(:complete)
+    end
+  end
+  
+  describe "when sending ballot" do
+    it "should accept the file"
+    it "should render the page again if the file is not provided"
+  end
+  
+  def stub_registration
+    @r = Factory(:registration)
+    session[:rid] = @r.id
+  end
 end
