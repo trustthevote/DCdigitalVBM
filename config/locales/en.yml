@@ -127,6 +127,14 @@ en:
       title: About
       info: "<p>Project description TBD</p>"
 
+    security:
+      title: Security
+      info: "<p>Info</p>"
+
+    feedback:
+      title: Feedback
+      info: "<p>Info</p>"
+
     help:
       title: Help
       info: "<p>Help introduction</p>"
