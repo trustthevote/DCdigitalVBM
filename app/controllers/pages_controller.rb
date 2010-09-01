@@ -23,7 +23,11 @@ class PagesController < ApplicationController
   end
   
   def return
-    redirect_to thanks_url if request.post?
+    if request.post? && save_ballot
+      redirect_to thanks_url
+    else
+      render :return
+    end
   end
   
   def thanks
@@ -55,5 +59,9 @@ class PagesController < ApplicationController
       @registration = Registration.find(session[:rid])
     end
   end
-  
+
+  def save_ballot
+    @ballot = @registration.build_ballot(:pdf => params[:pdf])
+    @ballot.save
+  end
 end

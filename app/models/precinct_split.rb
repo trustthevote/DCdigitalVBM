@@ -4,6 +4,6 @@ class PrecinctSplit < ActiveRecord::Base
   has_one     :ballot_style
   has_many    :registrations
   
-  validates   :precinct_id, :presence => true
+  validates_presence_of :precinct_id
 
 end

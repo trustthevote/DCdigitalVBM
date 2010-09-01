@@ -1,14 +1,12 @@
 require 'spec_helper'
 
 describe Registration do
-  before(:each) do
-    @valid_attributes = {
-      :name => "value for name",
-      :pin => "value for pin"
-    }
+
+  it "should return the empty ballot PDF" do
+    b = Factory(:ballot_style)
+    r = Factory(:registration, :precinct_split_id => b.precinct_split_id)
+    
+    r.blank_ballot.url.should == b.pdf.url
   end
 
-  it "should create a new instance given valid attributes" do
-    Registration.create!(@valid_attributes)
-  end
 end

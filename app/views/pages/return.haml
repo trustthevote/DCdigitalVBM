@@ -25,18 +25,27 @@
       .box.wide
         - form_tag return_path, :multipart => true, :id => "send_form" do
           %h4= tt ".step_1.prompt"
-          = file_field_tag "ballot"
+          = file_field_tag "pdf"
+      - if @ballot && !@ballot.valid?
+        .box.wide
+          Unable to save your ballot:
+          %ul
+            - @ballot.errors.full_messages.each do |m|
+              %li= m
           
 
 #navigation
   = link_to "Back", complete_path, :class => "button"
-  = link_to_function "Continue", "if ($('#ballot').val() != '') $('#send_form').submit()", :class => "disabled button", :id => "continue"
+  - if physical?
+    = link_to "Continue", thanks_path, :class => "button"
+  - if digital?
+    = link_to_function "Continue", "if ($('#ballot').val() != '') $('#send_form').submit()", :class => "disabled button", :id => "continue"
 
-:javascript
-  $(function() {
-    var docs = $("#continue");
-    $("#ballot").change(function() {
-      if (this.value != '') enableLink(docs); else disableLink(docs);
-    });
-    disableLink(docs);
-  });
+    :javascript
+      $(function() {
+        var docs = $("#continue");
+        $("#pdf").change(function() {
+          if (this.value != '') enableLink(docs); else disableLink(docs);
+        });
+        disableLink(docs);
+      });

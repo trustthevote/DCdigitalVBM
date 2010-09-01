@@ -62,8 +62,21 @@ describe PagesController do
   end
   
   describe "when sending ballot" do
-    it "should accept the file"
-    it "should render the page again if the file is not provided"
+    before do
+      stub_registration
+    end
+
+    it "should return to the same form if ballot is invalid and can't be saved" do
+      @controller.stubs(:save_ballot).returns(false)
+      post :return
+      response.should render_template(:return)
+    end
+    
+    it "should render the thanks page if all is good" do
+      @controller.stubs(:save_ballot).returns(true)
+      post :return
+      response.should redirect_to(thanks_path)
+    end
   end
 
   describe "when viewing thanks" do

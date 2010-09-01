@@ -4,12 +4,12 @@ class Ballot < ActiveRecord::Base
   
   belongs_to :registration
 
-  has_attached_file :pdf, :path => ':rails_root/ballots/:id',
+  has_attached_file :pdf, :path => ':rails_root/ballots/:id.pdf.gpg',
                           :url  => '/', # Disallow external access
-                          :styles => { :pdf => {} },
+                          :styles => { :encrypt => AppConfig['gpg_recipient'] },
                           :processors => [ :encrypt ]
 
-  validates :registration_id, :presence => true, :on => :create
+  validates_presence_of   :registration_id, :on => :create
   validates_attachment_presence       :pdf
   validates_attachment_content_type   :pdf, :content_type => "application/pdf"
   
@@ -20,7 +20,7 @@ class Ballot < ActiveRecord::Base
   def validate_pdf
     if registration
       filename = registration.blank_ballot.original_filename
-      self.errors[:base] << ERROR_NAME if self.pdf.original_filename != filename
+      self.errors.add_to_base(ERROR_NAME) if self.pdf.original_filename != filename
     end
   end
   

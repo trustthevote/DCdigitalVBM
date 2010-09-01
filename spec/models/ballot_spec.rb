@@ -10,7 +10,7 @@ describe Ballot do
   it "should accept the file with the same name as downloaded ballot" do
     b = Factory.build(:ballot, :registration => @r, :pdf_file_name => "weird.pdf")
     b.should_not be_valid
-    b.errors[:base].should == [ Ballot::ERROR_NAME ]
+    b.errors[:base].should == Ballot::ERROR_NAME
   end
   
   it "should reject the file with the name different from what was downloaded" do

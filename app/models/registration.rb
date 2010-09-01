@@ -2,7 +2,11 @@ require 'digest/sha1'
 
 class Registration < ActiveRecord::Base
 
-  validates_presence_of :pin_hash
+  belongs_to  :precinct_split
+  has_one     :ballot
+
+    validates_presence_of :pin_hash
+    validates_presence_of :precinct_split_id
   
   def self.match(r)
     first(:conditions => {
@@ -16,4 +20,9 @@ class Registration < ActiveRecord::Base
     self.pin_hash = Digest::SHA1.hexdigest(v)
   end
 
+  # Returns the blank ballot PDF
+  def blank_ballot
+    precinct_split.try(:ballot_style).try(:pdf)
+  end
+  
 end

@@ -7,7 +7,7 @@
   = render :partial => "shared/key_dates"
 
 #area.nopadding
-  = step_section(:step => 1, :icon => "open_ballot.gif", :icon_link => '#')
+  = step_section(:step => 1, :icon => "open_ballot.gif", :icon_link => @registration.blank_ballot.url)
   = step_section(:step => 2, :icon => "mark.gif")
   = step_section(:step => 3, :icon => "save.gif")
   - if physical?

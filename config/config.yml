@@ -2,5 +2,9 @@ app_name:   Voter
 from_email: support@voter.com
 domain:     voter.com
 
+# The name of the GPG encryption recipient
+gpg_recipient:
+
 development:
   domain: localhost
+  gpg_recipient: spyromus@noizeramp.com

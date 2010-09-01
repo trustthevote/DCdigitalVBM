@@ -3,14 +3,21 @@ module Paperclip
     def initialize(file, options = {}, attachment = nil)
       super
 
-      @file       = file
-      @options    = options
-      @attachment = attachment
+      @file           = file
+      @recipient      = options[:geometry]
+      @attachment     = attachment
+      @current_format = File.extname(@file.path)
+      @basename       = File.basename(@file.path, @current_format)
     end
     
     def make
-      # TODO: Use command line to encrypt the ballot
-      @file
+      src = @file
+      dst = Tempfile.new([@basename, 'gpg'].compact.join("."))
+      dst.binmode
+
+      `gpg -o "#{File.expand_path(dst.path)}" -e -r "#{@recipient}" "#{File.expand_path(src.path)}"`
+      
+      dst
     end
   end
 end
