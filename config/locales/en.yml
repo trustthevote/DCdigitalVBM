@@ -122,6 +122,34 @@ en:
           instruction: Mail the Return Envelope
           tip: Tip for the mail step
           summary: "<p>Send your return envelope as soon as possible, to ensure that it will arrive in time to be counted. Here is the correct address:</p><p class='address'>D.C. Board of Elections and Ethics<br/>441 4th Street, NW<br/>Suite 250 North<br/>Washington, DC 20001</p><p>If you use an express mail service, the packaging will provide the correct BOEE mailing address.</p>"
+    
+    about:
+      title: About
+      info: "<p>Project description TBD</p>"
+
+    help:
+      title: Help
+      info: "<p>Help introduction</p>"
+      sections:
+        section_1:
+          title: Voting Eligibility
+          questions:
+            question_1:
+              q: How do I know if I'm eligible to vote by absentee ballot?
+              a: "You may vote by absentee ballot in Washington, DC, if:<ul><li>you will be outside of the District of Columbia on election day</li><li>you will be hospitalized on election day</li></ul>"
+            question_2:
+              q: "What are the Election Dates?"
+              a: "..."
+        section_2:
+          title: Voting Procedure
+          questions:
+            question_1:
+              q: "Q?"
+              a: "A"
+            question_2:
+              q: "Q2?"
+              a: "A2"
+              
   shared:
     menu:
       step_1:

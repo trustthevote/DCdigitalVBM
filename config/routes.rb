@@ -8,5 +8,11 @@ ActionController::Routing::Routes.draw do |map|
     o.complete  '/complete',  :action => "complete"
     o.return    '/return',    :action => "return"
     o.thanks    '/thanks',    :action => "thanks"
+    
+    o.about     '/about',     :action => "about"
+    o.help      '/help',      :action => "help"
+    o.security  '/security',  :action => "security"
+    
+    o.feedback  '/feedback',  :action => "feedback"
   end
 end
