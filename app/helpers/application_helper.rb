@@ -31,7 +31,7 @@ module ApplicationHelper
       icon_link = options[:icon_link]
       box_class = [ "box", "centered" ]
       box_class << "passive" unless icon_link
-      icon_box = content_tag(:div, icon_link ? link_to(image_tag(icon), icon_link, :id => options[:icon_id]) : image_tag(icon), :class => box_class.join(' '))
+      icon_box = content_tag(:div, icon_link ? link_to(image_tag(icon), icon_link, :id => options[:icon_id], :target => "_blank") : image_tag(icon), :class => box_class.join(' '))
     end
     
     content_tag(:div, [

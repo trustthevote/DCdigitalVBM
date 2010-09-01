@@ -20,4 +20,5 @@ Registration.create!(
   :voter_id          => '1234',
   :address           => "142 N Street",
   :city              => "Washington",
-  :state             => "DC")
+  :state             => "DC",
+  :attestation       => File.open("#{Rails.root}/db/fixtures/attestation.pdf", "rb"))

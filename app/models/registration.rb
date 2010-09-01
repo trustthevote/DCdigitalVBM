@@ -5,8 +5,11 @@ class Registration < ActiveRecord::Base
   belongs_to  :precinct_split
   has_one     :ballot
 
-    validates_presence_of :pin_hash
-    validates_presence_of :precinct_split_id
+  has_attached_file :attestation, :path => ':rails_root/public/assets/attestations/:id.pdf',
+                                  :url  => '/assets/attestations/:id.pdf'
+
+  validates_presence_of :pin_hash
+  validates_presence_of :precinct_split_id
   
   def self.match(r)
     first(:conditions => {

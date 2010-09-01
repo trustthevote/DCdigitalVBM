@@ -24,7 +24,7 @@
         %br
         = check_box_tag "confirm", 1, false, :id => "confirm"
 
-  = step_section(:step => 2, :icon => "open_attestation.gif", :icon_id => "attestation", :icon_link => "#")
+  = step_section(:step => 2, :icon => "open_attestation.gif", :icon_id => "attestation", :icon_link => @registration.attestation.url)
       
 #navigation
   = link_to "Back", check_in_path, :class => "button"
