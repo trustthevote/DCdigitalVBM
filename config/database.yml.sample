@@ -1,0 +1,20 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: voter_development
+  username: root
+  password:
+  pool: 5
+  socket: /tmp/mysql.sock
+
+test:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: voter_test
+  username: root
+  password:
+  pool: 5
+  socket: /tmp/mysql.sock
+
