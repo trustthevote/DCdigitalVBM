@@ -68,3 +68,23 @@ Initialize database with:
 Start the application:
 
     $ script/server
+
+
+Deployment
+----------
+
+Before you start, make sure that you have:
+
+* Server IP or domain name you are going to deploy to
+* User account on that server
+* Empty database and username / password to use
+* Apache with Passenger installed on the server
+
+Create the app folder by SSH'ing into the server and creating the directory in your
+deployment user home (we'll assume it's dc\_digital\_vbm).
+
+Depending on whether it's your Staging or Production environment, open the _config/deploy/staging.rb_ or _production.rb_ and put in your _domain_, _user_
+and _runner_ info (_user_ and _runner_ are likely to be the same). Next, open
+_config/deploy.rb_ and change _application_ to the name of the folder that you created
+under your home.
+

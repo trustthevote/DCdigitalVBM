@@ -13,6 +13,8 @@ gem 'paperclip'
 
 group :development do
   gem 'mongrel'
+  gem 'capistrano'
+  gem 'capistrano-ext'
 end
 
 group :test do

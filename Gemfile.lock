@@ -48,6 +48,10 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
+  capistrano-ext: 
+    group: 
+    - :development
+    version: ">= 0"
   simple_form: 
     group: 
     - :default
@@ -70,6 +74,10 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
+  capistrano: 
+    group: 
+    - :development
+    version: ">= 0"
 specs: 
 - rake: 
     version: 0.8.7
@@ -87,6 +95,20 @@ specs:
     version: 2.3.8
 - activeresource: 
     version: 2.3.8
+- highline: 
+    version: 1.6.1
+- net-ssh: 
+    version: 2.0.23
+- net-scp: 
+    version: 1.0.3
+- net-sftp: 
+    version: 2.0.5
+- net-ssh-gateway: 
+    version: 1.0.1
+- capistrano: 
+    version: 2.5.19
+- capistrano-ext: 
+    version: 1.2.1
 - cgi_multipart_eof_fix: 
     version: 2.5.0
 - haml: 
@@ -127,7 +149,7 @@ specs:
     version: 1.0.2
 - timecop: 
     version: 0.3.5
-hash: 6e649f616b24e51d7c27f62ff1427147b27f2108
+hash: adef534235a2596b5ff5fb39859beba96c00870b
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
