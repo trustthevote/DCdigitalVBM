@@ -8,7 +8,7 @@ Requirements
 * Ruby 1.8+ (tested on Ruby 1.8.7)
 * RubyGems 1.3.6+ (tested on Ruby 1.3.6)
 * Bundler 0.9.26
-
+* GnuPG (gnupg.org) with the public key for ballots signing 
 
 Installation
 ------------
@@ -30,6 +30,17 @@ Configure the database (change your username / password):
   
     $ cp config/database.yml{.sample,}
     $ rake db:setup
+
+Configure the application:
+
+    $ cp config/config.yml{.sample,}
+
+Install the PGP public key that will be used for ballots signing. You either get this
+key from the authority or generate it yourself (with "gpg --gen-key") for testing.
+
+    $ gpg --import key.asc
+
+Put the generated key ID (like 95ED022D) into the _gpg\_recepient_ field of _config/config.yml_.
 
 Start the application:
 
@@ -88,3 +99,25 @@ and _runner_ info (_user_ and _runner_ are likely to be the same). Next, open
 _config/deploy.rb_ and change _application_ to the name of the folder that you created
 under your home.
 
+In the commands below replace <env> with whatever environment (production or staging)
+you chose to deploy to.
+
+Initialize your application:
+
+    $ cap <env> deploy:setup
+    $ cap <env> deploy:config:db -s dbname=<db> -s username=<dbu> -s password=<dbp>
+    $ cap <env> deploy:config:app -s email=<email> -s domain=<domain> -s gpg_key_id=<key>
+
+... where:
+
+  * _db_, _dbu_, _dbp_ -- your database name, username and password
+  * _email_ -- support email address that will appear in From fields of letters from the app
+  * _domain_ -- domain name the app will be accessible from (i.e. dcdvbm.com)
+  * _key_ -- GPG public key ID to use for ballots encryption (i.e. 95ED0777)
+
+Perform a cold install:
+
+    $ cap <env> deploy:cold
+
+Finally, create a VirtualHost entry in your Apache config and point the DocumentRoot to
+the _public_ folder of your app.

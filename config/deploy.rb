@@ -2,7 +2,7 @@ set :stages,              %w(staging production)
 set :default_stage,       "staging"
 require 'capistrano/ext/multistage'
 
-set :application,         "dc_digital_vbm"
+set :application,         "dcdvbm"
 set :repository,          "git://github.com/trustthevote/DCdigitalVBM.git"
 
 default_run_options[:pty] = true
@@ -24,7 +24,6 @@ set(:current_path)        { "#{deploy_to}/current" }  # A hack since cap 2.3.0 u
 task :setup, :roles => :app do
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   run "cp #{shared_path}/config/config.yml #{release_path}/config/config.yml"
-  run "ln -s #{shared_path}/config/robots.txt #{release_path}/public/robots.txt"
   run "ln -s #{shared_path}/assets #{release_path}/public/assets"
   run "ln -s #{shared_path}/ballots #{release_path}/ballots"
   run "rm -Rf #{release_path}/.git" if fetch(:deploy_to) != :export
@@ -72,6 +71,8 @@ namespace :deploy do
         EOF
 
         run "mkdir -p #{shared_path}/config" 
+        run "mkdir -p #{shared_path}/assets" 
+        run "mkdir -p #{shared_path}/ballots" 
         put app_config.result, "#{shared_path}/config/config.yml"
       end
     end
