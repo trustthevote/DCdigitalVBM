@@ -1,10 +1,9 @@
-app_name:   Voter
+app_name:   DC Digital VBM
 from_email: support@voter.com
 domain:     voter.com
 
-# The name of the GPG encryption recipient
+# The ID of the GPG encryption recipient
 gpg_recipient:
 
 development:
   domain: localhost
-  gpg_recipient: spyromus@noizeramp.com

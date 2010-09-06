@@ -5,6 +5,7 @@ public/assets
 
 # local config
 config/database.yml
+config/config.yml
 
 # compiled stylesheets
 public/stylesheets/compiled
