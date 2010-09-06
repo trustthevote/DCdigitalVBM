@@ -13,22 +13,22 @@ Installation
 
 Get the Bundler:
 
-  $ sudo gem install bundler --version=0.9.26
+    $ sudo gem install bundler --version=0.9.26
   
 Get the sources:
 
-  $ git clone git://github.com/trustthevote/DCdigitalVBM.git
+    $ git clone git://github.com/trustthevote/DCdigitalVBM.git
 
 Install gem requirements:
 
-  $ cd DCdigitalVBM
-  $ bundle install
+    $ cd DCdigitalVBM
+    $ bundle install
 
 Configure the database (change your username / password):
   
-  $ cp config/database.yml{.sample,}
-  $ rake db:setup
+    $ cp config/database.yml{.sample,}
+    $ rake db:setup
 
 Start the application:
 
-  $ script/server
+    $ script/server
