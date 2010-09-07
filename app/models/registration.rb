@@ -3,7 +3,7 @@ require 'digest/sha1'
 class Registration < ActiveRecord::Base
 
   belongs_to  :precinct_split
-  has_one     :ballot
+  has_one     :ballot, :dependent => :destroy
 
   has_attached_file :attestation, :path => ':rails_root/public/assets/attestations/:id.pdf',
                                   :url  => '/assets/attestations/:id.pdf'

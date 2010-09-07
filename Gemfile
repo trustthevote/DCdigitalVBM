@@ -15,6 +15,11 @@ group :development do
   gem 'mongrel'
   gem 'capistrano'
   gem 'capistrano-ext'
+  gem 'radix'
+end
+
+group :development, :test do
+  gem 'faker'
 end
 
 group :test do
@@ -23,5 +28,4 @@ group :test do
   gem 'timecop'
   gem 'factory_girl'
   gem 'mocha', :require => nil # This is important. Otherwise you won't be able to mock finders
-  gem 'faker'
 end
