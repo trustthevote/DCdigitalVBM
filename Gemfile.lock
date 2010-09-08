@@ -1,6 +1,10 @@
 --- 
 dependencies: 
-  compass-colors: 
+  fastercsv: 
+    group: 
+    - :development
+    version: ">= 0"
+  fancy-buttons: 
     group: 
     - :default
     version: ">= 0"
@@ -8,7 +12,7 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
-  fancy-buttons: 
+  compass-colors: 
     group: 
     - :default
     version: ">= 0"
@@ -17,19 +21,19 @@ dependencies:
     - :development
     - :test
     version: ">= 0"
-  rails: 
-    group: 
-    - :default
-    version: = 2.3.8
   mongrel: 
     group: 
     - :development
     version: ">= 0"
-  mysql: 
+  rails: 
+    group: 
+    - :default
+    version: = 2.3.8
+  haml: 
     group: 
     - :default
     version: ">= 0"
-  haml: 
+  mysql: 
     group: 
     - :default
     version: ">= 0"
@@ -55,17 +59,17 @@ dependencies:
     version: ">= 0"
     require: []
 
-  paperclip: 
+  capistrano-ext: 
     group: 
-    - :default
+    - :development
     version: ">= 0"
   simple_form: 
     group: 
     - :default
     version: = 1.0.2
-  capistrano-ext: 
+  paperclip: 
     group: 
-    - :development
+    - :default
     version: ">= 0"
   factory_girl: 
     group: 
@@ -130,6 +134,8 @@ specs:
     version: 0.3.1
 - fancy-buttons: 
     version: 0.5.5
+- fastercsv: 
+    version: 1.5.3
 - fastthread: 
     version: 1.0.7
 - gem_plugin: 
@@ -156,7 +162,6 @@ specs:
     version: 1.0.2
 - timecop: 
     version: 0.3.5
-hash: b3bf13ac5f114bd86f5c951c7afa61c77eda930f
-sources: 
-- Rubygems: 
-    uri: http://gemcutter.org
+hash: d0ada9850ce99ef1e56e8ce452ba260c9b0b909e
+sources: []
+

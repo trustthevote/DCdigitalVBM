@@ -16,6 +16,7 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'radix'
+  gem 'fastercsv'
 end
 
 group :development, :test do
