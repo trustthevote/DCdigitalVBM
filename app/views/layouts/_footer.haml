@@ -1,14 +1,34 @@
-#more_info
-  %table
-    %tr
-      %td For complete instructions, #{link_to "click here", "#"}.
-      %td To find out more about District of Columbia Digital Vote-By-Mail, and the digital ballot return pilot project, #{link_to "click here", "#"}.
+%footer
+  - unless @no_keydates
+    %section#keydates
+      %header Key Dates
+      .keydate
+        %h4 October 1
+        %p Vote-by-Mail service begins
 
-#links
-  %ul
-    %li.meta District of Columbia Digital Vote-by-Mail Service
-    %li= link_to "Home", front_path
-    %li= link_to "About", about_path
-    %li= link_to "Help", help_path
-    %li= link_to "Security", security_path
-    %li= link_to "Feedback", feedback_path
+      .keydate
+        %h4 October 22
+        %p Last day to apply for a Vote-by-Mail Ballot
+
+      .keydate
+        %h4 November 2
+        %p Last day to return your ballot (by mail, must be postmarked by 5:00 pm EST)
+        %p Last day to return your ballot (via Internet by 5:00 pm EST)
+  
+  - unless @no_about
+    %section#about
+      %p#instructions
+        Complete #{link_to "instructions", help_path, :target => "_blank"} for the Digital Vote-by-Mail Service.
+      %p
+        #{link_to "Find", "http://www.dcboee.us/", :target => "_blank"} out more about D.C. Digital Vote-by-mail, and the digital ballot return pilot project.
+  
+  %nav
+    %ul
+      %li#orgname District of Columbia Digital Vote-by-Mail Service
+      %li= link_to "About", about_path
+      %li= link_to "Help", help_path
+      %li= link_to "Security", security_path
+      %li= link_to "Contact", contact_path
+
+  - unless @no_keydates
+    .keydate-spacer

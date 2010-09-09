@@ -1,10 +1,7 @@
-source :gemcutter
+#source :gemcutter
 
 gem 'rails', '2.3.8'
 gem 'haml'
-gem 'compass'
-gem 'compass-colors'
-gem 'fancy-buttons'
 gem 'mysql'
 gem 'hoptoad_notifier'
 gem 'simple_form', '1.0.2'

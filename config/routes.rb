@@ -13,6 +13,6 @@ ActionController::Routing::Routes.draw do |map|
     o.help      '/help',      :action => "help"
     o.security  '/security',  :action => "security"
     
-    o.feedback  '/feedback',  :action => "feedback"
+    o.contact   '/contact',   :action => "contact"
   end
 end

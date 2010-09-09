@@ -2,9 +2,6 @@ class PagesController < ApplicationController
 
   before_filter :load_registration, :only => [ :confirm, :complete, :return, :thanks ]
 
-  def front
-  end
-
   def overview
     self.voting_type = params[:voting_type] if params[:voting_type]
   end

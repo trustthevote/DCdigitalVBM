@@ -25,5 +25,5 @@ class ApplicationController < ActionController::Base
   def digital?
     !physical?
   end
-  
+
 end

@@ -1,18 +1,16 @@
-#step
-  .title= tt ".title"
-  .summary= tt ".summary"
-  
-#steps
-  - 4.times do |sn|
-    - skey = "shared.menu.step_#{sn + 1}"
-    .step
-      .num= (sn + 1).to_s.rjust(2, '0')
-      .title= tt "#{skey}.title"
-      .summary= pipe_list(tt("#{skey}.summary"))
+- page_options :id => "overview-page", :class => "mod"
 
-.sidebar
-  = render :partial => "shared/key_dates"
+- content_for :pageheader do
+  %h1= tt ".title"
+  #p= tt ".summary"
 
-#navigation
-  = link_to "Back", front_path, :class => "button"
+- 4.times do |sn|
+  - skey = ".step_#{sn + 1}"
+  %section
+    %h1= sn + 1
+    %h2= tt "#{skey}.title"
+    = pipe_list(tt("#{skey}.summary"))
+
+%footer
   = link_to "Continue", check_in_path, :class => "button"
+  = link_to "Back", front_path, :class => "button"

@@ -41,4 +41,13 @@ module ApplicationHelper
         tt(".step_#{step}.summary")], :class => "main"),
       content_tag(:div, [ icon_box ].compact, :class => "icon") ], :class => 'section')
   end
+
+  def page_options(options = {})
+    @page_id      = options[:id]
+    @page_class   = options[:class]
+    @no_keydates  = options[:no_keydates] || false
+    @no_subheader = options[:no_subheader] || false
+    @h1           = options[:h1]
+    @h2           = options[:h2]
+  end
 end

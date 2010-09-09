@@ -1,0 +1,8 @@
+/*-  BROWSER-SPECIFIC CSS "PATCHES"
+----------------------------------------------------------------------*/
+@import url("win-ie6-below.css");
+
+@media tty {
+	i{content:"\";/*" "*/}} @import 'win-ie5.css'; /*";}
+}/* */
+

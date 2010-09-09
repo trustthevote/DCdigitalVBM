@@ -1,0 +1,1398 @@
+/*-  BASE STYLES
+----------------------------------------------------------------------*/
+
+/*- self-clearing floats ----------*/
+
+.clearfix:after,
+body:after,
+.instruction:after,
+#subheader:after,
+.instruction>header:after,
+#intro-page #main:after,
+#help-index-page:after,
+#main>section:after,
+#main:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+
+.keydate-spacer {
+	content:".";
+	display:block;
+	height: 0;
+	clear:both;
+	visibility:hidden;
+	float:left;
+}
+
+
+/*- Paul Irish's Bulletproof @font-face syntax: http://mky.be/font-face/bulletproof/ ----------*/
+
+/*
+@font-face {
+  font-family: 'Graublau Web';
+  src: url('GraublauWeb.eot');
+  src: local('☺'),
+         url('GraublauWeb.woff') format('woff'), url('GraublauWeb.ttf') format('truetype');
+}
+*/
+
+
+/*
+.digital {
+	display: none;
+}
+*/
+
+
+
+/*- LAYOUT
+----------------------------------------------------------------------*/
+
+
+
+body {
+	margin: 0 auto;
+	padding: 20px 30px;
+	position: relative;
+	width: 940px;
+}
+
+p {
+	margin-bottom: 18px;
+}
+
+input[type="text"], textarea {
+	display:block;
+	margin-bottom:9px;
+/* 	margin-top:9px; */
+	padding-left: 6px;
+	
+	border:none;
+}
+
+textarea {
+/* 	padding: 9px; */
+	line-height: 18px;
+}
+
+body>header {
+	height: 90px;
+	margin-bottom:10px;
+	margin-right: 0 !important;
+	width:940px;
+	position:relative;
+}
+
+#logo {
+	display: block;
+	padding-top:31px;
+	padding-left: 79px;
+	margin-left:10px;
+	width:180px;
+}
+
+
+
+header nav {
+	position:absolute;
+	left:720px;
+	top:49px;
+}
+
+header nav li {
+	float:left;
+	padding-right:24px;
+}
+
+#subheader {
+	min-height: 89px;
+	width: 940px;
+}
+
+#subheader div {
+	float:left;
+}
+
+.warning {
+	color:  #F05133;
+}
+
+#electiondate {
+	width:220px;
+	padding-left:20px;
+}
+
+#pageheader {
+	width:540px;
+}
+
+.has-illustrations #pageheader {
+	width:480px;
+}
+
+aside {
+	float: left;
+	width: 220px;
+}
+
+
+
+aside li {
+	height: 89px;
+	padding-left: 35px;
+}
+
+.step-number {
+	float:left;
+/* 	margin-top: -4px; */
+	width:40px;
+/* 	margin-right:20px; */
+}
+
+#main {
+	float:left;
+	width: 700px;
+	margin-bottom:36px;
+	padding-left:20px;
+	min-height: 500px;
+}
+
+#main>section>header {
+	float:left;
+	width:540px;
+}
+
+.has-illustrations #main>section>header {
+	width:480px;
+}
+
+#main header>h2,
+#main header>p {
+/* 	width:auto; */
+/* 	float: left; */
+}
+
+#main>section {
+	float:left;
+	padding-top: 18px;
+	padding-bottom:18px;
+	margin-right:  20px;
+	width:680px;
+}
+
+
+/*
+.instruction {
+	padding-top: 18px;
+	padding-bottom:27px;
+	margin-left:  20px;
+	margin-right:  20px;
+}
+*/
+
+img,
+.instruction-image-link {
+	float:right;
+	margin-right: -5px;
+}
+
+#main footer {
+	padding-top: 18px;
+	float:right;
+/* 	padding-left:20px; */
+}
+
+
+
+
+#keydates {
+	width: 140px;
+	position:absolute;
+	z-index: 1000;
+	bottom:0;
+	left:0;
+	padding-left:20px;
+	padding-bottom: 83px;
+/* 	float:left; */
+}
+
+
+#about {
+	float: left;
+	margin-left:220px;
+	width: 680px;
+	padding:18px 20px 18px 20px;
+}
+
+#about p {
+	float:left;
+	width: 310px;
+	margin-bottom:  0;
+}
+
+#about p#instructions {
+	width: 220px;
+	margin-right: 20px;
+}
+
+body>footer {
+	position: relative;
+	float:left;
+}
+
+body>footer nav {
+	float:left;
+	margin-left:220px;
+	padding-left:20px;
+	margin-top:18px;
+	padding-bottom: 81px;
+	width: 720px;
+}
+
+body>footer li {
+	float:left;
+}
+
+body>footer li a {
+	padding-left:7px;
+	padding-right:7px;
+	color: #0065A9;
+}
+
+body>footer li a[href] {
+	color:black;
+}
+
+body>footer li a:hover {
+	text-decoration: none;
+}
+
+body>footer li a[href]:hover {
+	text-decoration: underline;
+}
+
+body>footer li a:active {
+	color:#0065A9;
+}
+
+body>footer li:before { content:"|"; font-weight:normal; }
+body>footer li:first-child:before { content:" "; }
+
+
+
+#orgname {
+	padding-left:0;
+	padding-right:7px;
+}
+
+.button {
+	float:right;
+	min-width:80px;
+	height:27px;
+	padding-left:10px;
+	padding-right:10px;
+	margin-right: 20px;
+	margin-bottom: 18px;
+}
+
+.button.cancel {
+	background-color: #808080;
+}
+
+
+
+
+
+
+/*- COLORS, BACKGROUNDS, AND BORDERS
+----------------------------------------------------------------------*/
+
+html {
+	background: #F0F0F0 url("/images/10x10-verticalstripe.png");
+}
+
+body {
+	background-color: #FFF;
+	color: #333;
+
+	-webkit-box-shadow: 0 0 3px #808080;
+	-moz-box-shadow: 0 0 3px #808080;
+	box-shadow: 0 0 3px #808080;
+}
+
+.no-boxshadow body {
+	border: 1px solid #808080;
+	border-top: none;
+}
+
+a {
+	color: #0065A9;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:active {
+	color: #808080;
+}
+
+body>header {
+	background: #4890DE url("/images/masthead.gif") repeat-x;
+	color: white;
+}
+
+body>header nav {
+	color: #333;
+}
+
+body>header a {
+	color: white;
+	cursor: pointer;
+}
+
+body>header a:hover {
+	text-decoration: underline;
+}
+
+
+body>header a:active {
+	color: #333;
+}
+
+
+#logo {
+	background: url("/images/logo.gif") no-repeat 9px 14px;
+}
+
+#logo:hover {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#logo:active {
+	color:white;
+}
+
+#subheader {
+	border-bottom: 1px #7F7F7F solid;
+}
+
+#electiondate, .keydate h4 {
+	color: #F05133;
+}
+
+aside li {
+	border-bottom: 1px #7F7F7F solid;
+	list-style: none;
+}
+
+.step-number {
+	color: #7F7F7F;
+}
+
+aside li p {
+	color: #333;
+}
+
+.current, 
+.current p, 
+.current .step-number {
+	color: #0065A9;
+}
+
+#main, .current {
+	background-color: #E3ECF9;
+}
+
+#pageheader {
+	background-color: white;
+}
+
+.instruction {
+/* 	background: transparent url("/images/dotted-border-11.png") repeat-x bottom; */
+	border-bottom: 1px solid #808080;
+}
+
+
+#keydates header, h1 {
+	color:#0065A9;	
+}
+
+#about {
+	background-color: #F0F0F0;
+}
+
+#orgname {
+	border:none;
+	color:#999999;
+}
+
+.button {
+	color: white;
+	cursor: pointer;
+	background-color: #0065A9;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	font-size: 16px;
+}
+
+.button:hover {
+	background-color: #134475;
+	text-decoration: none;
+}
+
+
+
+
+/*- TYPOGRAPHY
+----------------------------------------------------------------------*/
+
+body {
+	font-size:13px;
+	font-weight: 500;
+	line-height: 18px;
+	font-style: normal;
+	font-family: Helvetica, Arial, "sans-serf";
+}
+
+a {
+
+}
+
+header h1 {
+	font-weight: 500;
+}
+
+#electiondate p {
+	margin-bottom: 0;
+	
+	font-weight: 700;
+}
+
+body>header h2 {
+	font-weight:500;
+	font-size: 18px;
+}
+
+body>header h3 {
+	font-weight:400;
+}
+
+body>header nav,
+body>header nav a {
+	font-weight: 700;
+}
+
+.step-number {
+	font-size: 48px;
+	font-weight: 700;
+}
+
+aside li p {
+	font-size: 13px;
+	line-height: 89px;
+}
+
+#main h1 {
+	font-weight: 700;
+}
+
+#main section h1 {
+	color:#0065A9;
+	font-size: 48px;
+	line-height: 60px;
+}
+
+footer nav a {
+	font-weight: 500;
+}
+
+#keydates header {
+	font-weight:700;
+}
+
+.button {
+	font-weight:300;
+	line-height: 27px;
+	text-align: center;
+}
+
+
+
+
+
+
+/*- Intro page
+----------------------------------------------------------------------*/
+
+#intro-page #main {
+	float: none;
+	padding:0;
+	margin:0;
+	width:940px;
+	
+	background: white;
+}
+
+#intro-page #main>header {
+	height:inherit;
+	padding: 18px 0px 63px 320px;
+	margin: 0;
+	width: 620px;
+
+	border:none;
+	
+	font-size: 70px;
+	letter-spacing: -.05em;
+	line-height: 72px;
+}
+
+#intro-page #main header h1,
+#intro-page #main header h2 {
+	float:none;
+/* 	width:auto; */
+}
+
+#intro-page #main header h1 {
+	color:inherit;
+
+	font-weight: 700;
+	width:650px;
+}
+
+
+#intro-page #main header h2 {
+	font-weight: 300;
+}
+
+
+#intro-page #main section {
+	float: left;
+	margin-left:20px;
+	margin-right:0;
+	width: 300px;
+/* 	padding:0; */
+}
+
+#intro-page #main #welcome {
+	margin-left:0;
+	padding-top:0;
+	padding-left:20px;
+	width:280px;
+}
+
+#intro-page #main #welcome h1 {
+	margin-bottom:18px;
+	padding: 0;
+	
+	border: none;
+	color: #F05133;
+	
+	font-size: 13px;
+	line-height: 18px;
+}
+
+#options p {
+	margin-left: 320px;
+	margin-bottom: 9px;
+}
+
+#intro-page #main>section h1 {
+	padding-top: 18px;
+	padding-bottom: 9px;
+
+	border-top: 1px solid #808080;
+	color:#808080;
+	
+	font-size: 54px;
+	font-weight: 700;
+	line-height: 45px;
+}
+
+#intro-page #main li,
+.dashed-list li {
+	list-style:none;
+	text-indent: -9px;
+}
+
+#intro-page #main li:before,
+.dashed-list li:before {
+	content: "- ";
+}
+
+
+#intro-page #main footer {
+	padding-left: 160px;
+	float:left;
+}
+
+#intro-page .button {
+	float:left;
+	margin-top:18px;
+	margin-left:160px;
+	margin-right: 10px;
+	
+	background-color: #F05133;
+	width:130px;
+}
+
+#intro-page .button:hover {
+	background-color: #B43823;
+}
+
+#intro-page>footer {
+	padding-left: 0;
+	border-top: 1px solid #808080;
+	margin-top: 108px;
+	width:940px;
+	margin-right: 0;
+}
+
+#intro-page #about {
+	margin-top: 27px;
+	width:600px;
+	margin-left: 300px;
+}
+
+#intro-page #about p {
+	width: 280px;
+}
+
+#intro-page p#instructions {
+	width: 320px;
+}
+
+#intro-page>footer nav {
+	margin-left: 300px;
+	width:600px;
+}
+
+
+
+/*- Popup windows
+----------------------------------------------------------------------*/
+
+#blanket{
+	display: none;
+	height: 100%;
+	width: 1000px;
+	position: fixed;
+	margin-left: -30px;
+	margin-top:-20px;
+	z-index:2;
+	
+	background-color: #000;
+	
+	filter: alpha(opacity=20);
+	-moz-opacity: 0.20;
+	opacity: 0.20;
+}
+
+.popup{
+	display: none;
+	z-index:3;
+	
+	background-color: #fff;
+	position: fixed;
+	width: 460px;
+	height:270px;
+	
+	left: 50%;
+	margin-left: -230px;
+	margin-top: 100px;
+	padding: 20px;
+	
+	-moz-box-shadow:0 5px 25px #777;
+	-webkit-box-shadow:0 5px 25px #777;
+	box-shadow:0 5px 25px #777;
+}
+
+.no-boxshadow .popup {
+	border: 1px solid #808080;
+}
+
+.popup h1,
+.popup p {
+	font-size: 24px;
+	line-height: 36px;
+}
+
+.popup p {
+	margin-bottom:36px;
+}
+
+.popup h1 {
+/* 	color: #0065A9; */
+	
+}
+
+.popup h2 {
+	border-top: 1px solid #808080;
+	padding-top: 36px;
+	margin-top: -18px;
+}
+
+.popup h2,
+.popup h3 {
+	color: #F05133;
+}
+
+
+
+/*- Overview
+----------------------------------------------------------------------*/
+
+#overview-page #main {
+	background: transparent;
+	margin-bottom: 0;
+}
+
+#overview-page #main>header,
+#overview-page #electiondate {
+	border: none;
+}
+
+#overview-page #subheader {
+	border:none;
+}
+
+#overview-page #main section {
+	width: 940px;
+	margin-left: -20px;
+	padding-top: 18px;
+	
+	border-top: 1px solid #808080;
+}
+
+#overview-page #main section h1,
+#overview-page #main section h2,
+#overview-page #main section ul {
+	float: left;
+	margin-bottom: 18px;
+}
+
+#overview-page #main section h1 {
+	padding-left: 35px;
+	width:205px;
+	
+	color:#808080;
+}
+
+#overview-page #main section h2 {
+	margin-right:10px;
+	width:400px;
+	
+	color: #0065A9;
+	
+	font-size: 48px;
+	line-height: 54px;
+}
+
+#overview-page #main section li {
+	list-style: none;
+}
+
+#overview-page #main footer {
+/* 	margin-top: 36px; */
+	margin-left: 220px;
+	width:700px;
+	float: left;
+	border-top: 1px solid #808080;
+/* 	background: transparent url("/images/dotted-border-11.png") repeat-x top; */
+}
+
+
+
+#overview-page .keydate-spacer {
+	height:220px;
+}
+
+
+
+
+
+
+
+/*- Check In
+----------------------------------------------------------------------*/
+
+.boxshadow input[type="text"]:focus{
+	outline:none; /* Prevents blue border in Webkit */
+
+	-webkit-box-shadow: 0px 0px 10px #0065a9;
+	-moz-box-shadow: 0px 0px 10px #0065a9;
+	box-shadow: 0px 0px 10px #0065a9;
+}
+
+.no-boxshadow input[type="text"]:focus {
+	border: 1px solid #0065A9;
+}
+
+.no-boxshadow input[type="text"] {
+	border:1px solid white;
+}
+
+#checkin-page #main header p {
+/* 	width:300px; */
+}
+
+.no-p-space {
+	margin-bottom: 0;
+}
+
+#checkin-page form {
+	clear: left;
+}
+
+#checkin-page form div {
+	margin-bottom:18px;
+}
+
+#checkin-page form div p {
+	color:#808080;
+	font-size:10px;
+}
+
+label {
+	font-weight: 700;
+}
+
+label:after {
+	content:":";
+}
+
+#checkin-page .instruction {
+/* 	background-color: red; */
+}
+
+#checkin-page input {
+	width:220px;
+	min-height:30px;
+	margin-top:6px;
+	
+	font-size:16px;
+	
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+
+
+
+/*- Confirm Identity
+----------------------------------------------------------------------*/
+
+#confirm-identity-page #electiondate {
+	height: 126px;
+}
+
+.checkbox-container {
+	float:right;
+	padding:9px;
+	width: 122px;
+	
+	background-color: white;
+	
+	-webkit-box-shadow: 0px 0px 5px #808080;
+	-moz-box-shadow: 0px 0px 5px #808080;
+	box-shadow: 0px 0px 5px #808080;
+}
+
+.no-boxshadow .checkbox-container {
+	border: 1px solid #808080;
+}
+
+.checkbox-container p {
+	width: inherit;
+	margin-bottom: 0;
+	font-size: 9px;
+	line-height: 12px;
+}
+
+
+#confirm-identity-page .vcard {
+	font-size: 24px;
+	font-weight: 300;
+	line-height: 27px;
+	float: left;
+	width: 480px;
+}
+
+#confirm-identity-page .n {
+	font-weight: 500;
+}
+
+/*
+.no-hashchange #confirm-identity-page #main header {
+	margin-bottom:18px;
+}
+*/
+
+#eligibility-agreement {
+	float:left;
+	width:500px;
+	height:72px;
+	margin-bottom: 0;
+}
+
+#affirm-checkbox-container {
+	min-height:172px;
+}
+
+#attestation-pdf {
+	display: block;
+	width: 150px;
+	height: 150px;
+	cursor: pointer;
+	background-image: url("/images/openAttestationPDF.png");
+	background-position: 0 0;
+}
+
+#attestation-pdf:hover {
+	background-position: 0 -150px;
+}
+
+#attestation-pdf:active {
+	background-position: 0 -300px;
+}
+
+
+/*- Complete ballot
+----------------------------------------------------------------------*/
+
+#ballot-pdf {
+	display: block;
+	width: 150px;
+	height: 150px;
+	cursor: pointer;
+	background-image: url("/images/downloadBallotPDF.png");
+	background-position: 0 0;
+}
+
+#ballot-pdf:hover {
+	background-position: 0 -150px;
+}
+
+#ballot-pdf:active {
+	background-position: 0 -300px;
+}
+
+
+
+
+/*- Return ballot
+----------------------------------------------------------------------*/
+#return-ballot-page .vcard {
+	margin-bottom: 18px;
+}
+
+#return-ballot-page .keydate-spacer {
+	height: 216px;
+}
+
+#return-ballot-page input {
+	margin-right:300px;
+	float:left;
+	width:280px;
+}
+
+
+/*- Thankyou-page
+----------------------------------------------------------------------*/
+
+#thankyou-page #subheader{
+	border:none;
+}
+
+
+#thankyou-page .instruction h2 {
+	font-weight: 700;
+	color: #0065A9;
+	font-size: 24px;
+	line-height: 27px;
+}
+
+#thankyou-page #main ul {
+	list-style: none;
+	margin-bottom: 18px;
+}
+
+#thankyou-page #main footer {
+	padding-bottom: 9px;
+	float: left;
+}
+
+#thankyou-page #about p {
+	width:auto;
+}
+
+#thankyou-page #about li {
+	list-style: none;
+}
+
+#thankyou-page #about li:before {
+	content:"";
+} 
+
+#thankyou-page #about {
+	line-height: 32px;
+}
+
+#thankyou-page #about a {
+	color:#333;
+}
+
+#thankyou-page #about a:hover {
+	text-decoration: underline;
+}
+
+#thankyou-page #about a:active {
+	color:#0065A9;
+}
+
+#thankyou-page #about p {
+	margin-right:20px;
+}
+
+#twitter-icon,
+#facebook-icon {
+	display: block;
+	float: left;
+	margin-right:20px;
+}
+
+#twitter-icon img,
+#facebook-icon img {
+	float:left;
+	width:32px;
+	margin-right: 9px;
+}
+
+
+
+
+
+/*- Help Popup
+----------------------------------------------------------------------*/
+
+.help-popup-attached {
+	width:auto;
+	float:left;
+	clear: left;
+}
+
+.help-popup-wrapper {
+/* 	display:inline-block; */
+/* 	margin-left: 3px; */
+	position: relative;
+	float:left;
+/* 	background-color: red; */
+}
+
+.help-popup-wrapper:hover .help-popup {
+	display:block;
+}
+
+.help-popup-wrapper:hover .help-popup-icon {
+	background: url("/images/help-popup-icon-hover.png") no-repeat center center;
+}
+
+.help-popup-icon {
+	background: url("/images/help-popup-icon.png") no-repeat center center;
+	position:relative;
+	float:left;
+	width:18px;
+	height:18px;
+	cursor:pointer;
+	z-index: 1001;
+}
+
+.help-popup {
+	display:none;
+	width:400px;
+	top:9px;
+	left:-5px;
+	position:absolute;
+	background-color: white;
+	padding: 18px 20px 9px 20px;
+	margin-left:-10px;
+	z-index: 1000;
+	
+	-webkit-box-shadow: 3px 10px 15px #808080;
+	-moz-box-shadow: 3px 10px 15px #808080;
+	box-shadow: 3px 10px 15px #808080;
+	
+	-webkit-gradient(
+	    linear,
+	    left top,
+	    left bottom,
+	    color-stop(0.27, rgb(247,247,247)),
+	    color-stop(1, rgb(242,242,242))
+	)
+	-moz-linear-gradient(
+	    center top,
+	    rgb(247,247,247) 27%,
+	    rgb(242,242,242) 100%
+	)
+}
+
+.no-boxshadow .help-popup {
+	border: 1px solid #808080;
+}
+
+
+
+.close-button {
+	background: url("/images/close.png") no-repeat;
+	float: right;
+	margin-top:-9px;
+	margin-right:-10px;
+	width:14px;
+	height:14px;
+	cursor: pointer;
+}
+
+.close-button:hover {
+	background: url("/images/close-hover.png") no-repeat;
+}
+
+.help-popup p {
+	width:inherit;
+}
+
+
+
+
+
+/*- Support pages
+----------------------------------------------------------------------*/
+
+.support-pages>header nav li:first-child a {
+	color: #BBB;
+}
+
+.support-pages>header nav li:first-child a:hover {
+	text-decoration: none;
+	cursor:default;
+}
+
+.support-pages #logo {
+	cursor: default;
+}
+
+
+.breadcrumb {
+	list-style: none;
+}
+
+.breadcrumb li {
+	float: left;
+	color:#999;
+}
+
+.breadcrumb li a {
+	padding-left: 7px;
+	padding-right: 7px;
+	font-weight: 500;
+	color:#999;
+}
+
+.breadcrumb li a[href] {
+	color: black;
+}
+
+.breadcrumb li a:hover {
+	text-decoration: none;
+	
+}
+
+.breadcrumb li a[href]:hover {
+	text-decoration: underline;
+}
+
+.breadcrumb li a[href]:active {
+	color:#0065A9;
+}
+
+.breadcrumb li:before { content:"/"; font-weight:normal; }
+.breadcrumb li:first-child:before { content:""; }
+.breadcrumb li:first-child a { padding-left:0; }
+
+
+#subheader.help,
+.support-pages #subheader {
+	border:none;
+	min-height: inherit;
+}
+
+#main.help,
+.support-pages #main {
+	background-color: transparent;
+	float:none;
+	margin-left:220px;
+	width: 560px;
+}
+
+#main.help h1,
+.support-pages #main h1 {
+	margin-bottom: 18px;
+}
+
+#main.help header,
+.support-pages #main header {
+	float: none;
+}
+
+#main.help header h1,
+.support-pages #main header h1 {
+	font-size: 18px;
+}
+
+#main.help .link-list ul,
+.support-pages #main .link-list ul {
+	display:block;
+}
+
+.support-pages>footer nav {
+	border-top: 1px solid #808080;
+	width:700px;
+	margin-top:0;
+	padding-top: 18px;
+}
+
+.link-list,
+.link-list ul {
+	list-style: none;
+	margin-bottom: 18px;
+	color: #808080;
+}
+
+.link-list a {
+	font-weight: inherit;
+}
+
+.support-pages .dashed-list {
+	margin-bottom: 18px;
+}
+
+.support-pages>footer {
+/* 	min-height:400px; */
+}
+
+.support-pages>footer nav {
+/* 	bottom:18px; */
+/* 	position:absolute; */
+	margin-left:240px;
+	padding-left:0;
+}
+
+#help-index-page>footer {
+	min-height:inherit;
+}
+
+#help-index-page>footer nav {
+	bottom:inherit;
+	position:inherit;
+}
+
+
+/*- Help pages
+----------------------------------------------------------------------*/
+
+#help-index-page .link-list {
+	float:left;
+	width:200px;
+	margin-right:20px;
+}
+
+#help-index-page #main {
+	width:720px;
+}
+
+.help-content {
+	background: url("/images/dotted-border-11.png") repeat-x top;
+	padding-top: 27px;
+}
+
+.help-content .expandcontent {
+	padding-left: 20px;
+	margin-left: -20px;
+}
+
+.show-all-button {
+	display: block;
+/* 	margin-left: -20px; */
+	cursor: pointer;
+	font-size: 9px;
+	margin-bottom: -9px;
+}
+
+.help-content .expandheader {
+	cursor: pointer;
+	display: block;
+	padding-left: 20px;
+	margin-left: -20px;
+	margin-top: 18px;
+	background: url(/images/expandheader-closed.png) no-repeat left 4px;
+}
+
+.help-content .expandheader.expanded {
+	background: url(/images/expandheader-open.png) no-repeat left 6px;
+}
+
+.help-content .expandcontent {
+	display: none;
+}
+
+
+
+/*- Instructions page
+----------------------------------------------------------------------*/
+.instructions #main ul {
+	margin-bottom:18px;
+	
+}
+
+.instructions #main ul li,
+.instructions #main ol li {
+	list-style:none;
+}
+
+.instructions #main ul li {
+	text-indent: -9px;
+}
+
+
+.instructions #main ul li:before {
+	content: "- ";
+}
+
+.ol-count {
+	margin-left:-16px;
+	margin-right:10px;
+}
+
+
+/*- Contact page
+----------------------------------------------------------------------*/
+
+.contact .vcard {
+	margin-bottom: 18px;
+	width: 540px;
+}
+
+

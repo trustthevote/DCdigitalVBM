@@ -1,16 +1,52 @@
-%h3= t :organization
-%h4= t :date
-.intro= t '.intro'
+- page_options :id => "intro-page", :no_keydates => true, :no_subheader => true, :h1 => "DC General Election", :h2 => "November 2, 2010"
+
+- content_for :before_header do
+  #popup_tooEarly.popup
+    %a.close-button
+    %div
+      %h1 Voting Has Not Started
+      %p Voting opens on October 18, 2010 <br />at 8:30 am EST.
+      %p Thank you.
+
+    %div
+      %h2 DC General Election
+      %h3 November 2, 2010
+
+  #popup_tooLate.popup
+    %a.close-button
+    %div
+      %h1 Voting Has Ended
+      %p Voting closed on November 2, 2010 <br />at 8:00 pm EST.
+      %p Thank you.
+
+    %div
+      %h2 DC General Election
+      %h3 November 2, 2010
+
+  #blanket
+
+
+%section#welcome
+  %h1 Welcome to the District of Columbia<br />Digital Vote-by-mail Service
+  %p D.C. Digital Vote-by-Mail is a new service to the overseas and military voters of the District of Columbia. We&rsquo;ve designed this service to make it easier for you to receive your voting materials and help you return your completed ballot more quickly.
+  %p Thank you for your participation in this election.
+  %p
+    %em District of Columbia Board of Election and Ethics
 
 #options
   %p= t '.prompt'
 
-  - %w( physical digital ).each do |option|
-    .option{ :class => option }
-      .num= t ".#{option}.num"
-      .title= t ".#{option}.title"
-      .summary= t ".#{option}.summary"
-      %ul.steps
-        - t(".#{option}.steps").split('|').each do |step|
-          %li= step
-      .commit= link_to "I want to try this option", overview_path(option), :class => "button"
+- %w( physical digital ).each do |option|
+  %section
+    %h1= t ".#{option}.num"
+    %h2= t ".#{option}.title"
+    %p= t ".#{option}.summary"
+    %ul
+      - t(".#{option}.steps").split('|').each do |step|
+        %li= step
+    %br
+    %p See more #{link_to "information", "/instructions", :target => "_blank" } about this option.
+
+%footer
+  = link_to "Start Mail-in Ballot", overview_path('physical'), :id => "start-physical", :class => "button"
+  = link_to "Start Digital Ballot", overview_path('digital'), :id => "start-digital", :class => "button"
