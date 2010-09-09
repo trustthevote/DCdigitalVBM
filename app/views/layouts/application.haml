@@ -25,7 +25,8 @@
       = javascript_include_tag "http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"
   
     -# jQuery
-    = javascript_include_tag Rails.env == "production" ? "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" : "jquery-1.4.1.min.js"
+    = javascript_include_tag "jquery-1.4.1.min.js"
+    = javascript_include_tag "plugins/jquery.textPlaceholder.js"
     = javascript_include_tag "functions.js"
   
     -# MODERNIZR: http://www.modernizr.com/
@@ -38,6 +39,7 @@
     = yield(:before_header) if @content_for_before_header
     = render "layouts/header"
     = render "layouts/subheader", :breadcrumbs => @breadcrumbs unless @no_subheader
+    = yield(:before_main) if @content_for_before_main
     %section#main
       - if @h1
         %header

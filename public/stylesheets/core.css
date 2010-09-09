@@ -450,7 +450,7 @@ aside li p {
 	text-decoration: none;
 }
 
-
+.text-placeholder { color: #aaa; }
 
 
 /*- TYPOGRAPHY
@@ -857,7 +857,7 @@ footer nav a {
 	margin-bottom:18px;
 }
 
-#checkin-page form div p {
+form .hint {
 	color:#808080;
 	font-size:10px;
 }
@@ -888,6 +888,10 @@ label:after {
 	-webkit-transition: all 0.2s ease-in-out;
 	-moz-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
+}
+
+#checkin-page .keydate-spacer {
+	height: 50px;
 }
 
 

@@ -8,7 +8,7 @@ en:
   layouts:
     header:
       headline: Digital Vote-by-Mail Service
-
+      
   pages:
     front:
       intro: "<p>District of Columbia Digital Vote-by-Mail is a new service to the overseas and military voters of the District of Columbia. We’ve designed this service to make it easier for you to receive your voting materials and help you return your completed ballot more quickly.</p><p>Thank you for your participation in this election.</p><p>District of Columbia Board of Election and Ethics (BOEE)</p>"
@@ -27,37 +27,10 @@ en:
     overview:
       title: Digital Vote-by-Mail Service
       summary: Here are the steps you will follow to complete your ballot. Once you have reviewed the steps, click Continue.
-      physical:
-        step_1:
-          title: Check In
-          summary: "Enter name, ZIP code, voter ID number, and PIN"
-        step_2:
-          title: Confirm Identity
-          summary: Confirm your identity|Affirm voting eligibility|Download your attestation document|View your attestation document|Print and sign your attestation document
-        step_3:
-          title: Complete Ballot
-          summary: Download your ballot|View your ballot|Mark your ballot|Save your ballot (Do NOT rename the file.)|Print your ballot
-        step_4:
-          title: Return Ballot
-          summary: Secure ballot with security envelope|Put attestation document in return envelope|Put security envelope in return envelope|Address return envelope|Mail your attestation document and ballot
-      digital:
-        step_1:
-          title: Check In
-          summary: "Enter name, ZIP code, voter ID number, and PIN"
-        step_2:
-          title: Confirm Identity
-          summary: Confirm your identity|Affirm voting eligibility|Review attestation document (optional)
-        step_3:
-          title: Complete Ballot
-          summary: Download your ballot|View your ballot|Mark your ballot|Save your ballot (Do NOT rename the file.)
-        step_4:
-          title: Send Ballot
-          summary: Locate your ballot on your computer|Upload your ballot|Receive notice of ballot receipt
 
     check_in:
       title: Check In
-      summary: Please check in so that we can match you to your current voter record.
-      info: "<p>Your name and address information must match the information we have in your current voter record; the PIN number must exactly match the number that was provided to you by the BOEE before the election.</p><p>You can find your official name, address, and PIN in the letter that was sent to you by the BOEE before the election.</p><p>All fields are required.</p>"
+      summary: "Your name, zip code, and voter ID number must match the information we have in your current voter record. The PIN number must exactly match the number that was provided to you by mail, by the Board of Elections and Ethics. All fields are required."
       prompt: "Please enter your name, address, and PIN."
       prompt_tip: Prompt tip
 
@@ -179,4 +152,32 @@ en:
             question_2:
               q: "Q2?"
               a: "A2"
-              
+
+  shared:
+    menu:
+      physical:
+        step_1:
+          title: Check In
+          summary: "Enter name, ZIP code, voter ID number, and PIN"
+        step_2:
+          title: Confirm Identity
+          summary: Confirm your identity|Affirm voting eligibility|Download your attestation document|View your attestation document|Print and sign your attestation document
+        step_3:
+          title: Complete Ballot
+          summary: Download your ballot|View your ballot|Mark your ballot|Save your ballot (Do NOT rename the file.)|Print your ballot
+        step_4:
+          title: Return Ballot
+          summary: Secure ballot with security envelope|Put attestation document in return envelope|Put security envelope in return envelope|Address return envelope|Mail your attestation document and ballot
+      digital:
+        step_1:
+          title: Check In
+          summary: "Enter name, ZIP code, voter ID number, and PIN"
+        step_2:
+          title: Confirm Identity
+          summary: Confirm your identity|Affirm voting eligibility|Review attestation document (optional)
+        step_3:
+          title: Complete Ballot
+          summary: Download your ballot|View your ballot|Mark your ballot|Save your ballot (Do NOT rename the file.)
+        step_4:
+          title: Send Ballot
+          summary: Locate your ballot on your computer|Upload your ballot|Receive notice of ballot receipt
