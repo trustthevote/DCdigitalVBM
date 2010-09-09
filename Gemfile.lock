@@ -162,6 +162,7 @@ specs:
     version: 1.0.2
 - timecop: 
     version: 0.3.5
-hash: d0ada9850ce99ef1e56e8ce452ba260c9b0b909e
-sources: []
-
+hash: 8ddc01aa4a7116dab9ca617e7c7630c62366e888
+sources: 
+- Rubygems: 
+    uri: http://gemcutter.org
