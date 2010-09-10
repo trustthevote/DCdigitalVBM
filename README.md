@@ -10,8 +10,8 @@ Requirements
 * Bundler 0.9.26
 * GnuPG (gnupg.org) with the public key for ballots signing 
 
-Installation
-------------
+Installation (locally)
+----------------------
 
 Get the Bundler:
 
@@ -81,8 +81,8 @@ Start the application:
     $ script/server
 
 
-Deployment
-----------
+Deployment (to remote server)
+-----------------------------
 
 Before you start, make sure that you have:
 
