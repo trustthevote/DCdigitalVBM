@@ -20,8 +20,10 @@ module HelpHelper
   end
 
   def help_questions(section, page)
-    questions = []
     page_data = find_page_by_slug(section, page)
+    return nil if page_data.nil?
+    
+    questions = []
     page_data.each do |k, v|
       questions << [ v[:q], v[:a] ] if /question_\d+/ =~ k.to_s
     end

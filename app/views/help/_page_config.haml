@@ -3,7 +3,8 @@
 - content_for :breadcrumbs do
   %li= link_to "Help", help_path
   %li= link_to current_section[:title], '#'
-  %li= link_to current_page[:title], '#'
+  - if current_page
+    %li= link_to current_page[:title], '#'
 
 = render "shared/menu", :empty => true
 

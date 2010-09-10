@@ -1,2 +1,11 @@
-%h1= tt ".title"
-%p= tt ".info"
+- page_options :id => "contact-index-page", :class => "support-pages contact", :about => false
+- content_for :breadcrumbs do
+  %li= link_to "Voting", front_path
+  %li= link_to t(".title"), '#'
+
+= render "shared/menu", :empty => true
+
+%header
+  %h1= t ".title"
+
+= t ".info"
