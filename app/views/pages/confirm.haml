@@ -35,8 +35,7 @@
 
 - if physical?
   %section.instruction
-    = section_header(4)
-    = image_tag "/images/print.png", :alt => "Print Your Attestation Document.", :width => "150", :height => "150"
+    = section_header(4, :image => "print", :image_alt => "Print Your Attestation Document.")
 
 %footer
   = link_to "Continue", complete_path, :class => "button"

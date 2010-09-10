@@ -29,14 +29,29 @@ module ApplicationHelper
     ], :class => "help-popup-wrapper")
   end
   
-  def section_header(n, options = {})
+  def section_header(n, options = {}, &block)
     tip_tag = options[:no_tip] ? nil : tip(tt(".step_#{n}.instruction"), tt(".step_#{n}.tip"))
-    content_tag(:header, [
+    image   = options[:image] ? section_image_tag(options[:image], :alt => options[:image_alt]) : nil
+
+    additional_content = nil
+    if block_given?
+      additional_content = capture(&block)
+    end
+    
+    el_class = tip_tag ? "help-popup-attached" : nil
+    header  = content_tag(:header, [
       content_tag(:h1, tt(".step_#{n}.title")),
-      content_tag(:h2, tt(".step_#{n}.instruction"), :class => "help-popup-attached"),
+      content_tag(:h2, tt(".step_#{n}.instruction"), :class => el_class),
       tip_tag,
-      content_tag(:p, tt(".step_#{n}.summary"), :class => "help-popup-attached")
+      content_tag(:p, tt(".step_#{n}.summary"), :class => el_class),
+      additional_content
     ].compact)
+        
+    [ header, image ].compact
+  end
+  
+  def section_image_tag(name, options = {})
+    image_tag("/images/#{name}.png", :alt => options[:alt], :width => "150", :height => "150")
   end
   
   def page_options(options = {})

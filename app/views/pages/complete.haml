@@ -10,17 +10,14 @@
   = link_to "", @registration.blank_ballot.try(:url), :id => "ballot-pdf", :class => "instruction-image-link", :target => "_blank"
 
 %section#mark.instruction
-  = section_header(2, :no_tip => true)
-  = image_tag tt(".step_2.image"), :alt => "Open and View Your Attestation Document.", :width => "150", :height => "150"
+  = section_header(2, :no_tip => true, :image => tt(".step_2.image"), :image_alt => "Open and View Your Attestation Document.")
 
 %section.instruction
-  = section_header(3)
-  = image_tag "/images/saveAs.png", :alt => "Save Your Ballot.", :width => "150", :height => "150"
+  = section_header(3, :image => "saveAs", :alt => "Save Your Ballot.")
 
 - if physical?
   %section.instruction
-    = section_header(4, :no_tip => true)
-    = image_tag "/images/print.png", :alt => "Print Your Ballot.", :width => "150", :height => "150"
+    = section_header(4, :no_tip => true, :image => "print", :alt => "Print Your Ballot.")
     
 %footer
   = link_to "Continue", return_path, :class => "button"

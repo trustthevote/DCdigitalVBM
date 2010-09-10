@@ -93,12 +93,12 @@ en:
         summary: "Digital ballot return lets you return your ballot electronically. You will need to save your marked ballot, locate it on your computer, and upload it to the BOEE. <span class='warning'>Keep this page open until you have saved your completed ballot.</span>"
         step_2:
           summary: "To complete the ballot online, click on the circles next to your candidates to select them. You can also type in candidates where indicated."
-          image: "/images/fillOutElectronically.png"
+          image: "fillOutElectronically"
       physical:
         summary: "To complete your ballot, download, mark, SAVE, and print it. <span class='warning'>Keep this page open until you have printed your marked ballot.</span>"
         step_2:
           summary: "You can fill out the ballot online or print it and complete it by hand.<br/><br/>To complete the ballot online, click on the circles next to your candidates to select them. You can also type in candidates where indicated."
-          image: "/images/fillOutByHand.png"
+          image: "fillOutByHand"
         step_4:
           title: Print
           instruction: Print Your Ballot
@@ -106,39 +106,39 @@ en:
           summary: "Print the ballot by selecting the PRINT button in the PDF. You can also select File/Print in your default PDF viewing application."
 
     return:
-      title: Return Ballot
-
       digital:
-        summary: To return your ballot digitally, find and upload the ballot PDF.
+        title: Send Your Ballot
+        summary: "To send your ballot electronically, you must find the ballot file and upload it."
         step_1:
           title: Send
           instruction: Locate Ballot PDF and Send
-          tip: Tip for the send step
-          summary: "<p>On the web page that is open, select the Choose File button to browse for your ballot PDF. In the dialog box that opens, navigate to the saved PDF and select it. Press Continue.</p><p>A confirmation message will appear on the next web page to let you know your ballot has been delivered.</p><p>You can check your ballot status to find out when it has been counted.</p>"
+          tip: "If you have trouble locating the ballot file, you can search. Once you have located the file, upload it through the dialog box presented on the web page."
+          summary: "On the web page that is open, select the Choose File button to browse for your ballot file. In the dialog box that comes up, navigate to the PDF file that you saved in the previous step, and select that file. Press Send.<br/><br/>A confirmation message will appear on the next web page to let you know your ballot has been delivered.<br/><br/>Your ballot must be received by the BOEE by November 2nd, 5 pm EST, so that your ballot can be counted.<br/><br/><a>Check</a> your ballot status to find out when it has been counted."
           prompt: "Choose Ballot PDF:"
         
       physical:
-        summary: To return your vote-by-mail materials, follow these 4 steps.
+        title: Return Your Ballot
+        summary: "To return your vote-by-mail materials, follow these steps. You will need to put your ballot and attestation document in separate envelopes to ensure privacy."
         step_1:
           title: Secure Ballot
           instruction: Put Printed Ballot in Security Envelope
-          tip: Tip for the secure ballot step
+          tip: "To ensure the anonymity of your ballot, you must place it in an envelope separate from your attestation."
           summary: Place your ballot in a secure sealed envelope.
         step_2:
           title: Return Envelope
           instruction: Place Attestation Document in Return Envelope
-          tip: Tip for the return envelope step
-          summary: In a larger return envelope, place your attestation document and the sealed envelope with your ballot.
+          tip: "Your return envelope must be postmarked November 2nd, 8 pm EST, so that your ballot can be counted."
+          summary: "In a larger return envelope, place your attestation document and the sealed envelope with your ballot."
         step_3:
           title: Return Service
           instruction: Choose Your Return Service
-          tip: Tip for the return service step
-          summary: Mail back your vote-by-mail return envelope via your local civilian or mili- tary postal service. You can also use an express mail service. Find out about express mail service options <a href="/faq" target="_blank">here</a>.
+          tip: "Postage-paid vote-by-mail return envelopes are provided by the Federal government. Find out more return envelopes and express services in <a href='/help' target='_blank'>Help</a>."
+          summary: "Mail back your vote-by-mail return envelope via your local civilian or military postal service. You can also use an express mail service. Find out about express mail service options <a href='' target='_blank'>here</a>."
         step_4:
           title: Mail
           instruction: Mail the Return Envelope
-          tip: Tip for the mail step
-          summary: "<p>Send your return envelope as soon as possible, to ensure that it will arrive in time to be counted. Here is the correct address:</p><p class='address'>D.C. Board of Elections and Ethics<br/>441 4th Street, NW<br/>Suite 250 North<br/>Washington, DC 20001</p><p>If you use an express mail service, the packaging will provide the correct BOEE mailing address.</p>"
+          summary: "Mail your return envelope as soon as possible. Your return envelope must be postmarked by November 2nd, 5 pm EST, so that your ballot can be counted.<br/><br/>Send the vote-by-mail materials here:"
+          comment: "If you use an express mail service, the packaging will provide the correct BOEE mailing address."
     
     about:
       title: About

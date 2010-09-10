@@ -1,51 +1,57 @@
-#step
-  .title= tt ".title"
-  .summary= tt ".summary"
+- page_options :id => "return-ballot-page", :class => "has-illustrations"
+- content_for :pageheader do
+  %h1= tt ".title"
+  #p= tt ".summary"
 
-.sidebar
-  = render :partial => "shared/menu", :locals => { :selected => 3 }
-  = render :partial => "shared/key_dates"
+= render :partial => "shared/menu", :locals => { :selected => 3 }
 
 - if physical?
-  #area.nopadding
-    = step_section(:step => 1, :icon => "open_ballot.gif")
-    = step_section(:step => 2, :icon => "mark.gif")
-    = step_section(:step => 3, :icon => "save.gif")
-    = step_section(:step => 4, :icon => "print.gif")
+  %section.instruction
+    = section_header(1, :image => "secureEnvelope", :image_alt => "Put Printed Ballot in Security Envelope")
+
+  %section#returnEnvelope.instruction
+    = section_header(2, :image => "largeEnvelope", :image_alt => "Place Attestation Document in Return Envelope.")
+  
+  %section.instruction
+    = section_header(3, :image => "return", :alt => "Choose Return Service.")
+  
+  %section.instruction
+    = section_header(4, :no_tip => true, :image => "expressMail", :image_alt => "Mail the Return Envelope.") do
+      .vcard
+        .n
+          %span.given-name D.C. Board of Elections and Ethics
+          %span.family-name Public
+        .adr
+          .street-address 441 4th Street, NW
+          .extended-address Suite 250 North
+          %span.locality Washington
+          %span.region DC
+          %span.postal-code 20001
+      %p= tt(".step_4.comment")
 
 - if digital?
-  #area
-    .main_half
-      %h3= tt ".step_1.title"
-      %h4
-        = tt ".step_1.instruction"
-        = tip(tt(".step_1.tip"))
-      = tt ".step_1.summary"
-    .main_half.last
-      .box.wide
-        - form_tag return_path, :multipart => true, :id => "send_form" do
-          %h4= tt ".step_1.prompt"
-          = file_field_tag "pdf"
+  %section.instruction
+    = section_header(1) do
       - if @ballot && !@ballot.valid?
-        .box.wide
-          Unable to save your ballot:
-          %ul
-            - @ballot.errors.full_messages.each do |m|
-              %li= m
-          
+        %p.warning{ :style => "clear:left" } Unable to save your ballot:
+        %ul
+          - @ballot.errors.full_messages.each do |m|
+            %li= m
+  
+  %footer
+    - if physical?
+      = link_to "Continue", thanks_path, :class => "button"
+      = link_to "Back", complete_path, :class => "button"
+    - if digital?
+      - form_tag return_path, :multipart => true, :id => "send_form" do
+        = file_field_tag "pdf", :size => "40", :label => "Find Ballot"
+        = link_to_function "Send", "if ($('#ballot').val() != '') $('#send_form').submit()", :class => "disabled button", :id => "continue"
 
-#navigation
-  = link_to "Back", complete_path, :class => "button"
-  - if physical?
-    = link_to "Continue", thanks_path, :class => "button"
-  - if digital?
-    = link_to_function "Continue", "if ($('#ballot').val() != '') $('#send_form').submit()", :class => "disabled button", :id => "continue"
-
-    :javascript
-      $(function() {
+  :javascript
+    $(function() {
         var docs = $("#continue");
-        $("#pdf").change(function() {
-          if (this.value != '') enableLink(docs); else disableLink(docs);
-        });
-        disableLink(docs);
+      $("#pdf").change(function() {
+        if (this.value != '') enableLink(docs); else disableLink(docs);
       });
+      disableLink(docs);
+    });
