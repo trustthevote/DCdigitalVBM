@@ -1,18 +1,27 @@
-#step
-  .title= tt ".title"
-  .summary= tt ".summary"
+- page_options :id => "complete-ballot-page", :class => "voting-pages instruction-pages has-illustrations"
+- content_for :pageheader do
+  %h1= tt ".title"
+  #p= tt ".summary"
 
-.sidebar
-  = render :partial => "shared/menu", :locals => { :selected => 2 }
-  = render :partial => "shared/key_dates"
+= render :partial => "shared/menu", :locals => { :selected => 2 }
 
-#area.nopadding
-  = step_section(:step => 1, :icon => "open_ballot.gif", :icon_link => @registration.blank_ballot.url)
-  = step_section(:step => 2, :icon => "mark.gif")
-  = step_section(:step => 3, :icon => "save.gif")
-  - if physical?
-    = step_section(:step => 4, :icon => "print.gif")
+%section#download.instruction
+  = section_header(1, :no_tip => true)
+  = link_to "", @registration.blank_ballot.try(:url), :id => "ballot-pdf", :class => "instruction-image-link", :target => "_blank"
 
-#navigation
-  = link_to "Back", confirm_path, :class => "button"
+%section#mark.instruction
+  = section_header(2, :no_tip => true)
+  = image_tag tt(".step_2.image"), :alt => "Open and View Your Attestation Document.", :width => "150", :height => "150"
+
+%section.instruction
+  = section_header(3)
+  = image_tag "/images/saveAs.png", :alt => "Save Your Ballot.", :width => "150", :height => "150"
+
+- if physical?
+  %section.instruction
+    = section_header(4, :no_tip => true)
+    = image_tag "/images/print.png", :alt => "Print Your Ballot.", :width => "150", :height => "150"
+    
+%footer
   = link_to "Continue", return_path, :class => "button"
+  = link_to "Back",     confirm_path, :class => "button"

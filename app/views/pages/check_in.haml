@@ -16,11 +16,7 @@
       %p= tt ".explanation"
 
     %p.help-popup-attached= tt ".prompt"
-    .help-popup-wrapper
-      .help-popup-icon
-      .help-popup
-        %h4 Pin Number
-        %p You must correctly enter your name, zip code, voter ID number, and 6-digit PIN number to check in to vote. All of this information can be found in the letter sent to you by the BOEE.
+    = tip(tt(".tip_title"), tt(".tip"))
 
     - simple_form_for :registration, :url => check_in_path, :html => { :id => "check_in_form" } do |f|
       .field= f.input :name, :required => false, :input_html => { :placeholder => "John Q. Public" }

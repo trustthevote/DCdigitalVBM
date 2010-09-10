@@ -19,6 +19,7 @@ module ApplicationHelper
   
   # Displays a standard tip
   def tip(title, text)
+    return nil if title.nil? || text.nil?
     content_tag(:div, [
       content_tag(:div, nil, :class => "help-popup-icon"),
       content_tag(:div, [
@@ -28,13 +29,14 @@ module ApplicationHelper
     ], :class => "help-popup-wrapper")
   end
   
-  def section_header(n)
+  def section_header(n, options = {})
+    tip_tag = options[:no_tip] ? nil : tip(tt(".step_#{n}.instruction"), tt(".step_#{n}.tip"))
     content_tag(:header, [
       content_tag(:h1, tt(".step_#{n}.title")),
       content_tag(:h2, tt(".step_#{n}.instruction"), :class => "help-popup-attached"),
-      tip(tt(".step_#{n}.instruction"), tt(".step_#{n}.tip")),
+      tip_tag,
       content_tag(:p, tt(".step_#{n}.summary"), :class => "help-popup-attached")
-    ])
+    ].compact)
   end
   
   def page_options(options = {})

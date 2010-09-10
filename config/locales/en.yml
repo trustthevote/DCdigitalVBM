@@ -32,7 +32,8 @@ en:
       title: Check In
       summary: "Your name, zip code, and voter ID number must match the information we have in your current voter record. The PIN number must exactly match the number that was provided to you by mail, by the Board of Elections and Ethics. All fields are required."
       prompt: "Please enter your name, address, and PIN."
-      prompt_tip: Prompt tip
+      tip_title: Pin Number
+      tip: "You must correctly enter your name, zip code, voter ID number, and 6-digit PIN number to check in to vote. All of this information can be found in the letter sent to you by the BOEE."
 
       not_found: Could Not Find Record
       explanation: "<p>Sorry, we couldn’t find your record. Try again. Provide the information you used when you registered to vote.</p>"
@@ -76,27 +77,28 @@ en:
       title: Complete Ballot
       step_1:
         title: Download
-        instruction: Download and View Ballot
-        tip: Tip for the download step
-        summary: Click the PDF icon at the right to download your ballot. The ballot PDF will open in your default PDF viewing application, on top of your web browser.
+        instruction: Download and View Your Ballot
+        summary: "Click the PDF icon at the right to download your ballot. The ballot PDF will open in your default PDF viewing application, on top of your web browser."
       step_2:
         title: Mark
-        instruction: Mark Ballot
+        instruction: Mark Your Ballot
         tip: Tip for the mark step
       step_3:
         title: Save
-        instruction: Save Ballot
-        tip: Tip for the save step
-        summary: "Save your ballot when you have completed it. Save the PDF on your desktop by selecting File/Save As in your default PDF viewing application."
+        instruction: Save Your Ballot
+        tip: "It is critical to save your marked ballot so that you can print it."
+        summary: "You must save your ballot when you have marked it. Save the PDF on your computer by selecting File/Save As in your default PDF viewing application. Save the ballot to a place where you can easily find it again (for example, your desktop). Do NOT rename the ballot."
 
       digital:
-        summary: "To complete your ballot, follow these 3 steps. Keep this page open until you have saved your marked ballot."
+        summary: "Digital ballot return lets you return your ballot electronically. You will need to save your marked ballot, locate it on your computer, and upload it to the BOEE. <span class='warning'>Keep this page open until you have saved your completed ballot.</span>"
         step_2:
-          summary: "<p>To complete the ballot online, click on the circles next to your candidates to select them. You can also type in candidates where indicated. You can find complete instructions for filling out the ballot in the ballot PDF.</p><p>Note: If you prefer to print your ballot and return your vote-by-mail materials by mail, return to the <a href=\"/\">Start Page</a>.</p>"
+          summary: "To complete the ballot online, click on the circles next to your candidates to select them. You can also type in candidates where indicated."
+          image: "/images/fillOutElectronically.png"
       physical:
-        summary: "To complete your ballot, follow these 4 steps. Keep this page open until you have printed your completed ballot."
+        summary: "To complete your ballot, download, mark, SAVE, and print it. <span class='warning'>Keep this page open until you have printed your marked ballot.</span>"
         step_2:
-          summary: "<p>To complete the ballot online, click on the circles next to your candidates to select them. You can also type in candidates where indicated. You can find complete instructions for filling out the ballot in the ballot PDF.</p><p>If you prefer to return your ballot electronically, return to the <a href=\"/\">Start Page</a>.</p>"
+          summary: "You can fill out the ballot online or print it and complete it by hand.<br/><br/>To complete the ballot online, click on the circles next to your candidates to select them. You can also type in candidates where indicated."
+          image: "/images/fillOutByHand.png"
         step_4:
           title: Print
           instruction: Print Your Ballot
