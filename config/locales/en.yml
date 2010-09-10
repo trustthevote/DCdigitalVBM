@@ -38,19 +38,39 @@ en:
       explanation: "<p>Sorry, we couldn’t find your record. Try again. Provide the information you used when you registered to vote.</p>"
 
     confirm:
-      title: Confirm Identity
-      summary: To confirm your identity, follow the steps below. Keep this page open.
+      title: Confirm Your Identity
+      agreement: "I swear or affirm, under penalty of perjury, that:\n\n1. I am a U.S. citizen, at least 18 years of age, and I am eligible to vote in the District of Columbia; and\n2. I am not incarcerated for a crime that is a felony in the District of Columbia, nor have I been adjudicated legally incompetent to vote; and\n3. I am a member of the Uniformed Services or merchant marine on active duty, or an eligible spouse or dependent of such a member; or, a U.S. citizen temporarily residing outside the U.S.; or other U.S. citizen residing outside the U.S.; and\n4. I am not registering, requesting a ballot, or voting in any other jurisdiction in the U.S., except the District of Columbia.\n5. I am the individual who voted the ballot included with this form.\n6. I am the individual identified by the information above."
+      physical:
+        summary: "To vote by mail, you must confirm your identity and your eligibility to vote. Select the checkboxes to confirm. <span class='warning'>Keep this page open until you have printed your attestation document.</span>"
+        step_3:
+          title: Review
+          instruction: Review Your Attestation Document
+          tip: The attestation document repeats the text presented inline. You may elect to open and review it.
+          summary: "Click the PDF icon at the right to open your attestation document. The document will open in your default PDF viewing application, on top of your web browser."
+        step_4:
+          title: Print
+          instruction: "Print Your Attestation Document"
+          tip: "It is important to keep this web page open until you have printed your attestation document. Close the attestation window by selecting the close box."
+          summary: "To print the attestation document, select the PRINT button in the PDF or select File/Print in your web browser.<br/><br/>Return your attestation document with your marked ballot."
+      digital:
+        summary: "To vote through the Digital-Vote-y-Mail Service, you must confirm your identity and your eligibility to vote. Select the checkboxes to confirm. You can also review the attestation document that confirms your voting eligibility by clicking on the PDF. (This step is optional.) <span class='warning'>Keep this page open until you have finished viewing your attestation document.</span>"
+        step_3:
+          title: Review
+          instruction: Review Your Attestation Document (Optional Step)
+          tip: The attestation document repeats the text presented inline. You may elect to open and review it; the step is optional.
+          summary: "If you would like to review your attestation document, click the PDF icon at the right. The document will open in your default PDF viewing application, on top of your web browser.<br/><br/>(You do not need to print the document; it is automatically returned when you select the checkbox above.)<br/><br/>Keep this page open until you have finished viewing your attestation document. When you have finished, close the attestation PDF and click continue."
       step_1:
         title: Confirm
-        instruction: Confirm Identity
-        tip: Here come instructions for the step 1
-        summary: "Confirm your identity. If you are the person named to the right, check the box. If this isn't you, press the cancel button and try again."
+        instruction: Confirm Your Identity
+        tip: "This information reflects the information on file in your voter record. If the address is incorrect, you are still eligible to vote. Contact your local election official to update it."
+        summary: "Please confirm your identity and voter registration address. If the address shown is incorrect, you will need to contact the BOEE to have it updated before you can mark your ballot. If the information is correct, check the box.<br/><br/>If this isn't you, press the Back button and re-enter your information."
         check: Check the box to certify that you are the person indicated.
       step_2:
-        title: Open
-        tip: Here come instructions for the step 2
-        instruction: Open and View Attestation Document (Optional)
-        summary: "If you would like to view your attestation document, click the PDF icon at the right. The document will open in your default PDF viewing application, on top of your web browser."
+        title: Affirm
+        instruction: Affirm Your Eligibility
+        tip: "Make sure the statements are true and that your address is correct. If your address is incorrect, you are still eligible to vote. Contact your local election official to update your address."
+        summary: "Review the text inline. Check the box to confirm statements are correct."
+        check: "By checking the box above, I affirm that the information on this form is true, accurate, and complete to the best of my knowledge, and that I understand that a material misstatement of fact in completion of this document may constitute grounds for a conviction for perjury."
 
     complete:
       title: Complete Ballot

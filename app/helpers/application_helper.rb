@@ -18,30 +18,25 @@ module ApplicationHelper
   end
   
   # Displays a standard tip
-  def tip(text)
-    image_tag "question.gif", :title => text, :class => "tip"
+  def tip(title, text)
+    content_tag(:div, [
+      content_tag(:div, nil, :class => "help-popup-icon"),
+      content_tag(:div, [
+        content_tag(:h4, title),
+        text
+      ], :class => "help-popup")
+    ], :class => "help-popup-wrapper")
   end
   
-  def step_section(options = {})
-    step = options[:step]
-    icon = options[:icon]
-    
-    icon_box = nil
-    if icon
-      icon_link = options[:icon_link]
-      box_class = [ "box", "centered" ]
-      box_class << "passive" unless icon_link
-      icon_box = content_tag(:div, icon_link ? link_to(image_tag(icon), icon_link, :id => options[:icon_id], :target => "_blank") : image_tag(icon), :class => box_class.join(' '))
-    end
-    
-    content_tag(:div, [
-      content_tag(:div, [
-        content_tag(:h3, tt(".step_#{step}.title")),
-        content_tag(:h4, tt(".step_#{step}.instruction") + " " + tip(tt(".step_#{step}.tip"))),
-        tt(".step_#{step}.summary")], :class => "main"),
-      content_tag(:div, [ icon_box ].compact, :class => "icon") ], :class => 'section')
+  def section_header(n)
+    content_tag(:header, [
+      content_tag(:h1, tt(".step_#{n}.title")),
+      content_tag(:h2, tt(".step_#{n}.instruction"), :class => "help-popup-attached"),
+      tip(tt(".step_#{n}.instruction"), tt(".step_#{n}.tip")),
+      content_tag(:p, tt(".step_#{n}.summary"), :class => "help-popup-attached")
+    ])
   end
-
+  
   def page_options(options = {})
     @page_id      = options[:id]
     @page_class   = options[:class]

@@ -1,41 +1,44 @@
-#step
-  .title= tt ".title"
-  .summary= tt ".summary"
+- page_options :id => "confirm-identity-page", :class => "voting-pages instruction-pages has-illustrations"
 
-.sidebar
-  = render :partial => "shared/menu", :locals => { :selected => 1 }
-  = render :partial => "shared/key_dates"
+- content_for :pageheader do
+  %h1= tt ".title"
+  #p= tt ".summary"
 
-#area.nopadding
-  .section
-    .main_1
-      %h3= tt ".step_1.title"
-      %h4
-        = tt ".step_1.instruction"
-        = tip(tt(".step_1.tip"))
-      = tt ".step_1.summary"
-    .main_2
-      .name= h(@registration.name)
-      .addr= h(@registration.address)
-      .addr #{h(@registration.city)} #{h(@registration.state)}, #{h(@registration.zip)}
-    .icon
-      .box
-        = tt ".step_1.check"
-        %br
-        = check_box_tag "confirm", 1, false, :id => "confirm"
+= render :partial => "shared/menu", :locals => { :selected => 1 }
 
-  = step_section(:step => 2, :icon => "open_attestation.gif", :icon_id => "attestation", :icon_link => @registration.attestation.url)
-      
-#navigation
-  = link_to "Back", check_in_path, :class => "button"
-  = link_to "Continue", complete_path, :class => "disabled button", :id => "continue"
+%section.instruction
+  = section_header(1)
+  .vcard
+    .n
+      %span.name= h(@registration.name)
+    .adr
+      .street-address= h(@registration.address)
+      %span.locality= h(@registration.city)
+      %span.region= h(@registration.state)
+      %span.postal-code= h(@registration.zip)
 
-:javascript
-  $(function() {
-    var docs = $("#continue, #attestation");
+  .checkbox-container
+    = check_box_tag "confirm", 1, false, :id => "confirm-checkbox"
+    %p= tt ".step_1.check"
 
-    disableLink(docs);
-    $("#confirm").change(function() {
-      if (this.checked) enableLink(docs); else disableLink(docs);
-    });
-  });
+%section#affirm.instruction
+  = section_header(2)
+  #affirm-checkbox-container.checkbox-container
+    = check_box_tag "affirm", 1, false, :id => "affirm-checkbox"
+    %p= tt ".step_2.check"
+  %textarea#eligibility-agreement
+    = tt ".agreement"
+
+%section.instruction
+  = section_header(3)
+  = image_tag "/images/openAttestationPDF_gray.png", :id => "attestation-pdf-disabled", :alt => "Open and View Your Attestation Document.", :width => "150", :height => "150"
+  = link_to "", @registration.attestation.try(:url), :target => "_blank", :id => "attestation-pdf", :class => "instruction-image-link", :style => "display: none"
+
+- if physical?
+  %section.instruction
+    = section_header(4)
+    = image_tag "/images/print.png", :alt => "Print Your Attestation Document.", :width => "150", :height => "150"
+
+%footer
+  = link_to "Continue", complete_path, :class => "button"
+  = link_to "Back",     check_in_path, :class => "button"
