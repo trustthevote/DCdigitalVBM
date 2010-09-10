@@ -1,0 +1,13 @@
+- page_options :id => "help-detail-page", :class => "support-pages help", :about => false
+
+- content_for :breadcrumbs do
+  %li= link_to "Help", help_path
+  %li= link_to current_section[:title], '#'
+  %li= link_to current_page[:title], '#'
+
+= render "shared/menu", :empty => true
+
+%header
+  %h2= current_section[:title]
+  %ul.link-list
+    = help_section(params[:section], :selected => params[:page], :bare_li => true)

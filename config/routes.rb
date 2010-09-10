@@ -10,9 +10,12 @@ ActionController::Routing::Routes.draw do |map|
     o.thanks    '/thanks',    :action => "thanks"
     
     o.about     '/about',     :action => "about"
-    o.help      '/help',      :action => "help"
     o.security  '/security',  :action => "security"
-    
     o.contact   '/contact',   :action => "contact"
+  end
+
+  map.with_options :controller => "help" do |o|
+    o.help      '/help'
+    o.help_page '/help/:section/:page', :action => "show"
   end
 end

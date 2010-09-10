@@ -1,0 +1,8 @@
+- section = params[:section]
+- page    = params[:page]
+
+%a.show-all-button Toggle show/hide all answers
+
+- help_questions(section, page).each do |q, a|
+  %a.expandheader= h(q)
+  .expandcontent= a

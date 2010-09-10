@@ -5,3 +5,6 @@
   
   - if @content_for_pageheader
     #pageheader= yield :pageheader
+  - elsif @content_for_breadcrumbs
+    #pageheader
+      %ul.breadcrumb= yield :breadcrumbs

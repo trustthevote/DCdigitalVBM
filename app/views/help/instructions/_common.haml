@@ -1,0 +1,82 @@
+- digital ||= false
+- page_options :id => "instructions-index-page", :class => "support-pages instructions", :about => false
+
+- content_for :breadcrumbs do
+  %li= link_to "Help", help_path
+  %li= link_to "Instructions", '#'
+
+= render "shared/menu", :empty => true
+
+%header
+  %h1 Instructions
+  %p Digital Vote-by-Mail is very similar to the traditional absentee voting process for uniformed service members and US citizens living outside the U.S. There are 3 key differences in the service:
+  %ul
+    %li Ballots are delivered digitally to voters
+    %li Voters fill out ballots online
+    %li Voters can return ballots either by mail or electronically
+
+%h1
+  - if digital
+    Overview of Voting Process: Digital Ballot Return
+  - else
+    Overview of Voting Process: Return Ballot by Mail
+
+%ol
+  %li
+    %h3
+      %span.ol-count 1
+      Voter Check In
+    %p Check in to vote by entering your name, zip code, voter ID number, and PIN. This information has been provided to you in the letter sent to you by the BOEE.
+    %p If you have trouble checking in, re-enter the information. If you cannot check in, contact the the BOEE at (202)&nbsp;727&#8209;2525.
+  
+  %li
+    %h3
+      %span.ol-count 2
+      Confirm Identity
+    %p Review the information presented in the confirmation screen. If this is your name and address, check the check box above the information. If this is your name, but the address is incorrect, contact the BOEE to update your address.
+    %p The attestation document confirms that you are who you say you are. Review the information presented in the web page. If the statements are correct, and your address is correct, select the check box.
+    - if digital
+      %p You may also review the PDF of the attestation document. (This step is optional.) The information presented in the attestation document is the same as the information presented in the scroll box.
+    - else
+      %p Download the attestation PDF by clicking on it. It will open in a separate window on top of your web page. Do not CLOSE the web page. Print the attestation. Fill out the attestation and sign it. (You must return the attestation with your marked ballot).
+  
+  %li
+    %h3
+      %span.ol-count 3
+      Complete Your Ballot
+    %p Download your ballot by clicking on the ballot PDF. The ballot will open in a separate window on top of your web page. Do not CLOSE the web page until you have printed your ballot.
+    - if digital
+      %p Mark your ballot by clicking on the circles next to your candidates to select them. You can also type in candidates where indicated.
+      %p You must save your ballot when you have marked it. Save the PDF on your computer by selecting File/Save As in your default PDF viewing application. Save the ballot to a place where you can easily find it again (for example, your desktop). Do NOT rename the ballot.
+    - else
+      %p Mark your ballot by clicking on the circles next to your candidates to select them. You can also type in candidates where indicated. You can also print and mark the ballot by hand.
+      %p Now SAVE your ballot and print it. You must save your ballot before you print it, or your ballot will not be marked. When you save the ballot, do not rename it. Print the ballot by selecting the print button in the PDF or by selecting File/Print in your default PDF viewing application.  You can print the ballot from the open PDF or from the saved file.
+
+  - if digital
+    %li
+      %h3
+        %span.ol-count 4
+        Send Your Ballot
+      %p To send your ballot electronically, find the ballot file and click the Send button.
+      %p On the web page that is open, select the Browse button to browse for your ballot file. In the dialog box that comes up, navigate to the PDF file that you saved in the previous step, and select that file. Press send.
+      %p A confirmation message will appear on the next web page to let you know your ballot has been delivered.
+      %p Your ballot must be received by the BOEE by November 2nd, 5 pm EST, so that your ballot can be counted.
+  - else
+    %li
+      %h3
+        %span.ol-count 4
+        Return Your Ballot
+      %p Place your marked ballot in a secure sealed envelope. Do not mark the envelope.<br/>In a larger return envelope, place your attestation document and the sealed envelope with your ballot.
+      %p Mail both the ballot and attestation document to the BOEE at this address:
+      .vcard
+        .n
+          %span.given-name D.C. Board of Elections and Ethics
+        .adr
+          .street-address 441 4th Street, NW
+          .extended-address Suite 250 North
+          %span.locality Washington,
+          %span.region DC
+          %span.postal-code 20001
+      %p
+      %p You can also return the ballot by express mail. If you use an express mail service, the packaging will provide the correct BOEE mailing address.
+      %p Mail the return envelope as soon as possible. Your return envelope must be postmarked by November 2nd, 5 pm EST, so that your ballot can be counted.

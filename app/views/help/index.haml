@@ -1,0 +1,21 @@
+- page_options :id => "help-index-page", :class => "support-pages help"
+- content_for :breadcrumbs do
+  %li Help
+
+= render "shared/menu", :empty => true
+
+%header
+  %h1 Help
+
+%ul.link-list
+  = help_section(1)
+  = help_section(2)
+  = help_section(3)
+
+%ul.link-list
+  = help_section(4)
+  = help_section(5)
+  = help_section(6)
+
+%ul.link-list
+  = help_section(7)

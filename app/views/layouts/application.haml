@@ -38,7 +38,7 @@
   %body{ :id => @page_id, :class => @page_class }
     = yield(:before_header) if @content_for_before_header
     = render "layouts/header"
-    = render "layouts/subheader", :breadcrumbs => @breadcrumbs unless @no_subheader
+    = render "layouts/subheader" unless @no_subheader
     = yield(:before_main) if @content_for_before_main
     %section#main
       - if @h1

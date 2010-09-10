@@ -164,28 +164,241 @@ en:
       title: Contact
       info: "<p>Info</p>"
 
-    help:
-      title: Help
-      info: "<p>Help introduction</p>"
-      sections:
-        section_1:
-          title: Voting Eligibility
-          questions:
-            question_1:
-              q: How do I know if I'm eligible to vote by absentee ballot?
-              a: "You may vote by absentee ballot in Washington, DC, if:<ul><li>you will be outside of the District of Columbia on election day</li><li>you will be hospitalized on election day</li></ul>"
-            question_2:
-              q: "What are the Election Dates?"
-              a: "..."
-        section_2:
-          title: Voting Procedure
-          questions:
-            question_1:
-              q: "Q?"
-              a: "A"
-            question_2:
-              q: "Q2?"
-              a: "A2"
+  help:
+    section_1:
+      slug: general-questions
+      title: General Questions
+      page_1:
+        slug: voting-eligibility
+        title: Voting Eligibility
+        question_1:
+          q: "How do I know if I'm eligible to vote by absentee ballot?"
+          a: "<p>If you receive information about the Digital Vote-by-Mail Service, you are registered to vote with an absentee ballot. You can confirm your voting eligibility on the BOEE <a href='http://www.dcboee.us/'>website</a>.</p>"
+      page_2:
+        slug: key-dates
+        title: Key Dates
+        question_1:
+          q: "What are key dates concerning the November 2nd election?"
+          a: "<h3>October 1</h3><p>Digital Vote-by-Mail Service Begins</p><h3>October 22</h3><p>Last Day to Apply for a Vote-by-Mail Ballot</p><h3>November 2nd</h3><p>Last Day to Return Your Ballot (by mail, must be postmarked by November 2nd, 5 pm EST)</p><h3>November 2nd, 5 pm EST</h3><p>Last Day to Return Your Ballot (via Internet)</p>"
+        question_2:
+          q: "When is the best time to apply for an absentee ballot?"
+          a: "<p>Registered voters may apply for a vote-by-mail ballot for an upcoming election at any time. If you apply by mail, your application must be received no later than 7 days before an election.</p><p>For the November 2nd general election, the last day to apply for a vote-by-mail ballot by mail is October 22, 2010.</p>"
+        question_3:
+          q: "When will I receive information about the Digital Vote-by-Mail Service?"
+          a: "<p>Information about the Digital Vote-by-Mail Service will be mailed to voters in the month of September, 2010. Each voter will receive a PIN number to allow them to check in, and additional instructions for using the service.</p>"
+        question_4:
+          q: "When can I use the Digital Vote-by-Mail Service?"
+          a: "<p>The Digital Vote-by-Mail Service will be available for use beginning October 1 at 8:15 am EST. The service will close for ballot retrieval and return on November 2nd at 5 pm EST.</p>"
+      page_3:
+        slug: support
+        title: Support
+        question_1:
+          q: "What should I do if I have questions about the Vote-by-Mail Service?"
+          a: "<p>Contact the District of Columbia Board of Election and Ethics by phone or email. The office of the BOEE is open 8:15 am to 4:45 pm, Monday through Friday, except for filing deadlines (5&nbsp;pm closing).</p><div class='vcard'><div class='tel'><span class='type'>Phone:</span> (202) 727-2525</div><div class='email'><span class='type'>Email:</span> <a href='mailto:director@dcboee.org'> director@dcboee.org</a></div></div>"
+      page_4:
+        slug: feedback
+        title: Feedback
+        question_1:
+          q: "Where should I send feedback about the Vote-by-Mail Service or the Digital Ballot Return Pilot?"
+          a: "<p>Feedback should be sent to the District of Columbia Board of Elections and Ethics at <a href='mailto:director@dcboee.org'> director@dcboee.org</a>.</p>"
+
+    section_2:
+      slug: absentee-voting
+      title: Absentee Voting
+      page_1:
+        slug: registration
+        title: Registration
+        question_1:
+          q: "Do I have to be registered to vote absentee?"
+          a: "<p>In order to vote in a DC federal election, you must have been a resident in the District of Columbia immediately prior to your departure from the United States.</p><p>You may register to vote and request a vote-by-mail ballot with a single form: the <a href='http://www.fvap.gov/resources/media/fpca.pdf'> Federal Post Card Application</a> (FPCA). This application form is accepted by all states and territories and is postage-paid in the U.S. mail, including the Military Postal System and State Department Pouch mail.</p><p>Hard copies of the FPCA can be obtained from a military installation Voting Assistance Officer or from a U.S. embassy or consulate worldwide. An online version of the FPCA is available with complete instructions and mailing information at the Federal Voting Assistance Program Website.</p><p>If you are already registered to vote and want to request a ballot, you should submit your FPCA as soon as possible.</p>"
+        question_2:
+          q: "Where do I send my Voter Registration/Absentee Ballot Request?"
+          a: "<p>Your Voter Registration/Absentee Ballot request form must be completed, printed, signed, dated and mailed directly to your local election official (LEO). Your LEO will handle the processing and distribution of your absentee ballots and may need to contact you for further information or clarification. To facilitate this process, please provide a current email address, phone, and fax number on your application.</p>"
+        question_3:
+          q: "How do I know if I am registered to vote absentee?"
+          a: "<p>If you receive information about the Digital Vote-by-Mail Service, you are registered to vote with an absentee ballot. You can confirm your voting eligibility on the BOEE <a href='http://www.dcboee.us/'>website</a>.</p>"
+      page_2:
+        link: '#'
+        title: Absentee Voting Options
+
+    section_3:
+      slug: vote-by-mail-process
+      title: Digital Vote-by-Mail Process
+      page_1:
+        slug: ballot-distribution
+        title: Ballot Distribution
+        question_1:
+          q: "How are the correct ballots distributed to voters?"
+          a: "<p>Before the election begins, the system stores the correct specific ballot for each overseas voter eligible to use the system.</p>"
+        question_2:
+          q: "What should I do if I receive an incorrect ballot?"
+          a: '<p>If the ballot you receive does not seem appropriate for your district, contact the <a href="http://www.dcboee.us/">BOEE</a>.</p>'
+      page_2:
+        slug: encryption
+        title: Encryption
+        question_1:
+          q: 'How are the ballots transmitted?'
+          a: '<p>The ballots are submitted securely using cryptographic protocols that provide security for communications over the Internet.</p>'
+        question_2:
+          q: 'How are the ballots encrypted?'
+          a: '<p>Attestations and ballots are stored with government mandated standard cryptographic algorithms.</p>'
+      page_3:
+        slug: digital-ballot-return
+        title: Digital Ballot Return
+        question_1:
+          q: 'How are ballots digitally returned?'
+          a: '<p>Ballots that are returned electronically are uploaded through a web application to a datacenter in Washington, DC (similar to uploading a photo to Flickr.)</p>'
+        question_2:
+          q: 'When I return my ballot electronically, where am I sending it?'
+          a: '<p>Ballots returned through the Digital Ballot Return Pilot Project are sent to a datacenter in Washington, DC operated by the DC government.</p>'
+      page_4:
+        slug: ballot-counting
+        title: Ballot Counting
+        question_1:
+          q: 'When will the ballots be counted?'
+          a: '<p>All ballots (both ballots returned by mail and ballots returned electronically) are counted on Election Day.</p>'
+        question_2:
+          q: 'How are the ballots counted?'
+          a: '<p>Ballots returned by mail are counted in the same manner as in the existing District of Columbia absentee voting process. Local election officials receive your return envelope with a marked ballot and attestation. The attestation is reviewed to confirm voter eligibility. After attestation review, the return envelope and secure ballot envelope are separated. The printed ballots are either scanned and counted or counted by hand.</p><p>When your ballot is returned through the Internet, the ballot and attestation are transmitted through the Internet using secure protocols. Once the ballot and attestation are received, the ballot file is encrypted (similar to a security envelope) and stored so that election officials cannot read the marked ballot when reviewing the attestation. Local election officials confirm voter eligibility, separate approved ballots from attestations (similar to the paper process), and then decrypt the ballot (similar to removing from a paper security envelope). The ballots are then printed and counted.</p>'
+        question_3:
+          q: "Isn't there a risk that ballots may be counted more than once?"
+          a: '<p>The Digital Vote-by-Mail Service and Digital Ballot Return Project count ballots in the same way as  current services for overseas voters. In both cases (physical and electronic ballot submission), all ballots are printed and then counted. There is no more risk in Digital Vote-by-Mail and Digital Ballot Return than in the existing District of Columbia absentee voting process.</p>'
+        question_4:
+          q: 'What happens if I send in more than one ballot?'
+          a: '<p>Every registered voter can cast only one ballot. Additional marked ballots are disregarded.</p>'
+
+    section_4:
+      slug: vote-by-mail
+      title: Digital Vote-by-Mail Service
+      page_1:
+        slug: service-description
+        title: Service Description
+        question_1:
+          q: 'What is the Digital Vote-by-Mail Service and the Digital Ballot Return Pilot?'
+          a: '<p>Digital Vote-by-Mail is a new service created by the District of Columbia Board of Elections and Ethics. The service delivers election materials to overseas voters through the Internet, allows voters to complete ballots online, and provides options for ballot return. The goal of the Digital Vote-by-Mail Service is to enable the quick return of ballots from military personnel and citizens overseas.</p><p>At the same time, the District of Columbia Board of Elections and Ethics is prototyping the Digital Ballot Return Pilot. This pilot allows voters to return ballots via the Internet. Digital ballot return is especially helpful for voters who are concerned that their ballots will arrive too late to be counted.</p><p>Both the Digital Vote-by-Mail Service and the Digital Ballot Return Pilot Project are being introduced in the November 2nd General Election in Washington, D.C. For the election, the District of Columbia will digitally generate and transport ballots for 2,500 military and overseas voters.</p>'
+        question_2:
+          q: 'Why should I select Physical Ballot Return?'
+          a: '<p>Select this option if you want to return your ballot and vote-by-mail materials through mail or an express mail service. Physical ballot return is very similar to the current vote-by-mail process, except you have the option to mark your ballot online. The Digital Vote-by-Mail Service shortens the time it takes to deliver ballots to voters.</p>'
+        question_3:
+          q: 'Why should I select Digital Ballot Return?'
+          a: '<p>Select this option if you want to return your ballot and vote-by-mail materials electronically. You will submit your marked ballot through the Internet. This option is especially helpful for voters who are concerned that their ballots will arrive too late to be counted.</p>'
+        question_4:
+          q: 'Will the Digital Vote-by-Mail Service replace the current Military and Overseas Vote-by-Mail service?'
+          a: '<p>The Digital Vote by Mail Service does not replace the current Overseas Voting Service provided by the District of Columbia. Eligible overseas voters will receive voting materials by mail as well as instructions for the new Digital Vote-by-Mail Service. Voters can elect which service to use to complete and return their ballots.</p>'
+        question_5:
+          q: 'I received election materials by mail. Which service should I use?'
+          a: '<p>The Digital Vote-by-Mail Service and current Overseas Voting Service provide the same ballots done through the mail and one online. Voters can decide which service is most convenient for them.</p>'
+        question_6:
+          q: 'Can I return my ballot both by mail and online?'
+          a: '<p>Do not fill out and return more than one Ballot. If you receive your absentee ballot through the mail after you have already marked and returned a ballot, disregard the absentee ballot. If you do fill and return more than one ballot, only the first ballot will be counted.</p>'
+        question_7:
+          q: 'How will I know that my ballot has been received?'
+          a: '<p>By law, voters must be informed when their ballots have arrived and are ready to be counted.  If you return your ballot by mail you will receive a confirmation message that your ballot is completed. If you return your ballot via the Internet, your ballot is received immediately. A message will confirm date and time ballot was sent. In both cases, you can find out the status of your ballot <a href="#">here</a>.</p>'
+        question_8:
+          q: 'How can I be certain my vote will be counted?'
+          a: '<p>Ballots returned through the Digital Vote-by-Mail Service and Digital Ballot Return Pilot Project are processed in exactly the same way as all Vote By Mail ballots. When a ballot and attestation are received, the ballot file is encrypted (similar to a security envelope), and stored. The attestation document is reviewed to confirm voter eligibility. Approved ballots are separated from linked attestations (similar to the paper process), decrypted (like removing a ballot from the security envelope) and printed. Marked ballots are then counted by hand or scanned to be counted.</p>'
+      page_2:
+        slug: voter-identification
+        title: Voter Identification
+        question_1:
+          q: 'What is a PIN?'
+          a: "<p>Your 16-digit alphanumeric PIN will be sent to you by the District of Columbia BOEE. You must enter the correct PIN to use the Digital Vote-by-Mail service. If you can't find your PIN, contact the BOEE at (202) 727-2525.</p>"
+        question_2:
+          q: "I've lost my PIN. Can I still check in to vote?"
+          a: '<p>You must have a PIN to check in to the Digital Vote-By-Mail service. To receive a new PIN, contact the BOEE at (202) 727-2525.</p>'
+        question_3:
+          q: 'I am having trouble checking in. What should I do now?'
+          a: "<p>To be recognized as a person who is eligible to vote in this election, your name must match information we have on file in your current voter record. You check in by correctly entering your name, zip code, voter ID number, and PIN. If you aren't found in the database, check to make certain your Voter ID and PIN are correct and try again. For additional help, contact the BOEE at (202) 727-2525.</p>"
+        question_4:
+          q: 'What is an attestation form?'
+          a: "<p>The attestation form affirms that you are eligible to vote with an absentee ballot. If you are returning your ballot by mail, you must read the attestation on the web page and check the check box to confirm it. Then download, print, and include the printed attestation form with your completed ballot. If you have elected digital ballot return, you must read the attestation on the web page and check the check box to confirm it. Your attestation will get returned to the BOEE automatically. You can also optionally download and print the attestation PDF.</p>"
+        question_5:
+          q: "I'm having trouble opening and downloading the attestation PDF?"
+          a: "<p>Adobe Reader is Adobe's freeware PDF reader. You use Reader to view, print, and manage PDFs. If you do not have a copy of Adobe Reader software installed on your computer, you can download a free copy from the Adobe <a href='http://www.adobe.com/products/reader/'>website</a>.</p><p>If the PDF does not open in your browser (it may appear as a blank page, broken object link, or red X icon) it's possible that the Reader cannot read the PDF file, your web browser isn't configured correctly with the Adobe PDF Browser plug-in, or the PDF isn't being served from the web server. Adobe offers suggestions on what to do when you can't view a PDF on the web <a href='#'>here</a>.</p><p>You can also open a PDF on the Apple platform using Preview. Preview is Mac OS X's application for displaying images and Portable Document Format (PDF) documents.</p>"
+        question_6:
+          q: "How do I confirm my identity?"
+          a: "<p>You confirm your identity and voter registration address by selecting the check box to the right of your name and address. If the address is not correct, you will need to contact the BOEE to get your address updated before you can cast a ballot. If your name is incorrect, cancel, return to home, and try to re-enter your information.</p>"
+      page_3:
+        slug: completing-the-ballot
+        title: Completing the Ballot
+        question_1:
+          q: "I'm having trouble viewing and downloading the ballot PDF?"
+          a: "<p>Adobe Reader is Adobe's freeware PDF reader. You use Reader to view, print, and manage PDFs. If you do not have a copy of Adobe Reader software installed on your computer, you can download a free copy from the Adobe <a href='http://www.adobe.com/products/reader/'>website</a>.</p><p>If the PDF does not open in your browser (it may appear as a blank page, broken object link, or red X icon) it's possible that the Reader cannot read the PDF file, your web browser isn't configured correctly with the Adobe PDF Browser plug-in, or the PDF isn't being served from the web server. Adobe offers suggestions on what to do when you can't view a PDF on the web here.</p><p>You can also open a PDF on the Apple platform using Preview. Preview is Mac OS X's application for displaying images and Portable Document Format (PDF) documents.</p>"
+        question_2:
+          q: 'How do I mark/vote the Ballot form online?'
+          a: "<p>The ballot is marked by clicking on the round circle next to a candidate's name.</p><h3>To vote for:</h3><h4>A candidate</h4><ul class='dashed-list'><li>Click on the circle next to candidate name(s) to select it. Do not vote for more candidates than indicated. This will result in an overvote and your vote for that office will not count.</li></ul><h4>A measure</h4><ul class='dashed-list'><li>Click on circle next to YES or NO to select it.</li><li>Do <strong>not</strong> vote both YES and NO. This will result in an overvote and your vote on that measure will not count.</li></ul><h4>Qualified write-in candidates</h4> <span>(Write-in votes are valid for qualified candidates only)</span><ul class='dashed-list'><li>Type in qualified write-in candidate's office title and name in the blank space provided inside the secrecy sleeve.</li><li>The total number of votes including write-ins must not exceed the maximum number of votes allowed for the contest or your vote for that contest will not count.</li></ul>"
+        question_3:
+          q: 'How do I save my Ballot so that I can print it?'
+          a: '<p>To save the Ballot, select File / Save As in the menu of your PDF reader. Save the document using the existing file name. Do NOT rename it. (If the marked ballot is NOT SAVED, and you send it, your ballot will not be marked.) Save the PDF to a place where you can easily find it again.</p>'
+        question_4:
+          q: 'What happens if I forget to save my ballot?'
+          a: "<p>Your ballot is not automatically saved. You must save it after you have marked it by selecting Save As from in the File Menu of your PDF reader. This is an important step. If the marked ballot is NOT SAVED, and you send it, your ballot will not be marked. If you do not save the ballot, you will need to re-mark the ballot. Return to home by selecting the Home link at the top of the page.</p>"
+        question_5:
+          q: "I can't find my ballot. Where is it?"
+          a: "<p>You will need to find your ballot to either print and return it by mail or upload it. It is a good idea to save the marked ballot on your desktop so that you can easily locate it. If you can't find it, look in your Downloads folder, search on the document name, or sort recent documents. If you can't locate your marked ballot, you will need to begin again and mark another ballot. Return to home by selecting the Home link at the top of the page.</p>"
+        question_6:
+          q: "How do I send the ballot after I've saved it?"
+          a: "<p>On the web page that is open, select the Choose File button to browse for your ballot file. In the dialog box that comes up, navigate to the saved PDF and select it. Press Send.</p><p>A confirmation message will appear on the next web page. If you are returning the ballot by mail, the message will confirm the ballot has been completed. If you are returning the ballot electronically, the message will confirm the time and time the ballot was received. </p>"
+      page_4:
+        slug: returning-election-materials
+        title: Returning Election Materials
+        question_1:
+          q: 'Where should I return my election materials?'
+          a: '<p>Your ballot can be returned by mail or express service, or sent back directly through the Internet.</p><h3>Mail or Express Service</h3><p>Election materials should be sent by mail or express service to:</p><div class="vcard"><div class="n"><span class="given-name">DC Board of Elections and Ethics</span></div><div class="adr"><div class="street-address">441 4th Street, NW</div><div class="extended-address">Suite 250 North</div><span class="locality">Washington</span>,<span class="region">DC</span><span class="postal-code">20001</span></div></div></p><h3>Internet</h3><p>Submit your marked Ballot by selecting the SEND button on the appropriate web page. Your ballot will be sent immediately. A confirmation message will appear on the web page to confirm submission of your ballot (indicating date and time of receipt).</p><p>You do not need to send your attestation document; it is automatically sent after you have verified your identity.</p>'
+        question_2:
+          q: 'What is a security envelope?'
+          a: '<p>A security envelope is the envelope in which you place your marked ballot. You can use any letter-sized mailing envelope. You should not write your name (or create any other marks) on the security envelope.</p>'
+        question_3:
+          q: 'Why is it important to secure the ballot in a separate envelope?'
+          a: '<p>A security envelope ensures that your marked ballot is anonymous. Your marked ballot and the attestation confirming your identity are separated in the ballot counting process.</p>'
+        question_4:
+          q: 'When mailing election materials to my state or territory, do I have to pay postage?'
+          a: '<p>When mailed from any U.S. post office, U.S. embassy or consulate, or APO/FPO mail facility, the hardcopy ballot form is postage-paid. In order to receive free postage, the online version of the form must be mailed in an envelope printed with our <a href="http://www.fvap.gov/resources/media/returnenvelope.pdf"> postage-paid envelope template</a>.</p><p>You may mail the completed form in an envelope with proper postage affixed. Ensure that your form is postmarked (see postmarking instructions below) and sent to arrive before the deadline: 5 pm EST, November 2, 2010. You must pay postage if materials are mailed from a non-U.S. postal facility. </p>'
+        question_5:
+          q: 'What is a postmark and how do I make sure I get one?'
+          a: "<p>A postmark is a postal marking made on a piece of mail indicating the date and time that the item was accepted by the postal service. Postmarks are used to determine if voting materials have been mailed by state deadlines. Due to varying mail pick up times, the day you 'mail' your election mail may not be the day the postal facility postmarks it.</p><p>You may ask the mail clerk to hand stamp the election material so that the date is clearly visible. In certain situations a handwritten postmark and signature from you or a notarizing official may be sufficient. </p>"
+
+    section_5:
+      slug: instructions
+      title: Instructions
+      page_1:
+        slug: physical
+        title: Return Ballot by Mail
+      page_2:
+        slug: digital
+        title: Digital Ballot Return
+
+    section_6:
+      slug: security
+      title: Security and Privacy
+      page_1:
+        slug: online-safety
+        title: Online Safety
+        question_1:
+          q: 'Is how I voted secret?'
+          a: '<p>Yes. Secrecy of the ballot is mandated by law and is upheld in all elections. The ballots returned in the Digital Vote-by-Mail service and the Digital Ballot Return Pilot Project are treated exactly the same as all other Vote-by-Mail ballots. Ballot secrecy is maintained.</p>'
+        question_2:
+          q: 'Can how I vote get tracked back to me?'
+          a: '<p>No. No election official can trace a ballot back to a particular voter.</p>'
+        question_3:
+          q: 'How does my ballot remain anonymous?'
+          a: "<h3>Return by Mail</h3><p>When you return your ballot by mail, you first place your marked ballot in an inner security envelope. The security envelope is placed in an outer return envelope with your attestation for mailing back to the BOEE.</p><p>The outer return envelope that contains your attestation with your name and address is opened and separated from the inner security envelope that contains the voted ballot.</p><p>Before the inner security envelope may be opened, it is mixed in with many other security envelopes. This allows the ballot to remain anonymous. Only once the security envelope is mixed in with other security envelopes may the ballot be removed. This maintains the secrecy of the ballot.</p><h3>Return via Internet</h3><p>When your ballot is returned through the Internet, the ballot and attestation are transmitted through the Internet using secure protocols. Once the ballot and attestation are received, the ballot file is encrypted (similar to a security envelope) and stored so that election officials cannot read the marked ballot when reviewing the attestation. Local election officials confirm voter eligibility, separate approved ballots from attestations (similar to the paper process), and then decrypt the ballot (similar to removing from a paper security envelope). The ballots are then printed and counted. From the time a ballot is printed, it is no longer linked to a voter.</p>"
+        question_4:
+          q: 'How does the Vote-by-Mail service secure the ballot transmission?'
+          a: '<p>Ballots are transmitted through secure SSL connections. Security methods for ballot transmission are the same as security methods currently used for online banking. The two-factor authentication process includes voter name and zip, and the alphanumeric PIN supplied by the BOEE.</p>'
+        question_5:
+          q: 'Is there a chance my ballot could be intercepted?'
+          a: '<p>Although the ballot submission process is secure, there is risk that a ballot could be intercepted. Any Internet activity is subject to social engineering techniques currently used to exploit current web security techniques and fool users&#151for example, Phishing.</p>'
+
+    section_7:
+      slug: resources
+      title: Resources
+      page_1:
+        slug: absentee-voting
+        title: "DC's Absentee Voting Guidelines"
+      page_2:
+        slug: adobe-pdf-software
+        title: Adobe PDF Software
 
   shared:
     menu:
