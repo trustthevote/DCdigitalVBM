@@ -12,7 +12,7 @@ class Ballot < ActiveRecord::Base
   validates_presence_of   :registration_id, :on => :create
   # validates_attachment_presence       :pdf, :message => "must be chosen"
   # validates_attachment_content_type   :pdf, :content_type => "application/pdf", :message => "must be PDF file"
-  
+
   validate :validate_pdf, :on => :create
   
   private

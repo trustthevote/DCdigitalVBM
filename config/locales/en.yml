@@ -140,6 +140,18 @@ en:
           summary: "Mail your return envelope as soon as possible. Your return envelope must be postmarked by November 2nd, 5 pm EST, so that your ballot can be counted.<br/><br/>Send the vote-by-mail materials here:"
           comment: "If you use an express mail service, the packaging will provide the correct BOEE mailing address."
     
+    thanks:
+      physical:
+        title: Ballot Complete
+        summary: "Your ballot has been marked. Don't forget to mail your ballot to the BOEE. Your return envelope must be postmarked by November 2nd, 5 pm EST, so that your ballot can be counted."
+        status: Ballot Complete
+        check: "Check the status of your ballot at any time at the Board of Elections and Ethics <a href='http://www.dcboee.us/' target='_blank'>website</a>.<br/><br/>If you have not mailed your ballot and would like to mark your ballot again, you can return to the <a href='/'>Home</a>."
+      digital:
+        title: Ballot Uploaded
+        summary: "Your marked ballot has been sent. Thank you for your participation in this election."
+        status: Ballot Received
+        check: "Check the status of your ballot at any time at the Board of Elections and Ethics <a href='http://www.dcboee.us/' target='_blank'>website</a>.<br/><br/>If you did not receive a confirmation that your ballot was received, try to upload your ballot again."
+
     about:
       title: About
       info: "<p>Project description TBD</p>"

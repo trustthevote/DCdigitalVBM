@@ -29,6 +29,8 @@ module ApplicationHelper
     ], :class => "help-popup-wrapper")
   end
   
+  # Rendering section header with optional additional content block and
+  # a tip.
   def section_header(n, options = {}, &block)
     tip_tag = options[:no_tip] ? nil : tip(tt(".step_#{n}.instruction"), tt(".step_#{n}.tip"))
     image   = options[:image] ? section_image_tag(options[:image], :alt => options[:image_alt]) : nil
@@ -50,6 +52,7 @@ module ApplicationHelper
     [ header, image ].compact
   end
   
+  # Quick section image tag
   def section_image_tag(name, options = {})
     image_tag("/images/#{name}.png", :alt => options[:alt], :width => "150", :height => "150")
   end
@@ -59,6 +62,7 @@ module ApplicationHelper
     @page_class   = options[:class]
     @no_keydates  = options[:no_keydates] || false
     @no_subheader = options[:no_subheader] || false
+    @about        = options[:about]
     @h1           = options[:h1]
     @h2           = options[:h2]
   end

@@ -1,14 +1,18 @@
-%h3 Thank You!
-%p Your ballot is completed!
+- page_options :id => "thankyou-page", :class => "mod", :about => :social
+- content_for :pageheader do
+  %h1= tt ".title"
+  #p= tt ".summary"
 
-.meta
-  Ballot Sent<br/>
-  = Time.now.to_s(:detailed)
+= render "shared/menu", :empty => true
 
-.details
-  %p If you need to fill out your ballot again and reprint it, return to the <a href="/">Start Page</a>.
-  %p Check the status of your ballot at any time <a href="#">here</a>.
-  %p Learn more about the ballot counting process, or the Digital vote-by-mail voting process, in the <a href="/help">Help</a> pages.
+%section.instruction
+  %header
+    %h1 Thank You!
 
-.sidebar
-  = render :partial => "shared/key_dates"
+%section.instruction
+  %header
+    %h2= tt ".status"
+    %h2= Time.now.to_s(:detailed)
+
+%footer
+  %p= tt ".check"
