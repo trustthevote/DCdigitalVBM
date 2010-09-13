@@ -15,7 +15,7 @@ module Paperclip
       dst = Tempfile.new([@basename, 'gpg'].compact.join("."))
       dst.binmode
 
-      `gpg -o "#{File.expand_path(dst.path)}" -e -r "#{@recipient}" "#{File.expand_path(src.path)}"`
+      `rm -f "#{File.expand_path(dst.path)}"; gpg -o "#{File.expand_path(dst.path)}" -e -r "#{@recipient}" "#{File.expand_path(src.path)}"`
       
       dst
     end
