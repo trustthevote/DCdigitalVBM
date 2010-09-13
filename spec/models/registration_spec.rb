@@ -31,5 +31,20 @@ describe Registration do
       Registration.match(:name => "Unknown", :zip => "24001", :voter_id => "1", :pin => "1").should be_nil
     end
   end
-  
+
+  describe "processed flag and date" do
+    it "should be processed when the ballot is uploaded" do
+      s = Factory(:ballot_style)
+      r = Factory(:registration, :precinct_split => s.precinct_split)
+      b = Factory(:ballot, :registration => r)
+      b.registration.should be_processed
+      b.registration.processed_at.to_s.should == b.pdf_updated_at.to_s
+    end
+    
+    it "should be unprocessed when there's no uploaded ballot" do
+      r = Factory(:registration)
+      r.should_not be_processed
+      r.processed_at.to_s.should == Time.now.to_s
+    end
+  end
 end

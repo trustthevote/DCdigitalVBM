@@ -32,4 +32,13 @@ class Registration < ActiveRecord::Base
     return nil if pin.blank?
     Digest::SHA1.hexdigest(pin.gsub(/[^0-9A-Z]/i, ''))
   end
+
+  # Returns TRUE if the ballot has already been uploaded
+  def processed?
+    false #!ballot.nil?
+  end
+
+  def processed_at
+    ballot ? ballot.pdf_updated_at : Time.now
+  end
 end

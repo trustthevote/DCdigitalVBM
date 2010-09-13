@@ -12,7 +12,7 @@
 %section.instruction
   %header
     %h2= tt ".status"
-    %h2= Time.now.to_s(:detailed)
+    %h2= @registration.processed_at.to_s(:detailed)
 
 %footer
   %p= tt ".check"

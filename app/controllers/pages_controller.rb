@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   before_filter :load_registration, :only => [ :confirm, :complete, :return, :thanks ]
+  before_filter :block_processed, :only => [ :confirm, :complete, :return ]
 
   def overview
     self.voting_type = params[:voting_type] if params[:voting_type]
@@ -60,5 +61,12 @@ class PagesController < ApplicationController
   def save_ballot
     @ballot = @registration.build_ballot(:pdf => params[:pdf])
     @ballot.save
+  end
+
+  # Blocks registrations that have already been processed (uploaded their ballots)
+  def block_processed
+    if @registration && @registration.processed?
+      redirect_to thanks_url
+    end
   end
 end

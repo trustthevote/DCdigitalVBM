@@ -51,6 +51,13 @@ describe PagesController do
       get :confirm
       response.should render_template(:confirm)
     end
+
+    it "should render the thanks page with the ballot receipt info if already uploaded" do
+      stub_registration
+      Registration.any_instance.expects(:processed?).returns(true)
+      get :confirm
+      response.should redirect_to(thanks_url)
+    end
   end
 
   describe "when completing" do
