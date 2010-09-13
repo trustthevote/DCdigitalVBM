@@ -24,6 +24,8 @@
     /[if lt IE 8]
       = javascript_include_tag "http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"
   
+    :javascript
+      var digital = #{digital? ? "true" : "false"};
     -# jQuery
     = javascript_include_tag "jquery-1.4.1.min.js"
     = javascript_include_tag "plugins/jquery.textPlaceholder.js"

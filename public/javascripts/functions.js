@@ -30,7 +30,7 @@ function checkboxChanged(event) {
 	if (affirm.attr("checked") && confirm.attr("checked")) {
 		ad.hide();
 		a.show();
-		if (attestationSeen) enableBtn(btn);
+		if (digital || attestationSeen) enableBtn(btn);
 	} else {
 		ad.show();
 		a.hide();
