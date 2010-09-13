@@ -33,6 +33,10 @@ class DataImport
   def import_registrations(reg_filename, addresses)
     precinct = split = nil
 
+    puts " - Copying attestation document"
+    FileUtils.mkdir_p("#{Rails.root}/public/assets/attestations")
+    FileUtils.cp("#{Rails.root}/db/fixtures/attestation.pdf", "#{Rails.root}/public/assets/attestations/attestation.pdf")
+
     puts " - Loading registration data"
     first = true
     FasterCSV.foreach(reg_filename) do |row|
@@ -49,8 +53,12 @@ class DataImport
       end
       
       split_name = "#{precinct_name}_#{ward}_#{smd}"
+      ballot_style_name = "P#{precinct_name}-#{smd}".gsub(/\s/, '-')
       if split.nil? || split.name != split_name
         split = PrecinctSplit.find_or_create_by_name(:name => split_name, :precinct_id => precinct.id)
+
+        # Link a ballot style
+        split.create_ballot_style(:pdf => File.open("#{Rails.root}/db/fixtures/ballot_styles/#{ballot_style_name}.pdf", "rb"))
       end
       
       address = addresses[address_id.to_i]
@@ -63,7 +71,7 @@ class DataImport
         :city        => address[:city],
         :state       => address[:state],
         :zip         => address[:zip],
-        :attestation => nil)
+        :attestation => File.open("#{Rails.root}/db/fixtures/attestation.pdf", "rb"))
       
       puts "#{r.name.ljust(30, ' ')} #{pin_hash} #{voterid} #{address[:zip]}"
     end

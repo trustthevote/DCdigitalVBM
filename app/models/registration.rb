@@ -30,6 +30,6 @@ class Registration < ActiveRecord::Base
 
   def self.hash_pin(pin)
     return nil if pin.blank?
-    Digest::SHA1.hexdigest(pin.gsub(/[^0-9]/, ''))
+    Digest::SHA1.hexdigest(pin.gsub(/[^0-9A-Z]/i, ''))
   end
 end
