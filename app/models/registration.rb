@@ -14,18 +14,22 @@ class Registration < ActiveRecord::Base
   def self.match(r)
     first(:conditions => {
       :name     => r[:name],
-      :pin_hash => Digest::SHA1.hexdigest(r[:pin]),
+      :pin_hash => Registration.hash_pin(r[:pin]),
       :zip      => r[:zip],
       :voter_id => r[:voter_id] })
   end
 
   def pin=(v)
-    self.pin_hash = Digest::SHA1.hexdigest(v)
+    self.pin_hash = Registration.hash_pin(v)
   end
 
   # Returns the blank ballot PDF
   def blank_ballot
     precinct_split.try(:ballot_style).try(:pdf)
   end
-  
+
+  def self.hash_pin(pin)
+    return nil if pin.blank?
+    Digest::SHA1.hexdigest(pin.gsub(/[^0-9]/, ''))
+  end
 end
