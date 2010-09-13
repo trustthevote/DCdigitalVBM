@@ -18,4 +18,10 @@ describe Ballot do
     b.should be_valid
   end
 
+  it "should reject the file with the name different from what was downloaded with suffix" do
+    parts = @s.pdf.original_filename.split('.')
+    b = Factory.build(:ballot, :registration => @r, :pdf_file_name => "#{parts[0]}-1.#{parts[1]}")
+    b.should be_valid
+  end
+
 end

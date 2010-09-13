@@ -20,7 +20,8 @@ class Ballot < ActiveRecord::Base
   def validate_pdf
     if registration
       filename = registration.blank_ballot.original_filename
-      self.errors.add_to_base(ERROR_NAME) if self.pdf.original_filename != filename
+      fn_parts = filename.split(".")
+      self.errors.add_to_base(ERROR_NAME) unless self.pdf.original_filename.include?(fn_parts[0])
     end
   end
   
