@@ -2,16 +2,20 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  organization: District of Columbia General Election
+  organization: DC General Election
   date: "November 2, 2010"
-
+  voting:
+    notstarted: "<h1>Voting Has Not Started</h1><p>Voting opens on October 18, 2010 <br />at 8:30 am EST.</p><p>Thank you.</p>"
+    ended: "<h1>Voting Has Ended</h1><p>Voting closed on November 2, 2010 <br />at 8:00 pm EST.</p><p>Thank you.</p>"
+    
   layouts:
     header:
       headline: Digital Vote-by-Mail Service
       
   pages:
     front:
-      intro: "<p>District of Columbia Digital Vote-by-Mail is a new service to the overseas and military voters of the District of Columbia. We’ve designed this service to make it easier for you to receive your voting materials and help you return your completed ballot more quickly.</p><p>Thank you for your participation in this election.</p><p>District of Columbia Board of Election and Ethics (BOEE)</p>"
+      welcome: "Welcome to the District of Columbia<br />Digital Vote-by-mail Service"
+      intro: "<p>D.C. Digital Vote-by-Mail is a new service to the overseas and military voters of the District of Columbia. We&rsquo;ve designed this service to make it easier for you to receive your voting materials and help you return your completed ballot more quickly.</p><p>Thank you for your participation in this election.</p><p><em>District of Columbia Board of Election and Ethics</em></p>"
       prompt: "The service offers two options:"
       physical:
         num: "1"
