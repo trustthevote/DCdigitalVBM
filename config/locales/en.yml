@@ -154,7 +154,7 @@ en:
         title: Ballot Uploaded
         summary: "Your marked ballot has been sent. Thank you for your participation in this election."
         status: Ballot Received
-        check: "Check the status of your ballot at any time at the Board of Elections and Ethics <a href='http://www.dcboee.us/' target='_blank'>website</a>.<br/><br/>If you did not receive a confirmation that your ballot was received, try to upload your ballot again."
+        check: "Check the status of your ballot at any time at the Board of Elections and Ethics <a href='http://www.dcboee.us/' target='_blank'>website</a>."
 
     about:
       title: About
