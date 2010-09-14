@@ -91,6 +91,10 @@ Before you start, make sure that you have:
 * Empty database and username / password to use
 * Apache with Passenger installed on the server
 
+Install Capistrano and Capistrano Ext gems (tested with versions 2.5.19 and 1.2.1):
+
+    $ sudo gem install capistrano capistrano-ext
+
 Create the app folder by SSH'ing into the server and creating the directory in your
 deployment user home (we'll assume it's dc\_digital\_vbm).
 
