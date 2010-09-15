@@ -2,6 +2,10 @@ namespace :vbm do
   task :generate_test_seeds => :environment do
     SeedGenerator.new.run
   end
+  
+  task :stats => :environment do
+    Stats.new.run
+  end
 end
 
 class SeedGenerator

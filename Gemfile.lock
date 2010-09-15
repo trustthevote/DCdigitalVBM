@@ -21,6 +21,10 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
+  rake: 
+    group: 
+    - :default
+    version: = 0.8.7
   mysql: 
     group: 
     - :default
@@ -144,7 +148,7 @@ specs:
     version: 1.0.2
 - timecop: 
     version: 0.3.5
-hash: 7bccdb2340dee09bee1fbcec712f76e501842798
+hash: c2ebc3ffec98aba80dbe7e4d29e3665f179b1e86
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
