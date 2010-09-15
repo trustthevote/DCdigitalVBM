@@ -31,7 +31,7 @@
 %section.instruction
   = section_header(3)
   = image_tag "/images/openAttestationPDF_gray.png", :id => "attestation-pdf-disabled", :alt => "Open and View Your Attestation Document.", :width => "150", :height => "150"
-  = link_to "", @registration.attestation.try(:url), :target => "_blank", :id => "attestation-pdf", :class => "instruction-image-link", :style => "display: none"
+  = link_to "", attestation_path, :target => "_blank", :id => "attestation-pdf", :class => "instruction-image-link", :style => "display: none"
 
 - if physical?
   %section.instruction

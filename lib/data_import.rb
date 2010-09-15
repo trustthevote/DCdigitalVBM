@@ -33,10 +33,6 @@ class DataImport
   def import_registrations(reg_filename, addresses)
     precinct = split = nil
 
-    puts " - Copying attestation document"
-    FileUtils.mkdir_p("#{Rails.root}/public/assets/attestations")
-    FileUtils.cp("#{Rails.root}/db/fixtures/attestation.pdf", "#{Rails.root}/public/assets/attestations/attestation.pdf")
-
     puts " - Loading registration data"
     first = true
     FasterCSV.foreach(reg_filename) do |row|
@@ -70,8 +66,7 @@ class DataImport
         :address     => address[:address],
         :city        => address[:city],
         :state       => address[:state],
-        :zip         => address[:zip],
-        :attestation => File.open("#{Rails.root}/db/fixtures/attestation.pdf", "rb"))
+        :zip         => address[:zip])
       
       puts "#{r.name.ljust(30, ' ')} #{pin_hash} #{voterid} #{address[:zip]}"
     end

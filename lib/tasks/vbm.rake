@@ -73,8 +73,7 @@ split.registrations.create(
   :address     => "#{address}, Unit #{unit}",
   :city        => 'Washington',
   :state       => 'DC',
-  :zip         => '#{zip}',
-  :attestation => nil)
+  :zip         => '#{zip}')
 puts "#{name.ljust(30, ' ')} #{pin} #{vid} #{zip}"
 
 EOF
