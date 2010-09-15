@@ -8,6 +8,9 @@ class Registration < ActiveRecord::Base
 
   validates_presence_of :pin_hash
   validates_presence_of :precinct_split_id
+
+  named_scope :inactive, :conditions => { :checked_in_at => nil }
+  named_scope :unfinished, :conditions => [ "checked_in_at IS NOT NULL AND last_completed_at IS NULL" ]
   
   def self.match(r)
     first(:conditions => {
@@ -40,7 +43,13 @@ class Registration < ActiveRecord::Base
     ballot ? ballot.pdf_updated_at : Time.now
   end
   
-  def register_flow_completion(voting_type)
-    self.flow_completions.create(:voting_type => voting_type)
+  def register_flow_completion!(voting_type)
+    self.update_attributes!(:last_completed_at => Time.now)
+    self.flow_completions.find_or_create_by_voting_type(voting_type)
+  end
+  
+  def register_check_in!
+    self.checked_in_at = Time.now
+    self.save!
   end
 end

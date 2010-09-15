@@ -59,14 +59,16 @@ describe PagesController do
   end
   
   describe "when confirming" do
-    it "should render the page" do
+    before do
       stub_registration
+    end
+    
+    it "should render the page" do
       get :confirm
       response.should render_template(:confirm)
     end
 
     it "should render the thanks page with the ballot receipt info if already uploaded" do
-      stub_registration
       Registration.any_instance.expects(:processed?).returns(true)
       get :confirm
       response.should redirect_to(thanks_url)
@@ -76,6 +78,7 @@ describe PagesController do
   describe "when completing" do
     it "should render the page" do
       stub_registration
+      Registration.any_instance.expects(:register_check_in!)
       get :complete
       response.should render_template(:complete)
     end
@@ -110,7 +113,7 @@ describe PagesController do
     end
     
     it "should register the completion" do
-      Registration.any_instance.expects(:register_flow_completion).with('digital')
+      Registration.any_instance.expects(:register_flow_completion!).with('digital')
       get :thanks
     end
   end

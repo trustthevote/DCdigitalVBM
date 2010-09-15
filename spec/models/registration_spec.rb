@@ -51,19 +51,40 @@ describe Registration do
   describe "when registering flow completion" do
     it "should register the completion" do
       r = Factory(:registration)
-      r.register_flow_completion('digital')
+
+      r.register_flow_completion!('digital')
       fcs = r.flow_completions
       fcs.size.should == 1
       fcs.first.voting_type.should == 'digital'
+      r.last_completed_at.should_not be_nil
     end
     
     it "should register the completion of another type too" do
       fc = Factory(:flow_completion, :voting_type => 'physical')
       r  = fc.registration
-      r.register_flow_completion('digital')
+      r.register_flow_completion!('digital')
       fcs = r.flow_completions
       fcs.size.should == 2
       fcs.last.voting_type.should == 'digital'
+    end
+    
+    it "should not register the same voting type again" do
+      fc = Factory(:flow_completion, :voting_type => 'physical')
+      r = fc.registration
+      r.register_flow_completion!('physical')
+      r.flow_completions.size.should == 1
+    end
+  end
+  
+  describe "when registering a check in" do
+    it "should set the time" do
+      Timecop.freeze do
+        r = Factory(:registration)
+        r.register_check_in!
+      
+        r.reload
+        r.checked_in_at.should == Time.now
+      end
     end
   end
 end

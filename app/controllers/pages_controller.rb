@@ -13,8 +13,6 @@ class PagesController < ApplicationController
   end
 
   def confirm
-    # This line is necessary as we call the method from #perform_check
-    render :confirm
   end
 
   def attestation
@@ -23,6 +21,7 @@ class PagesController < ApplicationController
   end
   
   def complete
+    @registration.register_check_in!
   end
   
   def return
@@ -34,7 +33,7 @@ class PagesController < ApplicationController
   end
   
   def thanks
-    @registration.register_flow_completion(voting_type)
+    @registration.register_flow_completion!(voting_type)
   end
   
   private
