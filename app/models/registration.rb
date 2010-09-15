@@ -35,7 +35,7 @@ class Registration < ActiveRecord::Base
 
   # Returns TRUE if the ballot has already been uploaded
   def processed?
-    false #!ballot.nil?
+    !ballot.nil?
   end
 
   def processed_at

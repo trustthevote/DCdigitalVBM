@@ -17,7 +17,7 @@ dependencies:
     group: 
     - :default
     version: = 2.3.8
-  haml: 
+  mysql: 
     group: 
     - :default
     version: ">= 0"
@@ -25,7 +25,11 @@ dependencies:
     group: 
     - :default
     version: = 0.8.7
-  mysql: 
+  haml: 
+    group: 
+    - :default
+    version: ">= 0"
+  prawn: 
     group: 
     - :default
     version: ">= 0"
@@ -55,14 +59,14 @@ dependencies:
     group: 
     - :development
     version: ">= 0"
-  simple_form: 
-    group: 
-    - :default
-    version: = 1.0.2
   paperclip: 
     group: 
     - :default
     version: ">= 0"
+  simple_form: 
+    group: 
+    - :default
+    version: = 1.0.2
   factory_girl: 
     group: 
     - :test
@@ -136,6 +140,14 @@ specs:
     version: 2.8.1
 - paperclip: 
     version: 2.3.3
+- prawn-core: 
+    version: 0.8.4
+- prawn-layout: 
+    version: 0.8.4
+- prawn-security: 
+    version: 0.8.4
+- prawn: 
+    version: 0.8.4
 - radix: 
     version: 1.1.0
 - rails: 
@@ -148,7 +160,7 @@ specs:
     version: 1.0.2
 - timecop: 
     version: 0.3.5
-hash: c2ebc3ffec98aba80dbe7e4d29e3665f179b1e86
+hash: 2df3fbb36b3c39e27af83ec629a51136efaad1a7
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org

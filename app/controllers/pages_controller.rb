@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
-  before_filter :load_registration, :only => [ :confirm, :complete, :return, :thanks ]
-  before_filter :block_processed, :only => [ :confirm, :complete, :return ]
+  before_filter :load_registration, :only => [ :confirm, :attestation, :complete, :return, :thanks ]
+  before_filter :block_processed,   :only => [ :confirm, :complete, :return ]
 
   def overview
     self.voting_type = params[:voting_type] if params[:voting_type]
@@ -15,6 +15,11 @@ class PagesController < ApplicationController
   def confirm
     # This line is necessary as we call the method from #perform_check
     render :confirm
+  end
+
+  def attestation
+    prawnto :filename => "attestation.pdf", :prawn => { :page_size => "LETTER" }
+    render :layout => false
   end
   
   def complete

@@ -44,6 +44,20 @@ describe PagesController do
       response.should redirect_to(confirm_url)
     end
   end
+
+  describe "when requesting attestation PDF" do
+    it "should redirect to check-in if haven't checked in yet" do
+      get :attestation
+      response.should redirect_to(check_in_url)
+    end
+    
+    it "should render the PDF if checked in" do
+      stub_registration
+      get :attestation
+      response.should render_template(:attestation)
+      response.content_type.should == "application/pdf"
+    end
+  end
   
   describe "when confirming" do
     it "should render the page" do

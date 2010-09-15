@@ -8,6 +8,7 @@ gem 'hoptoad_notifier'
 gem 'simple_form', '1.0.2'
 gem 'RedCloth'
 gem 'paperclip'
+gem 'prawn'
 
 group :development do
   gem 'mongrel'
