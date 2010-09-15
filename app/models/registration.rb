@@ -4,6 +4,7 @@ class Registration < ActiveRecord::Base
 
   belongs_to  :precinct_split
   has_one     :ballot, :dependent => :destroy
+  has_many    :flow_completions
 
   validates_presence_of :pin_hash
   validates_presence_of :precinct_split_id
@@ -37,5 +38,9 @@ class Registration < ActiveRecord::Base
 
   def processed_at
     ballot ? ballot.pdf_updated_at : Time.now
+  end
+  
+  def register_flow_completion(voting_type)
+    self.flow_completions.create(:voting_type => voting_type)
   end
 end

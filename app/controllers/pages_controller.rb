@@ -34,6 +34,7 @@ class PagesController < ApplicationController
   end
   
   def thanks
+    @registration.register_flow_completion(voting_type)
   end
   
   private

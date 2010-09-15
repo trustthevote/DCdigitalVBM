@@ -47,4 +47,23 @@ describe Registration do
       r.processed_at.to_s.should == Time.now.to_s
     end
   end
+  
+  describe "when registering flow completion" do
+    it "should register the completion" do
+      r = Factory(:registration)
+      r.register_flow_completion('digital')
+      fcs = r.flow_completions
+      fcs.size.should == 1
+      fcs.first.voting_type.should == 'digital'
+    end
+    
+    it "should register the completion of another type too" do
+      fc = Factory(:flow_completion, :voting_type => 'physical')
+      r  = fc.registration
+      r.register_flow_completion('digital')
+      fcs = r.flow_completions
+      fcs.size.should == 2
+      fcs.last.voting_type.should == 'digital'
+    end
+  end
 end

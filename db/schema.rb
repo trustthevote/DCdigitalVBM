@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100915105215) do
+ActiveRecord::Schema.define(:version => 20100915110521) do
 
   create_table "ballot_styles", :force => true do |t|
     t.integer  "precinct_split_id", :null => false
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20100915105215) do
   end
 
   add_index "ballots", ["registration_id"], :name => "index_ballots_on_registration_id", :unique => true
+
+  create_table "flow_completions", :force => true do |t|
+    t.integer  "registration_id"
+    t.string   "voting_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "flow_completions", ["registration_id"], :name => "index_flow_completions_on_registration_id"
 
   create_table "precinct_splits", :force => true do |t|
     t.integer "precinct_id"

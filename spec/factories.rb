@@ -33,3 +33,8 @@ Factory.define :ballot do |f|
   f.pdf_file_size     91574
   f.pdf_updated_at    { Time.now }
 end
+
+Factory.define :flow_completion do |f|
+  f.association       :registration
+  f.voting_type       "physical"
+end

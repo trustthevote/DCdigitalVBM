@@ -100,15 +100,24 @@ describe PagesController do
   end
 
   describe "when viewing thanks" do
-    it "should render the page" do
+    before do
       stub_registration
+    end
+
+    it "should render the page" do
       get :thanks
       response.should render_template(:thanks)
+    end
+    
+    it "should register the completion" do
+      Registration.any_instance.expects(:register_flow_completion).with('digital')
+      get :thanks
     end
   end
   
   def stub_registration
     @r = Factory(:registration)
+    session[:voting_type] = 'digital'
     session[:rid] = @r.id
   end
 end
