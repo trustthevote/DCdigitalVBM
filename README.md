@@ -125,3 +125,30 @@ Perform a cold install:
 
 Finally, create a VirtualHost entry in your Apache config and point the DocumentRoot to
 the _public_ folder of your app.
+
+
+
+Statistics
+==========
+
+During the normal operation the application records different milestones in user activity, such as:
+
+* Checking in and confirming identity
+* Finishing the workflow by entering the Thanks page
+* Uploading ballot
+
+At any moment, you can request live statistics by invoking a command-line task:
+
+    $ rake vbm:stats
+
+The sample output is:
+
+    $ rake vbm:stats
+    Total number of voters                            : 3201
+    Inactive                                          : 3200 ( 99.97%)
+    Used the system but not finished                  : 0 (  0.00%)
+    Used the system and finished the physical flow    : 1 (  0.03%)
+    Used the system and finished the digital flow     : 1 (  0.03%)
+
+Please note that since we allow working through physical and digital workflows, the last two lines are not self-exclusive.
+In this particular sample example, you can see (total - inactive = 1) that the same user has completed both flows.
