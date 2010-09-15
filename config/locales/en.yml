@@ -137,7 +137,7 @@ en:
           title: Return Service
           instruction: Choose Your Return Service
           tip: "Postage-paid vote-by-mail return envelopes are provided by the Federal government. Find out more return envelopes and express services in <a href='/help' target='_blank'>Help</a>."
-          summary: "Mail back your vote-by-mail return envelope via your local civilian or military postal service. You can also use an express mail service. Find out about express mail service options <a href='' target='_blank'>here</a>."
+          summary: "Mail back your vote-by-mail return envelope via your local civilian or military postal service. You can also use an express mail service. Find out about express mail service options <a href='/help/absentee-voting/absentee-voting-options' target='_blank'>here</a>."
         step_4:
           title: Mail
           instruction: Mail the Return Envelope
@@ -218,7 +218,7 @@ en:
           q: "How do I know if I am registered to vote absentee?"
           a: "<p>If you receive information about the Digital Vote-by-Mail Service, you are registered to vote with an absentee ballot. You can confirm your voting eligibility on the BOEE <a href='http://www.dcboee.us/'>website</a>.</p>"
       page_2:
-        link: '#'
+        slug: absentee-voting-options
         title: Absentee Voting Options
 
     section_3:
