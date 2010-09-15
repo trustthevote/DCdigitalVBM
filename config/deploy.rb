@@ -28,7 +28,7 @@ task :setup, :roles => :app do
   run "ln -s #{shared_path}/ballots #{release_path}/ballots"
   run "rm -Rf #{release_path}/.git" if fetch(:deploy_to) != :export
   
-  run "cd #{latest_release}; #{bundle_path} install --without development test"
+  run "cd #{latest_release}; bundle install --without development test"
 end
 after 'deploy:update_code', 'setup'
 
