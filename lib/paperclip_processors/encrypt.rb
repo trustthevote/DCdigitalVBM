@@ -15,6 +15,8 @@ module Paperclip
       dst = Tempfile.new([@basename, 'gpg'].compact.join("."))
       dst.binmode
 
+      raise PaperclipError, "GPG recipient wasn't set" if @recipient.blank?
+      
       `rm -f "#{File.expand_path(dst.path)}"; gpg -o "#{File.expand_path(dst.path)}" -e -r "#{@recipient}" "#{File.expand_path(src.path)}"`
       
       dst
