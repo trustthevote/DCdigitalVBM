@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
 
+  before_filter :block_wrong_time,  :except => :front
   before_filter :load_registration, :only => [ :confirm, :attestation, :complete, :return, :thanks ]
   before_filter :block_processed,   :only => [ :confirm, :complete, :return ]
 
@@ -73,5 +74,9 @@ class PagesController < ApplicationController
     if @registration && @registration.processed?
       redirect_to thanks_url
     end
+  end
+  
+  def block_wrong_time
+    redirect_to front_url unless during_voting?
   end
 end

@@ -3,9 +3,6 @@ var Site = window.Site || {};
 
 Site.EXPAND_HEADER_DURATION = 100;
 
-function showTooLatePopup() { showPopup("#popup_tooLate"); }
-function showTooEarlyPopup() { showPopup("#popup_tooEarly"); }
-
 function showPopup(id) {
 	$(id).show();
 	$("#blanket").show();
@@ -90,12 +87,11 @@ $(function() {
 	$(".show-all-button").click(showHideHeadersClicked);
 
 	$(".popup .close-button").click(function(i){
-		$("#popup_tooLate").hide();
-		$("#popup_tooEarly").hide();
+		$("#popup").hide();
 		$("#blanket").hide();
 	});
 
-	showTooEarlyPopup();
+  showPopup("#popup");
 	
 	$("#confirm-checkbox").change(checkboxChanged);
 	$("#affirm-checkbox").change(checkboxChanged);

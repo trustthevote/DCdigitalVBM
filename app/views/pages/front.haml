@@ -1,21 +1,14 @@
 - page_options :id => "intro-page", :no_keydates => true, :no_subheader => true, :h1 => t("organization"), :h2 => t("date")
 
-- content_for :before_header do
-  #popup_tooEarly.popup
-    %a.close-button
-    %div= t "voting.notstarted"
-    %div
-      %h2= t "organization"
-      %h3= t "date"
-
-  #popup_tooLate.popup
-    %a.close-button
-    %div= t "voting.ended"
-    %div
-      %h2= t "organization"
-      %h3= t "date"
-
-  #blanket
+- if before_voting? || after_voting?
+  - content_for :before_header do
+    #popup.popup
+      %a.close-button
+      %div= t(before_voting? ? "voting.notstarted" : "voting.ended")
+      %div
+        %h2= t "organization"
+        %h3= t "date"
+    #blanket
 
 
 %section#welcome
@@ -37,5 +30,5 @@
     %p See more #{link_to "information", help_page_path('instructions', option), :target => "_blank" } about this option.
 
 %footer
-  = link_to "Start Mail-in Ballot", overview_path('physical'), :id => "start-physical", :class => "button"
-  = link_to "Start Digital Ballot", overview_path('digital'), :id => "start-digital", :class => "button"
+  = link_to "Start Mail-in Ballot", during_voting? ? overview_path('physical') : '#', :id => "start-physical", :class => "button"
+  = link_to "Start Digital Ballot", during_voting? ? overview_path('digital') : '#', :id => "start-digital", :class => "button"
