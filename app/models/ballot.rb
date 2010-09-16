@@ -4,7 +4,7 @@ class Ballot < ActiveRecord::Base
   
   belongs_to :registration
 
-  has_attached_file :pdf, :path => ':rails_root/ballots/:id.pdf.gpg',
+  has_attached_file :pdf, :path => ':rails_root/ballots/:ballot_name.pdf.gpg',
                           :url  => '/', # Disallow external access
                           :styles => { :original => AppConfig['gpg_recipient'] },
                           :processors => [ :encrypt ]
