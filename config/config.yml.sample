@@ -5,5 +5,9 @@ domain:     voter.com
 # The ID of the GPG encryption recipient
 gpg_recipient:
 
+# Voting state -- before, during, after
+# The state can be conveniently switched with rake tasks vbm:voting_state:{before,during,after}
+state: before
+
 development:
   domain: localhost

@@ -7,6 +7,14 @@ describe PagesController do
     response.should render_template(:front)
   end
 
+  describe "when not voting" do
+    it "should redirect to front page" do
+      @controller.expects(:during_voting?).returns(false)
+      get :overview
+      response.should redirect_to(front_url)
+    end
+  end
+  
   describe "when going to overview page" do
     it "should just show whatever it is" do
       get :overview
