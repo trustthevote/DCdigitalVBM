@@ -30,5 +30,5 @@
     %p See more #{link_to "information", help_page_path('instructions', option), :target => "_blank" } about this option.
 
 %footer
-  = link_to "Start Mail-in Ballot", during_voting? ? overview_path('physical') : '#', :id => "start-physical", :class => "button"
-  = link_to "Start Digital Ballot", during_voting? ? overview_path('digital') : '#', :id => "start-digital", :class => "button"
+  = link_to "Start Mail-in Ballot", during_voting? ? overview_path('physical') : front_path, :id => "start-physical", :class => button_class(!during_voting?)
+  = link_to "Start Digital Ballot", during_voting? ? overview_path('digital') : front_path, :id => "start-digital", :class => button_class(!during_voting?)

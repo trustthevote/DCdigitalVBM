@@ -9,7 +9,7 @@ describe PagesController do
 
   describe "when not voting" do
     it "should redirect to front page" do
-      @controller.expects(:during_voting?).returns(false)
+      before_voting_started
       get :overview
       response.should redirect_to(front_url)
     end
@@ -123,6 +123,22 @@ describe PagesController do
     it "should register the completion" do
       Registration.any_instance.expects(:register_flow_completion!).with('digital')
       get :thanks
+    end
+  end
+
+  describe "when viewing supplementary pages" do
+    describe "and currently before the voting started" do
+      before do
+        before_voting_started
+      end
+      
+      %w{ about contact }.each do |page|
+        it "should render #{page} page" do
+          get page.to_sym
+          response.should render_template(page)
+        end
+      end
+      
     end
   end
   

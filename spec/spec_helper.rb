@@ -16,3 +16,7 @@ Spec::Runner.configure do |config|
   config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
   config.mock_with :mocha
 end
+
+def before_voting_started
+  @controller.stubs(:during_voting?).returns(false)
+end

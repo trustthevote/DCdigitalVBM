@@ -451,9 +451,9 @@ aside li p {
 }
 
 .button.disabled, .button.disabled:hover {
-  background-color: #ccc;
+  background-color: #ccc !important;
   text-decoration: none;
-  cursor: default;
+  cursor: default !important;
 }
 
 .text-placeholder { color: #aaa; }

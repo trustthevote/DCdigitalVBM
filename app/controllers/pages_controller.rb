@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
 
-  before_filter :block_wrong_time,  :except => :front
-  before_filter :load_registration, :only => [ :confirm, :attestation, :complete, :return, :thanks ]
-  before_filter :block_processed,   :only => [ :confirm, :complete, :return ]
+  before_filter :block_wrong_time,  :except => [ :front, :about, :contact ]
+  before_filter :load_registration, :only   => [ :confirm, :attestation, :complete, :return, :thanks ]
+  before_filter :block_processed,   :only   => [ :confirm, :complete, :return ]
 
   def overview
     self.voting_type = params[:voting_type] if params[:voting_type]
