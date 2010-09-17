@@ -19,7 +19,7 @@ module Paperclip
       
       begin
         run("rm", "-f \"#{File.expand_path(dst.path)}\"")
-        run("gpg", "-o \"#{File.expand_path(dst.path)}\" -e -r \"#{@recipient}\" \"#{File.expand_path(src.path)}\"")
+        run("gpg", "--trust-model always -o \"#{File.expand_path(dst.path)}\" -e -r \"#{@recipient}\" \"#{File.expand_path(src.path)}\"")
       rescue PaperclipCommandLineError
         raise PaperclipError, "couldn't be encrypted. Please try again later."
       end
