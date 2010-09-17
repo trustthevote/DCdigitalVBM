@@ -2,21 +2,21 @@
 dependencies: 
   fastercsv: 
     group: 
-    - :development
+    - :default
     version: ">= 0"
   faker: 
     group: 
     - :development
     - :test
     version: ">= 0"
-  mongrel: 
-    group: 
-    - :development
-    version: ">= 0"
   rails: 
     group: 
     - :default
     version: = 2.3.8
+  mongrel: 
+    group: 
+    - :development
+    version: ">= 0"
   mysql: 
     group: 
     - :default
@@ -55,10 +55,6 @@ dependencies:
     version: ">= 0"
     require: []
 
-  capistrano-ext: 
-    group: 
-    - :development
-    version: ">= 0"
   paperclip: 
     group: 
     - :default
@@ -67,6 +63,10 @@ dependencies:
     group: 
     - :default
     version: = 1.0.2
+  capistrano-ext: 
+    group: 
+    - :development
+    version: ">= 0"
   factory_girl: 
     group: 
     - :test
@@ -105,7 +105,7 @@ specs:
 - net-ssh: 
     version: 2.0.23
 - net-scp: 
-    version: 1.0.3
+    version: 1.0.4
 - net-sftp: 
     version: 2.0.5
 - net-ssh-gateway: 
@@ -131,7 +131,7 @@ specs:
 - haml: 
     version: 3.0.18
 - hoptoad_notifier: 
-    version: 2.3.6
+    version: 2.3.7
 - mocha: 
     version: 0.9.8
 - mongrel: 
@@ -160,7 +160,7 @@ specs:
     version: 1.0.2
 - timecop: 
     version: 0.3.5
-hash: 2df3fbb36b3c39e27af83ec629a51136efaad1a7
+hash: 888ef44e93950d5c38e8f1330c80e5a88017a060
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org

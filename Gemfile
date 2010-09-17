@@ -9,13 +9,13 @@ gem 'simple_form', '1.0.2'
 gem 'RedCloth'
 gem 'paperclip'
 gem 'prawn'
+gem 'fastercsv'
 
 group :development do
   gem 'mongrel'
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'radix'
-  gem 'fastercsv'
 end
 
 group :development, :test do
