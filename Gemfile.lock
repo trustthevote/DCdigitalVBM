@@ -17,7 +17,11 @@ dependencies:
     group: 
     - :development
     version: ">= 0"
-  mysql: 
+  prawn: 
+    group: 
+    - :default
+    version: ">= 0"
+  haml: 
     group: 
     - :default
     version: ">= 0"
@@ -25,11 +29,7 @@ dependencies:
     group: 
     - :default
     version: = 0.8.7
-  haml: 
-    group: 
-    - :default
-    version: ">= 0"
-  prawn: 
+  mysql: 
     group: 
     - :default
     version: ">= 0"
@@ -55,14 +55,14 @@ dependencies:
     version: ">= 0"
     require: []
 
-  paperclip: 
-    group: 
-    - :default
-    version: ">= 0"
   simple_form: 
     group: 
     - :default
     version: = 1.0.2
+  paperclip: 
+    group: 
+    - :default
+    version: ">= 0"
   capistrano-ext: 
     group: 
     - :development
@@ -71,6 +71,10 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
+  bundler: 
+    group: 
+    - :default
+    version: = 0.9.26
   hoptoad_notifier: 
     group: 
     - :default
@@ -100,6 +104,8 @@ specs:
     version: 2.3.8
 - activeresource: 
     version: 2.3.8
+- bundler: 
+    version: 0.9.26
 - highline: 
     version: 1.6.1
 - net-ssh: 
@@ -160,7 +166,7 @@ specs:
     version: 1.0.2
 - timecop: 
     version: 0.3.5
-hash: 888ef44e93950d5c38e8f1330c80e5a88017a060
+hash: 4cc1533e094dffcf78a2b7fa66b4aac4d835e645
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
