@@ -1,4 +1,0 @@
-= TODO
-
-  * Filled ballots are uploaded to <rails_root>/ballots. Link them to a shared folder on deployment
-  * Link public/assets to a shared folder on deployment
