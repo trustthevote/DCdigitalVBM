@@ -23,6 +23,8 @@
 
 class ApplicationController < ActionController::Base
 
+  include SslRequirement
+  
   # SSL is required everywhere except for development and testing
   ssl_required unless %w( test development ).include?(Rails.env)
   
