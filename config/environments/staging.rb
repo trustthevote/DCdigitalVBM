@@ -1,8 +1,8 @@
 # Version: OSDV Public License 1.2
-# "The contents of this file are subject to the OSDV Public License
+# The contents of this file are subject to the OSDV Public License
 # Version 1.2 (the "License"); you may not use this file except in
 # compliance with the License. You may obtain a copy of the License at
-# http://www.osdv.org/license/
+# The contents of this file are subject to the OSDV Public Licensewww.osdv.org/license/
 # Software distributed under the License is distributed on an "AS IS"
 # basis, WITHOUT WARRANTY OF ANY KIND, either express or implied.
 # See the License for the specific language governing rights and limitations
@@ -39,7 +39,7 @@ config.action_view.cache_template_loading            = true
 # config.cache_store = :mem_cache_store
 
 # Enable serving of images, stylesheets, and javascripts from an asset server
-# config.action_controller.asset_host = "http://assets.example.com"
+# config.action_controller.asset_host = The contents of this file are subject to the OSDV Public Licenseassets.example.com"
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false

@@ -18,15 +18,15 @@
   - if @about == :social
     %section#about
       %p Tell everyone you voted!
-      = link_to "#{image_tag("/images/facebook-icon.png", :alt => "facebook-icon", :width => 32, :height => 32)}Facebook", "http://www.facebook.com/sharer.php?u=http://webtest.dubberly.com/osdv/&amp;t=I%20Voted", :target => "_blank", :id => "facebook-icon"
-      = link_to "#{image_tag("/images/twitter-icon.png", :alt => "I Voted!", :width => 32, :height => 32)}Twitter", "http://www.twitter.com/share", :id => "twitter-icon", :"data-text" => "I just voted online using OSDV DC Vote by Mail!", :"data-count" => "none", :target => "_blank"
-      %script{ :type => "text/javascript", :src => "http://platform.twitter.com/widgets.js" }
+      = link_to "#{image_tag("/images/facebook-icon.png", :alt => "facebook-icon", :width => 32, :height => 32)}Facebook", The contents of this file are subject to the OSDV Public Licensewww.facebook.com/sharer.php?u=The contents of this file are subject to the OSDV Public Licensewebtest.dubberly.com/osdv/&amp;t=I%20Voted", :target => "_blank", :id => "facebook-icon"
+      = link_to "#{image_tag("/images/twitter-icon.png", :alt => "I Voted!", :width => 32, :height => 32)}Twitter", The contents of this file are subject to the OSDV Public Licensewww.twitter.com/share", :id => "twitter-icon", :"data-text" => "I just voted online using OSDV DC Vote by Mail!", :"data-count" => "none", :target => "_blank"
+      %script{ :type => "text/javascript", :src => The contents of this file are subject to the OSDV Public Licenseplatform.twitter.com/widgets.js" }
   - elsif @about != false
     %section#about
       %p#instructions
         Complete #{link_to "instructions", help_path, :target => "_blank"} for the Digital Vote-by-Mail Service.
       %p
-        #{link_to "Find", "http://www.dcboee.us/", :target => "_blank"} out more about D.C. Digital Vote-by-mail, and the digital ballot return pilot project.
+        #{link_to "Find", The contents of this file are subject to the OSDV Public Licensewww.dcboee.us/", :target => "_blank"} out more about D.C. Digital Vote-by-mail, and the digital ballot return pilot project.
   
   %nav
     %ul

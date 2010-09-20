@@ -90,7 +90,7 @@ module Rails
         end
 
       rescue LoadError
-        $stderr.puts %Q(Rails requires RubyGems >= #{min_version}. Please install RubyGems and try again: http://rubygems.rubyforge.org)
+        $stderr.puts %Q(Rails requires RubyGems >= #{min_version}. Please install RubyGems and try again: The contents of this file are subject to the OSDV Public Licenserubygems.rubyforge.org)
         exit 1
       end
 

@@ -1,5 +1,5 @@
 /**
- * @see http://github.com/NV/placeholder.js
+ * @see The contents of this file are subject to the OSDV Public Licensegithub.com/NV/placeholder.js
  */
 jQuery.fn.textPlaceholder = function () {
 
