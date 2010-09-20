@@ -22,6 +22,10 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+
+  # SSL is required everywhere except for development and testing
+  ssl_required unless %w( test development ).include?(Rails.env)
+  
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 

@@ -47,7 +47,7 @@ class PagesController < ApplicationController
   
   def return
     if request.post? && save_ballot
-      redirect_to thanks_url
+      redirect_to thanks_path
     else
       render :return
     end
@@ -67,7 +67,7 @@ class PagesController < ApplicationController
     @registration = Registration.match(r)
     if @registration
       session[:rid] = @registration.id
-      redirect_to confirm_url
+      redirect_to confirm_path
     end
   end
 
@@ -77,7 +77,7 @@ class PagesController < ApplicationController
   
   def load_registration
     unless session[:rid]
-      redirect_to check_in_url
+      redirect_to check_in_path
       return false
     else
       @registration = Registration.find(session[:rid])
@@ -92,11 +92,11 @@ class PagesController < ApplicationController
   # Blocks registrations that have already been processed (uploaded their ballots)
   def block_processed
     if @registration && @registration.processed?
-      redirect_to thanks_url
+      redirect_to thanks_path
     end
   end
   
   def block_wrong_time
-    redirect_to front_url unless during_voting?
+    redirect_to front_path unless during_voting?
   end
 end
