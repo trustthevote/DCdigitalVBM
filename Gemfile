@@ -9,7 +9,6 @@ gem 'RedCloth'
 gem 'paperclip'
 gem 'prawn'
 gem 'fastercsv'
-gem 'ssl_requirement'
 
 # Yes, this is weird, but is necessary for the correct deployment under Passenger 2.2.13+
 # See http://github.com/carlhuda/bundler/issues/issue/349
