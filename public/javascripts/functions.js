@@ -40,13 +40,13 @@ function attestationLoaded() {
 }
 
 function checkboxChanged(event) {
-	var confirm = $("#confirm-checkbox");
+	var conf = $("#confirm-checkbox");
 	var affirm = $("#affirm-checkbox");
 	var ad = $("#attestation-pdf-disabled");
 	var a = $("#attestation-pdf");
 	var btn = $("#confirm-continue");
 
-	if (affirm.attr("checked") && confirm.attr("checked")) {
+	if (affirm.attr("checked") && conf.attr("checked")) {
 		ad.hide();
 		a.show();
 		if (digital || attestationSeen) enableBtn(btn);
@@ -115,8 +115,8 @@ $(function() {
 
   showPopup("#popup");
 	
-	$("#confirm-checkbox").change(checkboxChanged);
-	$("#affirm-checkbox").change(checkboxChanged);
+	$("#confirm-checkbox").click(checkboxChanged);
+	$("#affirm-checkbox").click(checkboxChanged);
 
 	$("#attestation-pdf").click(attestationLoaded);
   var btnCC = $("#confirm-continue");
