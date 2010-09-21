@@ -3,8 +3,8 @@
  *
  * Copyright (c) 2006 Klaus Hartl (stilbuero.de)
  * Dual licensed under the MIT and GPL licenses:
- * The contents of this file are subject to the OSDV Public Licensewww.opensource.org/licenses/mit-license.php
- * The contents of this file are subject to the OSDV Public Licensewww.gnu.org/licenses/gpl.html
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
  *
  */
 

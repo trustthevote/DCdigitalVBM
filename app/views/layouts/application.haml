@@ -22,7 +22,7 @@
     /[if lt IE 7]
       = stylesheet_link_tag "patches/win-ie-old"
     /[if lt IE 8]
-      = javascript_include_tag The contents of this file are subject to the OSDV Public Licenseie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"
+      = javascript_include_tag "http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"
   
     :javascript
       var digital = #{digital? ? "true" : "false"};
@@ -31,7 +31,7 @@
     = javascript_include_tag "plugins/jquery.textPlaceholder.js"
     = javascript_include_tag "functions.js"
   
-    -# MODERNIZR: The contents of this file are subject to the OSDV Public Licensewww.modernizr.com/
+    -# MODERNIZR: http://www.modernizr.com/
     = javascript_include_tag "modernizr-1.5.min.js"
   
   - @page_id ||= nil
