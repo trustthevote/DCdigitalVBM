@@ -17,7 +17,7 @@ dependencies:
     group: 
     - :development
     version: ">= 0"
-  mysql: 
+  haml: 
     group: 
     - :default
     version: ">= 0"
@@ -25,7 +25,7 @@ dependencies:
     group: 
     - :default
     version: = 0.8.7
-  haml: 
+  mysql: 
     group: 
     - :default
     version: ">= 0"
@@ -76,10 +76,6 @@ dependencies:
     - :default
     version: = 0.9.26
   ssl_requirement: 
-    group: 
-    - :default
-    version: ">= 0"
-  hoptoad_notifier: 
     group: 
     - :default
     version: ">= 0"
@@ -140,8 +136,6 @@ specs:
     version: 0.2.3
 - haml: 
     version: 3.0.18
-- hoptoad_notifier: 
-    version: 2.3.7
 - mocha: 
     version: 0.9.8
 - mongrel: 
@@ -172,7 +166,7 @@ specs:
     version: 0.1.0
 - timecop: 
     version: 0.3.5
-hash: 66a7e31a3154d5747aae5104960525957b559989
+hash: e5c3752ccfcfb30631924d4255a309da223d4e7a
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
