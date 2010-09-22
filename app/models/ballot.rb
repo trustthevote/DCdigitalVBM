@@ -23,6 +23,8 @@ class Ballot < ActiveRecord::Base
   ERROR_NAME = "Please upload the ballot file with the same name that you downloaded."
   ERROR_SIZE = "Invalid ballot file submitted. Please re-select and check your ballot file, and try again."
   
+  attr_accessor :uploaded_pdf_size
+  
   belongs_to :registration
 
   has_attached_file :pdf, :path => ':rails_root/ballots/:ballot_name.pdf.gpg',
@@ -31,10 +33,12 @@ class Ballot < ActiveRecord::Base
                           :processors => [ :encrypt ]
 
   validates_presence_of   :registration_id, :on => :create
-  # validates_attachment_presence       :pdf, :message => "must be chosen"
-  # validates_attachment_content_type   :pdf, :content_type => "application/pdf", :message => "must be PDF file"
-
-  validate :validate_pdf, :on => :create
+  validate                :validate_pdf, :on => :create
+  
+  def pdf=(file)
+    self.uploaded_pdf_size = file && file.try(:size).to_i
+    attachment_for(:pdf).assign(file)
+  end
   
   private
   
@@ -56,15 +60,9 @@ class Ballot < ActiveRecord::Base
   end
 
   def validate_pdf_size
-    upload_size = uploaded_pdf_size || self.pdf.size
     blank_size  = self.registration.blank_ballot.size
-    
-    range = (blank_size / 2 ... blank_size * 3 / 2)
-    self.errors.add_to_base(ERROR_SIZE) unless range.include?(upload_size)
-  end
-  
-  def uploaded_pdf_size
-    original = self.pdf.queued_for_write[:original]
-    original && original.size
+    range       = (blank_size / 2 ... blank_size * 3 / 2)
+
+    self.errors.add_to_base(ERROR_SIZE) unless range.include?(self.uploaded_pdf_size)
   end
 end
