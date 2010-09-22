@@ -18,8 +18,15 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-set :domain,    "10.1.143.74"
 set :rails_env, "staging"
+
+# Public server
+# set :domain,    "noizeramp.com" # "10.1.143.74"
+# set :user,      "agureiev"
+# set :runner,    user
+# set :deploy_to, "/home/#{user}/domains/#{application}.noizeramp.com"
+  
+set :domain,    "10.1.143.74"
 set :user,      "boeuser"
 set :runner,    user
 set :deploy_to, "/home/#{user}/#{application}"
