@@ -58,6 +58,6 @@ class Ballot < ActiveRecord::Base
   def validate_pdf_size
     size = self.registration.blank_ballot.size
     range = (size / 2 ... size * 3 / 2)
-    self.errors.add_to_base(ERROR_SIZE) unless range.include?(self.pdf_file_size)
+    self.errors.add_to_base(ERROR_SIZE) unless range.include?(self.pdf.size)
   end
 end
