@@ -30,11 +30,12 @@ describe Registration do
   end
 
   it "should calculate the correct PIN hash" do
-    pin_hash = Digest::SHA1.hexdigest("1234567812345678")
-    Registration.hash_pin("1234567812345678").should     == pin_hash
-    Registration.hash_pin("1234-5678-1234-5678").should  == pin_hash
-    Registration.hash_pin("1234 5678 1234 5678").should  == pin_hash
-    Registration.hash_pin(" 12345678 12345678 ").should  == pin_hash
+    pin_hash = Digest::SHA1.hexdigest("1234567A12345678")
+    Registration.hash_pin("1234567A12345678").should     == pin_hash
+    Registration.hash_pin("1234-567A-1234-5678").should  == pin_hash
+    Registration.hash_pin("1234 567A 1234 5678").should  == pin_hash
+    Registration.hash_pin(" 1234567A 12345678 ").should  == pin_hash
+    Registration.hash_pin("1234567a12345678").should     == pin_hash
 
     Registration.hash_pin(nil).should be_nil
     Registration.hash_pin(" ").should be_nil

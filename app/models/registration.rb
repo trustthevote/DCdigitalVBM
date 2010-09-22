@@ -52,7 +52,7 @@ class Registration < ActiveRecord::Base
 
   def self.hash_pin(pin)
     return nil if pin.blank?
-    Digest::SHA1.hexdigest(pin.gsub(/[^0-9A-Z]/i, ''))
+    Digest::SHA1.hexdigest(pin.to_s.gsub(/[^0-9A-Z]/i, '').upcase)
   end
 
   # Returns TRUE if the ballot has already been uploaded
