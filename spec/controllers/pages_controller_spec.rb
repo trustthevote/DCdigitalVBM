@@ -31,7 +31,7 @@ describe PagesController do
     it "should redirect to front page" do
       before_voting_started
       get :overview
-      response.should redirect_to(front_path)
+      response.should redirect_to(front_url)
     end
   end
   
@@ -69,14 +69,14 @@ describe PagesController do
     it "should move on to the confirm page when record was found" do
       r = Factory(:registration, :pin => "1234")
       post :check_in, :registration => { :pin => "1234", :name => r.name, :zip => r.zip, :voter_id => r.voter_id }
-      response.should redirect_to(confirm_path)
+      response.should redirect_to(confirm_url)
     end
   end
 
   describe "when requesting attestation PDF" do
     it "should redirect to check-in if haven't checked in yet" do
       get :attestation, :format => 'pdf'
-      response.should redirect_to(check_in_path)
+      response.should redirect_to(check_in_url)
     end
     
     it "should render the PDF if checked in" do
@@ -99,7 +99,7 @@ describe PagesController do
     it "should render the thanks page with the ballot receipt info if already uploaded" do
       Registration.any_instance.expects(:processed?).returns(true)
       get :confirm
-      response.should redirect_to(thanks_path)
+      response.should redirect_to(thanks_url)
     end
   end
 
@@ -126,7 +126,7 @@ describe PagesController do
     it "should render the thanks page if all is good" do
       @controller.stubs(:save_ballot).returns(true)
       post :return
-      response.should redirect_to(thanks_path)
+      response.should redirect_to(thanks_url)
     end
   end
 

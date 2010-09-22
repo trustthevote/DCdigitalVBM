@@ -58,4 +58,8 @@ class ApplicationController < ActionController::Base
   def during_voting?
     AppConfig['state'].blank? || AppConfig['state'] == 'during'
   end
+
+  def default_url_options(options = nil)
+    { :protocol => 'https' } unless Rails.env == 'development'
+  end
 end
