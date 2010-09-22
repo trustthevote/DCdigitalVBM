@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+-# the "no-js" class is for Modernizr
+%html{ :lang => "en", :class => "no-js"}
+  %head.html5reset-kitchensink-commented
+    %meta{ :charset => "utf-8" }
+    %title District of Columbia Digital Vote-by-Mail Service
+    %meta{ :name => "description", :content => "Here is the description of your project." }
+    -# Google will often use this as its description of your page/site. Make it good.
+
+    -# main.css is a gateway file. You will spend your time in core.css
+    = stylesheet_link_tag "main"
+    = stylesheet_link_tag "print/main", :media => "print"
+  
+    -# These are IE-specific conditional style sheets. 
+    -# You might consider removing the ones you don't end up using.
+     
+    /[if IE]
+      = stylesheet_link_tag "patches/win-ie-all"
+    /[if IE 7]
+      = stylesheet_link_tag "patches/win-ie7"
+    /[if lt IE 7]
+      = stylesheet_link_tag "patches/win-ie-old"
+    /[if lt IE 8]
+      = javascript_include_tag "http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"
+  
+    -# jQuery
+    = javascript_include_tag "jquery-1.4.1.min.js"
+    = javascript_include_tag "plugins/jquery.textPlaceholder.js"
+  
+    -# MODERNIZR: http://www.modernizr.com/
+    = javascript_include_tag "modernizr-1.5.min.js"
+  
+  %body#leo
+    = render "layouts/header"
+    %section#main
+      - if @h1
+        %header
+          %h1= h(@h1)
+          %h2= h(@h2)
+
+      = yield

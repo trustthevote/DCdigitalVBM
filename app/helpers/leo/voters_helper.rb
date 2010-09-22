@@ -1,0 +1,2 @@
+module Leo::VotersHelper
+end

@@ -162,6 +162,10 @@ aside li {
 	min-height: 500px;
 }
 
+#leo #main {
+  width: 920px;
+}
+
 #main>section>header {
 	float:left;
 	width:540px;

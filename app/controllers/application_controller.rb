@@ -62,4 +62,5 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = nil)
     { :protocol => 'https' } unless Rails.env == 'development'
   end
+
 end

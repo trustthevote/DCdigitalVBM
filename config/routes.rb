@@ -35,8 +35,18 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.with_options :controller => "help" do |o|
-    o.help      '/help'
-    o.help_page '/help/:section/:page', :action => "show"
-    o.security  '/security',  :action => "show", :section => "security", :page => "index"
+    o.help        '/help'
+    o.help_page   '/help/:section/:page', :action => "show"
+    o.security    '/security',  :action => "show", :section => "security", :page => "index"
+  end
+  
+  map.subdomain :leo do |leo|
+    leo.with_options :controller => 'user_sessions', :name_prefix => '' do |c|
+      c.connect   '/login',   :action => 'create', :conditions => { :method => :post }
+      c.login     '/login',   :action => 'new'
+      c.logout    '/logout',  :action => 'destroy', :conditions => { :method => :delete }
+    end
+
+    leo.resources   :voters, :only => [ :index, :show, :update ]
   end
 end
