@@ -54,7 +54,7 @@ en:
       summary: "Your name, zip code, and voter ID number must match the information we have in your current voter record. The PIN number must exactly match the number that was provided to you by mail, by the Board of Elections and Ethics. All fields are required."
       prompt: "Please enter your name, address, and PIN."
       tip_title: Pin Number
-      tip: "You must correctly enter your name, zip code, voter ID number, and 6-digit PIN number to check in to vote. All of this information can be found in the letter sent to you by the BOEE."
+      tip: "You must correctly enter your name, zip code, voter ID number, and 16-digit PIN number to check in to vote. All of this information can be found in the letter sent to you by the BOEE."
 
       not_found: Could Not Find Record
       explanation: "<p>Sorry, we couldn’t find your record. Try again. Provide the information you used when you registered to vote.</p>"
