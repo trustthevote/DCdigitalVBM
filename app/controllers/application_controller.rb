@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = nil)
     { :protocol => 'https' } unless Rails.env == 'development'
   end
-  
+
   def render_pdf(name, template = nil)
     response.headers['Content-Disposition'] = "attachment;filename=\"#{name}.pdf\""
     response.headers['Content-Description'] = 'File Transfer'

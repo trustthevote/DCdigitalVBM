@@ -10,7 +10,7 @@ gem 'paperclip'
 gem 'prawn'
 gem 'fastercsv'
 gem 'subdomain_routes'
-gem 'devise', '1.0.8'
+gem 'authlogic'
 
 # Yes, this is weird, but is necessary for the correct deployment under Passenger 2.2.13+
 # See http://github.com/carlhuda/bundler/issues/issue/349
@@ -32,6 +32,8 @@ group :test do
   gem 'rspec-rails'
   gem 'timecop'
   gem 'factory_girl'
-  gem 'cucumber'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
   gem 'mocha', :require => nil # This is important. Otherwise you won't be able to mock finders
 end
