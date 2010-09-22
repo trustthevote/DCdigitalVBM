@@ -27,21 +27,26 @@ describe Ballot do
     @r = Factory(:registration, :precinct_split_id => @s.precinct_split_id)
   end
   
-  it "should accept the file with the same name as downloaded ballot" do
-    b = Factory.build(:ballot, :registration => @r, :pdf_file_name => "weird.pdf")
-    b.should_not be_valid
-    b.errors[:base].should == Ballot::ERROR_NAME
+  it "should reject the file with the name different from what was downloaded" do
+   assert_validness({ :pdf_file_name => "weird.pdf" }, false, Ballot::ERROR_NAME)
   end
   
-  it "should reject the file with the name different from what was downloaded" do
-    b = Factory.build(:ballot, :registration => @r, :pdf_file_name => @s.pdf.original_filename)
-    b.should be_valid
+  it "should reject the file with the size less than half or more than 3 / 2 of original" do
+    assert_validness({ :pdf_file_size => @s.pdf_file_size / 2 - 1 },    false, Ballot::ERROR_SIZE)
+    assert_validness({ :pdf_file_size => @s.pdf_file_size * 3 / 2 + 1}, false, Ballot::ERROR_SIZE)
   end
 
-  it "should reject the file with the name different from what was downloaded with suffix" do
-    parts = @s.pdf.original_filename.split('.')
-    b = Factory.build(:ballot, :registration => @r, :pdf_file_name => "#{parts[0]}-1.#{parts[1]}")
-    b.should be_valid
+  it "should accept the file with the same name as downloaded ballot" do
+    assert_validness(:pdf_file_name => @s.pdf.original_filename)
   end
 
+  it "should accept the file with the suffixed name" do
+    assert_validness(:pdf_file_name => ("%s-1.%s" % @s.pdf.original_filename.split('.')))
+  end
+  
+  def assert_validness(ballot_options, valid = true, error = nil)
+    b = Factory.build(:ballot, { :registration => @r }.merge(ballot_options))
+    b.valid?.should == valid
+    b.errors[:base].should == error unless valid
+  end
 end

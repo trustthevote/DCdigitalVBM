@@ -20,7 +20,8 @@
 
 class Ballot < ActiveRecord::Base
 
-  ERROR_NAME = "Please upload the ballot file with the same name that you downloaded"
+  ERROR_NAME = "Please upload the ballot file with the same name that you downloaded."
+  ERROR_SIZE = "Invalid ballot file submitted. Please re-select and check your ballot file, and try again."
   
   belongs_to :registration
 
@@ -38,11 +39,25 @@ class Ballot < ActiveRecord::Base
   private
   
   def validate_pdf
-    if registration
-      filename = registration.blank_ballot.original_filename
-      fn_parts = filename.split(".")
-      self.errors.add_to_base(ERROR_NAME) unless self.pdf.original_filename.include?(fn_parts[0])
+    if self.registration
+      if self.pdf.blank?
+        self.errors.add_to_base(ERROR_NAME)
+      else
+        validate_pdf_name
+        validate_pdf_size
+      end
     end
   end
   
+  def validate_pdf_name
+    filename = self.registration.blank_ballot.original_filename
+    fn_parts = filename.split(".")
+    self.errors.add_to_base(ERROR_NAME) unless self.pdf.original_filename.include?(fn_parts[0])
+  end
+
+  def validate_pdf_size
+    size = self.registration.blank_ballot.size
+    range = (size / 2 ... size * 3 / 2)
+    self.errors.add_to_base(ERROR_SIZE) unless range.include?(self.pdf_file_size)
+  end
 end
