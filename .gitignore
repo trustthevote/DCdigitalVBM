@@ -6,6 +6,7 @@ public/assets
 # local config
 config/database.yml
 config/config.yml
+config/deploy/nr.rb
 
 # compiled stylesheets
 public/stylesheets/compiled
