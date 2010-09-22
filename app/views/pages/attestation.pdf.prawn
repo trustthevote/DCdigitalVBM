@@ -46,7 +46,7 @@ end
 pdf.image "public/images/print-checkbox.jpg", :at => [ 50, 250 ]
 
 pdf.bounding_box [ 200, 330 ], :width => 300 do
-  pdf.text "I affirm that the information on this form is true, accurate, and complete to the best of my knowledge, and that I understand that a material misstate- ment of fact in completion of this document may constitute grounds for a conviction for perjury.", :leading => 3
+  pdf.text "I affirm that the information on this form is true, accurate, and complete to the best of my knowledge, and that I understand that a material misstatement of fact in completion of this document may constitute grounds for a conviction for perjury.", :leading => 3
   pdf.move_down 20
   
   pdf.font_size 20
