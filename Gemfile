@@ -10,7 +10,7 @@ gem 'paperclip'
 gem 'prawn'
 gem 'fastercsv'
 gem 'subdomain-fu'
-gem 'devise'
+gem 'devise', '1.0.8'
 
 # Yes, this is weird, but is necessary for the correct deployment under Passenger 2.2.13+
 # See http://github.com/carlhuda/bundler/issues/issue/349
