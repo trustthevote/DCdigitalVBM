@@ -50,14 +50,21 @@ class Ballot < ActiveRecord::Base
   end
   
   def validate_pdf_name
-    filename = self.registration.blank_ballot.original_filename
-    fn_parts = filename.split(".")
+    filename    = self.registration.blank_ballot.original_filename
+    fn_parts    = filename.split(".")
     self.errors.add_to_base(ERROR_NAME) unless self.pdf.original_filename.include?(fn_parts[0])
   end
 
   def validate_pdf_size
-    size = self.registration.blank_ballot.size
-    range = (size / 2 ... size * 3 / 2)
-    self.errors.add_to_base(ERROR_SIZE) unless range.include?(self.pdf.size)
+    upload_size = uploaded_pdf_size || self.pdf.size
+    blank_size  = self.registration.blank_ballot.size
+    
+    range = (blank_size / 2 ... blank_size * 3 / 2)
+    self.errors.add_to_base(ERROR_SIZE) unless range.include?(upload_size)
+  end
+  
+  def uploaded_pdf_size
+    original = self.pdf.queued_for_write[:original]
+    original && original.size
   end
 end

@@ -32,8 +32,13 @@ describe Ballot do
   end
   
   it "should reject the file with the size less than half or more than 3 / 2 of original" do
-    assert_validness({ :pdf_file_size => @s.pdf_file_size / 2 - 1 },    false, Ballot::ERROR_SIZE)
-    assert_validness({ :pdf_file_size => @s.pdf_file_size * 3 / 2 + 1}, false, Ballot::ERROR_SIZE)
+    b = Factory.build(:ballot, :registration => @r)
+    
+    [ @s.pdf_file_size / 2 - 1, @s.pdf_file_size * 3 / 2 + 1 ].each do |size|
+      b.stubs(:uploaded_pdf_size).returns(size)
+      b.should_not be_valid
+      b.errors[:base].should == Ballot::ERROR_SIZE
+    end
   end
 
   it "should accept the file with the same name as downloaded ballot" do
