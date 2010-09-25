@@ -2,7 +2,7 @@ class Leo::VotersController < Leo::BaseController
 
   def show
     @voter = voter_to_review(params[:id])
-    @nav   = VoterNavigation.new
+    @nav   = VoterNavigation.new(@voter)
   end
 
   private

@@ -8,7 +8,6 @@ Then /^button "([^"]*)" should be disabled$/ do |label|
 end
 
 Then /^navigation buttons should be disabled$/ do
-  puts page.body
   Then %{button "Next" should be disabled}
   Then %{button "Previous" should be disabled}
 end
