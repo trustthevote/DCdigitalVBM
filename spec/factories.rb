@@ -44,6 +44,7 @@ Factory.define :registration do |f|
   f.pin               { Factory.next(:pin) }
   f.zip               '34001'
   f.voter_id          { Factory.next(:pin) }
+  f.status            'unconfirmed'
 end
 
 Factory.define :ballot do |f|
