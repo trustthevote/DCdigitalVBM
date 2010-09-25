@@ -1,0 +1,8 @@
+%h1 Review
+
+- unless @voter
+  No voters to review
+- else
+  = h(@voter.name)
+  = link_to "Previous", '#', :class => button_class(!@nav.has_previous?)
+  = link_to "Next", '#', :class => button_class(!@nav.has_next?)
