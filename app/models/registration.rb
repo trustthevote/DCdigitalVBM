@@ -33,6 +33,7 @@ class Registration < ActiveRecord::Base
   named_scope :checked_in, :conditions => "checked_in_at IS NOT NULL"
   named_scope :unfinished, :conditions => [ "checked_in_at IS NOT NULL AND last_completed_at IS NULL" ]
   named_scope :reviewable, :conditions => { :status => 'unconfirmed' }, :order => "name, id"
+
   def self.match(r)
     first(:conditions => {
       :name     => r[:name],
