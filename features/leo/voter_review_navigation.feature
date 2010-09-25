@@ -1,7 +1,7 @@
-Feature: Voter review
+Feature: Voter review navigation
   In order to review a voter
   As a LEO user
-  I want enter the review page and use controls to change attestation status
+  I want enter the review page and use controls to navigate between voters
   
   Background:
     Given that I logged in
