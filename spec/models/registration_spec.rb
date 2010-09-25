@@ -56,16 +56,16 @@ describe Registration do
   describe "processed flag and date" do
     it "should be processed when the ballot is uploaded" do
       s = Factory(:ballot_style)
-      r = Factory(:registration, :precinct_split => s.precinct_split)
+      r = Factory(:registration, :precinct_split => s.precinct_split, :voted_digitally => true)
       b = Factory(:ballot, :registration => r)
-      b.registration.should be_processed
+      b.registration.should be_voted_digitally
       b.registration.processed_at.to_s.should == b.pdf_updated_at.to_s
     end
     
     it "should be unprocessed when there's no uploaded ballot" do
       r = Factory(:registration)
-      r.should_not be_processed
-      r.processed_at.to_s.should == Time.now.to_s
+      r.should_not be_voted_digitally
+      r.processed_at.should be_nil
     end
   end
   
@@ -106,6 +106,22 @@ describe Registration do
         r.reload
         r.checked_in_at.should == Time.now
       end
+    end
+  end
+  
+  context "registering ballot" do
+    let(:r) { Factory(:registration) }
+    
+    it "should not set the voted_digitally flag if ballow is invalid" do
+      r.expects(:build_ballot).returns(stub(:save => false))
+      r.register_ballot!(stub)
+      r.should_not be_voted_digitally
+    end
+    
+    it "should set the voted_digitally flag if ballot is saved" do
+      r.expects(:build_ballot).returns(stub(:save => true))
+      r.register_ballot!(stub)
+      r.should be_voted_digitally
     end
   end
 end

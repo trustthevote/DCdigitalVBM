@@ -55,13 +55,8 @@ class Registration < ActiveRecord::Base
     Digest::SHA1.hexdigest(pin.to_s.gsub(/[^0-9A-Z]/i, '').upcase)
   end
 
-  # Returns TRUE if the ballot has already been uploaded
-  def processed?
-    !ballot.nil?
-  end
-
   def processed_at
-    ballot ? ballot.pdf_updated_at : Time.now
+    ballot && ballot.pdf_updated_at
   end
   
   def register_flow_completion!(voting_type)
@@ -72,5 +67,15 @@ class Registration < ActiveRecord::Base
   def register_check_in!
     self.checked_in_at = Time.now
     self.save!
+  end
+  
+  def register_ballot!(ballot_pdf)
+    ballot = self.build_ballot(:pdf => ballot_pdf)
+
+    if ballot.save
+      self.update_attributes!(:voted_digitally => true)
+    end
+
+    ballot
   end
 end

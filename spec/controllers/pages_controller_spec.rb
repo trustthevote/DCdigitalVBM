@@ -97,7 +97,7 @@ describe PagesController do
     end
 
     it "should render the thanks page with the ballot receipt info if already uploaded" do
-      Registration.any_instance.expects(:processed?).returns(true)
+      Registration.any_instance.expects(:voted_digitally?).returns(true)
       get :confirm
       response.should redirect_to(thanks_url)
     end

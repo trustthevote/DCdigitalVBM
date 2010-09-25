@@ -85,13 +85,13 @@ class PagesController < ApplicationController
   end
 
   def save_ballot
-    @ballot = @registration.build_ballot(:pdf => params[:pdf])
-    @ballot.save
+    @ballot = @registration.register_ballot!(params[:pdf])
+    @ballot.valid?
   end
 
   # Blocks registrations that have already been processed (uploaded their ballots)
   def block_processed
-    if @registration && @registration.processed?
+    if @registration && @registration.voted_digitally?
       redirect_to thanks_url
     end
   end
