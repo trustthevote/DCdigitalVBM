@@ -128,9 +128,10 @@ describe Registration do
   context ".reviewable scope" do
     it "should return only unconfirmed and sorted by names" do
       Registration.destroy_all
-      @r1 = Factory(:registration, :status => "unconfirmed", :name => "Mark")
-      @r2 = Factory(:registration, :status => "unconfirmed", :name => "Lee")  # Name goes before the first one
-      @r3 = Factory(:registration, :status => "confirmed",   :name => "Jack") # Name goes before the first two
+      @r1 = Factory(:registration, :status => "unconfirmed", :name => "Mark", :voted_digitally => true)
+      @r2 = Factory(:registration, :status => "unconfirmed", :name => "Lee", :voted_digitally => true) # Name goes before the first one
+      @r3 = Factory(:registration, :status => "unconfirmed", :name => "Beth") # Name goes before the first one
+      @r4 = Factory(:registration, :status => "confirmed",   :name => "Jack", :voted_digitally => true) # Name goes before the first two
 
       Registration.reviewable.map(&:id).should == [ @r2.id, @r1.id ]
     end

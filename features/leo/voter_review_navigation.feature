@@ -13,8 +13,8 @@ Feature: Voter review navigation
   
   Scenario: One voter to review
     Given the following voters
-      | name | status      |
-      | Mike | unconfirmed |
+      | name | status      | voted_digitally |
+      | Mike | unconfirmed | true            |
     When  I go to the review page
     Then  I should see "Mike"
       And I should not see "No voters to review"
@@ -22,9 +22,9 @@ Feature: Voter review navigation
 
   Scenario: Many voters to review before
     Given the following voters
-      | name | status      |
-      | Mike | unconfirmed |
-      | Jack | unconfirmed |
+      | name | status      | voted_digitally |
+      | Mike | unconfirmed | true            |
+      | Jack | unconfirmed | true            |
     When  I go to the review page
     Then  I should see "Jack"
       And button "Next" should be enabled
@@ -33,9 +33,3 @@ Feature: Voter review navigation
     Then  I should see "Mike"
       And button "Next" should be disabled
       And button "Previous" should be enabled
-
-  
-  
-  
-  
-  
