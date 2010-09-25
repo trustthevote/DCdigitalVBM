@@ -124,4 +124,15 @@ describe Registration do
       r.should be_voted_digitally
     end
   end
+
+  context ".reviewable scope" do
+    it "should return only unconfirmed and sorted by names" do
+      Registration.destroy_all
+      @r1 = Factory(:registration, :status => "unconfirmed", :name => "Mark")
+      @r2 = Factory(:registration, :status => "unconfirmed", :name => "Lee")  # Name goes before the first one
+      @r3 = Factory(:registration, :status => "confirmed",   :name => "Jack") # Name goes before the first two
+
+      Registration.reviewable.map(&:id).should == [ @r2.id, @r1.id ]
+    end
+  end
 end

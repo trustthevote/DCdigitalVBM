@@ -47,6 +47,7 @@ ActionController::Routing::Routes.draw do |map|
       c.logout    '/logout',  :action => 'destroy', :conditions => { :method => :delete }
     end
 
-    leo.resources   :voters, :only => [ :index, :show, :update ]
+    leo.resources :voters, :only => [ :index, :show, :update ]
+    leo.review    '/voters/review', :controller => 'leo/voters', :action => 'show'
   end
 end

@@ -11,6 +11,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /the review page/
+      leo_review_url
+
     # when /the login page/
     #   login_url
 

@@ -27,11 +27,14 @@ group :development, :test do
   gem 'faker'
 end
 
+group :test, :cucumber do
+  gem 'factory_girl'
+end
+
 group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'timecop'
-  gem 'factory_girl'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'

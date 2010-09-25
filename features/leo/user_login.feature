@@ -1,4 +1,4 @@
-Feature: Authentication
+Feature: User login
   In order to access LEO pages
   As a LEO user
   I want to enter the interface
