@@ -27,9 +27,11 @@
     -# jQuery
     = javascript_include_tag "jquery-1.4.1.min.js"
     = javascript_include_tag "plugins/jquery.textPlaceholder.js"
+    = javascript_include_tag "leo"
   
     -# MODERNIZR: http://www.modernizr.com/
     = javascript_include_tag "modernizr-1.5.min.js"
+    = javascript_tag "window._token = '#{form_authenticity_token}'" if ActionController::Base.allow_forgery_protection
   
   %body#leo
     = render "layouts/header"

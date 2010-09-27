@@ -48,7 +48,6 @@ Factory.define :registration do |f|
   f.state             'DC'
   f.zip               '20004'
   f.voter_id          { Factory.next(:pin) }
-  f.status            'unconfirmed'
 end
 
 Factory.define :voter, :parent => :registration do |f|
