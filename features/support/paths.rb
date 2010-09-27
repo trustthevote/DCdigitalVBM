@@ -14,6 +14,9 @@ module NavigationHelpers
     when /the review page/
       leo_review_url
 
+    when /voter "([^"]*)" review page/
+      leo_voter_url(Registration.find_by_name($1))
+
     # when /the login page/
     #   login_url
 
