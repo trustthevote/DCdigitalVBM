@@ -4,8 +4,8 @@ describe Leo::VotersController do
 
   context ".voter_to_review" do
     before do
-      @r1 = Factory(:registration, :status => "unconfirmed", :name => "Mark")
-      @r2 = Factory(:registration, :status => "confirmed",   :name => "Jack")
+      @r1 = Factory(:voter, :status => "unconfirmed", :name => "Mark")
+      @r2 = Factory(:voter, :status => "confirmed",   :name => "Jack")
     end
     
     it "should return the first reviewable registration if ID isn't given" do

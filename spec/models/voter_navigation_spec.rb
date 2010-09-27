@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe VoterNavigation do
-  let(:voter) { Factory(:registration, :name => "Lee") }
+  let(:voter) { Factory(:voter, :name => "Lee") }
 
   context "when no current voter given" do
     it { should_not have_next }
@@ -18,14 +18,14 @@ describe VoterNavigation do
     subject { VoterNavigation.new(voter) }
 
     context "before current" do
-      before { @ken = Factory(:registration, :name => "Ken") }
+      before { @ken = Factory(:voter, :name => "Ken") }
       it { should have_previous }
       it { should_not have_next }
       its(:previous_item) { should == @ken }
     end
     
     context "after current" do
-      before { @mark = Factory(:registration, :name => "Mark") }
+      before { @mark = Factory(:voter, :name => "Mark") }
       it { should_not have_previous }
       it { should have_next }
       its(:next_item) { should == @mark }

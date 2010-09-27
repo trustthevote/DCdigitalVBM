@@ -47,6 +47,10 @@ Factory.define :registration do |f|
   f.status            'unconfirmed'
 end
 
+Factory.define :voter, :parent => :registration do |f|
+  f.voted_digitally   true
+end
+
 Factory.define :ballot do |f|
   f.association       :registration
   f.pdf_file_name     "blank_ballot.pdf"

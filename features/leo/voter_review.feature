@@ -9,7 +9,8 @@ Feature: Voter review
   Scenario: Reviewing unvoted
     Given voter with name "Jack" who hasn't voted yet
     When  I go to voter "Jack" review page
-    Then  button "Confirm" should be disabled
+    Then  I should see "Jack"
+      And button "Confirm" should be disabled
       And button "Deny" should be disabled
       And I should not see the attestation document link
   
