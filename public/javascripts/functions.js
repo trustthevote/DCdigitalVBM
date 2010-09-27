@@ -135,6 +135,13 @@ $(function() {
 	/* Disable links to home page from support pages (So user is unable to have two instances of ballots at once) */
 	$(".support-pages>header nav li:first-child a").attr('href', "");
 	$(".support-pages #logo").attr('href', "");
+	
+	$("a.submit.button").click(function(e) {
+	  var b = $(this);
+	  var f = b.parent("form");
+	  f.submit();
+	  e.preventDefault();
+	});
 });
 
 

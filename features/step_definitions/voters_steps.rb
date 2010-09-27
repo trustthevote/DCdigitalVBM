@@ -15,3 +15,7 @@ end
 Given /^voter with name "([^"]*)" who voted digitally$/ do |name|
   @voter = Factory(:voter, :name => name)
 end
+
+When /^I set deny reason to "([^"]*)"$/ do |deny_reason|
+  When %{I fill in "registration[deny_reason]" with "#{deny_reason}"}
+end

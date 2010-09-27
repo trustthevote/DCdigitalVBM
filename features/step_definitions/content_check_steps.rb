@@ -22,6 +22,22 @@ Then /^I should see voter status$/ do
   Then %{I should see "#{status}"}
 end
 
-Then /^I should see the review status$/ do
-  Then %{I should see "#{@voter.status.capitalize}"}
+Then /^I should see the review status "([^"]*)"$/ do |status|
+  Then %{I should see "#{status}"}
+end
+
+Then /^I should not see status manipulation buttons$/ do
+  page.find("#review_controls").should_not be_visible
+end
+
+Then /^I should see the "([^"]*)" button$/ do |label|
+  page.should have_css('a.button', :text => label)
+end
+
+Then /^I should see confirmation history record$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see denial history record$/ do
+  pending # express the regexp above with the code you wish you had
 end
