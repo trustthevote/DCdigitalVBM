@@ -1,7 +1,7 @@
 Feature: Voter review
-  In order to review a voter
+  In order to examing the voter record
   As a LEO user
-  I want to use controls
+  I want to open it
 
   Background:
     Given that I logged in
@@ -15,7 +15,7 @@ Feature: Voter review
       And I should not see the attestation document link
       And I should see voter address
       And I should see voter status
-      And I should see the review status
+      And I should see the review status "Unconfirmed"
   
   Scenario: Reviewing voted
     Given voter with name "Mike" who voted digitally
@@ -25,4 +25,4 @@ Feature: Voter review
       And I should see the attestation document link
       And I should see voter address
       And I should see voter status  
-      And I should see the review status
+      And I should see the review status "Unconfirmed"

@@ -18,8 +18,9 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-Factory.sequence(:pin)  { |i| i.to_s.rjust(4, '0') }
-Factory.sequence(:name) { |i| "name_#{i}" }
+Factory.sequence(:pin)    { |i| i.to_s.rjust(4, '0') }
+Factory.sequence(:name)   { |i| "name_#{i}" }
+Factory.sequence(:login)  { |i| "login_#{i}" }
 
 Factory.define :precinct do |f|
   f.name              { Factory.next(:name) }
@@ -66,4 +67,11 @@ end
 Factory.define :flow_completion do |f|
   f.association       :registration
   f.voting_type       "physical"
+end
+
+Factory.define :user do |f|
+  f.login             { Factory.next(:login) }
+  f.email             { |o| "#{o.login}@localhost.com" }
+  f.password          "test"
+  f.password_confirmation { |o| o.password }
 end

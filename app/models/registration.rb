@@ -25,9 +25,11 @@ class Registration < ActiveRecord::Base
   belongs_to  :precinct_split
   has_one     :ballot, :dependent => :destroy
   has_many    :flow_completions
+  belongs_to  :reviewer, :class_name => "User"
 
   validates_presence_of :pin_hash
   validates_presence_of :precinct_split_id
+  validates_inclusion_of :status, :in => %w( unconfirmed confirmed denied )
 
   named_scope :inactive,   :conditions => { :checked_in_at => nil }
   named_scope :checked_in, :conditions => "checked_in_at IS NOT NULL"
@@ -78,5 +80,14 @@ class Registration < ActiveRecord::Base
     end
 
     ballot
+  end
+  
+  def update_status(voter_params, reviewer)
+    params = { :status => voter_params[:status], :deny_reason => voter_params[:deny_reason], :reviewer_id => reviewer.id }
+    self.update_attributes(params)
+  end
+  
+  def reviewed?
+    %w{ confirmed denied }.include?(self.status)
   end
 end

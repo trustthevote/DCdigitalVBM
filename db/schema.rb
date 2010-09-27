@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100925171953) do
+ActiveRecord::Schema.define(:version => 20100927103506) do
 
   create_table "ballot_styles", :force => true do |t|
     t.integer  "precinct_split_id", :null => false
@@ -65,29 +65,15 @@ ActiveRecord::Schema.define(:version => 20100925171953) do
     t.datetime "checked_in_at"
     t.datetime "last_completed_at"
     t.string   "status"
-    t.text     "deny_comment"
+    t.text     "deny_reason"
     t.boolean  "voted_digitally",   :default => false
+    t.integer  "reviewer_id"
   end
 
   add_index "registrations", ["pin_hash", "voter_id", "name", "zip"], :name => "index_registrations_on_pin_hash_and_voter_id_and_name_and_zip", :unique => true
   add_index "registrations", ["precinct_split_id"], :name => "index_registrations_on_precinct_split_id"
+  add_index "registrations", ["reviewer_id"], :name => "index_registrations_on_reviewer_id"
   add_index "registrations", ["voted_digitally"], :name => "index_registrations_on_voted_digitally"
-
-  create_table "users", :force => true do |t|
-    t.string   "login",                             :null => false
-    t.string   "email",                             :null => false
-    t.string   "crypted_password",                  :null => false
-    t.string   "password_salt",                     :null => false
-    t.string   "persistence_token",                 :null => false
-    t.integer  "login_count",        :default => 0, :null => false
-    t.integer  "failed_login_count", :default => 0, :null => false
-    t.datetime "last_request_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login",                             :null => false

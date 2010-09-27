@@ -22,9 +22,18 @@
   #status
     Status: <strong>#{@voter.status.capitalize}</strong>
   
-  - action_class = button_class(!@voter.voted_digitally?)
-  = link_to "Confirm", '#', :class => action_class
-  = link_to "Deny", '#', :class => action_class
+  #review_controls{ :style => @voter.reviewed? ? "display: none" : nil }
+    - action_class = button_class(!@voter.voted_digitally?)
+    = link_to "Confirm", leo_voter_url(@voter, :registration => { :status => "confirmed" }), :method => :put, :class => action_class
+    = link_to "Deny",    '#', :class => action_class, :id => "deny"
+    #deny_reason
+      - form_for @voter, :url => leo_voter_url(@voter), :id => "status_update" do |f|
+        = hidden_field_tag "registration[status]", "denied"
+        = f.text_field "deny_reason", :placeholder => "Please indicate a reason for denying."
+        = submit_tag "Submit"
+  
+  - if @voter.reviewed?
+    = link_to "Change Status", '#', :class => "button"
   
   #navigation
     = link_to "Previous", leo_voter_url(@nav.previous_item), :class => button_class(!@nav.has_previous?)

@@ -21,6 +21,8 @@
 require 'spec_helper'
 
 describe Registration do
+  let(:r) { Factory(:registration) }
+  let(:v) { Factory(:voter) }
 
   it "should return the empty ballot PDF" do
     b = Factory(:ballot_style)
@@ -110,8 +112,6 @@ describe Registration do
   end
   
   context "registering ballot" do
-    let(:r) { Factory(:registration) }
-    
     it "should not set the voted_digitally flag if ballow is invalid" do
       r.expects(:build_ballot).returns(stub(:save => false))
       r.register_ballot!(stub)
@@ -134,6 +134,36 @@ describe Registration do
       @r4 = Factory(:registration, :status => "confirmed",   :name => "Jack", :voted_digitally => true) # Name goes before the first two
 
       Registration.reviewable.map(&:id).should == [ @r2.id, @r1.id ]
+    end
+  end
+  
+  context ".update_status" do
+    let(:user) { Factory(:user) }
+    
+    it "should set only status related fields and reviewer" do
+      v.update_status({ :status => "denied", :deny_reason => "Some", :name => "updated" }, user).should be_true
+      v.reload
+      v.status.should      == "denied"
+      v.deny_reason.should == "Some"
+    end
+    
+    it "should return false if saving failed" do
+      v.update_status({ :status => "unknown" }, user).should be_false
+    end
+  end
+  
+  context ".reviewed?" do
+    it "should report FALSE when status is other than Unconfirmed" do
+      v.status = "unconfirmed"
+      v.should_not be_reviewed
+    end
+    
+    it "should report TRUE when Confirmed or Denied" do
+      v.status = "confirmed"
+      v.should be_reviewed
+
+      v.status = "denied"
+      v.should be_reviewed
     end
   end
 end
