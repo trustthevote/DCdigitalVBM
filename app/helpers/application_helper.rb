@@ -92,4 +92,8 @@ module ApplicationHelper
     klass << "disabled" if disabled
     klass * ' '
   end
+  
+  def review_status_of(voter)
+    voter.status.blank? ? "Unconfirmed" : voter.status.capitalize
+  end
 end

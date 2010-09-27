@@ -1,6 +1,9 @@
 class Leo::BaseController < ApplicationController
   helper_method :current_user_session, :current_user
-
+  before_filter :require_user
+  
+  layout 'leo'
+  
   private
 
   def current_user_session
@@ -17,7 +20,7 @@ class Leo::BaseController < ApplicationController
     unless current_user
       store_location
       flash[:notice] = "You must be logged in to access this page"
-      redirect_to new_user_session_url
+      redirect_to login_url
       return false
     end
   end
@@ -26,7 +29,7 @@ class Leo::BaseController < ApplicationController
     if current_user
       store_location
       flash[:notice] = "You must be logged out to access this page"
-      redirect_to account_url
+      redirect_to front_url
       return false
     end
   end
@@ -35,7 +38,7 @@ class Leo::BaseController < ApplicationController
     session[:return_to] = request.request_uri
   end
   
-  def redirect_back_or_default(default)
+  def redirect_back_or_default(default = leo_review_url)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end

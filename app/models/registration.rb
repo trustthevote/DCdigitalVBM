@@ -29,12 +29,12 @@ class Registration < ActiveRecord::Base
 
   validates_presence_of :pin_hash
   validates_presence_of :precinct_split_id
-  validates_inclusion_of :status, :in => %w( unconfirmed confirmed denied )
+  validates_inclusion_of :status, :in => %w( confirmed denied ), :allow_nil => true
 
   named_scope :inactive,   :conditions => { :checked_in_at => nil }
   named_scope :checked_in, :conditions => "checked_in_at IS NOT NULL"
   named_scope :unfinished, :conditions => [ "checked_in_at IS NOT NULL AND last_completed_at IS NULL" ]
-  named_scope :reviewable, :conditions => { :status => 'unconfirmed', :voted_digitally => true }, :order => "name, id"
+  named_scope :reviewable, :conditions => "status IS NULL AND voted_digitally = 1", :order => "name, id"
 
   def self.match(r)
     first(:conditions => {
