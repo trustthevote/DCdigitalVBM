@@ -42,7 +42,10 @@ Factory.define :registration do |f|
   f.association       :precinct_split
   f.name              { Faker::Name.name }
   f.pin               { Factory.next(:pin) }
-  f.zip               '34001'
+  f.address           '140 N Street'
+  f.city              'Washington'
+  f.state             'DC'
+  f.zip               '20004'
   f.voter_id          { Factory.next(:pin) }
   f.status            'unconfirmed'
 end

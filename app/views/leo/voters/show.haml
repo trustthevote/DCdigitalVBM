@@ -3,11 +3,25 @@
 - unless @voter
   No voters to review
 - else
-  = h(@voter.name)
-
   - if @voter.voted_digitally?
     = link_to "Attestation", leo_attestation_url(@voter)
 
+  .vcard
+    .n
+      %span.name= h(@voter.name)
+    .adr
+      .street-address= h(@voter.address)
+      %span.locality= h(@voter.city)
+      %span.region= h(@voter.state)
+      %span.postal-code= h(@voter.zip)
+
+  #voter_status
+    - status = @voter.voted_digitally? ? "Voted" : "Not yet voted"
+    Voter status: <strong>#{status}</strong>
+
+  #status
+    Status: <strong>#{@voter.status.capitalize}</strong>
+  
   - action_class = button_class(!@voter.voted_digitally?)
   = link_to "Confirm", '#', :class => action_class
   = link_to "Deny", '#', :class => action_class

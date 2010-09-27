@@ -13,6 +13,9 @@ Feature: Voter review
       And button "Confirm" should be disabled
       And button "Deny" should be disabled
       And I should not see the attestation document link
+      And I should see voter address
+      And I should see voter status
+      And I should see the review status
   
   Scenario: Reviewing voted
     Given voter with name "Mike" who voted digitally
@@ -20,14 +23,6 @@ Feature: Voter review
     Then  button "Confirm" should be enabled
       And button "Deny" should be enabled
       And I should see the attestation document link
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
+      And I should see voter address
+      And I should see voter status  
+      And I should see the review status
