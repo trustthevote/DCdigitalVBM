@@ -54,6 +54,11 @@ Factory.define :voter, :parent => :registration do |f|
   f.voted_digitally   true
 end
 
+Factory.define :reviewed_voter, :parent => :voter do |f|
+  f.last_reviewed_at  { Time.now }
+  f.reviewer          { @reviewer ||= Factory(:user) }
+end
+
 Factory.define :ballot do |f|
   f.association       :registration
   f.pdf_file_name     "blank_ballot.pdf"

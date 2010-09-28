@@ -1,5 +1,11 @@
 class Leo::VotersController < Leo::BaseController
 
+  VOTERS_PER_PAGE = 15
+
+  def index
+    @voters = Registration.reviewable.paginate(:page => params[:page], :per_page => VOTERS_PER_PAGE)
+  end
+  
   def show
     @voter ||= voter_to_review(params[:id])
     @nav = VoterNavigation.new(@voter)

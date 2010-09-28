@@ -17,8 +17,8 @@ module NavigationHelpers
     when /voter "([^"]*)" review page/
       leo_voter_url(Registration.find_by_name($1))
 
-    # when /the login page/
-    #   login_url
+    when /the voters index page/
+      leo_voters_url
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

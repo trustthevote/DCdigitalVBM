@@ -36,3 +36,8 @@ Given /^that I logged in$/ do
   fill_in "Password", :with => @user.password
   click_button "Login"
 end
+
+Then /^I should see the page$/ do
+  puts page.body
+  pending
+end

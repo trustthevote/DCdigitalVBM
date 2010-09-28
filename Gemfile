@@ -11,6 +11,7 @@ gem 'prawn'
 gem 'fastercsv'
 gem 'subdomain_routes'
 gem 'authlogic'
+gem 'will_paginate'
 
 # Yes, this is weird, but is necessary for the correct deployment under Passenger 2.2.13+
 # See http://github.com/carlhuda/bundler/issues/issue/349
@@ -23,7 +24,7 @@ group :development do
   gem 'radix'
 end
 
-group :development, :test do
+group :development, :test, :cucumber do
   gem 'faker'
 end
 

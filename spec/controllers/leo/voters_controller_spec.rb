@@ -23,9 +23,9 @@ require 'spec_helper'
 describe Leo::VotersController do
   let(:voter) { Factory(:voter) }
 
+  before { login }
+
   context "when reviewing a voter" do
-    before { login }
-    
     it "should look for voter" do
       @controller.expects(:voter_to_review).with(voter.to_param).returns(stub)
       get :show, :subdomains => [ 'leo' ], :id => voter.id
@@ -34,8 +34,6 @@ describe Leo::VotersController do
   end
 
   context "when downloading attestation document" do
-    before { login }
-    
     it "should return attestation PDF for the known user" do
       get :attestation, :subdomains => [ 'leo' ], :id => voter.id, :format => 'pdf'
       response.should render_template('pages/attestation')
@@ -48,8 +46,6 @@ describe Leo::VotersController do
   end
   
   context "when updating" do
-    before { login }
-  
     it "should find the voter by ID" do
       Registration.expects(:find).with('99').returns(stub(:update_status => nil))
       post :update, :subdomains => ['leo'], :id => 99
@@ -91,5 +87,26 @@ describe Leo::VotersController do
       @controller.send(:voter_to_review, @r1).should == @r1
     end
   end
-  
+
+  context "when seeing the index of voters" do
+    it "should return the list of voters" do
+      20.times { Factory(:voter) }
+      get :index, :subdomains => ['leo']
+
+      vs = assigns(:voters)
+      vs.should_not be_nil
+      vs.size.should == Leo::VotersController::VOTERS_PER_PAGE
+    end
+    
+    it "should be just unconfirmed voters by default" do
+      Factory(:voter, :status => "confirmed")
+      Factory(:voter, :status => "denied")
+      unconfirmed = Factory(:voter)
+      
+      get :index, :subdomains => ['leo']
+      
+      vs = assigns(:voters)
+      vs.should == [ unconfirmed ]
+    end
+  end
 end

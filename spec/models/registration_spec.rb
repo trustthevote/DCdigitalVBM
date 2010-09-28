@@ -145,6 +145,7 @@ describe Registration do
 			v.reload
 			v.should be_denied
 			v.deny_reason.should == "Some"
+			v.last_reviewed_at.should_not be_nil
 		end
 		
 		it "should unconfirm when status isn't set" do
