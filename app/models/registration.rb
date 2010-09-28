@@ -24,7 +24,7 @@ class Registration < ActiveRecord::Base
 
   belongs_to  :precinct_split
   has_one     :ballot, :dependent => :destroy
-  has_many    :flow_completions
+  has_many    :flow_completions, :dependent => :destroy
   belongs_to  :reviewer, :class_name => "User"
   has_many    :status_changes, :order => "created_at", :dependent => :destroy
 
@@ -32,10 +32,13 @@ class Registration < ActiveRecord::Base
   validates_presence_of :precinct_split_id
   validates_inclusion_of :status, :in => %w( confirmed denied ), :allow_nil => true
 
-  named_scope :inactive,   :conditions => { :checked_in_at => nil }
-  named_scope :checked_in, :conditions => "checked_in_at IS NOT NULL"
-  named_scope :unfinished, :conditions => [ "checked_in_at IS NOT NULL AND last_completed_at IS NULL" ]
-  named_scope :reviewable, :conditions => "status IS NULL AND voted_digitally = 1", :order => "name, id"
+  named_scope :inactive,    :conditions => { :checked_in_at => nil }
+  named_scope :checked_in,  :conditions => "checked_in_at IS NOT NULL"
+  named_scope :unfinished,  :conditions => [ "checked_in_at IS NOT NULL AND last_completed_at IS NULL" ]
+  named_scope :reviewable,  :conditions => "status IS NULL AND voted_digitally = 1", :order => "name, id"
+  named_scope :returned,    :conditions => { :voted_digitally => true }
+  named_scope :reviewed,    :conditions => "last_reviewed_at IS NOT NULL"
+  named_scope :unconfirmed, :conditions => "status IS NULL"
 
   def self.match(r)
     first(:conditions => {
@@ -85,7 +88,7 @@ class Registration < ActiveRecord::Base
   
   def update_status(voter_params, reviewer)
     voter_params ||= {}
-    params = { :status => voter_params[:status], :deny_reason => voter_params[:deny_reason], :reviewer_id => reviewer.id }
+    params = { :status => voter_params[:status], :deny_reason => voter_params[:deny_reason], :reviewer_id => reviewer.id, :last_reviewed_at => Time.zone.now }
 
     if result = self.update_attributes(params)
       self.status_changes.create(:status => self.status, :deny_reason => self.deny_reason, :reviewer => reviewer)

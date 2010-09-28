@@ -44,3 +44,13 @@ Given /^confirmed voter with name "([^"]*)"$/ do |name|
   Given %{voter with name "#{name}" who voted digitally}
   @voter.update_status({ :status => "confirmed" }, @user)
 end
+
+Given /^there are (\d+) registrations$/ do |n|
+  n.to_i.times { Factory(:registration) }
+end
+
+Given /^there are (\d+) ([^\s]+) voters$/ do |n, status|
+  entity = (status == "unreviewed" ? :voter : :reviewed_voter)
+  status = nil if %w(unconfirmed unreviewed).include?(status)
+  n.to_i.times { Factory(entity, :status => status) }
+end

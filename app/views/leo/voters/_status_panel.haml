@@ -1,0 +1,15 @@
+- stats = ReviewStats.new
+#stats
+  %h2 Status panel
+
+  .returned
+    %p #{stats.returned} / #{stats.total}
+    %label Returned
+
+  .reviewed
+    %p #{stats.reviewed} / #{stats.returned}
+    %label Reviewed
+
+  .unconfirmed
+    %p #{stats.unconfirmed} / #{stats.reviewed}
+    %label Unconfirmed

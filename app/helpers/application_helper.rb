@@ -96,4 +96,8 @@ module ApplicationHelper
   def review_status_of(voter)
     voter.status.blank? ? "Unconfirmed" : voter.status.capitalize
   end
+  
+  def reviewer_name(user)
+    user && user.login
+  end
 end

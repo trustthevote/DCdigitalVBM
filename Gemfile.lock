@@ -4,6 +4,7 @@ dependencies:
     group: 
     - :development
     - :test
+    - :cucumber
     version: ">= 0"
   fastercsv: 
     group: 
@@ -17,11 +18,11 @@ dependencies:
     group: 
     - :default
     version: = 2.3.8
-  authlogic: 
+  prawn: 
     group: 
     - :default
     version: ">= 0"
-  haml: 
+  mysql: 
     group: 
     - :default
     version: ">= 0"
@@ -29,11 +30,11 @@ dependencies:
     group: 
     - :default
     version: = 0.8.7
-  mysql: 
+  haml: 
     group: 
     - :default
     version: ">= 0"
-  prawn: 
+  authlogic: 
     group: 
     - :default
     version: ">= 0"
@@ -68,7 +69,7 @@ dependencies:
     group: 
     - :development
     version: ">= 0"
-  paperclip: 
+  will_paginate: 
     group: 
     - :default
     version: ">= 0"
@@ -76,6 +77,10 @@ dependencies:
     group: 
     - :default
     version: = 1.0.2
+  paperclip: 
+    group: 
+    - :default
+    version: ">= 0"
   factory_girl: 
     group: 
     - :test
@@ -90,11 +95,11 @@ dependencies:
     group: 
     - :default
     version: = 0.9.26
-  RedCloth: 
+  subdomain_routes: 
     group: 
     - :default
     version: ">= 0"
-  subdomain_routes: 
+  RedCloth: 
     group: 
     - :default
     version: ">= 0"
@@ -224,7 +229,9 @@ specs:
     version: 0.3.1
 - timecop: 
     version: 0.3.5
-hash: 6fcba3df7c91614c819d923e15470d82d7d94d2d
+- will_paginate: 
+    version: 2.3.15
+hash: 00a375e758e1395881e6e5962fad1b9196847d3c
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100928132656) do
+ActiveRecord::Schema.define(:version => 20100928160047) do
 
   create_table "ballot_styles", :force => true do |t|
     t.integer  "precinct_split_id", :null => false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20100928132656) do
     t.text     "deny_reason"
     t.boolean  "voted_digitally",   :default => false
     t.integer  "reviewer_id"
+    t.datetime "last_reviewed_at"
   end
 
   add_index "registrations", ["pin_hash", "voter_id", "name", "zip"], :name => "index_registrations_on_pin_hash_and_voter_id_and_name_and_zip", :unique => true
