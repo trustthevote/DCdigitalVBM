@@ -35,6 +35,24 @@
   
   - if @voter.reviewed?
     = link_to "Change Status", '#', :class => "button", :id => "change_status"
+
+  - if @voter.status_changes.any?
+    #history
+      %h2 History
+      %table
+        %thead
+          %tr
+            %th Action
+            %th Time and Date
+            %th LEO Name
+            %th Comments
+        %tbody
+          - @voter.status_changes.each do |sc|
+            %tr
+              %td= sc.status.capitalize
+              %td= sc.created_at.to_s(:us_with_time)
+              %td= sc.reviewer.login
+              %td= h(sc.deny_reason)
   
   #navigation
     = link_to "Previous", leo_voter_url(@nav.previous_item), :class => button_class(!@nav.has_previous?)

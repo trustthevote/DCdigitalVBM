@@ -26,6 +26,7 @@ class Registration < ActiveRecord::Base
   has_one     :ballot, :dependent => :destroy
   has_many    :flow_completions
   belongs_to  :reviewer, :class_name => "User"
+  has_many    :status_changes, :order => "created_at", :dependent => :destroy
 
   validates_presence_of :pin_hash
   validates_presence_of :precinct_split_id
@@ -84,7 +85,12 @@ class Registration < ActiveRecord::Base
   
   def update_status(voter_params, reviewer)
     params = { :status => voter_params[:status], :deny_reason => voter_params[:deny_reason], :reviewer_id => reviewer.id }
-    self.update_attributes(params)
+
+    if result = self.update_attributes(params)
+      self.status_changes.create(:status => self.status, :deny_reason => self.deny_reason, :reviewer => reviewer)
+    end
+    
+    result
   end
   
   def reviewed?

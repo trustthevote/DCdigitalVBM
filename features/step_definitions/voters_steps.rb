@@ -19,3 +19,8 @@ end
 When /^I set deny reason to "([^"]*)"$/ do |deny_reason|
   When %{I fill in "registration[deny_reason]" with "#{deny_reason}"}
 end
+
+Given /^confirmed voter with name "([^"]*)"$/ do |name|
+  Given %{voter with name "#{name}" who voted digitally}
+  @voter.update_status({ :status => "confirmed" }, @user)
+end
