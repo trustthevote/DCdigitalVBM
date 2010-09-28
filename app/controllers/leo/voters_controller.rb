@@ -3,7 +3,7 @@ class Leo::VotersController < Leo::BaseController
   VOTERS_PER_PAGE = 15
 
   def index
-    @voters = Registration.unreviewed.paginate(:page => params[:page], :per_page => VOTERS_PER_PAGE)
+    @voters = Registration.reviewable.paginate(:page => params[:page], :per_page => VOTERS_PER_PAGE)
   end
   
   def show

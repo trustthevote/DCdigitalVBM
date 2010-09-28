@@ -35,7 +35,7 @@ class Registration < ActiveRecord::Base
   named_scope :inactive,    :conditions => { :checked_in_at => nil }
   named_scope :checked_in,  :conditions => "checked_in_at IS NOT NULL"
   named_scope :unfinished,  :conditions => [ "checked_in_at IS NOT NULL AND last_completed_at IS NULL" ]
-  named_scope :reviewable,  :conditions => "status IS NULL AND voted_digitally = 1", :order => "name, id"
+  named_scope :reviewable,  :conditions => { :voted_digitally => true }, :order => "name, id"
   named_scope :returned,    :conditions => { :voted_digitally => true }
   named_scope :unreviewed,  :conditions => { :last_reviewed_at => nil }
   named_scope :reviewed,    :conditions => "last_reviewed_at IS NOT NULL"

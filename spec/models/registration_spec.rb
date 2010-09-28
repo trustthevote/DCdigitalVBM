@@ -126,14 +126,14 @@ describe Registration do
 	end
 
 	context ".reviewable scope" do
-		it "should return only unconfirmed and sorted by names" do
+		it "should return only with returned ballots and sorted by names" do
 			Registration.destroy_all
-			@r1 = Factory(:registration, :name => "Mark", :voted_digitally => true)
-			@r2 = Factory(:registration, :name => "Lee", :voted_digitally => true) # Name goes before the first one
+			@r1 = Factory(:voter, :name => "Mark")
+			@r2 = Factory(:voter, :name => "Lee") # Name goes before the first one
 			@r3 = Factory(:registration, :name => "Beth") # Name goes before the first one
-			@r4 = Factory(:registration, :name => "Jack", :status => "confirmed", :voted_digitally => true) # Name goes before the first two
+			@r4 = Factory(:reviewed_voter, :name => "Jack") # Name goes before the first two
 
-			Registration.reviewable.map(&:id).should == [ @r2.id, @r1.id ]
+			Registration.reviewable.map(&:id).should == [ @r4.id, @r2.id, @r1.id ]
 		end
 	end
 	

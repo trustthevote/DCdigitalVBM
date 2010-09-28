@@ -72,7 +72,7 @@ describe Leo::VotersController do
   context ".voter_to_review" do
     before do
       @r1 = Factory(:voter, :name => "Mark")
-      @r2 = Factory(:voter, :name => "Jack", :status => "confirmed")
+      @r2 = Factory(:registration, :name => "Jack")
     end
     
     it "should return the first reviewable registration if ID isn't given" do
@@ -98,16 +98,18 @@ describe Leo::VotersController do
       vs.size.should == Leo::VotersController::VOTERS_PER_PAGE
     end
     
-    it "should be just unreviewed voters by default" do
-      Factory(:reviewed_voter, :status => "confirmed")
-      Factory(:reviewed_voter, :status => "denied")
-      Factory(:reviewed_voter)
-      unreviewed = Factory(:voter)
+    it "should be reviewable voters by default" do
+      confirmed   = Factory(:reviewed_voter, :status => "confirmed")
+      denied      = Factory(:reviewed_voter, :status => "denied")
+      unconfirmed = Factory(:reviewed_voter)
+      unreturned  = Factory(:registration)
+      unreviewed  = Factory(:voter)
       
       get :index, :subdomains => ['leo']
       
       vs = assigns(:voters)
-      vs.should == [ unreviewed ]
+      vs.should include(confirmed, denied, unconfirmed, unreviewed)
+      vs.should_not include(unreturned)
     end
   end
 end
