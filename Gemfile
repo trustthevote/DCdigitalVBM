@@ -29,14 +29,14 @@ end
 
 group :test, :cucumber do
   gem 'factory_girl'
+  gem 'capybara'
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
 end
 
 group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'timecop'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'cucumber-rails'
   gem 'mocha', :require => nil # This is important. Otherwise you won't be able to mock finders
 end

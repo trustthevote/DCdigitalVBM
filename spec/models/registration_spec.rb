@@ -150,6 +150,12 @@ describe Registration do
     it "should return false if saving failed" do
       v.update_status({ :status => "unknown" }, user).should be_false
     end
+    
+    it "should create a history record" do
+      
+      v.update_status({ :status => "confirmed" })
+      v.history_records.
+    end
   end
   
   context ".reviewed?" do

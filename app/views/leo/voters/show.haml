@@ -25,7 +25,8 @@
   #review_controls{ :style => @voter.reviewed? ? "display: none" : nil }
     - action_class = button_class(!@voter.voted_digitally?)
     = link_to "Confirm", leo_voter_url(@voter), :class => action_class, :id => "confirm"
-    = link_to "Deny",    '#', :class => action_class, :id => "deny"
+
+    = link_to "Deny", '#', :class => action_class, :id => "deny"
     #deny_reason{ :style => "display: none" }
       - form_for @voter, :url => leo_voter_url(@voter), :id => "status_update" do |f|
         = hidden_field_tag "registration[status]", "denied"

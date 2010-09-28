@@ -10,11 +10,19 @@ class Leo::VotersController < Leo::BaseController
     @registration = Registration.find(params[:id])
     prawnto :filename => "attestation.pdf", :prawn => { :page_size => "LETTER" }
     render  :template => "pages/attestation", :layout => false
+  rescue ActiveRecord::RecordNotFound
+    render :text => ''
   end
 
   def update
-    @voter = Registration.find(params[:id])
-    @voter.update_status(params[:registration], current_user)
+    @voter = Registration.find(params[:id]) rescue nil
+
+    if @voter
+      @voter.update_status(params[:registration], current_user)
+    else
+      @voter = Registration.reviewable.first
+    end
+    
     show
   end
   
