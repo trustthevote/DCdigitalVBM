@@ -35,9 +35,9 @@ Then /^I should see the "([^"]*)" button$/ do |label|
 end
 
 Then /^I should see confirmation history record$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^I should see denial history record$/ do
-  pending # express the regexp above with the code you wish you had
+  with_scope("#history") do
+    page.should have_content("History")
+    page.should have_content("Confirmed")
+    page.should have_content(@user.login)
+  end
 end

@@ -26,3 +26,11 @@ Feature: Voter review
       And I should see voter address
       And I should see voter status  
       And I should see the review status "Unconfirmed"
+  
+  Scenario: Reviewing confirmed
+    Given confirmed voter with name "Mark"
+    When  I go to voter "Mark" review page
+    Then  I should see confirmation history record
+  
+  
+  

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100927103506) do
+ActiveRecord::Schema.define(:version => 20100928132656) do
 
   create_table "ballot_styles", :force => true do |t|
     t.integer  "precinct_split_id", :null => false
@@ -74,6 +74,18 @@ ActiveRecord::Schema.define(:version => 20100927103506) do
   add_index "registrations", ["precinct_split_id"], :name => "index_registrations_on_precinct_split_id"
   add_index "registrations", ["reviewer_id"], :name => "index_registrations_on_reviewer_id"
   add_index "registrations", ["voted_digitally"], :name => "index_registrations_on_voted_digitally"
+
+  create_table "status_changes", :force => true do |t|
+    t.integer  "registration_id", :null => false
+    t.integer  "reviewer_id",     :null => false
+    t.string   "status"
+    t.string   "deny_reason"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "status_changes", ["registration_id"], :name => "index_status_changes_on_registration_id"
+  add_index "status_changes", ["reviewer_id"], :name => "index_status_changes_on_reviewer_id"
 
   create_table "users", :force => true do |t|
     t.string   "login",                             :null => false

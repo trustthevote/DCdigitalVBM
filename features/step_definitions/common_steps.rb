@@ -5,14 +5,14 @@ Given /^the following users$/ do |table|
 end
 
 Given /^that I logged in$/ do
-  u = User.create!(
+  @user = User.create!(
     :login                 => 'user', 
     :email                 => 'user@osdv.org', 
     :password              => 'test', 
     :password_confirmation => 'test')
 
   visit   login_url
-  fill_in "Login",    :with => u.login
-  fill_in "Password", :with => u.password
+  fill_in "Login",    :with => @user.login
+  fill_in "Password", :with => @user.password
   click_button "Login"
 end
