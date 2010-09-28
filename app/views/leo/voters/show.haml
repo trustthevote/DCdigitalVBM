@@ -28,16 +28,18 @@
       Status: <strong>#{review_status_of(@voter)}</strong>
   
     #review_controls{ :style => @voter.reviewed? ? "display: none" : nil }
-      - action_class = button_class(!@voter.voted_digitally?)
-      = link_to "Confirm", leo_voter_url(@voter), :class => action_class, :id => "confirm"
+      - not_voted = !@voter.voted_digitally?
+      = link_to "Confirm", leo_voter_url(@voter), :class => button_class(not_voted || @voter.confirmed?), :id => "confirm"
 
-      = link_to "Deny", '#', :class => action_class, :id => "deny"
+      = link_to "Deny", '#', :class => button_class(not_voted || @voter.denied?), :id => "deny"
       #deny_reason{ :style => "display: none" }
         - form_for @voter, :url => leo_voter_url(@voter), :id => "status_update" do |f|
           = hidden_field_tag "registration[status]", "denied"
           = f.text_area "deny_reason", :placeholder => "Please indicate a reason for denying."
           = submit_tag "Submit"
   
+      = link_to "Unconfirm", leo_voter_url(@voter), :class => button_class(not_voted || @voter.unconfirmed?), :id => "unconfirm"
+
     - if @voter.voted_digitally? && @voter.reviewed?
       = link_to "Change Status", '#', :class => "button", :id => "change_status"
 
@@ -54,7 +56,7 @@
           %tbody
             - @voter.status_changes.each do |sc|
               %tr
-                %td= sc.status.capitalize
+                %td= sc.printable_status
                 %td= sc.created_at.to_s(:us_with_time)
                 %td= sc.reviewer.login
                 %td= h(sc.deny_reason)

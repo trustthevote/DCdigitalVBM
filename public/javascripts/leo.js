@@ -21,12 +21,17 @@ $(function() {
 	  $("#review_controls").show();
 	});
 	
-	$("a#confirm").click(function(e) {
+  $("a#confirm").click(function(e) {
     e.preventDefault();
     if (disabled(this)) return;
-
     send(this.href, { 'registration[status]': 'confirmed' }, 'put');
-	});
+  });
+
+  $("a#unconfirm").click(function(e) {
+    e.preventDefault();
+    if (disabled(this)) return;
+    send(this.href, { }, 'put');
+  });
 	
 	$("a#deny").click(function(e) {
     e.preventDefault();
