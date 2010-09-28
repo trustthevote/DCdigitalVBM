@@ -1424,3 +1424,11 @@ label:after {
 #review .vcard { font-size: 24px; line-height: 27px; font-weight: 300; }
 #history { padding-top: 30px; }
 #history td, #history th { padding-right: 30px; }
+#navigation { clear: both; padding-top: 30px; }
+a#previous { float: left; }
+
+/*- Voters index
+----------------------------------------------------------------------*/
+
+#stats { float: right; width: 150px; margin-right: 10px; }
+#voters td, #voters th { padding-right: 30px; }

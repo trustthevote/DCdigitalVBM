@@ -1,9 +1,15 @@
+= render :partial => "status_panel"
+
 #voters
   %table
+    %thead
+      %tr
+        %th.name      Name
+        %th.status    Status
+        %th.reviewer  Reviewer
+        %th.time      Time
     %tbody
       = render :partial => "voter_row", :collection => @voters
-
-= render :partial => "status_panel"
 
 - b = @voters.out_of_bounds? ? 0 : @voters.offset + 1
 - e = @voters.out_of_bounds? ? 0 : @voters.offset + @voters.size

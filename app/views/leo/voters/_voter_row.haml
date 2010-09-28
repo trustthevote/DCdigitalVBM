@@ -1,6 +1,6 @@
 - v = voter_row
 %tr
-  %td.name=     h(v.name)
+  %td.name=     link_to h(v.name), leo_voter_url(v)
   %td.status=   review_status_of(v)
   %td.reviewer= reviewer_name(v.reviewer)
   %td.time=     v.last_reviewed_at && v.last_reviewed_at.to_s(:us_with_time)

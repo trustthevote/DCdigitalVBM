@@ -62,5 +62,5 @@
                 %td= h(sc.deny_reason)
   
     #navigation
-      = link_to "Previous", leo_voter_url(@nav.previous_item), :class => button_class(!@nav.has_previous?)
-      = link_to "Next", leo_voter_url(@nav.next_item), :class => button_class(!@nav.has_next?)
+      = link_to "Previous", leo_voter_url(@nav.previous_item), :class => button_class(!@nav.has_previous?), :id => "previous"
+      = link_to "Next", leo_voter_url(@nav.next_item), :class => button_class(!@nav.has_next?), :id => "next"
