@@ -84,6 +84,7 @@ class Registration < ActiveRecord::Base
   end
   
   def update_status(voter_params, reviewer)
+    voter_params ||= {}
     params = { :status => voter_params[:status], :deny_reason => voter_params[:deny_reason], :reviewer_id => reviewer.id }
 
     if result = self.update_attributes(params)
@@ -95,5 +96,17 @@ class Registration < ActiveRecord::Base
   
   def reviewed?
     %w{ confirmed denied }.include?(self.status)
+  end
+  
+  def confirmed?
+    self.status == "confirmed"
+  end
+  
+  def denied?
+    self.status == "denied"
+  end
+  
+  def unconfirmed?
+    self.status.blank?
   end
 end

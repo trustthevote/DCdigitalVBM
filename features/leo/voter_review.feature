@@ -12,6 +12,7 @@ Feature: Voter review
     Then  I should see "Jack"
       And button "Confirm" should be disabled
       And button "Deny" should be disabled
+      And button "Unconfirm" should be disabled
       And I should not see the attestation document link
       And I should see voter address
       And I should see voter status
@@ -22,6 +23,7 @@ Feature: Voter review
     When  I go to voter "Mike" review page
     Then  button "Confirm" should be enabled
       And button "Deny" should be enabled
+      And button "Unconfirm" should be disabled
       And I should see the attestation document link
       And I should see voter address
       And I should see voter status  
@@ -31,6 +33,8 @@ Feature: Voter review
     Given confirmed voter with name "Mark"
     When  I go to voter "Mark" review page
     Then  I should see confirmation history record
-  
-  
+      And button "Confirm" should be disabled
+      And button "Deny" should be enabled
+      And button "Unconfirm" should be enabled
+
   

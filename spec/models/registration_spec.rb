@@ -143,10 +143,15 @@ describe Registration do
 		it "should set only status related fields and reviewer" do
 			v.update_status({ :status => "denied", :deny_reason => "Some", :name => "updated" }, user).should be_true
 			v.reload
-			v.status.should			 == "denied"
+			v.should be_denied
 			v.deny_reason.should == "Some"
 		end
 		
+		it "should unconfirm when status isn't set" do
+		  v.update_status(nil, user)
+		  v.reload.should be_unconfirmed
+		end
+
 		it "should return false if saving failed" do
 			v.update_status({ :status => "unknown" }, user).should be_false
 		end
@@ -156,7 +161,7 @@ describe Registration do
 
 			sc = v.status_changes.first
 			sc.should_not         be_nil
-			sc.status.should      == "confirmed"
+			sc.status.should      == "confirmed"             
 			sc.reviewer.should    == user
 			sc.deny_reason.should == "my reason"
 		end
