@@ -1,4 +1,4 @@
-function disabled(e) { $(e).hasClass('disabled'); }
+function disabled(e) { return $(e).hasClass('disabled'); }
 function send(url, args, method) {
   var f = $("<form></form>").attr('method', 'POST').attr('action', url);
 
@@ -22,13 +22,14 @@ $(function() {
 	});
 	
 	$("a#confirm").click(function(e) {
+    e.preventDefault();
     if (disabled(this)) return;
 
     send(this.href, { 'registration[status]': 'confirmed' }, 'put');
-    e.preventDefault();
 	});
 	
 	$("a#deny").click(function(e) {
+    e.preventDefault();
 	  if (disabled(this)) return;
 	  
 	  $(this).hide();
