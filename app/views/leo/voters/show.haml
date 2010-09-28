@@ -1,59 +1,64 @@
 %h1 Review
 
-- unless @voter
-  No voters to review
-- else
-  - if @voter.voted_digitally?
-    = link_to "Attestation", leo_attestation_url(@voter)
+#review
+  - unless @voter
+    No voters to review
+  - else
+    - attestation_img = image_tag('attestation.jpg', :width => 410, :height => 265, :class => "attestation")
+    - if @voter.voted_digitally?
+      = link_to attestation_img, leo_attestation_url(@voter)
+    - else
+      = attestation_img
 
-  .vcard
-    .n
-      %span.name= h(@voter.name)
-    .adr
-      .street-address= h(@voter.address)
-      %span.locality= h(@voter.city)
-      %span.region= h(@voter.state)
-      %span.postal-code= h(@voter.zip)
+    #info
+      .vcard
+        .n
+          %span.name= h(@voter.name)
+        .adr
+          .street-address= h(@voter.address)
+          %span.locality= h(@voter.city)
+          %span.region= h(@voter.state)
+          %span.postal-code= h(@voter.zip)
 
-  #voter_status
-    - status = @voter.voted_digitally? ? "Voted" : "Not yet voted"
-    Voter status: <strong>#{status}</strong>
+      #voter_status
+        - status = @voter.voted_digitally? ? "Voted" : "Not yet voted"
+        Voter status: <strong>#{status}</strong>
 
-  #status
-    Status: <strong>#{review_status_of(@voter)}</strong>
+    #status
+      Status: <strong>#{review_status_of(@voter)}</strong>
   
-  #review_controls{ :style => @voter.reviewed? ? "display: none" : nil }
-    - action_class = button_class(!@voter.voted_digitally?)
-    = link_to "Confirm", leo_voter_url(@voter), :class => action_class, :id => "confirm"
+    #review_controls{ :style => @voter.reviewed? ? "display: none" : nil }
+      - action_class = button_class(!@voter.voted_digitally?)
+      = link_to "Confirm", leo_voter_url(@voter), :class => action_class, :id => "confirm"
 
-    = link_to "Deny", '#', :class => action_class, :id => "deny"
-    #deny_reason{ :style => "display: none" }
-      - form_for @voter, :url => leo_voter_url(@voter), :id => "status_update" do |f|
-        = hidden_field_tag "registration[status]", "denied"
-        = f.text_area "deny_reason", :placeholder => "Please indicate a reason for denying."
-        = submit_tag "Submit"
+      = link_to "Deny", '#', :class => action_class, :id => "deny"
+      #deny_reason{ :style => "display: none" }
+        - form_for @voter, :url => leo_voter_url(@voter), :id => "status_update" do |f|
+          = hidden_field_tag "registration[status]", "denied"
+          = f.text_area "deny_reason", :placeholder => "Please indicate a reason for denying."
+          = submit_tag "Submit"
   
-  - if @voter.reviewed?
-    = link_to "Change Status", '#', :class => "button", :id => "change_status"
+    - if @voter.voted_digitally? && @voter.reviewed?
+      = link_to "Change Status", '#', :class => "button", :id => "change_status"
 
-  - if @voter.status_changes.any?
-    #history
-      %h2 History
-      %table
-        %thead
-          %tr
-            %th Action
-            %th Time and Date
-            %th LEO Name
-            %th Comments
-        %tbody
-          - @voter.status_changes.each do |sc|
+    - if @voter.status_changes.any?
+      #history
+        %h2 History
+        %table
+          %thead
             %tr
-              %td= sc.status.capitalize
-              %td= sc.created_at.to_s(:us_with_time)
-              %td= sc.reviewer.login
-              %td= h(sc.deny_reason)
+              %th Action
+              %th Time and Date
+              %th LEO Name
+              %th Comments
+          %tbody
+            - @voter.status_changes.each do |sc|
+              %tr
+                %td= sc.status.capitalize
+                %td= sc.created_at.to_s(:us_with_time)
+                %td= sc.reviewer.login
+                %td= h(sc.deny_reason)
   
-  #navigation
-    = link_to "Previous", leo_voter_url(@nav.previous_item), :class => button_class(!@nav.has_previous?)
-    = link_to "Next", leo_voter_url(@nav.next_item), :class => button_class(!@nav.has_next?)
+    #navigation
+      = link_to "Previous", leo_voter_url(@nav.previous_item), :class => button_class(!@nav.has_previous?)
+      = link_to "Next", leo_voter_url(@nav.next_item), :class => button_class(!@nav.has_next?)

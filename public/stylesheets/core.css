@@ -1410,3 +1410,17 @@ label:after {
 }
 
 
+/*- Review page
+----------------------------------------------------------------------*/
+
+#review img { float: none; }
+#review img.attestation { float: left; margin-right: 10px; }
+#review #info { float: left; width: 200px; }
+#review #history { clear: left; }
+#review #registration_deny_reason { width: 200px; height: 100px; }
+#review #status { margin-bottom: 20px; }
+#review #review_controls .button, #review #change_status { float: left; }
+#review #deny_reason { float: left; }
+#review .vcard { font-size: 24px; line-height: 27px; font-weight: 300; }
+#history { padding-top: 30px; }
+#history td, #history th { padding-right: 30px; }
