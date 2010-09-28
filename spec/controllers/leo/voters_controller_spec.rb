@@ -98,15 +98,16 @@ describe Leo::VotersController do
       vs.size.should == Leo::VotersController::VOTERS_PER_PAGE
     end
     
-    it "should be just unconfirmed voters by default" do
-      Factory(:voter, :status => "confirmed")
-      Factory(:voter, :status => "denied")
-      unconfirmed = Factory(:voter)
+    it "should be just unreviewed voters by default" do
+      Factory(:reviewed_voter, :status => "confirmed")
+      Factory(:reviewed_voter, :status => "denied")
+      Factory(:reviewed_voter)
+      unreviewed = Factory(:voter)
       
       get :index, :subdomains => ['leo']
       
       vs = assigns(:voters)
-      vs.should == [ unconfirmed ]
+      vs.should == [ unreviewed ]
     end
   end
 end
