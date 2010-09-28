@@ -23,7 +23,7 @@ ActionController::Routing::Routes.draw do |map|
     leo.with_options :controller => 'user_sessions', :name_prefix => '' do |c|
       c.connect     '/login',   :action => 'create', :conditions => { :method => :post }
       c.login       '/login',   :action => 'new'
-      c.logout      '/logout',  :action => 'destroy', :conditions => { :method => :delete }
+      c.logout      '/logout',  :action => 'destroy'
     end
 
     leo.root        :controller => 'voters', :action => 'show'

@@ -1,5 +1,5 @@
 class Leo::BaseController < ApplicationController
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :logged_in?
   before_filter :require_user
   
   layout 'leo'
@@ -14,6 +14,10 @@ class Leo::BaseController < ApplicationController
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.record
+  end
+  
+  def logged_in?
+    !current_user.nil?
   end
   
   def require_user
