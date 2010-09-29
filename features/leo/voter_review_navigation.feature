@@ -6,10 +6,10 @@ Feature: Voter review navigation
   Background:
     Given that I logged in
 
-  Scenario: No voters to review
+  Scenario: Finished reviewing
     Given no voters to review
     When  I go to the review page
-    Then  I should see "No voters to review"
+    Then  I should see "Finished"
   
   Scenario: One voter to review
     Given the following voters
@@ -17,7 +17,6 @@ Feature: Voter review navigation
       | Mike | true            |
     When  I go to the review page
     Then  I should see "Mike"
-      And I should not see "No voters to review"
 
   # Scenario: Many voters to review before
   #   Given the following voters

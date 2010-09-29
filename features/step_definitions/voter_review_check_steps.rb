@@ -42,10 +42,6 @@ Then /^I should see voter status$/ do
   Then %{I should see "#{status}"}
 end
 
-Then /^I should see the review status "([^"]*)"$/ do |status|
-  Then %{I should see "#{status}"}
-end
-
 Then /^I should not see status manipulation buttons$/ do
   page.find("#review_controls").should_not be_visible
 end

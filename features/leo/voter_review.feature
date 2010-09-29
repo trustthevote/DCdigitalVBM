@@ -18,9 +18,7 @@ Feature: Voter review
   Scenario: Reviewing voted
     Given voter with name "Mike" who voted digitally
     When  I go to voter "Mike" review page
-    Then  button "Confirm" should be enabled
-      And button "Deny" should be enabled
-      And I should see status manipulation buttons
+    Then  I should see status manipulation buttons
       And I should see the attestation document link
       And I should see voter address
       And I should see voter status  

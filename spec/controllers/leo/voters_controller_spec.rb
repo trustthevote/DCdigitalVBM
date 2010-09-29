@@ -63,7 +63,7 @@ describe Leo::VotersController do
     end
 
     it "should look for the first revieable voter if the specified isn't found" do
-      Registration.expects(:reviewable).returns(mock(:first => voter))
+      Registration.expects(:reviewable).returns(mock(:unreviewed => mock(:first => voter)))
       post :update, :id => -1
       assigns(:voter).should == voter
     end

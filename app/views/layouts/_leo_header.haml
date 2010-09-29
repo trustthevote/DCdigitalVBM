@@ -1,0 +1,9 @@
+%header
+  %a#logo{ :href => leo_root_path }
+    %h2 District of Columbia
+    %h3 Digital Vote-by-Mail Service
+  %nav
+    %ul
+      %li= link_to "Instructions", '#'
+      - if logged_in?
+        %li= link_to "Logout", logout_url

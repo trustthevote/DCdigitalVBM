@@ -34,13 +34,11 @@
     = javascript_tag "window._token = '#{form_authenticity_token}'" if ActionController::Base.allow_forgery_protection
   
   %body#leo
-    = render "layouts/header"
+    = render "layouts/leo_header"
 
     .subheader
       = link_to "Review Voters", leo_review_url
       = link_to "All Voters", leo_voters_url
-      - if logged_in?
-        = link_to "Logout", logout_url
 
     %section#main
       - if @h1

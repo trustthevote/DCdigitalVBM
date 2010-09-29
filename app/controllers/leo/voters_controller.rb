@@ -26,7 +26,7 @@ class Leo::VotersController < Leo::BaseController
     if @voter
       @voter.update_status(params[:registration], current_user)
     else
-      @voter = Registration.reviewable.first
+      @voter = Registration.reviewable.unreviewed.first
     end
     
     show
@@ -35,7 +35,7 @@ class Leo::VotersController < Leo::BaseController
   private
 
   def voter_to_review(id)
-    Registration.find(id) rescue Registration.reviewable.first
+    Registration.find(id) rescue Registration.reviewable.unreviewed.first
   end
   
 end
