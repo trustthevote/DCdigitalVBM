@@ -37,8 +37,7 @@ class PagesController < ApplicationController
   end
 
   def attestation
-    prawnto :filename => "attestation.pdf", :prawn => { :page_size => "LETTER" }
-    render :layout => false
+    render_pdf "attestation"
   end
   
   def complete
