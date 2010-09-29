@@ -3,6 +3,7 @@ set :rails_env, "staging"
 set :user,      "agureiev"
 set :runner,    user
 set :deploy_to, "/home/#{user}/domains/dcdvbm2.noizeramp.com"
+set :branch,    "leo"
   
 role :app, domain
 role :web, domain

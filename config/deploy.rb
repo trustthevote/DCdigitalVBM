@@ -18,7 +18,7 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-set :stages,              %w(staging production nr)
+set :stages,              %w(staging production nr nrleo)
 set :default_stage,       "staging"
 require 'capistrano/ext/multistage'
 

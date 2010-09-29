@@ -13,8 +13,7 @@ class Leo::VotersController < Leo::BaseController
 
   def attestation
     @registration = Registration.find(params[:id])
-    prawnto :filename => "attestation.pdf", :prawn => { :page_size => "LETTER" }
-    render  :template => "pages/attestation", :layout => false
+    render_pdf "attestation", "pages/attestation"
   rescue ActiveRecord::RecordNotFound
     render :text => ''
   end
