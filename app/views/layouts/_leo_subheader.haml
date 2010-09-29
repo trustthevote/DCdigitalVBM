@@ -6,4 +6,5 @@
 
   #pageheader
     %p= Time.zone.now.to_s(:short_day)
-    %p #{@stats.reviewed} / #{@stats.returned}
+    - if logged_in?
+      %p #{@stats.reviewed} / #{@stats.returned}
