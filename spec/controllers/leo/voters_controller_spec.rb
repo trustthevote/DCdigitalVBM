@@ -28,19 +28,19 @@ describe Leo::VotersController do
   context "when reviewing a voter" do
     it "should look for voter" do
       @controller.expects(:voter_to_review).with(voter.to_param).returns(stub)
-      get :show, :subdomains => [ 'leo' ], :id => voter.id
+      get :show, :id => voter.id
       response.should render_template(:show)
     end
   end
 
   context "when downloading attestation document" do
     it "should return attestation PDF for the known user" do
-      get :attestation, :subdomains => [ 'leo' ], :id => voter.id, :format => 'pdf'
+      get :attestation, :id => voter.id, :format => 'pdf'
       response.should render_template('pages/attestation')
     end
     
     it "should return empty page for unknown user" do
-      get :attestation, :subdomains => [ 'leo' ], :id => -1, :format => 'pdf'
+      get :attestation, :id => -1, :format => 'pdf'
       response.body.should be_blank
     end
   end
@@ -48,23 +48,23 @@ describe Leo::VotersController do
   context "when updating" do
     it "should find the voter by ID" do
       Registration.expects(:find).with('99').returns(stub(:update_status => nil))
-      post :update, :subdomains => ['leo'], :id => 99
+      post :update, :id => 99
     end
     
     it "should update status" do
       Registration.expects(:find).returns(mock(:update_status => nil))
-      post :update, :subdomains => ['leo'], :id => 99
+      post :update, :id => 99
     end
     
     it "should render show page with the updated voter" do
-      post :update, :subdomains => ['leo'], :id => voter.id, :registration => { :status => "confirmed" }
+      post :update, :id => voter.id, :registration => { :status => "confirmed" }
       assigns(:voter).should == voter
       response.should render_template(:show)
     end
 
     it "should look for the first revieable voter if the specified isn't found" do
       Registration.expects(:reviewable).returns(mock(:first => voter))
-      post :update, :subdomains => ['leo'], :id => -1
+      post :update, :id => -1
       assigns(:voter).should == voter
     end
   end
@@ -105,7 +105,7 @@ describe Leo::VotersController do
       unreturned  = Factory(:registration)
       unreviewed  = Factory(:voter)
       
-      get :index, :subdomains => ['leo']
+      get :index
       
       vs = assigns(:voters)
       vs.should include(confirmed, denied, unconfirmed, unreviewed)

@@ -19,17 +19,17 @@
 # Thomas Gaskin, Sean Durham, John Sebes.
 
 ActionController::Routing::Routes.draw do |map|
-  map.subdomain :leo do |leo|
-    leo.with_options :controller => 'user_sessions', :name_prefix => '' do |c|
-      c.connect     '/login',   :action => 'create', :conditions => { :method => :post }
-      c.login       '/login',   :action => 'new'
-      c.logout      '/logout',  :action => 'destroy'
+  map.namespace 'leo' do |c|
+    c.with_options :controller => 'user_sessions', :name_prefix => '' do |s|
+      s.connect     '/login',   :action => 'create', :conditions => { :method => :post }
+      s.login       '/login',   :action => 'new'
+      s.logout      '/logout',  :action => 'destroy'
     end
 
-    leo.root        :controller => 'voters', :action => 'show'
-    leo.resources   :voters, :only => [ :index, :show, :update ]
-    leo.attestation '/voter/:id/attestation.pdf', :controller => 'voters', :action => 'attestation', :format => 'pdf'
-    leo.review      '/voters/review', :controller => 'voters', :action => 'show'
+    c.root        :controller => 'voters', :action => 'show'
+    c.resources   :voters, :only => [ :index, :show, :update ]
+    c.attestation '/voter/:id/attestation.pdf', :controller => 'voters', :action => 'attestation', :format => 'pdf'
+    c.review      '/voters/review', :controller => 'voters', :action => 'show'
   end
 
   map.with_options :controller => "pages" do |o|

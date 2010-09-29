@@ -97,6 +97,10 @@ class Registration < ActiveRecord::Base
     
     result
   end
+
+  def reviewable?
+    self.voted_digitally?
+  end
   
   def reviewed?
     %w{ confirmed denied }.include?(self.status)

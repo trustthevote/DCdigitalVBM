@@ -50,6 +50,14 @@ Then /^I should not see status manipulation buttons$/ do
   page.find("#review_controls").should_not be_visible
 end
 
+Then /^I should see status manipulation buttons$/ do
+  page.find("#review_controls").should be_visible
+  with_scope("#review_controls") do
+    page.find("a#confirm").should be_visible
+    page.find("a#deny").should be_visible
+  end
+end
+
 Then /^I should see the "([^"]*)" button$/ do |label|
   page.should have_css('a.button', :text => label)
 end

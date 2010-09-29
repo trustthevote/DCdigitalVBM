@@ -1,12 +1,7 @@
 function disabled(e) { return $(e).hasClass('disabled'); }
-function send(url, args, method) {
-  var f = $("<form></form>").attr('method', 'POST').attr('action', url);
-
-  args['_method'] = method;
-  args['authenticity_token'] = window._token;
-  
-  for (var name in args) f.append($("<input></input>").attr('type', 'hidden').attr('name', name).attr('value', args[name]));
-  
+function send(status) {
+  var f = $("form.edit_registration");
+  $('#registration_status').val(status);
   f.submit();
 }
 
@@ -16,28 +11,19 @@ $(function() {
 	  return false;
 	});
 
-  $("#change_status").click(function(e) {
-	  $(this).hide();
-	  $("#review_controls").show();
-	});
-	
   $("a#confirm").click(function(e) {
     e.preventDefault();
-    if (disabled(this)) return;
-    send(this.href, { 'registration[status]': 'confirmed' }, 'put');
+    $('#deny_reason').val('');
+    send('confirmed');
   });
 
-  $("a#unconfirm").click(function(e) {
-    e.preventDefault();
-    if (disabled(this)) return;
-    send(this.href, { }, 'put');
-  });
-	
 	$("a#deny").click(function(e) {
     e.preventDefault();
-	  if (disabled(this)) return;
-	  
-	  $(this).hide();
-	  $("#deny_reason").show();
+    var reason = $("#registration_deny_reason").val();
+    if (reason.trim().length == 0) {
+      alert("Please enter the reason for denying.");
+    } else {
+      send('denied');
+    }
 	});
 });

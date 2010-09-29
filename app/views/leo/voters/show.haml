@@ -4,7 +4,7 @@
   - unless @voter
     No voters to review
   - else
-    - attestation_img = image_tag('attestation.jpg', :width => 410, :height => 265, :class => "attestation")
+    - attestation_img = image_tag('attestation.png', :width => 317, :height => 326, :class => "attestation")
     - if @voter.voted_digitally?
       = link_to attestation_img, leo_attestation_url(@voter)
     - else
@@ -24,25 +24,15 @@
         - status = @voter.voted_digitally? ? "Voted" : "Not yet voted"
         Voter status: <strong>#{status}</strong>
 
-    #status
-      Status: <strong>#{review_status_of(@voter)}</strong>
+    #review_controls{ :style => @voter.reviewable? ? nil : "display: none" }
+      %h2 Confirm Voter Status
+      %p Select the check box to confirm or deny voter eligibility.
+      = link_to "Confirm", '#', :class => "button", :id => "confirm"
+      = link_to "Deny",    '#', :class => "button", :id => "deny"
+      - form_for @voter, :url => leo_voter_url(@voter) do |f|
+        = hidden_field_tag 'registration[status]', ''
+        = text_area_tag    'registration[deny_reason]', '', :placeholder => "Please indicate a reason for denying."
   
-    #review_controls{ :style => @voter.reviewed? ? "display: none" : nil }
-      - not_voted = !@voter.voted_digitally?
-      = link_to "Confirm", leo_voter_url(@voter), :class => button_class(not_voted || @voter.confirmed?), :id => "confirm"
-
-      = link_to "Deny", '#', :class => button_class(not_voted || @voter.denied?), :id => "deny"
-      #deny_reason{ :style => "display: none" }
-        - form_for @voter, :url => leo_voter_url(@voter), :id => "status_update" do |f|
-          = hidden_field_tag "registration[status]", "denied"
-          = f.text_area "deny_reason", :placeholder => "Please indicate a reason for denying."
-          = submit_tag "Submit"
-  
-      = link_to "Unconfirm", leo_voter_url(@voter), :class => button_class(not_voted || @voter.unconfirmed?), :id => "unconfirm"
-
-    - if @voter.voted_digitally? && @voter.reviewed?
-      = link_to "Change Status", '#', :class => "button", :id => "change_status"
-
     - if @voter.status_changes.any?
       #history
         %h2 History
@@ -54,13 +44,10 @@
               %th LEO Name
               %th Comments
           %tbody
-            - @voter.status_changes.each do |sc|
+            - @voter.status_changes.all(:include => :reviewer).each do |sc|
               %tr
                 %td= sc.printable_status
                 %td= sc.created_at.to_s(:us_with_time)
                 %td= sc.reviewer.login
                 %td= h(sc.deny_reason)
   
-    #navigation
-      = link_to "Previous", leo_voter_url(@nav.previous_item), :class => button_class(!@nav.has_previous?), :id => "previous"
-      = link_to "Next", leo_voter_url(@nav.next_item), :class => button_class(!@nav.has_next?), :id => "next"
