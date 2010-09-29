@@ -27,6 +27,7 @@ describe Leo::VotersController do
 
   context "when reviewing a voter" do
     it "should look for voter" do
+      VoterNavigation.any_instance.stubs(:next).returns(nil)
       @controller.expects(:voter_to_review).with(voter.to_param).returns(stub)
       get :show, :id => voter.id
       response.should render_template(:show)
@@ -46,6 +47,8 @@ describe Leo::VotersController do
   end
   
   context "when updating" do
+    before { VoterNavigation.any_instance.stubs(:next).returns(nil) }
+
     it "should find the voter by ID" do
       Registration.expects(:find).with('99').returns(stub(:update_status => nil))
       post :update, :id => 99

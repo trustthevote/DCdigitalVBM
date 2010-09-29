@@ -1,0 +1,9 @@
+- @stats ||= ReviewStats.new
+%section#subheader
+  #electiondate
+    %p DC General Election
+    %p November 2, 2010
+
+  #pageheader
+    %p= Time.zone.now.to_s(:short_day)
+    %p #{@stats.reviewed} / #{@stats.returned}

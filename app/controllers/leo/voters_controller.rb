@@ -7,9 +7,8 @@ class Leo::VotersController < Leo::BaseController
   end
   
   def show
-    @voter ||= voter_to_review(params[:id])
-    @nav = VoterNavigation.new(@voter)
-    render :show
+    @voter    ||= voter_to_review(params[:id])
+    @next_voter = VoterNavigation.new.next(@voter)
   end
 
   def attestation
@@ -23,19 +22,20 @@ class Leo::VotersController < Leo::BaseController
   def update
     @voter = Registration.find(params[:id]) rescue nil
 
-    if @voter
-      @voter.update_status(params[:registration], current_user)
-    else
-      @voter = Registration.reviewable.unreviewed.first
-    end
+    @voter.update_status(params[:registration], current_user) if @voter
+
+    # Get the next pair
+    vn = VoterNavigation.new
+    @voter      = vn.next(@voter)
+    @next_voter = vn.next(@voter)
     
-    show
+    render :show
   end
   
   private
 
   def voter_to_review(id)
-    Registration.find(id) rescue Registration.reviewable.unreviewed.first
+    Registration.find(id) rescue VoterNavigation.new.next
   end
   
 end

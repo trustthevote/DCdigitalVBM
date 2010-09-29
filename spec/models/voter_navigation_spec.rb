@@ -21,34 +21,41 @@
 require 'spec_helper'
 
 describe VoterNavigation do
-  let(:voter) { Factory(:voter, :name => "Lee") }
+  let(:voter) { Factory(:voter) }
+  let(:reviewed_voter) { Factory(:reviewed_voter) }
 
-  context "when no current voter given" do
-    it { should_not have_next }
-    it { should_not have_previous }
-  end
-    
-  context "when no other voters" do
-    subject { VoterNavigation.new(voter) }
-    it { should_not have_next }
-    it { should_not have_previous }
+  context "when no voters" do
+    it "should return nil" do
+      subject.next.should be_nil
+    end
   end
   
-  context "when there are other voters" do
-    subject { VoterNavigation.new(voter) }
-
-    context "before current" do
-      before { @ken = Factory(:voter, :name => "Ken") }
-      it { should have_previous }
-      it { should_not have_next }
-      its(:previous_item) { should == @ken }
-    end
-    
-    context "after current" do
-      before { @mark = Factory(:voter, :name => "Mark") }
-      it { should_not have_previous }
-      it { should have_next }
-      its(:next_item) { should == @mark }
+  context "no unreviewed voters" do
+    it "should return nil" do
+      Factory(:reviewed_voter)
+      subject.next(reviewed_voter).should be_nil
     end
   end
+  
+  context "several unreviewed voters" do
+    before do
+      @a = Factory(:voter, :name => "A")
+      @b = Factory(:reviewed_voter, :name => "B")
+      @c = Factory(:voter, :name => "C")
+    end
+    
+    it "should return A as first" do
+      subject.next.should == @a
+    end
+    
+    it "should return C for A and B" do
+      subject.next(@a).should == @c
+      subject.next(@b).should == @c
+    end
+    
+    it "should return A for C" do
+      subject.next(@c).should == @a
+    end
+  end
+
 end

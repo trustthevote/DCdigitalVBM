@@ -8,7 +8,6 @@ function send(status) {
 $(function() {
 	$("a.button").click(function(e) {
 	  if (disabled(this)) e.preventDefault();
-	  return false;
 	});
 
   $("a#confirm").click(function(e) {
