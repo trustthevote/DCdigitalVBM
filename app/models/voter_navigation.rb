@@ -21,7 +21,7 @@
 class VoterNavigation
 
   # Returns the next record to review
-  def next(current = nil)
+  def self.next(current = nil)
     all_ids = Registration.reviewable.all(:select => 'id', :conditions => [ "last_reviewed_at IS NULL OR id = ?", current.try(:id)]).map(&:id)
     
     # Nothing if no revieable
@@ -39,5 +39,4 @@ class VoterNavigation
 
     Registration.find(next_id)
   end
-  
 end

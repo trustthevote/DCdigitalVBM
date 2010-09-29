@@ -21,6 +21,7 @@
 require 'spec_helper'
 
 describe VoterNavigation do
+  subject { VoterNavigation }
   let(:voter) { Factory(:voter) }
   let(:reviewed_voter) { Factory(:reviewed_voter) }
 

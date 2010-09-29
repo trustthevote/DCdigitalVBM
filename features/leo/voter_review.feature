@@ -28,4 +28,3 @@ Feature: Voter review
     When  I go to voter "Mark" review page
     Then  I should see confirmation history record
       And I should see status manipulation buttons
-  

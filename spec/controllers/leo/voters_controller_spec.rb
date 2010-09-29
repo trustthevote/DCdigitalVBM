@@ -27,7 +27,7 @@ describe Leo::VotersController do
 
   context "when reviewing a voter" do
     it "should look for voter" do
-      VoterNavigation.any_instance.stubs(:next).returns(nil)
+      VoterNavigation.stubs(:next).returns(nil)
       @controller.expects(:voter_to_review).with(voter.to_param).returns(stub)
       get :show, :id => voter.id
       response.should render_template(:show)
@@ -47,7 +47,7 @@ describe Leo::VotersController do
   end
   
   context "when updating" do
-    before { VoterNavigation.any_instance.stubs(:next).returns(nil) }
+    before { VoterNavigation.stubs(:next).returns(nil) }
 
     it "should find the voter by ID" do
       Registration.expects(:find).with('99').returns(stub(:update_status => nil))
@@ -61,14 +61,13 @@ describe Leo::VotersController do
     
     it "should render show page with the updated voter" do
       post :update, :id => voter.id, :registration => { :status => "confirmed" }
-      assigns(:voter).should == voter
+      assigns(:voter).should == nil
       response.should render_template(:show)
     end
 
     it "should look for the first revieable voter if the specified isn't found" do
-      Registration.expects(:reviewable).returns(mock(:unreviewed => mock(:first => voter)))
       post :update, :id => -1
-      assigns(:voter).should == voter
+      assigns(:voter).should == nil
     end
   end
   

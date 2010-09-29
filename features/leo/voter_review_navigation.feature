@@ -17,13 +17,3 @@ Feature: Voter review navigation
       | Mike | true            |
     When  I go to the review page
     Then  I should see "Mike"
-
-  # Scenario: Many voters to review before
-  #   Given the following voters
-  #     | name | voted_digitally |
-  #     | Mike | true            |
-  #     | Jack | true            |
-  #   When  I go to the review page
-  #   Then  I should see "Jack"
-  #   When  I follow "Next"
-  #   Then  I should see "Mike"
