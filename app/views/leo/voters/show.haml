@@ -10,7 +10,7 @@
   - else
     - attestation_img = image_tag('attestation.png', :width => 317, :height => 326, :class => "attestation")
     - if @voter.voted_digitally?
-      = link_to attestation_img, leo_attestation_url(@voter)
+      = link_to attestation_img, leo_attestation_url(@voter), :target => "_blank"
     - else
       = attestation_img
 
