@@ -12,7 +12,7 @@ module NavigationHelpers
       '/'
 
     when /the review page/
-      leo_review_url
+      leo_review_path
 
     when /voter "([^"]*)" review page/
       leo_voter_url(Registration.find_by_name($1))

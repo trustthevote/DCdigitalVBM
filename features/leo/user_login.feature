@@ -18,6 +18,7 @@ Feature: User login
       And fill in "correct" for "user_session[password]"
       And press "Login"
     Then  I should see "Logout"
+      And I should be on the review page
   
   Scenario: Trying incorrect user name
     Given I am on the login page
