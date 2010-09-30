@@ -57,6 +57,7 @@ end
 Factory.define :reviewed_voter, :parent => :voter do |f|
   f.last_reviewed_at  { Time.now }
   f.reviewer          { @reviewer ||= Factory(:user) }
+  f.status            "confirmed"
 end
 
 Factory.define :ballot do |f|

@@ -19,6 +19,7 @@
 # Thomas Gaskin, Sean Durham, John Sebes.
 
 class ReviewStats
+
   def total
     @total ||= Registration.count
   end
@@ -31,8 +32,8 @@ class ReviewStats
     @reviewed ||= Registration.reviewed.count
   end
   
-  def unconfirmed
-    @unconfirmed ||= Registration.reviewed.unconfirmed.count
+  def confirmed
+    @confirmed ||= Registration.reviewed.confirmed.count
   end
   
 end

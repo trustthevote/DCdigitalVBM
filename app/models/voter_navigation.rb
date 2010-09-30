@@ -22,7 +22,7 @@ class VoterNavigation
 
   # Returns the next record to review
   def self.next(current = nil)
-    all_ids = Registration.reviewable.all(:select => 'id', :conditions => [ "last_reviewed_at IS NULL OR id = ?", current.try(:id)]).map(&:id)
+    all_ids = Registration.returned.all(:select => 'id', :conditions => [ "last_reviewed_at IS NULL OR id = ?", current.try(:id)], :order => "name, id").map(&:id)
     
     # Nothing if no revieable
     return nil if all_ids.empty?

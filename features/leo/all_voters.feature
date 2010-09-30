@@ -30,7 +30,7 @@ Feature: All voters
     Then  I should see "Status panel"
       And I should see "9 / 14" within ".returned"
       And I should see "7 / 9" within ".reviewed"
-      And I should see "4 / 7" within ".unconfirmed"
+      And I should see "2 / 7" within ".confirmed"
   
   
   
