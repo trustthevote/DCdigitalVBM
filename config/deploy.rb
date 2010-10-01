@@ -44,8 +44,9 @@ set(:current_path)        { "#{deploy_to}/current" }  # A hack since cap 2.3.0 u
 task :setup, :roles => :app do
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   run "cp #{shared_path}/config/config.yml #{release_path}/config/config.yml"
-  run "ln -s #{shared_path}/assets #{release_path}/public/assets"
-  run "ln -s #{shared_path}/ballots #{release_path}/ballots"
+  run "mkdir -p #{shared_path}/assets; ln -s #{shared_path}/assets #{release_path}/public/assets"
+  run "mkdir -p #{shared_path}/ballots; ln -s #{shared_path}/ballots #{release_path}/ballots"
+  run "mkdir -p #{shared_path}/accepted_ballots; ln -s #{shared_path}/accepted_ballots #{release_path}/accepted_ballots"
   run "rm -Rf #{release_path}/.git" if fetch(:deploy_to) != :export
   
   run "cd #{latest_release}; bundle install --without development test"

@@ -59,6 +59,37 @@ describe Ballot do
     assert_validness(:pdf_file_name => ("%s-1.%s" % @s.pdf.original_filename.split('.')))
   end
   
+  context "when anonymizing" do
+    let(:ballot) { Factory.build(:ballot, :registration => @r) }
+
+    before do
+      @original_name = ballot.pdf.path
+      @accepted_path = "#{Rails.root}/accepted_ballots"
+      FileUtils.rm_r(@accepted_path) if File.exist?(@accepted_path)
+      FileUtils.mkdir_p(File.dirname(@original_name))
+      File.open(@original_name, 'w') { |f| f.write(ballot.id.to_s) }
+      @bid = ballot.id
+    end
+    
+    after do
+      ballot.destroy
+      FileUtils.rm_r(@accepted_path) if File.exist?(@accepted_path)
+    end
+    
+    it "should move ballot file to accepted ballots location and delete this ballot" do
+      ballot.accept!
+      ballot.should be_frozen
+
+      files = Dir.glob("#{@accepted_path}/*.gpg")
+      files.size.should == 1
+      File.open(files.first, 'r').read.should == @bid.to_s
+      
+      name = File.basename(files.first)
+      name.should_not == @original_name
+      name.should match(/[0-9a-z]{40}\.pdf\.gpg/)
+    end
+  end
+  
   def assert_validness(ballot_options, valid = true, error = nil)
     b = Factory.build(:ballot, { :registration => @r }.merge(ballot_options))
     b.valid?.should == valid

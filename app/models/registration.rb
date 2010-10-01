@@ -97,9 +97,10 @@ class Registration < ActiveRecord::Base
     result = true
     # Don't update if blank, but log
     if new_status.blank? || (result = self.update_attributes(:status => new_status, :deny_reason => new_deny_reason, :reviewer_id => reviewer.id, :last_reviewed_at => Time.zone.now))
+      self.ballot.accept! if confirmed? && self.ballot
       log_action(new_status, new_deny_reason, reviewer)
     end
-    
+
     result
   end
 

@@ -164,6 +164,21 @@ describe Registration do
 		  v.deny_reason.should be_nil
 	  end
 	  
+    context "accepting ballots" do
+      it "should accept the ballot when confirming" do
+        v.stubs(:ballot).returns(mock(:accept! => true))
+        v.update_status({ :status => "confirmed" }, user)
+      end
+      
+      it "should not accept the ballot when denying or skipping" do
+        ballot = Ballot.new
+        ballot.stubs(:accept!).raises("Must not invoke")
+        v.stubs(:ballot).returns(ballot)
+        v.update_status({ :status => "denied" }, user)
+        v.update_status({ :status => "" }, user)
+      end
+    end
+    
 	  context "creating log records" do
 	    it "should create a record for confirming" do
 	      v.update_status({ :status => "confirmed", :deny_reason => "reason" }, user)

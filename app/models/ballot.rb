@@ -40,6 +40,19 @@ class Ballot < ActiveRecord::Base
     attachment_for(:pdf).assign(file)
   end
   
+  # Moves the file to a secure accepted ballots location and deletes the self
+  def accept!
+    raise "No ballot file to anonymize" if self.pdf.nil?
+    
+    scrambled_name = Digest::SHA1.hexdigest("#{File.basename(self.pdf.path)}#{Time.now.to_i}")
+    accepted_path  = "#{Rails.root}/accepted_ballots"
+
+    FileUtils.mkdir_p(accepted_path)
+    FileUtils.cp(self.pdf.path, "#{accepted_path}/#{scrambled_name}.pdf.gpg")
+
+    self.destroy
+  end
+  
   private
   
   def validate_pdf
