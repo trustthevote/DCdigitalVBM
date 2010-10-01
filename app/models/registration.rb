@@ -40,6 +40,7 @@ class Registration < ActiveRecord::Base
   named_scope :unreviewed,  :conditions => { :last_reviewed_at => nil }
   named_scope :reviewed,    :conditions => "last_reviewed_at IS NOT NULL"
   named_scope :confirmed,   :conditions => { :status => "confirmed" }
+  named_scope :denied,      :conditions => { :status => "denied" }
 
   def self.match(r)
     first(:conditions => {

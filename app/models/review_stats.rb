@@ -36,4 +36,8 @@ class ReviewStats
     @confirmed ||= Registration.reviewed.confirmed.count
   end
   
+  def denied
+    @denied ||= Registration.reviewed.denied.count
+  end
+  
 end

@@ -33,5 +33,6 @@ describe ReviewStats do
   its(:returned)    { should == 3 + 2 + 1 }
   its(:reviewed)    { should == 2 + 1 }
   its(:confirmed)   { should == 2 }
+  its(:denied)      { should == 1 }
 
 end

@@ -31,6 +31,7 @@ Feature: All voters
       And I should see "9 / 14" within ".returned"
       And I should see "7 / 9" within ".reviewed"
       And I should see "2 / 7" within ".confirmed"
+      And I should see "1 / 7" within ".denied"
   
   
   
