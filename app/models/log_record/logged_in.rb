@@ -18,9 +18,10 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-class User < ActiveRecord::Base
-  acts_as_authentic
-
-  has_many :status_changes, :dependent => :nullify
+class LogRecord::LoggedIn < LogRecord::Base
+  
+  def action
+    "Logged In"
+  end
 
 end

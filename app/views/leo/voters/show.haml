@@ -33,12 +33,12 @@
       %p Select the check box to confirm or deny voter eligibility.
       = link_to "Confirm", '#', :class => "button", :id => "confirm"
       = link_to "Deny",    '#', :class => "button", :id => "deny"
-      = link_to "Skip", leo_voter_url(@next_voter), :class => "button" if @next_voter
+      = link_to "Skip",    '#', :class => "button", :id => "skip" if @next_voter
       - form_for @voter, :url => leo_voter_url(@voter) do |f|
         = hidden_field_tag 'registration[status]', ''
         = text_area_tag    'registration[deny_reason]', '', :placeholder => "Please indicate a reason for denying."
   
-    - if @voter.status_changes.any?
+    - if @voter.log_records.any?
       #history
         %h2 History
         %table
@@ -49,9 +49,9 @@
               %th LEO Name
               %th Comments
           %tbody
-            - @voter.status_changes.all(:include => :reviewer).each do |sc|
+            - @voter.log_records.all(:include => :reviewer, :order => "created_at").each do |r|
               %tr
-                %td= sc.printable_status
-                %td= sc.created_at.to_s(:us_with_time)
-                %td= sc.reviewer.login
-                %td= h(sc.deny_reason)
+                %td= r.action
+                %td= r.created_at.to_s(:us_with_time)
+                %td= reviewer_name(r.reviewer)
+                %td= h(r.deny_reason)

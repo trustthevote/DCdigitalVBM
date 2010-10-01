@@ -18,9 +18,16 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-class User < ActiveRecord::Base
-  acts_as_authentic
+class LogRecord::Base < ActiveRecord::Base
 
-  has_many :status_changes, :dependent => :nullify
+  set_table_name "log_records"
 
+  belongs_to :reviewer, :class_name => "User"
+  
+  validates_presence_of :reviewer
+
+  # Returns the human-readable action logged
+  def action
+    nil
+  end
 end

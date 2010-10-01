@@ -18,8 +18,13 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-require 'spec_helper'
-
-describe StatusChange do
+class LogRecord::Denied < LogRecord::Base
   
+  belongs_to :registration
+
+  validates_presence_of :registration
+
+  def action
+    "Denied"
+  end
 end

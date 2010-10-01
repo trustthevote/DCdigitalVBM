@@ -20,6 +20,18 @@
 
 require 'spec_helper'
 
+Spec::Matchers.define :have_log_record do |reviewer, type, deny_reason|
+  match do |voter|
+    lr = voter.log_records
+    lr.size.should        == 1
+
+    r = lr.first
+    r.type.should         == "LogRecord::#{type.capitalize}"
+    r.deny_reason.should  == deny_reason
+    r.reviewer.should     == reviewer
+  end
+end
+
 describe Registration do
 	let(:r) { Factory(:registration) }
 	let(:v) { Factory(:voter) }
@@ -157,15 +169,29 @@ describe Registration do
 			v.update_status({ :status => "unknown" }, user).should be_false
 		end
 		
-		it "should create a history record" do
-			v.update_status({ :status => "confirmed", :deny_reason => "my reason" }, user)
+		it "should not update the record if status is blank (skipping)" do
+		  v.update_status({ :status => "", :deny_reason => "some" }, user)
+		  v.reload
+		  v.should be_unconfirmed
+		  v.deny_reason.should be_nil
+	  end
+	  
+	  context "creating log records" do
+	    it "should create a record for confirming" do
+	      v.update_status({ :status => "confirmed", :deny_reason => "reason" }, user)
+	      v.should have_log_record(user, "confirmed", nil)
+      end
 
-			sc = v.status_changes.first
-			sc.should_not         be_nil
-			sc.status.should      == "confirmed"             
-			sc.reviewer.should    == user
-			sc.deny_reason.should == "my reason"
-		end
+	    it "should create a record for denying" do
+	      v.update_status({ :status => "denied", :deny_reason => "reason" }, user)
+	      v.should have_log_record(user, "denied", "reason")
+      end
+      
+	    it "should create a record for skipping" do
+	      v.update_status({ :status => "", :deny_reason => "reason" }, user)
+	      v.should have_log_record(user, "skipped", nil)
+      end
+    end
 	end
 	
 	context ".reviewed?" do

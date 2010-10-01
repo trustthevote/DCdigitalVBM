@@ -26,7 +26,7 @@ class Registration < ActiveRecord::Base
   has_one     :ballot, :dependent => :destroy
   has_many    :flow_completions, :dependent => :destroy
   belongs_to  :reviewer, :class_name => "User"
-  has_many    :status_changes, :order => "created_at", :dependent => :destroy
+  has_many    :log_records, :class_name => "LogRecord::Base", :dependent => :destroy
 
   validates_presence_of :pin_hash
   validates_presence_of :precinct_split_id
@@ -89,11 +89,15 @@ class Registration < ActiveRecord::Base
   end
   
   def update_status(voter_params, reviewer)
-    voter_params ||= {}
-    params = { :status => voter_params[:status], :deny_reason => voter_params[:deny_reason], :reviewer_id => reviewer.id, :last_reviewed_at => Time.zone.now }
-
-    if result = self.update_attributes(params)
-      self.status_changes.create(:status => self.status, :deny_reason => self.deny_reason, :reviewer => reviewer)
+    voter_params  ||= {}
+    new_status      = voter_params[:status]
+    new_deny_reason = voter_params[:deny_reason]
+    new_deny_reason = nil if new_status != 'denied'
+    
+    result = true
+    # Don't update if blank, but log
+    if new_status.blank? || (result = self.update_attributes(:status => new_status, :deny_reason => new_deny_reason, :reviewer_id => reviewer.id, :last_reviewed_at => Time.zone.now))
+      log_action(new_status, new_deny_reason, reviewer)
     end
     
     result
@@ -117,5 +121,16 @@ class Registration < ActiveRecord::Base
   
   def unconfirmed?
     self.status.blank?
+  end
+  
+  def log_action(status, deny_reason, reviewer)
+    case status
+    when 'confirmed'
+      LogRecord::Confirmed.create(:reviewer => reviewer, :registration => self)
+    when 'denied'
+      LogRecord::Denied.create(:reviewer => reviewer, :registration => self, :deny_reason => deny_reason)
+    else
+      LogRecord::Skipped.create(:reviewer => reviewer, :registration => self)
+    end
   end
 end

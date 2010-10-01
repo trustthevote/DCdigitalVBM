@@ -18,16 +18,24 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-class StatusChange < ActiveRecord::Base
+class CreateLogRecords < ActiveRecord::Migration
+  def self.up
+    create_table :log_records do |t|
+      t.references  :reviewer, :null => false
+      t.string      :type, :null => false
 
-  belongs_to :registration
-  belongs_to :reviewer, :class_name => "User"
+      t.references  :registration
+      t.text        :deny_reason
 
-  validates_inclusion_of :status, :in => %w( confirmed denied ), :allow_nil => true
-  validates_presence_of  :reviewer_id, :registration_id
-
-  def printable_status
-    self.status ? self.status.capitalize : "Unconfirmed"
+      t.timestamps
+    end
+    
+    add_index :log_records, :type
+    add_index :log_records, :reviewer_id
+    add_index :log_records, :registration_id
   end
-  
+
+  def self.down
+    drop_table :log_records
+  end
 end

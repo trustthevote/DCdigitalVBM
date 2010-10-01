@@ -25,4 +25,9 @@ $(function() {
       send('denied');
     }
 	});
+	
+	$("a#skip").click(function(e) {
+	  e.preventDefault();
+	  send('');
+	});
 });

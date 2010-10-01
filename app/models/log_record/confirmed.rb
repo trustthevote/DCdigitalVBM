@@ -18,9 +18,13 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-class User < ActiveRecord::Base
-  acts_as_authentic
+class LogRecord::Confirmed < LogRecord::Base
+  
+  belongs_to :registration
 
-  has_many :status_changes, :dependent => :nullify
-
+  validates_presence_of :registration
+  
+  def action
+    "Confirmed"
+  end
 end
