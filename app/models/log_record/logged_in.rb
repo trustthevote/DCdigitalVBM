@@ -23,5 +23,11 @@ class LogRecord::LoggedIn < LogRecord::Base
   def action
     "Logged In"
   end
+  
+  protected
+  
+  def action_description
+    "Logged in"
+  end
 
 end

@@ -18,20 +18,21 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-class LogRecord::Denied < LogRecord::Base
-  
-  belongs_to :registration
+namespace :leo do
+  desc "Print activity log"
+  task :log => :environment do
+    reviewer = ENV['reviewer']
 
-  validates_presence_of :registration
-
-  def action
-    "Denied"
+    Log.new.print(reviewer)
   end
   
-  protected
-  
-  def action_description
-    "Denied #{registration.name} with reason: #{deny_reason}"
+  desc "Adds a reviewer"
+  task :add_reviewer => :environment do
+    login    = ENV['login']
+    email    = ENV['email']
+    password = ENV['password']
+    
+    User.create!(:login => login, :email => email, :password => password, :password_confirmation => password)
   end
-
+  
 end

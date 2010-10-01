@@ -23,5 +23,11 @@ class LogRecord::LoggedOut < LogRecord::Base
   def action
     "Logged Out"
   end
+  
+  protected
+  
+  def action_description
+    "Logged out"
+  end
 
 end

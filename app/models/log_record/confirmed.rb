@@ -27,4 +27,11 @@ class LogRecord::Confirmed < LogRecord::Base
   def action
     "Confirmed"
   end
+  
+  protected
+  
+  def action_description
+    "Confirmed #{registration.name}"
+  end
+
 end

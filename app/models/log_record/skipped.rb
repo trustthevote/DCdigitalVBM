@@ -28,4 +28,10 @@ class LogRecord::Skipped < LogRecord::Base
     "Skipped"
   end
   
+  protected
+  
+  def action_description
+    "Skipped #{registration.name}"
+  end
+  
 end

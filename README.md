@@ -6,7 +6,7 @@ Requirements
 ------------
 
 * Ruby 1.8+ (tested on Ruby 1.8.7)
-* RubyGems 1.3.6+ (tested on Ruby 1.3.6)
+* RubyGems 1.3.6+ (tested on RubyGems 1.3.6)
 * Bundler 0.9.26
 * GnuPG (gnupg.org) with the public key for ballots signing 
 
@@ -152,3 +152,30 @@ The sample output is:
 
 Please note that since we allow working through physical and digital workflows, the last two lines are not self-exclusive.
 In this particular sample example, you can see (total - inactive = 1) that the same user has completed both flows.
+
+
+
+Attestation Review
+==================
+
+After the voting finished, the attestations can be reviewed at <your_app_domain>/leo.
+You will need at least one LEO user registered to be able to log into the reviewing
+area.
+
+You can add reviewers using the rake task 'leo:add_reviewer', like this:
+
+    $ rake leo:add_reviewer login=mark email=mark@some.com password=pass
+
+Now the user can log in with the user name 'mark' and password 'pass'.
+
+The review screen lets the user to confirm, deny (with the reason) or skip voter
+records.
+
+All actions are logged, and the log can be displayed with the rake task 'leo:log', like
+this:
+
+    $ rake leo:log reviewer=mark
+    
+Or for all reviewers:
+
+    $ rake leo:log

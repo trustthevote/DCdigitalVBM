@@ -18,20 +18,24 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-class LogRecord::Denied < LogRecord::Base
-  
-  belongs_to :registration
+class Log
 
-  validates_presence_of :registration
-
-  def action
-    "Denied"
-  end
-  
-  protected
-  
-  def action_description
-    "Denied #{registration.name} with reason: #{deny_reason}"
+  # Print log for a given reviewer or all of them
+  def print(reviewer = nil)
+    # See if we can find a reviewer
+    if reviewer && !reviewer.is_a?(User)
+      reviewer = User.find_by_login(reviewer)
+    end
+    
+    # Add reviewer condition
+    options = { :include => [ :reviewer, :registration ] }
+    if reviewer
+      options = { :conditions => { :reviewer_id => reviewer.id } }
+    end
+    
+    LogRecord::Base.find_in_batches(options) do |records|
+      records.each { |record| puts record.description }
+    end
   end
 
 end

@@ -23,11 +23,25 @@ class LogRecord::Base < ActiveRecord::Base
   set_table_name "log_records"
 
   belongs_to :reviewer, :class_name => "User"
+
+  # We need it here to make efficient lookups in Log
+  belongs_to :registration
   
   validates_presence_of :reviewer
 
   # Returns the human-readable action logged
   def action
-    nil
+    # Put the name of the action here in sub-classes (e.g. "Logged In")
   end
+  
+  def description
+    "#{created_at.to_s(:us_with_time)}: #{reviewer.login.ljust(20, ' ')} - #{action_description}"
+  end
+
+  protected
+
+  def action_description
+    # Put the action description here in sub-classes (e.g. "Confirmed Mike" or "Denied Mike with reason: Too bad at chess")
+  end
+  
 end
