@@ -135,7 +135,7 @@ specs:
 - gem_plugin: 
     version: 0.2.3
 - haml: 
-    version: 3.0.20
+    version: 3.0.21
 - mocha: 
     version: 0.9.8
 - mongrel: 
