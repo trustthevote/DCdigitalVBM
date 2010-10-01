@@ -20,18 +20,6 @@
 
 require 'spec_helper'
 
-Spec::Matchers.define :have_log_record do |reviewer, type, deny_reason|
-  match do |voter|
-    lr = voter.log_records
-    lr.size.should        == 1
-
-    r = lr.first
-    r.type.should         == "LogRecord::#{type.capitalize}"
-    r.deny_reason.should  == deny_reason
-    r.reviewer.should     == reviewer
-  end
-end
-
 describe Registration do
 	let(:r) { Factory(:registration) }
 	let(:v) { Factory(:voter) }
@@ -179,17 +167,17 @@ describe Registration do
 	  context "creating log records" do
 	    it "should create a record for confirming" do
 	      v.update_status({ :status => "confirmed", :deny_reason => "reason" }, user)
-	      v.should have_log_record(user, "confirmed", nil)
+	      v.should have_log_record("Confirmed", :reviewer => user)
       end
 
 	    it "should create a record for denying" do
 	      v.update_status({ :status => "denied", :deny_reason => "reason" }, user)
-	      v.should have_log_record(user, "denied", "reason")
+	      v.should have_log_record("Denied", :deny_reason => "reason", :reviewer => user)
       end
       
 	    it "should create a record for skipping" do
 	      v.update_status({ :status => "", :deny_reason => "reason" }, user)
-	      v.should have_log_record(user, "skipped", nil)
+	      v.should have_log_record("Skipped", :reviewer => user)
       end
     end
 	end
