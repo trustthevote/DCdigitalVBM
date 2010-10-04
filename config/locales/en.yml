@@ -49,7 +49,7 @@ en:
 
     overview:
       title: Digital Vote-by-Mail Service
-      summary: Here are the steps you will follow to complete ballot, using one of the supported Web browsers (Internet Explorer, Firefox, or Chrome),  together with <strong>Adobe Reader</strong> for the option of digitally marking your ballot. Once you have reviewed the steps, click Continue.
+      summary: Here are the steps you will follow to complete ballot, using one of the <strong> supported </strong> Web browsers (Internet Explorer, Firefox, Safari, or Chrome),  together with Adobe Reader as <strong>required software</strong> for the option of digitally marking your ballot. Once you have reviewed the steps, click Continue.
 
     check_in:
       title: Check In
@@ -105,7 +105,7 @@ en:
       step_2:
         title: Mark
         instruction: Mark Your Ballot
-        tip: You can complete your ballot by marking it Adobe Reader, or you can print the ballot and mark it by hand.
+        tip: You can complete your ballot by marking it using Adobe Reader, or you can print the ballot and mark it by hand.
       step_3:
         title: Save
         instruction: Save Your Ballot
@@ -118,7 +118,7 @@ en:
           summary: "To complete the ballot, click on the circles next to your candidates to select them. You can also type in write-in candidates where indicated."
           image: "fillOutElectronically"
       physical:
-        summary: "To complete your ballot, download, mark, SAVE, and print it. <span class='warning'>Keep this page open until you have printed your marked ballot.</span>"
+        summary: "To complete your ballot, download, mark, and print it. <span class='warning'>Keep this page open until you have printed your marked ballot.</span>"
         step_2:
           summary: "You can fill out the ballot online or print it and complete it by hand.<br/><br/>To complete the ballot online, click on the circles next to your candidates to select them. You can also type in write-in candidates where indicated."
           image: "fillOutByHand"
@@ -126,7 +126,7 @@ en:
           title: Print
           instruction: Print Your Ballot
           tip: Tip for the print step
-          summary: "Print the ballot by selecting the PRINT button in the PDF. You can also select File/Print in Adobe Reader."
+          summary: "Print the ballot by selecting File/Print in Adobe Reader."
 
     return:
       digital:
@@ -345,7 +345,7 @@ en:
           a: "<p>Adobe Reader is Adobe's freeware PDF reader. You can use Reader to view, print, edit, and manage PDFs. You must use Adobe Reader to correctly access your ballot PDF. If you do not have a copy of Adobe Reader software installed on your computer, you can download a free copy from the Adobe <a href='http://www.adobe.com/products/reader/'>website</a>.</p><p>If the PDF does not open in Adobe Reader (it may appear as a blank page, broken object link, or red X icon) it's possible that, your web browser isn't configured correctly with the Adobe PDF Browser plug-in. Adobe offers suggestions on what to do when you can't view a PDF on the web <a href='#'>here</a>.</p>"
         question_2:
           q: 'How do I mark/vote the Ballot form online?'
-          a: "<p>The ballot is marked by clicking on the round circle next to a candidate's name.</p><h3>To vote for:</h3><h4>A candidate</h4><ul class='dashed-list'><li>Click on the circle next to candidate name(s) to select it. Do not vote for more candidates than indicated. This will result in an overvote and your vote for that office will not count.</li></ul><h4>A measure</h4><ul class='dashed-list'><li>Click on circle next to YES or NO to select it.</li><li>Do <strong>not</strong> vote both YES and NO. This will result in an overvote and your vote on that measure will not count.</li></ul><h4>Qualified write-in candidates</h4> <span>(Write-in votes are valid for qualified candidates only)</span><ul class='dashed-list'><li>Type in qualified write-in candidate's name in the blank space provided.</li><li>The total number of votes including write-ins must not exceed the maximum number of votes allowed for the contest or your vote for that contest will not count.</li></ul>"
+          a: "<p>To mark your ballot digitally, you must use Adobe Reader.</p><p>The ballot is marked by clicking on the round circle next to a candidate's name.</p><h3>To vote for:</h3><h4>A candidate</h4><ul class='dashed-list'><li>Click on the circle next to candidate name(s) to select it. Do not vote for more candidates than indicated. This will result in an overvote and your vote for that office will not count.</li></ul><h4>A measure</h4><ul class='dashed-list'><li>Click on circle next to YES or NO to select it.</li><li>Do <strong>not</strong> vote both YES and NO. This will result in an overvote and your vote on that measure will not count.</li></ul><h4>Qualified write-in candidates</h4> <span>(Write-in votes are valid for qualified candidates only)</span><ul class='dashed-list'><li>Type in qualified write-in candidate's name in the blank space provided.</li><li>The total number of votes including write-ins must not exceed the maximum number of votes allowed for the contest or your vote for that contest will not count.</li></ul>"
         question_3:
           q: 'How do I save my Ballot?'
           a: '<p>To save the Ballot, select File / Save As in the menu Adobe Reader. Save the document using the existing file name. Do NOT rename it. (If the marked ballot is NOT SAVED, and you send it, your ballot will not be marked.) Save the PDF to a place where you can easily find it again.</p>'
