@@ -15,7 +15,6 @@ gem 'fastercsv'
 gem 'bundler', '0.9.26'
 
 group :development do
-  gem 'sqlite3-ruby'
   gem 'mongrel'
   gem 'capistrano'
   gem 'capistrano-ext'
@@ -23,6 +22,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'sqlite3-ruby'
   gem 'faker'
 end
 
