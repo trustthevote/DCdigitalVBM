@@ -21,11 +21,21 @@
 class PagesController < ApplicationController
 
   before_filter :block_wrong_time,  :except => [ :front, :about, :contact ]
+  before_filter :block_digital,     :except => [ :front, :overview ]
   before_filter :load_registration, :only   => [ :confirm, :attestation, :complete, :return, :thanks ]
   before_filter :block_processed,   :only   => [ :confirm, :complete, :return ]
 
   def overview
-    self.voting_type = params[:voting_type] if params[:voting_type]
+    vtype = params[:voting_type]
+    if vtype
+      if digital_enabled? || vtype != "digital"
+        self.voting_type = vtype
+      else
+        # Reset the voting type and get to the front page
+        self.voting_type = nil
+        redirect_to front_url
+      end
+    end
   end
 
   def check_in
@@ -97,5 +107,9 @@ class PagesController < ApplicationController
   
   def block_wrong_time
     redirect_to front_url unless during_voting?
+  end
+  
+  def block_digital
+    redirect_to front_url if digital? && !digital_enabled?
   end
 end

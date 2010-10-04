@@ -22,12 +22,22 @@ require 'spec_helper'
 
 describe PagesController do
 
+  shared_examples_for "pages with blocked digital flow" do
+    it "should redirect to the front page when requested with blocked digital flow" do
+      @controller.stubs(:digital_enabled?).returns(false)
+      @controller.stubs(:voting_type).returns("digital")
+      get action
+      response.should redirect_to(front_url)
+    end
+  end
+  
+  
   it "should display the front page" do
     get :front
     response.should render_template(:front)
   end
 
-  describe "when not voting" do
+  context "when not voting" do
     it "should redirect to front page" do
       before_voting_started
       get :overview
@@ -35,7 +45,7 @@ describe PagesController do
     end
   end
   
-  describe "when going to overview page" do
+  context "when going to overview page" do
     it "should just show whatever it is" do
       get :overview
       response.should render_template(:overview)
@@ -52,9 +62,18 @@ describe PagesController do
       response.should render_template(:overview)
       @controller.voting_type.should == "physical"
     end
+    
+    it "should diallow digital flow if it's disabled" do
+      @controller.stubs(:digital_enabled?).returns(false)
+      get :overview, :voting_type => "digital"
+      response.should redirect_to(front_url)
+    end
   end
   
-  describe "when checking in" do
+  context "when checking in" do
+    let(:action) { :check_in }
+    it_should_behave_like "pages with blocked digital flow"
+    
     it "should display form" do
       get :check_in
       response.should render_template(:check_in)
@@ -73,7 +92,7 @@ describe PagesController do
     end
   end
 
-  describe "when requesting attestation PDF" do
+  context "when requesting attestation PDF" do
     it "should redirect to check-in if haven't checked in yet" do
       get :attestation, :format => 'pdf'
       response.should redirect_to(check_in_url)
@@ -86,7 +105,10 @@ describe PagesController do
     end
   end
   
-  describe "when confirming" do
+  context "when confirming" do
+    let(:action) { :confirm }
+    it_should_behave_like "pages with blocked digital flow"
+
     before do
       stub_registration
     end
@@ -103,7 +125,10 @@ describe PagesController do
     end
   end
 
-  describe "when completing" do
+  context "when completing" do
+    let(:action) { :complete }
+    it_should_behave_like "pages with blocked digital flow"
+
     it "should render the page" do
       stub_registration
       Registration.any_instance.expects(:register_check_in!)
@@ -112,7 +137,10 @@ describe PagesController do
     end
   end
   
-  describe "when sending ballot" do
+  context "when sending ballot" do
+    let(:action) { :return }
+    it_should_behave_like "pages with blocked digital flow"
+
     before do
       stub_registration
     end
@@ -130,7 +158,10 @@ describe PagesController do
     end
   end
 
-  describe "when viewing thanks" do
+  context "when viewing thanks" do
+    let(:action) { :thanks }
+    it_should_behave_like "pages with blocked digital flow"
+
     before do
       stub_registration
     end
@@ -146,8 +177,8 @@ describe PagesController do
     end
   end
 
-  describe "when viewing supplementary pages" do
-    describe "and currently before the voting started" do
+  context "when viewing supplementary pages" do
+    context "and currently before the voting started" do
       before do
         before_voting_started
       end
@@ -161,7 +192,7 @@ describe PagesController do
       
     end
   end
-  
+
   def stub_registration
     @r = Factory(:registration)
     session[:voting_type] = 'digital'
