@@ -94,8 +94,10 @@ class PagesController < ApplicationController
   end
 
   def save_ballot
-    @ballot = @registration.register_ballot!(params[:pdf])
-    @ballot.valid?
+# Don't save anything, just pretend
+#    @ballot = @registration.register_ballot!(params[:pdf])
+#    @ballot.valid?
+    true
   end
 
   # Blocks registrations that have already been processed (uploaded their ballots)
