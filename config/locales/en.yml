@@ -49,7 +49,7 @@ en:
 
     overview:
       title: Digital Vote-by-Mail Service
-      summary: Here are the steps you will follow to complete ballot, using one of the supported Web browsers (Internet Explorer, Firefox, or Chrome),  together with  Adobe Reader for the option of digitally marking your ballot. Once you have reviewed the steps, click Continue.
+      summary: Here are the steps you will follow to complete ballot, using one of the supported Web browsers (Internet Explorer, Firefox, or Chrome),  together with <strong>Adobe Reader</strong> for the option of digitally marking your ballot. Once you have reviewed the steps, click Continue.
 
     check_in:
       title: Check In
@@ -433,10 +433,10 @@ en:
           summary: Confirm your identity|Affirm voting eligibility|Download your attestation document|View your attestation document|Print and sign your attestation document
         step_3:
           title: Complete Ballot
-          summary: Download your ballot|View your ballot|Mark your ballot using Adobe Reader|Save your ballot (Do NOT rename the file.)|Print your ballot
+          summary: Download your ballot|View your ballot|Mark your ballot using Adobe Reader|Print your ballot
         step_4:
           title: Return Ballot
-          summary: Check your ballot to ensure that it is completed with all your choices|Secure ballot with security envelope|Put attestation document in return envelope|Put security envelope in return envelope|Address return envelope|Mail your attestation document and ballot
+          summary: Check your ballot|Ensure that it is completed with all your choices|Secure ballot with security envelope|Put attestation document in return envelope|Put security envelope in return envelope|Address return envelope|Mail your attestation document and ballot
       digital:
         step_1:
           title: Check In
@@ -446,7 +446,7 @@ en:
           summary: Confirm your identity|Affirm voting eligibility|Review attestation document (optional)
         step_3:
           title: Complete Ballot
-          summary: Download your ballot|View your ballot|Mark your ballot|Save your ballot (Do NOT rename the file.)
+          summary: Download your ballot|View your ballot|Mark your ballot using Adobe Reader|Save your ballot (Do NOT rename the file.)
         step_4:
           title: Send Ballot
           summary: Locate your ballot on your computer|Upload your ballot|Receive notice of ballot receipt
