@@ -85,10 +85,12 @@ namespace :deploy do
         p "Usage: rake deploy:config:app -s email=... -s domain=... [ -s app_name=... ] [ -s gpg_key_id=... ]"
       else
         app_config = ERB.new <<-EOF
-          app_name:       #{app_name}
-          from_email:     #{email}
-          domain:         #{domain}
-          gpg_recipient:  #{gpg_key_id}
+          app_name:        #{app_name}
+          from_email:      #{email}
+          domain:          #{domain}
+          gpg_recipient:   #{gpg_key_id}
+          state:           during
+          digital_enabled: true
         EOF
 
         run "mkdir -p #{shared_path}/config" 
