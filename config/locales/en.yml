@@ -101,7 +101,7 @@ en:
       step_1:
         title: Download
         instruction: Download and View Your Ballot
-        summary: "Click the PDF icon at the right to download your ballot. The ballot PDF will open in your default PDF viewing application, on top of your web browser."
+        summary: "Click the PDF icon at the right to download your ballot. The ballot PDF should appear in Adobe Reader, on top of your web browser."
       step_2:
         title: Mark
         instruction: Mark Your Ballot
@@ -433,10 +433,10 @@ en:
           summary: Confirm your identity|Affirm voting eligibility|Download your attestation document|View your attestation document|Print and sign your attestation document
         step_3:
           title: Complete Ballot
-          summary: Download your ballot|View your ballot|Mark your ballot|Save your ballot (Do NOT rename the file.)|Print your ballot
+          summary: Download your ballot|View your ballot|Mark your ballot using Adobe Reader|Save your ballot (Do NOT rename the file.)|Print your ballot
         step_4:
           title: Return Ballot
-          summary: Secure ballot with security envelope|Put attestation document in return envelope|Put security envelope in return envelope|Address return envelope|Mail your attestation document and ballot
+          summary: Check your ballot to ensure that it is completed with all your choices|Secure ballot with security envelope|Put attestation document in return envelope|Put security envelope in return envelope|Address return envelope|Mail your attestation document and ballot
       digital:
         step_1:
           title: Check In
