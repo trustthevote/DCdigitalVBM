@@ -18,7 +18,7 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-set :domain,    "10.1.143.74"
+set :domain,    "10.1.143.174"
 set :rails_env, "staging"
 set :user,      "boeuser"
 set :runner,    user
