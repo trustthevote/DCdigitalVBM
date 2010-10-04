@@ -657,14 +657,16 @@ footer nav a {
 	float:left;
 }
 
-#intro-page .button {
+#intro-page .button, #intro-page .button-padding {
 	float:left;
 	margin-top:18px;
 	margin-left:160px;
 	margin-right: 10px;
-	
-	background-color: #F05133;
 	width:130px;
+}
+
+#intro-page .button {	
+	background-color: #F05133;
 }
 
 #intro-page .button:hover {
