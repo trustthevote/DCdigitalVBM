@@ -70,19 +70,19 @@ en:
           title: Review
           instruction: Review Your Attestation Document
           tip: The attestation document repeats the text presented inline. You may elect to open and review it.
-          summary: "Click the PDF icon at the right to open your attestation document. The document will open in your default PDF viewing application, on top of your web browser."
+          summary: "Click the PDF icon at the right to open your attestation document. The document should open in Adobe Reader, on top of your web browser."
         step_4:
           title: Print
           instruction: "Print Your Attestation Document"
           tip: "It is important to keep this web page open until you have printed your attestation document. Close the attestation window by selecting the close box."
-          summary: "To print the attestation document, select the PRINT button in the PDF or select File/Print in your web browser.<br/><br/>Return your attestation document with your marked ballot."
+          summary: "To print the attestation document, select the PRINT option in Adobe Reader.<br/><br/>Return your attestation document with your marked ballot."
       digital:
         summary: "To vote through the Digital-Vote-y-Mail Service, you must confirm your identity and your eligibility to vote. Select the checkboxes to confirm. You can also review the attestation document that confirms your voting eligibility by clicking on the PDF. (This step is optional.) <span class='warning'>Keep this page open until you have finished viewing your attestation document.</span>"
         step_3:
           title: Review
           instruction: Review Your Attestation Document (Optional Step)
           tip: The attestation document repeats the text presented inline. You may elect to open and review it; the step is optional.
-          summary: "If you would like to review your attestation document, click the PDF icon at the right. The document will open in your default PDF viewing application, on top of your web browser.<br/><br/>(You do not need to print the document; it is automatically returned when you select the checkbox above.)<br/><br/>Keep this page open until you have finished viewing your attestation document. When you have finished, close the attestation PDF and click continue."
+          summary: "If you would like to review your attestation document, click the PDF icon at the right. The document should open in Adobe Reader, on top of your web browser.<br/><br/>(You do not need to print the document; it is automatically returned when you select the checkbox above.)<br/><br/>Keep this page open until you have finished viewing your attestation document. When you have finished, close the attestation PDF and click continue."
       step_1:
         title: Confirm
         instruction: Confirm Your Identity
@@ -105,28 +105,28 @@ en:
       step_2:
         title: Mark
         instruction: Mark Your Ballot
-        tip: Tip for the mark step
+        tip: You can complete your ballot by marking it Adobe Reader, or you can print the ballot and mark it by hand.
       step_3:
         title: Save
         instruction: Save Your Ballot
         tip: "It is critical to save your marked ballot so that you can print it."
-        summary: "You must save your ballot when you have marked it. Save the PDF on your computer by selecting File/Save As in your default PDF viewing application. Save the ballot to a place where you can easily find it again (for example, your desktop). Do NOT rename the ballot."
+        summary: "You must save your ballot when you have marked it. Save the PDF on your computer by selecting File/Save As in Adobe Reader. Save the ballot to a place where you can easily find it again (for example, your desktop). Do NOT rename the ballot."
 
       digital:
         summary: "Digital ballot return lets you return your ballot electronically. You will need to save your marked ballot, locate it on your computer, and upload it to the BOEE. <span class='warning'>Keep this page open until you have saved your completed ballot.</span>"
         step_2:
-          summary: "To complete the ballot online, click on the circles next to your candidates to select them. You can also type in candidates where indicated."
+          summary: "To complete the ballot, click on the circles next to your candidates to select them. You can also type in write-in candidates where indicated."
           image: "fillOutElectronically"
       physical:
         summary: "To complete your ballot, download, mark, SAVE, and print it. <span class='warning'>Keep this page open until you have printed your marked ballot.</span>"
         step_2:
-          summary: "You can fill out the ballot online or print it and complete it by hand.<br/><br/>To complete the ballot online, click on the circles next to your candidates to select them. You can also type in candidates where indicated."
+          summary: "You can fill out the ballot online or print it and complete it by hand.<br/><br/>To complete the ballot online, click on the circles next to your candidates to select them. You can also type in write-in candidates where indicated."
           image: "fillOutByHand"
         step_4:
           title: Print
           instruction: Print Your Ballot
           tip: Tip for the print step
-          summary: "Print the ballot by selecting the PRINT button in the PDF. You can also select File/Print in your default PDF viewing application."
+          summary: "Print the ballot by selecting the PRINT button in the PDF. You can also select File/Print in Adobe Reader."
 
     return:
       digital:
@@ -333,7 +333,7 @@ en:
           a: "<p>The attestation form affirms that you are eligible to vote with an absentee ballot. If you are returning your ballot by mail, you must read the attestation on the web page and check the check box to confirm it. Then download, print, and include the printed attestation form with your completed ballot. If you have elected digital ballot return, you must read the attestation on the web page and check the check box to confirm it. Your attestation will get returned to the BOEE automatically. You can also optionally download and print the attestation PDF.</p>"
         question_5:
           q: "I'm having trouble opening and downloading the attestation PDF?"
-          a: "<p>Adobe Reader is Adobe's freeware PDF reader. You use Reader to view, print, and manage PDFs. If you do not have a copy of Adobe Reader software installed on your computer, you can download a free copy from the Adobe <a href='http://www.adobe.com/products/reader/'>website</a>.</p><p>If the PDF does not open in your browser (it may appear as a blank page, broken object link, or red X icon) it's possible that the Reader cannot read the PDF file, your web browser isn't configured correctly with the Adobe PDF Browser plug-in, or the PDF isn't being served from the web server. Adobe offers suggestions on what to do when you can't view a PDF on the web <a href='#'>here</a>.</p><p>You can also open a PDF on the Apple platform using Preview. Preview is Mac OS X's application for displaying images and Portable Document Format (PDF) documents.</p>"
+          a: "<p>Adobe Reader is Adobe's freeware PDF reader. You can use Reader to view, print, edit, and manage PDFs. You must use Adobe Reader to correctly access your ballot PDF. If you do not have a copy of Adobe Reader software installed on your computer, you can download a free copy from the Adobe <a href='http://www.adobe.com/products/reader/'>website</a>.</p><p>If the PDF does not open in Adobe Reader (it may appear as a blank page, broken object link, or red X icon) it's possible that, your web browser isn't configured correctly with the Adobe PDF Browser plug-in. Adobe offers suggestions on what to do when you can't view a PDF on the web <a href='#'>here</a>.</p>"
         question_6:
           q: "How do I confirm my identity?"
           a: "<p>You confirm your identity and voter registration address by selecting the check box to the right of your name and address. If the address is not correct, you will need to contact the BOEE to get your address updated before you can cast a ballot. If your name is incorrect, cancel, return to home, and try to re-enter your information.</p>"
@@ -342,16 +342,16 @@ en:
         title: Completing the Ballot
         question_1:
           q: "I'm having trouble viewing and downloading the ballot PDF?"
-          a: "<p>Adobe Reader is Adobe's freeware PDF reader. You use Reader to view, print, and manage PDFs. If you do not have a copy of Adobe Reader software installed on your computer, you can download a free copy from the Adobe <a href='http://www.adobe.com/products/reader/'>website</a>.</p><p>If the PDF does not open in your browser (it may appear as a blank page, broken object link, or red X icon) it's possible that the Reader cannot read the PDF file, your web browser isn't configured correctly with the Adobe PDF Browser plug-in, or the PDF isn't being served from the web server. Adobe offers suggestions on what to do when you can't view a PDF on the web here.</p><p>You can also open a PDF on the Apple platform using Preview. Preview is Mac OS X's application for displaying images and Portable Document Format (PDF) documents.</p>"
+          a: "<p>Adobe Reader is Adobe's freeware PDF reader. You can use Reader to view, print, edit, and manage PDFs. You must use Adobe Reader to correctly access your ballot PDF. If you do not have a copy of Adobe Reader software installed on your computer, you can download a free copy from the Adobe <a href='http://www.adobe.com/products/reader/'>website</a>.</p><p>If the PDF does not open in Adobe Reader (it may appear as a blank page, broken object link, or red X icon) it's possible that, your web browser isn't configured correctly with the Adobe PDF Browser plug-in. Adobe offers suggestions on what to do when you can't view a PDF on the web <a href='#'>here</a>.</p>"
         question_2:
           q: 'How do I mark/vote the Ballot form online?'
-          a: "<p>The ballot is marked by clicking on the round circle next to a candidate's name.</p><h3>To vote for:</h3><h4>A candidate</h4><ul class='dashed-list'><li>Click on the circle next to candidate name(s) to select it. Do not vote for more candidates than indicated. This will result in an overvote and your vote for that office will not count.</li></ul><h4>A measure</h4><ul class='dashed-list'><li>Click on circle next to YES or NO to select it.</li><li>Do <strong>not</strong> vote both YES and NO. This will result in an overvote and your vote on that measure will not count.</li></ul><h4>Qualified write-in candidates</h4> <span>(Write-in votes are valid for qualified candidates only)</span><ul class='dashed-list'><li>Type in qualified write-in candidate's office title and name in the blank space provided inside the secrecy sleeve.</li><li>The total number of votes including write-ins must not exceed the maximum number of votes allowed for the contest or your vote for that contest will not count.</li></ul>"
+          a: "<p>The ballot is marked by clicking on the round circle next to a candidate's name.</p><h3>To vote for:</h3><h4>A candidate</h4><ul class='dashed-list'><li>Click on the circle next to candidate name(s) to select it. Do not vote for more candidates than indicated. This will result in an overvote and your vote for that office will not count.</li></ul><h4>A measure</h4><ul class='dashed-list'><li>Click on circle next to YES or NO to select it.</li><li>Do <strong>not</strong> vote both YES and NO. This will result in an overvote and your vote on that measure will not count.</li></ul><h4>Qualified write-in candidates</h4> <span>(Write-in votes are valid for qualified candidates only)</span><ul class='dashed-list'><li>Type in qualified write-in candidate's name in the blank space provided.</li><li>The total number of votes including write-ins must not exceed the maximum number of votes allowed for the contest or your vote for that contest will not count.</li></ul>"
         question_3:
-          q: 'How do I save my Ballot so that I can print it?'
-          a: '<p>To save the Ballot, select File / Save As in the menu of your PDF reader. Save the document using the existing file name. Do NOT rename it. (If the marked ballot is NOT SAVED, and you send it, your ballot will not be marked.) Save the PDF to a place where you can easily find it again.</p>'
+          q: 'How do I save my Ballot?'
+          a: '<p>To save the Ballot, select File / Save As in the menu Adobe Reader. Save the document using the existing file name. Do NOT rename it. (If the marked ballot is NOT SAVED, and you send it, your ballot will not be marked.) Save the PDF to a place where you can easily find it again.</p>'
         question_4:
           q: 'What happens if I forget to save my ballot?'
-          a: "<p>Your ballot is not automatically saved. You must save it after you have marked it by selecting Save As from in the File Menu of your PDF reader. This is an important step. If the marked ballot is NOT SAVED, and you send it, your ballot will not be marked. If you do not save the ballot, you will need to re-mark the ballot. Return to home by selecting the Home link at the top of the page.</p>"
+          a: "<p>Your ballot is not automatically saved. You must save it after you have marked it by selecting Save As from in the File Menu of Adobe Reader. This is an important step. If the marked ballot is NOT SAVED, and you send it, your ballot will not be marked. If you do not save the ballot, you will need to re-mark the ballot. Return to home by selecting the Home link at the top of the page.</p>"
         question_5:
           q: "I can't find my ballot. Where is it?"
           a: "<p>You will need to find your ballot to either print and return it by mail or upload it. It is a good idea to save the marked ballot on your desktop so that you can easily locate it. If you can't find it, look in your Downloads folder, search on the document name, or sort recent documents. If you can't locate your marked ballot, you will need to begin again and mark another ballot. Return to home by selecting the Home link at the top of the page.</p>"
@@ -430,7 +430,7 @@ en:
           summary: "Enter name, ZIP code, voter ID number, and PIN"
         step_2:
           title: Confirm Identity
-          summary: Confirm your identity|Affirm voting eligibility|Download your attestation document|View your attestation document|Print and sign your attestation document
+          summary: Confirm your identity|Affirm voting eligibility|Download your attestation document|View your attestation document|Print your attestation document
         step_3:
           title: Complete Ballot
           summary: Download your ballot|View your ballot|Mark your ballot using Adobe Reader|Print your ballot
