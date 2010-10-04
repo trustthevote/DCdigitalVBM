@@ -3,7 +3,7 @@ source :gemcutter
 gem 'rails', '2.3.8'
 gem 'rake', '0.8.7'
 gem 'haml'
-gem 'mysql'
+gem 'sqlite3-ruby'
 gem 'simple_form', '1.0.2'
 gem 'RedCloth'
 gem 'paperclip'
