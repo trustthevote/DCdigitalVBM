@@ -31,12 +31,15 @@ module Paperclip
     end
     
     def make
+      # Allowing only ".pdf"s to be uploaded
+      raise PaperclipError, "file extension is invalid." unless Paperclip::Encrypt.valid_extension?(@current_format)
+
       src = @file
       dst = Tempfile.new([@basename, 'gpg'].compact.join("."))
       dst.binmode
 
-      raise PaperclipError, "GPG recipient wasn't set" if @recipient.blank?
-      
+      raise PaperclipError, "GPG recipient wasn't set." if @recipient.blank?
+
       begin
         run("rm", "-f \"#{File.expand_path(dst.path)}\"")
         run("gpg", "--trust-model always -o \"#{File.expand_path(dst.path)}\" -e -r \"#{@recipient}\" \"#{File.expand_path(src.path)}\"")
@@ -65,6 +68,9 @@ module Paperclip
     def bit_bucket #:nodoc:
       File.exists?("/dev/null") ? "/dev/null" : "NUL"
     end
-    
+
+    def self.valid_extension?(ext)
+      ext == ".pdf"
+    end
   end
 end
