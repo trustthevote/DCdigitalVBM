@@ -18,6 +18,8 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
+require 'digest/sha1'
+
 module Paperclip
   class Encrypt < Processor
     def initialize(file, options = {}, attachment = nil)
@@ -34,15 +36,20 @@ module Paperclip
       # Allowing only ".pdf"s to be uploaded
       raise PaperclipError, "file extension is invalid." unless Paperclip::Encrypt.valid_extension?(@current_format)
 
-      src = @file
-      dst = Tempfile.new([@basename, 'gpg'].compact.join("."))
+      # Rename the file into our own to avoid any injections
+      new_path = File.dirname(@file.path) + "/#{Digest::SHA1.hexdigest("encrypt-#{$$}-#{Time.now.to_i}")}"
+      File.rename(@file.path, new_path)
+      
+      # Process file
+      src = File.new(new_path)
+      dst = Tempfile.new([ @basename, 'gpg' ].compact.join("."))
       dst.binmode
 
       raise PaperclipError, "GPG recipient wasn't set." if @recipient.blank?
 
       begin
-        run("rm", "-f \"#{File.expand_path(dst.path)}\"")
-        run("gpg", "--trust-model always -o \"#{File.expand_path(dst.path)}\" -e -r \"#{@recipient}\" \"#{File.expand_path(src.path)}\"")
+        run("rm", "-f '#{File.expand_path(dst.path)}'")
+        run("gpg", "--trust-model always -o '#{File.expand_path(dst.path)}' -e -r '#{@recipient}' '#{File.expand_path(src.path)}'")
       rescue PaperclipCommandLineError
         raise PaperclipError, "couldn't be encrypted. Please try again later."
       end
