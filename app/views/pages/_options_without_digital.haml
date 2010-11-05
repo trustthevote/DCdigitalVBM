@@ -1,0 +1,10 @@
+= render :partial => "option", :locals => { :option => 'physical' }
+%section.option.warning
+  %h2
+    WARNING:
+    %br
+    %br
+  %p= t "pages.front.warning"
+
+%footer
+  = link_to "Start Mail-in Ballot", during_voting? ? overview_path('physical') : front_path, :id => "start-physical", :class => button_class(!during_voting?)

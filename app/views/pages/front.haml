@@ -11,25 +11,7 @@
     #blanket
 
 
-%section#welcome
-  %h1= t '.welcome'
-  = t '.intro'
+%section#welcome.software
+  = render 'software_requirements'
 
-#options
-  %p= t '.prompt'
-
-- %w( physical digital ).each do |option|
-  %section
-    %h1= t ".#{option}.num"
-    %h2= t ".#{option}.title"
-    %p= t ".#{option}.summary"
-    %ul
-      - t(".#{option}.steps").split('|').each do |step|
-        %li= step
-    %br
-    %p See more #{link_to "information", help_page_path('instructions', option), :target => "_blank" } about this option.
-
-%footer
-  = link_to "Start Mail-in Ballot", during_voting? ? overview_path('physical') : front_path, :id => "start-physical", :class => button_class(!during_voting?)
-  - if digital_enabled?
-    = link_to "Start Digital Ballot", during_voting? ? overview_path('digital') : front_path, :id => "start-digital", :class => button_class(!during_voting?)
+= render :partial => digital_enabled? ? "options_with_digital" : "options_without_digital"

@@ -595,9 +595,8 @@ footer nav a {
 
 #intro-page #main #welcome {
 	margin-left:0;
-	padding-top:0;
 	padding-left:20px;
-	width:280px;
+	width:260px;
 }
 
 #intro-page #main #welcome h1 {
@@ -610,6 +609,24 @@ footer nav a {
 	font-size: 13px;
 	line-height: 18px;
 }
+
+#intro-page section.option h2 {
+  color: #F05133;
+  margin-bottom: 18px;
+}
+
+#intro-page #main .software h1 { color: #000; }
+#intro-page #main .software {
+  width: 260px;
+  padding: 20px 20px 0;
+  background-color: #ECECEC;
+}
+
+#intro-page #main .software ol { padding-left: 20px; margin-bottom: 20px; }
+#intro-page #main .software li { list-style-type: decimal; text-indent: 0; }
+#intro-page #main .software li:before { content: ' '; }
+#intro-page .software .icons { margin: 10px 20px; }
+#intro-page .software img { float: none; margin-right: 10px; }
 
 #options p {
 	margin-left: 320px;
@@ -641,7 +658,6 @@ footer nav a {
 
 
 #intro-page #main footer {
-	padding-left: 160px;
 	float:left;
 }
 
@@ -1432,3 +1448,5 @@ a#previous { float: left; }
 
 #stats { float: right; width: 150px; margin-right: 10px; }
 #voters td, #voters th { padding-right: 30px; }
+
+.warning { color: red; }

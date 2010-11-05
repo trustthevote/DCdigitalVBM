@@ -1,0 +1,14 @@
+#options
+  %p.warning
+    %strong WARNING:
+    %br
+    %br
+    = t 'pages.front.warning'
+
+= render :partial => "option", :locals => { :option => 'physical' }
+= render :partial => "option", :locals => { :option => 'digital' }
+
+%footer
+  = link_to "Start Mail-in Ballot", during_voting? ? overview_path('physical') : front_path, :id => "start-physical", :class => button_class(!during_voting?)
+  - if digital_enabled?
+    = link_to "Start Digital Ballot", during_voting? ? overview_path('digital') : front_path, :id => "start-digital", :class => button_class(!during_voting?)

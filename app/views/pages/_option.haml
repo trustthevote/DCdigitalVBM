@@ -1,0 +1,7 @@
+%section.option
+  %h2= t ".#{option}.title"
+  %p= t ".#{option}.intro"
+  %ul
+    - t(".#{option}.steps").split('|').each do |step|
+      %li= step
+  %p= t ".#{option}.outro"

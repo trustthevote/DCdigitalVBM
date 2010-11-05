@@ -86,7 +86,7 @@ module ApplicationHelper
     @h1           = options[:h1]
     @h2           = options[:h2]
   end
-  
+
   def button_class(disabled = false)
     klass = [ 'button' ]
     klass << "disabled" if disabled
