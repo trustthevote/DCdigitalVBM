@@ -19,7 +19,7 @@
 # Thomas Gaskin, Sean Durham, John Sebes.
 
 ActionController::Routing::Routes.draw do |map|
-  map.namespace 'leo' do |c|
+  map.subdomain 'leo' do |c|
     c.with_options :controller => 'user_sessions', :name_prefix => '' do |s|
       s.connect     '/login',   :action => 'create', :conditions => { :method => :post }
       s.login       '/login',   :action => 'new'
