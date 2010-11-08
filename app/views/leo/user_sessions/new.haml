@@ -1,15 +1,14 @@
+- page_options :class => "login"
 = render "shared/menu", :empty => true
 
-%header
-  %h1 Introduction
+%section.sidebar
+  %h1 Please login
 
-%h2 Please login
+  - form_for @user_session, :url => login_url do |f|
+    %p= f.label :login
+    %p= f.text_field :login
 
-- form_for @user_session, :url => login_url do |f|
-  %p= f.label :login
-  %p= f.text_field :login
+    %p= f.label :password
+    %p= f.password_field :password
 
-  %p= f.label :password
-  %p= f.password_field :password
-
-  %p= f.submit "Login"
+    %p= f.submit "Login"

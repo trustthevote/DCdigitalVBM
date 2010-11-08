@@ -33,18 +33,15 @@
     = javascript_include_tag "modernizr-1.5.min.js"
     = javascript_tag "window._token = '#{form_authenticity_token}'" if ActionController::Base.allow_forgery_protection
   
-  %body#leo
+  - @page_class ||= nil
+  %body#leo{ :class => @page_class }
     = render "layouts/leo_header"
+    - if logged_in?
+      .tabs
+        = link_to "Review Voters", leo_review_url
+        = link_to "All Voters", leo_voters_url
     = render "layouts/leo_subheader"
 
-    .tabs
-      = link_to "Review Voters", leo_review_url
-      = link_to "All Voters", leo_voters_url
 
     %section#main
-      - if @h1
-        %header
-          %h1= h(@h1)
-          %h2= h(@h2)
-
       = yield

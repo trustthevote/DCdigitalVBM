@@ -5,6 +5,6 @@
     %p November 2, 2010
 
   #pageheader
-    %p= Time.zone.now.to_s(:short_day)
+    = Time.zone.now.to_s(:short_day)
     - if logged_in?
-      %p #{@stats.reviewed} / #{@stats.returned}
+      <br/>#{@stats.reviewed} / #{@stats.returned}

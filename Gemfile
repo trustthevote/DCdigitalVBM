@@ -26,6 +26,7 @@ group :development do
 end
 
 group :development, :test, :cucumber do
+  gem 'ZenTest',          '4.4.0'
   gem 'faker',            '0.3.1'
 end
 

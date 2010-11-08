@@ -1,11 +1,13 @@
+- page_options :class => "review"
 %h1 Review
 
 #review
   - unless @voter
     %h2 Finished
     %p All attestations have been reviewed.
-    %p= link_to "All Voters", leo_voters_path
-    %p= link_to "Logout", logout_path
+    %footer
+      = link_to "All Voters", leo_voters_path, :class => "button"
+      = link_to "Logout", logout_path, :class => "button"
     
   - else
     - attestation_img = image_tag('attestation.png', :width => 317, :height => 326, :class => "attestation")

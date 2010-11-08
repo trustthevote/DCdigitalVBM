@@ -194,10 +194,13 @@ end
  
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path
+  path_to_page = path_to(page_name)
+  path_to_page = URI.parse(path_to_page).path if /^http/ =~ path_to_page
+  
   if current_path.respond_to? :should
-    current_path.should == path_to(page_name)
+    current_path.should == path_to_page
   else
-    assert_equal path_to(page_name), current_path
+    assert_equal path_to_page, current_path
   end
 end
 

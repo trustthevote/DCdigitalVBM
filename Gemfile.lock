@@ -10,38 +10,44 @@ dependencies:
     group: 
     - :default
     version: = 1.5.3
-  mongrel: 
-    group: 
-    - :development
-    version: = 1.1.5
   rails: 
     group: 
     - :default
     version: = 2.3.8
-  authlogic: 
+  mongrel: 
     group: 
-    - :default
-    version: = 2.1.6
-  haml: 
+    - :development
+    version: = 1.1.5
+  ZenTest: 
     group: 
-    - :default
-    version: = 3.0.21
-  rake: 
-    group: 
-    - :default
-    version: = 0.8.7
-  mysql: 
-    group: 
-    - :default
-    version: = 2.8.1
-  prawn: 
-    group: 
-    - :default
-    version: = 0.8.4
+    - :development
+    - :test
+    - :cucumber
+    version: = 4.4.0
   sqlite3-ruby: 
     group: 
     - :development
     version: = 1.3.1
+  prawn: 
+    group: 
+    - :default
+    version: = 0.8.4
+  mysql: 
+    group: 
+    - :default
+    version: = 2.8.1
+  rake: 
+    group: 
+    - :default
+    version: = 0.8.7
+  haml: 
+    group: 
+    - :default
+    version: = 3.0.21
+  authlogic: 
+    group: 
+    - :default
+    version: = 2.1.6
   timecop: 
     group: 
     - :test
@@ -69,22 +75,22 @@ dependencies:
     version: = 0.9.8
     require: []
 
-  capistrano-ext: 
-    group: 
-    - :development
-    version: = 1.2.1
-  paperclip: 
-    group: 
-    - :default
-    version: = 2.3.3
-  simple_form: 
-    group: 
-    - :default
-    version: = 1.0.2
   will_paginate: 
     group: 
     - :default
     version: = 2.3.15
+  simple_form: 
+    group: 
+    - :default
+    version: = 1.0.2
+  paperclip: 
+    group: 
+    - :default
+    version: = 2.3.3
+  capistrano-ext: 
+    group: 
+    - :development
+    version: = 1.2.1
   factory_girl: 
     group: 
     - :test
@@ -99,14 +105,14 @@ dependencies:
     group: 
     - :default
     version: = 0.9.26
-  RedCloth: 
-    group: 
-    - :default
-    version: = 4.2.3
   subdomain_routes: 
     group: 
     - :default
     version: = 0.3.1
+  RedCloth: 
+    group: 
+    - :default
+    version: = 4.2.3
   capybara: 
     group: 
     - :test
@@ -121,6 +127,8 @@ specs:
     version: 0.8.7
 - RedCloth: 
     version: 4.2.3
+- ZenTest: 
+    version: 4.4.0
 - activesupport: 
     version: 2.3.8
 - rack: 
@@ -237,7 +245,7 @@ specs:
     version: 0.3.5
 - will_paginate: 
     version: 2.3.15
-hash: 975fbeb43cc36c0f871faae15791f6d60539dea0
+hash: bb4952218b9ffc2be218cb29fbca527644bc4c12
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org

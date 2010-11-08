@@ -1,19 +1,19 @@
 - @stats ||= ReviewStats.new
-#stats
-  %h2 Status panel
+%h1 Status panel
 
-  .returned
-    %label Returned
-    %p #{@stats.returned} / #{@stats.total}
+%table
+  %tr.returned
+    %td.label Returned
+    %td.value #{@stats.returned} / #{@stats.total}
 
-  .reviewed
-    %label Reviewed
-    %p #{@stats.reviewed} / #{@stats.returned}
+  %tr.reviewed
+    %td.label Reviewed
+    %td.value #{@stats.reviewed} / #{@stats.returned}
 
-  .confirmed
-    %label Confirmed
-    %p #{@stats.confirmed} / #{@stats.reviewed}
+  %tr.confirmed
+    %td.label Confirmed
+    %td.value #{@stats.confirmed} / #{@stats.reviewed}
 
-  .denied
-    %label Denied
-    %p #{@stats.denied} / #{@stats.reviewed}
+  %tr.denied
+    %td.label Denied
+    %td.value #{@stats.denied} / #{@stats.reviewed}
