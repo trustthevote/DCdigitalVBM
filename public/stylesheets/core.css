@@ -1429,11 +1429,12 @@ label:after {
 #review img.attestation { float: left; margin-right: 10px; }
 #review #info { float: left; width: 200px; }
 #review #history { clear: left; }
-#review #registration_deny_reason { width: 200px; height: 100px; }
+#review #registration_deny_reason { width: 330px; height: 100px; }
 #review #status { margin-bottom: 20px; }
 #review #review_controls .button, #review #change_status { float: left; }
 #review #deny_reason { float: left; }
 #review .vcard { font-size: 24px; line-height: 27px; font-weight: 300; }
+#review #voter_status { margin-top: 18px; }
 #history { padding-top: 30px; }
 #history td, #history th { padding-right: 30px; }
 #navigation { clear: both; padding-top: 30px; }
@@ -1452,14 +1453,19 @@ a#previous { float: left; }
 #leo.review #main, #leo.index #main { width: 900px; }
 #leo.index #main { background: none; }
 #leo #main section#data { width: 600px; margin: 0; }
-#leo #main section h1 { font-size: 16px; line-height: 15px; margin-bottom: 18px; }
+#leo #main h1 { font-size: 16px; line-height: 15px; margin-bottom: 18px; }
 #leo.review #main footer { width: 900px; float: left; border-top: 1px solid #808080; }
 
 #leo #voters table { width: 570px; }
-#leo #voters table th { background-color: #E3ECF9; padding: 5px 10px; }
-#leo #voters table th { text-align: left; }
+#leo #voters tr:hover { background-color: #edf2f8; }
+#leo #voters th { background-color: #E3ECF9; text-align: left; }
+#leo #voters td, #leo #voters th { padding: 5px 10px; }
+#leo #voters td { border-bottom: 1px dotted #E3ECF9; }
+#leo #voters table .status { width: 75px; }
+
 #leo .pages { margin-top: 18px; }
 
 #voters td, #voters th { padding-right: 30px; }
 
+.pagination { margin-top: 9px; }
 .warning { color: red; }
