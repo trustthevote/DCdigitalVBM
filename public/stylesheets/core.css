@@ -1431,9 +1431,11 @@ label:after {
 #review img.attestation { float: left; margin-right: 10px; }
 #review #info { float: left; width: 200px; }
 #review #history { clear: left; }
-#review #registration_deny_reason { width: 330px; height: 100px; }
 #review #status { margin-bottom: 20px; }
 #review #review_controls .button, #review #change_status { float: left; }
+#review_controls { overflow: hidden; }
+#review_controls form { clear: left; }
+#review #registration_deny_reason { width: 330px; height: 100px; }
 #review #deny_reason { float: left; }
 #review .vcard { font-size: 24px; line-height: 27px; font-weight: 300; }
 #review #voter_status { margin-top: 18px; }
