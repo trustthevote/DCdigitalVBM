@@ -26,3 +26,14 @@ def login_as(u = Factory(:user))
   @controller.stubs(:current_user).returns(u)
 end
 alias :login :login_as
+
+
+# GET in LEO subdomain  
+def leo_get(action, options = {})
+  get action, { :subdomains => [ 'leo' ] }.merge(options)
+end
+
+# POST in LEO subdomain
+def leo_post(action, options = {})
+  post action, { :subdomains => [ 'leo' ] }.merge(options)
+end

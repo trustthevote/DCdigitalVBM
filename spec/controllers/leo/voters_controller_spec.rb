@@ -29,19 +29,19 @@ describe Leo::VotersController do
     it "should look for voter" do
       VoterNavigation.stubs(:next).returns(nil)
       @controller.expects(:voter_to_review).with(voter.to_param).returns(stub)
-      get :show, :id => voter.id
+      leo_get :show, :id => voter.id
       response.should render_template(:show)
     end
   end
 
   context "when downloading attestation document" do
     it "should return attestation PDF for the known user" do
-      get :attestation, :id => voter.id, :format => 'pdf'
+      leo_get :attestation, :id => voter.id, :format => 'pdf'
       response.should render_template('pages/attestation')
     end
     
     it "should return empty page for unknown user" do
-      get :attestation, :id => -1, :format => 'pdf'
+      leo_get :attestation, :id => -1, :format => 'pdf'
       response.body.should be_blank
     end
   end
@@ -51,22 +51,22 @@ describe Leo::VotersController do
 
     it "should find the voter by ID" do
       Registration.expects(:find).with('99').returns(stub(:update_status => nil))
-      post :update, :id => 99
+      leo_post :update, :id => 99
     end
     
     it "should update status" do
       Registration.expects(:find).returns(mock(:update_status => nil))
-      post :update, :id => 99
+      leo_post :update, :id => 99
     end
     
     it "should render show page with the updated voter" do
-      post :update, :id => voter.id, :registration => { :status => "confirmed" }
+      leo_post :update, :id => voter.id, :registration => { :status => "confirmed" }
       assigns(:voter).should == nil
       response.should render_template(:show)
     end
 
     it "should look for the first revieable voter if the specified isn't found" do
-      post :update, :id => -1
+      leo_post :update, :id => -1
       assigns(:voter).should == nil
     end
   end
@@ -92,8 +92,8 @@ describe Leo::VotersController do
 
   context "when seeing the index of voters" do
     it "should return the list of voters" do
-      20.times { Factory(:voter) }
-      get :index, :subdomains => ['leo']
+      (Leo::VotersController::VOTERS_PER_PAGE + 1).times { Factory(:voter) }
+      leo_get :index
 
       vs = assigns(:voters)
       vs.should_not be_nil
@@ -107,7 +107,7 @@ describe Leo::VotersController do
       unreturned  = Factory(:registration)
       unreviewed  = Factory(:voter)
       
-      get :index
+      leo_get :index
       
       vs = assigns(:voters)
       vs.should include(confirmed, denied, unconfirmed, unreviewed)
