@@ -26,8 +26,12 @@ ActionController::Routing::Routes.draw do |map|
       s.logout      '/logout',  :action => 'destroy'
     end
 
+    c.with_options :controller => "pages" do |p|
+      p.instructions '/instructions', :action => 'instructions'
+    end
+
     c.root        :controller => 'voters', :action => 'show'
-    c.resources   :voters, :only => [ :index, :show, :update ]
+    c.resources   :voters, :only => [ :index, :show, :update ]    
     c.attestation '/voter/:id/attestation.pdf', :controller => 'voters', :action => 'attestation', :format => 'pdf'
     c.review      '/voters/review', :controller => 'voters', :action => 'show'
   end

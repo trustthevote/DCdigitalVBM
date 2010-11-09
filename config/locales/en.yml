@@ -487,3 +487,10 @@ en:
           time: Time and Date
           name: LEO Name
           comments: Comments
+    pages:
+      instructions:
+        title: Instructions
+        body:
+          <p>First paragraph</p>
+          <p>Second paragraph</p>
+          <p>Third paragraph</p>
