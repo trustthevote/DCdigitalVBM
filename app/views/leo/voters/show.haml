@@ -39,7 +39,8 @@
       - form_for @voter, :url => leo_voter_url(@voter) do |f|
         = hidden_field_tag 'registration[status]', ''
         = label_tag 'registration[deny_reason]', t(".comments")
-        = text_area_tag    'registration[deny_reason]', '', :placeholder => "Please indicate a reason for denying."        #reason_error{ :style => "display: none" }= t ".reason_error"
+        = text_area_tag    'registration[deny_reason]', ''
+        #reason_error{ :style => "display: none" }= t ".reason_error"
   
     - if @voter.log_records.any?
       #history
