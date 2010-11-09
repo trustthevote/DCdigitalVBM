@@ -41,8 +41,8 @@ $(function() {
 	$("a#deny").click(function(e) {
     e.preventDefault();
     var reason = $("#registration_deny_reason").val();
-    if ($.trim(reason.trim).length == 0) {
-      alert("Please enter the reason for denying.");
+    if ($.trim(reason).length == 0) {
+      $("#reason_error").fadeIn('slow'); //show('slow');
     } else {
       send('denied');
     }

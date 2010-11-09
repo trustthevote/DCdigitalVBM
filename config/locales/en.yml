@@ -450,3 +450,24 @@ en:
         step_4:
           title: Send Ballot
           summary: Locate your ballot on your computer|Upload your ballot|Receive notice of ballot receipt
+  leo:
+    voters:
+      show:
+        title: Review
+        finished: Finished
+        finished_info: All attestations have been reviewed.
+        voter_status: Voter status
+        confirm_status:
+          title: Confirm Voter Status
+          info: Select the check box to confirm or deny voter eligibility.
+          confirm: Confirm
+          deny: Deny
+          skip: Skip
+        comments: Comments
+        reason_error: Please enter the reason for denying.
+        history:
+          title: History
+          action: Action
+          time: Time and Date
+          name: LEO Name
+          comments: Comments

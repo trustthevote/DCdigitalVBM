@@ -1,16 +1,16 @@
 - page_options :class => "review"
-%h1 Review
+%h1= t ".title"
 
 #review
   - unless @voter
-    %h2 Finished
-    %p All attestations have been reviewed.
+    %h2= t ".finished"
+    %p= t ".finished_info"
     %footer
       = link_to "All Voters", leo_voters_path, :class => "button"
       = link_to "Logout", logout_path, :class => "button"
     
   - else
-    - attestation_img = image_tag('attestation.png', :width => 317, :height => 326, :class => "attestation")
+    - attestation_img = image_tag('attestation.png', :width => 220, :height => 226, :class => "attestation")
     - if @voter.voted_digitally?
       = link_to attestation_img, leo_attestation_url(@voter), :target => "_blank"
     - else
@@ -28,28 +28,30 @@
 
       #voter_status
         - status = @voter.voted_digitally? ? "Voted" : "Not yet voted"
-        Voter status: <strong>#{status}</strong>
+        #{t(".voter_status")}: <strong>#{status}</strong>
 
     #review_controls{ :style => @voter.reviewable? ? nil : "display: none" }
-      %h2 Confirm Voter Status
-      %p Select the check box to confirm or deny voter eligibility.
-      = link_to "Confirm", '#', :class => "button", :id => "confirm"
-      = link_to "Deny",    '#', :class => "button", :id => "deny"
-      = link_to "Skip",    '#', :class => "button", :id => "skip" if @next_voter
+      %h2= t ".confirm_status.title"
+      %p= t ".confirm_status.info"
+      = link_to t(".confirm_status.confirm"), '#', :class => "button", :id => "confirm"
+      = link_to t(".confirm_status.deny"),    '#', :class => "button", :id => "deny"
+      = link_to t(".confirm_status.skip"),    '#', :class => "button", :id => "skip" if @next_voter
       - form_for @voter, :url => leo_voter_url(@voter) do |f|
         = hidden_field_tag 'registration[status]', ''
+        = label_tag 'registration[deny_reason]', t(".comments")
         = text_area_tag    'registration[deny_reason]', '', :placeholder => "Please indicate a reason for denying."
+        #reason_error{ :style => "display: none" }= t ".reason_error"
   
     - if @voter.log_records.any?
       #history
-        %h2 History
+        %h2= t ".history.title"
         %table
           %thead
             %tr
-              %th Action
-              %th Time and Date
-              %th LEO Name
-              %th Comments
+              %th= t ".history.action"
+              %th= t ".history.time"
+              %th= t ".history.name"
+              %th= t ".history.comments"
           %tbody
             - @voter.log_records.all(:include => :reviewer, :order => "created_at").each do |r|
               %tr
