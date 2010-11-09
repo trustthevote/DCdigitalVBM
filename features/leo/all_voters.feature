@@ -9,15 +9,14 @@ Feature: All voters
   Scenario: Seeing empty reviewable voters list
     When  I go to the voters index page
     Then  I should see 0 rows with voters in the table
-      And I should see "Voter Results 0-0 of 0"
-      And I should see "Page 1 of 1"
+      And I should see "There are no voter records to review at the moment"
  
   Scenario: Seeing initial reviewable voters
-    Given there are 20 unconfirmed voters
+    Given there are 30 unconfirmed voters
     When  I go to the voters index page
-    Then  I should see 15 rows with voters in the table
-      And I should see 15 statuses "Unconfirmed"
-      And I should see "Voter Results 1-15 of 20"
+    Then  I should see 25 rows with voters in the table
+      And I should see 25 statuses "Unconfirmed"
+      And I should see "Voter Results 1-25 of 30"
       And I should see "Page 1 of 2"
 
   Scenario: Status panel
