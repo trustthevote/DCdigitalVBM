@@ -1474,3 +1474,12 @@ a#previous { float: left; }
 
 .pagination { margin-top: 9px; }
 .warning { color: red; }
+
+#leo header nav {
+  left: auto;
+  right: 20px;
+}
+#leo header nav li {
+	float:left;
+	padding: 0 0 0 24px;
+}
