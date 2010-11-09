@@ -4,18 +4,18 @@
   = render :partial => "status_panel"
 
 %section#data
-  %h1 Voters
+  %h1= t ".title"
   #voters
     - unless @voters.any?
-      .no-items There are no voter records to review at the moment.
+      .no-items t ".no_voters"
     - else
       %table
         %thead
           %tr
-            %th.name      Name
-            %th.status    Status
-            %th.reviewer  Reviewer
-            %th.time      Time
+            %th.name=     t ".name"
+            %th.status=   t ".status"
+            %th.reviewer= t ".reviewer"
+            %th.time=     t ".time"
         %tbody
           = render :partial => "voter_row", :collection => @voters
 

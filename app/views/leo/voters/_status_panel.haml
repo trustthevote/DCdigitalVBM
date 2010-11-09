@@ -1,19 +1,19 @@
 - @stats ||= ReviewStats.new
-%h1 Status panel
+%h1= t("leo.status.title")
 
 %table
   %tr.returned
-    %td.label Returned
+    %td.label= t("leo.status.returned")
     %td.value #{@stats.returned} / #{@stats.total}
 
   %tr.reviewed
-    %td.label Reviewed
+    %td.label= t("leo.status.reviewed")
     %td.value #{@stats.reviewed} / #{@stats.returned}
 
   %tr.confirmed
-    %td.label Confirmed
+    %td.label= t("leo.status.confirmed")
     %td.value #{@stats.confirmed} / #{@stats.reviewed}
 
   %tr.denied
-    %td.label Denied
+    %td.label= t("leo.status.denied")
     %td.value #{@stats.denied} / #{@stats.reviewed}

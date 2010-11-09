@@ -1,10 +1,13 @@
 - @stats ||= ReviewStats.new
 %section#subheader
   #electiondate
-    %p DC General Election
-    %p November 2, 2010
+    %p= t "organization"
+    %p= t "date"
 
   #pageheader
-    = Time.zone.now.to_s(:short_day)
+    %strong #{t("leo.subheader.date")}:
+    #{Time.zone.now.to_s(:short_day)}
     - if logged_in?
-      <br/>#{@stats.reviewed} / #{@stats.returned}
+      %br
+      %strong #{t("leo.subheader.progress")}:
+      #{@stats.reviewed} / #{@stats.returned}

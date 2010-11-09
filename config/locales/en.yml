@@ -451,7 +451,23 @@ en:
           title: Send Ballot
           summary: Locate your ballot on your computer|Upload your ballot|Receive notice of ballot receipt
   leo:
+    subheader:
+      date: Date
+      progress: Progress
+    status:
+      title: Status
+      returned: Returned
+      reviewed: Reviewed
+      confirmed: Confirmed
+      denied: Denied
     voters:
+      index:
+        title: Voters
+        no_voters: There are no voter records to review at the moment.
+        name: Name
+        status: Status
+        reviewer: Reviewer
+        time: Time
       show:
         title: Review
         finished: Finished
