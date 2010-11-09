@@ -10,7 +10,7 @@
       = link_to "Logout", logout_path, :class => "button"
     
   - else
-    - attestation_img = image_tag('attestation.png', :width => 220, :height => 226, :class => "attestation")
+    - attestation_img = image_tag('attestation.png', :width => 210, :height => 216, :class => "attestation")
     - if @voter.voted_digitally?
       = link_to attestation_img, leo_attestation_url(@voter), :target => "_blank"
     - else
@@ -39,8 +39,7 @@
       - form_for @voter, :url => leo_voter_url(@voter) do |f|
         = hidden_field_tag 'registration[status]', ''
         = label_tag 'registration[deny_reason]', t(".comments")
-        = text_area_tag    'registration[deny_reason]', '', :placeholder => "Please indicate a reason for denying."
-        #reason_error{ :style => "display: none" }= t ".reason_error"
+        = text_area_tag    'registration[deny_reason]', '', :placeholder => "Please indicate a reason for denying."        #reason_error{ :style => "display: none" }= t ".reason_error"
   
     - if @voter.log_records.any?
       #history
