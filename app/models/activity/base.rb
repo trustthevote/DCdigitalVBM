@@ -18,10 +18,16 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-class FlowCompletion < ActiveRecord::Base
+class Activity::Base < ActiveRecord::Base
+
+  set_table_name 'activity_log'
+  serialize :data
+
   belongs_to :registration
-  
-  named_scope :digital, :conditions => { :voting_type => 'digital' }
-  named_scope :physical, :conditions => { :voting_type => 'physical' }
-  
+
+  # Returns the description of this event for the log
+  def description
+    "%s - %-30s - %-8s" % [ self.created_at, self.registration.name, self.voting_type ]
+  end
+
 end

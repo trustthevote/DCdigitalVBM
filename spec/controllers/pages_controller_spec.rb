@@ -72,78 +72,91 @@ describe PagesController do
   
   context "when checking in" do
     let(:action) { :check_in }
+    let(:registration) { Factory(:registration) }
+
     it_should_behave_like "pages with blocked digital flow"
     
-    it "should display form" do
-      get :check_in
-      response.should render_template(:check_in)
+    context "and entering the page" do
+      before  { get :check_in }
+      it      { should render_template :check_in }
     end
     
-    it "should return to the check in form if record wasn't found" do
-      post :check_in, :registration => { :pin => "unknown" }
-      response.should render_template(:check_in)
-      assigns(:registration).should be_nil
+    context "and submitting a valid record" do
+      before  { post :check_in, :registration => { :pin => "unknown" } }
+      it      { should render_template :check_in }
+      specify { assigns(:registration).should_not be }
     end
     
-    it "should move on to the confirm page when record was found" do
-      r = Factory(:registration, :pin => "1234")
-      post :check_in, :registration => { :pin => "1234", :name => r.name, :zip => r.zip, :voter_id => r.voter_id }
-      response.should redirect_to(confirm_url)
+    context "and submitting an invalid record" do
+      before  { post :check_in, :registration => { :pin => '1111', :name => registration.name, :zip => registration.zip, :voter_id => registration.voter_id } }
+      it      { should redirect_to confirm_url }
     end
   end
 
+  context "when confirming" do
+    let(:action) { :confirm }
+
+    it_should_behave_like "pages with blocked digital flow"
+
+    before { stub_registration }
+    
+    context "and just entering the page" do
+      specify { get(:confirm).should render_template :confirm }
+      specify { @controller.expects(:register).with(Activity::CheckIn).during get(:confirm) }
+    end
+
+    context "when already uploaded ballot" do
+      before  { Registration.any_instance.expects(:voted_digitally?).returns(true) && get(:confirm) }
+      it      { should redirect_to thanks_url }
+    end
+  end
+
+
   context "when requesting attestation PDF" do
-    it "should redirect to check-in if haven't checked in yet" do
-      get :attestation, :format => 'pdf'
-      response.should redirect_to(check_in_url)
+    context "without having checked in" do
+      before  { get :attestation, :format => 'pdf' }
+      it      { should redirect_to check_in_url }
     end
     
-    it "should render the PDF if checked in" do
-      stub_registration
-      get :attestation, :format => 'pdf'
-      response.should render_template(:attestation)
+    context "when checked in properly" do
+      before  { stub_registration }
+      specify { requesting_attestation.should render_template :attestation }
+      specify { @controller.expects(:register).with(Activity::Download, :resource => "attestation").during requesting_attestation }
+      def requesting_attestation; get(:attestation, :format => 'pdf'); end
     end
   end
   
-  context "when confirming" do
-    let(:action) { :confirm }
-    it_should_behave_like "pages with blocked digital flow"
-
-    before do
-      stub_registration
+  
+  context "when requesting blank ballot" do
+    context "without having checked in" do
+      before  { get :ballot, :format => 'pdf' }
+      it      { should redirect_to check_in_url }
     end
     
-    it "should render the page" do
-      get :confirm
-      response.should render_template(:confirm)
-    end
-
-    it "should render the thanks page with the ballot receipt info if already uploaded" do
-      Registration.any_instance.expects(:voted_digitally?).returns(true)
-      get :confirm
-      response.should redirect_to(thanks_url)
+    context "when checked in properly" do
+      before  { stub_registration && Registration.any_instance.stubs(:blank_ballot).returns(stub(:url => "http://somewhere.com/ballot.pdf")) }
+      specify { requesting_ballot.should redirect_to @r.blank_ballot.url }
+      specify { @controller.expects(:register).with(Activity::Download, :resource => "ballot").during requesting_ballot }
+      def requesting_ballot; get(:ballot, :format => 'pdf'); end
     end
   end
-
+  
+  
   context "when completing" do
     let(:action) { :complete }
     it_should_behave_like "pages with blocked digital flow"
 
-    it "should render the page" do
-      stub_registration
-      Registration.any_instance.expects(:register_check_in!)
-      get :complete
-      response.should render_template(:complete)
-    end
+    before  { stub_registration }
+    specify { get(:complete).should render_template :complete }
+    specify { Registration.any_instance.expects(:register_check_in!).during get(:complete) }
+    specify { @controller.expects(:register).with(Activity::Confirmation).during get(:complete) }
   end
   
   context "when sending ballot" do
     let(:action) { :return }
     it_should_behave_like "pages with blocked digital flow"
 
-    before do
-      stub_registration
-    end
+    before { stub_registration }
 
     it "should return to the same form if ballot is invalid and can't be saved" do
       @controller.stubs(:save_ballot).returns(false)
@@ -158,24 +171,18 @@ describe PagesController do
     end
   end
 
+
   context "when viewing thanks" do
     let(:action) { :thanks }
     it_should_behave_like "pages with blocked digital flow"
 
-    before do
-      stub_registration
-    end
+    before { stub_registration }
 
-    it "should render the page" do
-      get :thanks
-      response.should render_template(:thanks)
-    end
-    
-    it "should register the completion" do
-      Registration.any_instance.expects(:register_flow_completion!).with('digital')
-      get :thanks
-    end
+    specify { get(:thanks).should render_template :thanks }
+    specify { Registration.any_instance.expects(:register_completion!).during get(:thanks) }
+    specify { @controller.expects(:register).with(Activity::Completion).during get(:thanks) }
   end
+
 
   context "when viewing supplementary pages" do
     context "and currently before the voting started" do

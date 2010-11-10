@@ -42,4 +42,5 @@ group :test do
   gem 'rspec-rails',      '1.3.2'
   gem 'timecop',          '0.3.5'
   gem 'mocha',            '0.9.8', :require => nil # This is important. Otherwise you won't be able to mock finders
+  gem 'shoulda'
 end

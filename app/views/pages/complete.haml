@@ -7,7 +7,7 @@
 
 %section#download.instruction
   = section_header(1, :no_tip => true)
-  = link_to "", @registration.blank_ballot.try(:url), :id => "ballot-pdf", :class => "instruction-image-link", :target => "_blank"
+  = link_to "", (@registration.blank_ballot ? ballot_path : nil), :id => "ballot-pdf", :class => "instruction-image-link", :target => "_blank"
 
 %section#mark.instruction
   = section_header(2, :no_tip => true, :image => tt(".step_2.image"), :image_alt => "Open and View Your Attestation Document.")

@@ -18,7 +18,11 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-require 'spec_helper'
+class Activity::Confirmation < Activity::Base
+  
+  # Returns the description of this event for the log
+  def description
+    "%s - Confirmed" % super
+  end
 
-describe FlowCompletion do
 end

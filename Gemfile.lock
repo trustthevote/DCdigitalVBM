@@ -1,127 +1,131 @@
 --- 
 dependencies: 
+  fastercsv: 
+    group: 
+    - :default
+    version: = 1.5.3
   faker: 
     group: 
     - :development
     - :test
     - :cucumber
     version: = 0.3.1
-  fastercsv: 
-    group: 
-    - :default
-    version: = 1.5.3
-  rails: 
-    group: 
-    - :default
-    version: = 2.3.8
-  mongrel: 
-    group: 
-    - :development
-    version: = 1.1.5
   ZenTest: 
     group: 
     - :development
     - :test
     - :cucumber
     version: = 4.4.0
-  sqlite3-ruby: 
+  mongrel: 
     group: 
     - :development
-    version: = 1.3.1
-  prawn: 
+    version: = 1.1.5
+  rails: 
     group: 
     - :default
-    version: = 0.8.4
-  mysql: 
-    group: 
-    - :default
-    version: = 2.8.1
-  rake: 
-    group: 
-    - :default
-    version: = 0.8.7
-  haml: 
-    group: 
-    - :default
-    version: = 3.0.21
+    version: = 2.3.8
   authlogic: 
     group: 
     - :default
     version: = 2.1.6
+  haml: 
+    group: 
+    - :default
+    version: = 3.0.21
+  rake: 
+    group: 
+    - :default
+    version: = 0.8.7
+  mysql: 
+    group: 
+    - :default
+    version: = 2.8.1
+  prawn: 
+    group: 
+    - :default
+    version: = 0.8.4
+  sqlite3-ruby: 
+    group: 
+    - :development
+    version: = 1.3.1
+  shoulda: 
+    group: 
+    - :test
+    version: ">= 0"
   timecop: 
     group: 
     - :test
     version: = 0.3.5
-  radix: 
-    group: 
-    - :development
-    version: = 1.1.0
   rspec: 
     group: 
     - :test
     version: = 1.3.0
-  rspec-rails: 
+  radix: 
     group: 
-    - :test
-    version: = 1.3.2
+    - :development
+    version: = 1.1.0
   database_cleaner: 
     group: 
     - :test
     - :cucumber
     version: = 0.5.2
-  mocha: 
+  rspec-rails: 
     group: 
     - :test
-    version: = 0.9.8
-    require: []
-
-  will_paginate: 
-    group: 
-    - :default
-    version: = 2.3.15
-  simple_form: 
-    group: 
-    - :default
-    version: = 1.0.2
-  paperclip: 
-    group: 
-    - :default
-    version: = 2.3.3
-  capistrano-ext: 
-    group: 
-    - :development
-    version: = 1.2.1
-  factory_girl: 
-    group: 
-    - :test
-    - :cucumber
     version: = 1.3.2
   cucumber-rails: 
     group: 
     - :test
     - :cucumber
     version: = 0.3.2
+  factory_girl: 
+    group: 
+    - :test
+    - :cucumber
+    version: = 1.3.2
+  capistrano-ext: 
+    group: 
+    - :development
+    version: = 1.2.1
+  paperclip: 
+    group: 
+    - :default
+    version: = 2.3.3
+  simple_form: 
+    group: 
+    - :default
+    version: = 1.0.2
+  will_paginate: 
+    group: 
+    - :default
+    version: = 2.3.15
+  mocha: 
+    group: 
+    - :test
+    version: = 0.9.8
+    require: []
+
   bundler: 
     group: 
     - :default
     version: = 0.9.26
-  subdomain_routes: 
-    group: 
-    - :default
-    version: = 0.3.1
   RedCloth: 
     group: 
     - :default
     version: = 4.2.3
+  subdomain_routes: 
+    group: 
+    - :default
+    version: = 0.3.1
+  capistrano: 
+    group: 
+    - :development
+    version: = 2.5.19
   capybara: 
     group: 
     - :test
     - :cucumber
     version: = 0.3.9
-  capistrano: 
-    group: 
-    - :development
-    version: = 2.5.19
 specs: 
 - rake: 
     version: 0.8.7
@@ -235,6 +239,8 @@ specs:
     version: 1.3.0
 - rspec-rails: 
     version: 1.3.2
+- shoulda: 
+    version: 2.11.3
 - simple_form: 
     version: 1.0.2
 - sqlite3-ruby: 
@@ -245,7 +251,7 @@ specs:
     version: 0.3.5
 - will_paginate: 
     version: 2.3.15
-hash: bb4952218b9ffc2be218cb29fbca527644bc4c12
+hash: c50d0f143dd532e3b73a2cdf3b542ae95ff0dc5d
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org

@@ -24,6 +24,8 @@ describe Registration do
 	let(:r) { Factory(:registration) }
 	let(:v) { Factory(:voter) }
 
+  it { should have_many :activity_records }
+
 	it "should return the empty ballot PDF" do
 		b = Factory(:ballot_style)
 		r = Factory(:registration, :precinct_split_id => b.precinct_split_id)
@@ -71,31 +73,15 @@ describe Registration do
 		end
 	end
 	
-	describe "when registering flow completion" do
+	describe "when registering completion" do
 		it "should register the completion" do
-			r = Factory(:registration)
-
-			r.register_flow_completion!('digital')
-			fcs = r.flow_completions
-			fcs.size.should == 1
-			fcs.first.voting_type.should == 'digital'
-			r.last_completed_at.should_not be_nil
-		end
-		
-		it "should register the completion of another type too" do
-			fc = Factory(:flow_completion, :voting_type => 'physical')
-			r	 = fc.registration
-			r.register_flow_completion!('digital')
-			fcs = r.flow_completions
-			fcs.size.should == 2
-			fcs.last.voting_type.should == 'digital'
-		end
-		
-		it "should not register the same voting type again" do
-			fc = Factory(:flow_completion, :voting_type => 'physical')
-			r = fc.registration
-			r.register_flow_completion!('physical')
-			r.flow_completions.size.should == 1
+		  Timecop.freeze do
+  		  r = Factory(:registration)
+  		  r.register_completion!
+  		  
+  		  r.reload
+  		  r.completed_at.should == Time.now
+		  end
 		end
 	end
 	
@@ -211,4 +197,30 @@ describe Registration do
 			v.should be_reviewed
 		end
 	end
+
+  context "status named scopes" do
+    before do
+      @unchecked  = Factory(:registration)
+      @unfinished = Factory(:registration, :checked_in_at => 2.minutes.ago)
+      @finished   = Factory(:registration, :completed_at => 1.minute.ago)
+    end
+    
+    it "should return correct records for .finished" do
+      Registration.finished.should        == [ @finished ]
+    end
+    
+    it "should return correct records for .checked_in" do
+      Registration.checked_in.should      include @unfinished
+      Registration.checked_in.should      include @finished
+      Registration.checked_in.should_not  include @unchecked
+    end
+    
+    it "should return correct records for .unfinished" do
+      Registration.unfinished.should      == [ @unfinished ]
+    end
+    
+    it "should return correct records for .inactive" do
+      Registration.inactive.should        == [ @unchecked ]
+    end
+  end
 end

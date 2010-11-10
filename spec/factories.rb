@@ -18,7 +18,7 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-Factory.sequence(:pin)    { |i| i.to_s.rjust(4, '0') }
+Factory.sequence(:vid)    { |i| i.to_s.rjust(9, '0') }
 Factory.sequence(:name)   { |i| "name_#{i}" }
 Factory.sequence(:login)  { |i| "login_#{i}" }
 
@@ -42,13 +42,14 @@ end
 Factory.define :registration do |f|
   f.association       :precinct_split
   f.name              { Faker::Name.name }
-  f.pin               { Factory.next(:pin) }
+  f.pin               '1111'
   f.address           '140 N Street'
   f.city              'Washington'
   f.state             'DC'
   f.zip               '20004'
-  f.voter_id          { Factory.next(:pin) }
+  f.voter_id          { Factory.next(:vid) }
 end
+
 
 Factory.define :voter, :parent => :registration do |f|
   f.voted_digitally   true
@@ -69,14 +70,30 @@ Factory.define :ballot do |f|
   f.pdf_updated_at    { Time.now }
 end
 
-Factory.define :flow_completion do |f|
-  f.association       :registration
-  f.voting_type       "physical"
-end
-
 Factory.define :user do |f|
   f.login             { Factory.next(:login) }
   f.email             { |o| "#{o.login}@localhost.com" }
   f.password          "test"
   f.password_confirmation { |o| o.password }
+end
+
+Factory.define :activity, :class => Activity::Base do |f|
+  f.association       :registration
+  f.voting_type       'digital'
+end
+
+Factory.define :check_in, :class => Activity::CheckIn do |f|
+  f.association       :registration
+end
+
+Factory.define :confirmation, :class => Activity::Confirmation do |f|
+  f.association       :registration
+end
+
+Factory.define :completion, :class => Activity::Completion do |f|
+  f.association       :registration
+end
+
+Factory.define :download, :class => Activity::Download do |f|
+  f.association       :registration
 end

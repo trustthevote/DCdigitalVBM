@@ -23,8 +23,9 @@ require 'digest/sha1'
 class Registration < ActiveRecord::Base
 
   belongs_to  :precinct_split
+  has_many    :activity_records, :class_name => "Activity::Base", :dependent => :delete_all
+
   has_one     :ballot, :dependent => :destroy
-  has_many    :flow_completions, :dependent => :destroy
   belongs_to  :reviewer, :class_name => "User"
   has_many    :log_records, :class_name => "LogRecord::Base", :dependent => :destroy
 
@@ -32,9 +33,10 @@ class Registration < ActiveRecord::Base
   validates_presence_of :precinct_split_id
   validates_inclusion_of :status, :in => %w( confirmed denied ), :allow_nil => true
 
-  named_scope :inactive,    :conditions => { :checked_in_at => nil }
-  named_scope :checked_in,  :conditions => "checked_in_at IS NOT NULL"
-  named_scope :unfinished,  :conditions => [ "checked_in_at IS NOT NULL AND last_completed_at IS NULL" ]
+  named_scope :inactive,    :conditions => "checked_in_at IS NULL AND completed_at IS NULL"
+  named_scope :checked_in,  :conditions => "checked_in_at IS NOT NULL OR  completed_at IS NOT NULL"
+  named_scope :unfinished,  :conditions => "checked_in_at IS NOT NULL AND completed_at IS NULL"
+  named_scope :finished,    :conditions => "completed_at  IS NOT NULL"
   named_scope :reviewable,  :conditions => { :voted_digitally => true }, :order => "status, name, id"
   named_scope :returned,    :conditions => { :voted_digitally => true }
   named_scope :unreviewed,  :conditions => { :last_reviewed_at => nil }
@@ -68,14 +70,12 @@ class Registration < ActiveRecord::Base
     ballot && ballot.pdf_updated_at
   end
   
-  def register_flow_completion!(voting_type)
-    self.update_attributes!(:last_completed_at => Time.now)
-    self.flow_completions.find_or_create_by_voting_type(voting_type)
+  def register_completion!
+    self.update_attributes!(:completed_at => Time.now)
   end
   
   def register_check_in!
-    self.checked_in_at = Time.now
-    self.save!
+    self.update_attributes!(:checked_in_at => Time.now)
   end
   
   def register_ballot!(ballot_pdf)

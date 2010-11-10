@@ -147,11 +147,7 @@ The sample output is:
     Total number of voters                            : 3201
     Inactive                                          : 3200 ( 99.97%)
     Used the system but not finished                  : 0 (  0.00%)
-    Used the system and finished the physical flow    : 1 (  0.03%)
-    Used the system and finished the digital flow     : 1 (  0.03%)
-
-Please note that since we allow working through physical and digital workflows, the last two lines are not self-exclusive.
-In this particular sample example, you can see (total - inactive = 1) that the same user has completed both flows.
+    Used the system and finished                      : 1 (  0.03%)
 
 
 

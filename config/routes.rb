@@ -43,6 +43,7 @@ ActionController::Routing::Routes.draw do |map|
     o.check_in      '/check_in',        :action => "check_in"
     o.confirm       '/confirm',         :action => "confirm"
     o.attestation   '/attestation.pdf', :action => "attestation", :format => "pdf"
+    o.ballot        '/ballot.pdf',      :action => "ballot", :format => "pdf"
     o.complete      '/complete',        :action => "complete"
     o.return        '/return',          :action => "return"
     o.thanks        '/thanks',          :action => "thanks"

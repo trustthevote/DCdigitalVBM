@@ -22,7 +22,7 @@ class PagesController < ApplicationController
 
   before_filter :block_wrong_time,  :except => [ :front, :about, :contact ]
   before_filter :block_digital,     :except => [ :front, :overview ]
-  before_filter :load_registration, :only   => [ :confirm, :attestation, :complete, :return, :thanks ]
+  before_filter :load_registration, :only   => [ :confirm, :attestation, :complete, :ballot, :return, :thanks ]
   before_filter :block_processed,   :only   => [ :confirm, :complete, :return ]
 
   def overview
@@ -44,14 +44,22 @@ class PagesController < ApplicationController
   end
 
   def confirm
+    register Activity::CheckIn
   end
 
   def attestation
+    register Activity::Download, :resource => "attestation"
     render_pdf "attestation"
   end
   
   def complete
+    register Activity::Confirmation
     @registration.register_check_in!
+  end
+  
+  def ballot
+    register Activity::Download, :resource => "ballot"
+    redirect_to @registration.blank_ballot.url
   end
   
   def return
@@ -63,7 +71,8 @@ class PagesController < ApplicationController
   end
   
   def thanks
-    @registration.register_flow_completion!(voting_type)
+    register Activity::Completion
+    @registration.register_completion!
   end
   
   private
@@ -115,5 +124,9 @@ class PagesController < ApplicationController
   
   def block_digital
     redirect_to front_url if digital? && !digital_enabled?
+  end
+  
+  def register(activity_class, options = {})
+    activity_class.create(options.merge(:registration => @registration, :voting_type => self.voting_type))
   end
 end

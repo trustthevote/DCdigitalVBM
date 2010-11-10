@@ -18,38 +18,20 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
-class Stats
+class Activity::Download < Activity::Base
   
-  def run
-    total      = Registration.count
-    inactive   = Registration.inactive.count
-    unfinished = Registration.unfinished.count
-    finished   = Registration.finished.count
+  def resource
+    (self.data || {})['resource']
+  end
+  
+  def resource=(v)
+    self.data ||= {}
+    self.data['resource'] = v
+  end
+  
+  # Returns the description of this event for the log
+  def description
+    "%s - Downloaded %s" % [ super, resource ]
+  end
 
-    [ [ "Total number of voters", total ],
-      [ "Inactive", "#{inactive} (#{percent(inactive, total)})" ],
-      [ "Used the system but not finished", "#{unfinished} (#{percent(unfinished, total)})" ],
-      [ "Used the system and finished", "#{finished} (#{percent(finished, total)})" ] ].each do |f|
-      puts "%-50s: %s" % f
-    end
-    
-    log
-  end
-  
-  private
-  
-  def percent(n, t)
-    "%6.2f%%" % (100.0 * n / t)
-  end
-  
-  def log
-    puts
-    puts "Activity log:"
-    puts
-    
-    Activity::Base.all(:order => "created_at", :include => :registration).each do |r|
-      puts r.description
-    end
-  end
-  
 end
