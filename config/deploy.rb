@@ -102,6 +102,16 @@ namespace :deploy do
   end
 end
 
+namespace :db do
+  task :reset do
+    run "cd #{latest_release}; RAILS_ENV=#{rails_env} rake db:reset"
+  end
+
+  task :seed do
+    run "cd #{latest_release}; RAILS_ENV=#{rails_env} rake db:seed"
+  end
+end
+
 # Passenger tasks
 namespace :deploy do  
   desc "Restarting mod_rails with restart.txt"
