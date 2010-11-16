@@ -45,15 +45,14 @@ describe Registration do
 		Registration.hash_pin(" ").should be_nil
 	end
 	
-	describe "when matches" do
+	describe ".match" do
 		it "should find the record that matches info" do
-			pin = "1234567812345678"
-			r = Factory(:registration, :pin => pin)
-			Registration.match(:name => r.name, :zip => r.zip, :voter_id => r.voter_id, :pin => pin).should == r
+			r = Factory(:registration)
+			Registration.match(:last_name => r.last_name, :zip => r.zip, :voter_id => r.voter_id, :pin => '1111').should == r
 		end
 	
 		it "should return nil if nothing was found" do
-			Registration.match(:name => "Unknown", :zip => "24001", :voter_id => "1", :pin => "1").should be_nil
+			Registration.match(:last_name => "Unknown", :zip => "24001", :voter_id => "1", :pin => "1").should be_nil
 		end
 	end
 
@@ -114,10 +113,10 @@ describe Registration do
 	context ".reviewable scope" do
 		it "should return only with returned ballots and sorted by status, then names" do
 			Registration.destroy_all
-			@r1 = Factory(:voter, :name => "Mark")
-			@r2 = Factory(:voter, :name => "Lee") # Name goes before the first one
-			@r3 = Factory(:registration, :name => "Beth") # Name goes before the first one
-			@r4 = Factory(:reviewed_voter, :name => "Jack") # Name goes before the first two
+			@r1 = Factory(:voter, :last_name => "Mann")
+			@r2 = Factory(:voter, :last_name => "Lee") # Name goes before the first one
+			@r3 = Factory(:registration, :last_name => "Bets") # Name goes before the first one
+			@r4 = Factory(:reviewed_voter, :last_name => "Jackson") # Name goes before the first two
 
 			Registration.reviewable.map(&:id).should == [ @r2.id, @r1.id, @r4.id ]
 		end

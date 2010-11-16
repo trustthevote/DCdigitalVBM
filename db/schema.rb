@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101110114316) do
+ActiveRecord::Schema.define(:version => 20101116072925) do
 
   create_table "activity_log", :force => true do |t|
     t.integer  "registration_id"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(:version => 20101110114316) do
   end
 
   create_table "registrations", :force => true do |t|
-    t.string   "name"
     t.string   "zip"
     t.string   "pin_hash"
     t.string   "voter_id"
@@ -75,8 +74,6 @@ ActiveRecord::Schema.define(:version => 20101110114316) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "address"
-    t.string   "city"
-    t.string   "state"
     t.datetime "checked_in_at"
     t.datetime "completed_at"
     t.string   "status"
@@ -84,9 +81,13 @@ ActiveRecord::Schema.define(:version => 20101110114316) do
     t.boolean  "voted_digitally",   :default => false
     t.integer  "reviewer_id"
     t.datetime "last_reviewed_at"
+    t.string   "ssn4"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
   end
 
-  add_index "registrations", ["pin_hash", "voter_id", "name", "zip"], :name => "index_registrations_on_pin_hash_and_voter_id_and_name_and_zip", :unique => true
+  add_index "registrations", ["pin_hash", "voter_id", "zip"], :name => "index_registrations_on_pin_hash_and_voter_id_and_name_and_zip", :unique => true
   add_index "registrations", ["precinct_split_id"], :name => "index_registrations_on_precinct_split_id"
   add_index "registrations", ["reviewer_id"], :name => "index_registrations_on_reviewer_id"
   add_index "registrations", ["voted_digitally"], :name => "index_registrations_on_voted_digitally"

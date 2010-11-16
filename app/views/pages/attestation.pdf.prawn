@@ -43,8 +43,6 @@ pdf.bounding_box [ 0, 330 ], :width => 150 do
   pdf.text "Voter attestation", :style => :bold
 end
 
-pdf.image "public/images/print-checkbox.jpg", :at => [ 50, 250 ]
-
 pdf.bounding_box [ 200, 330 ], :width => 300 do
   pdf.text "I affirm that the information on this form is true, accurate, and complete to the best of my knowledge, and that I understand that a material misstatement of fact in completion of this document may constitute grounds for a conviction for perjury.", :leading => 3
   pdf.move_down 20
@@ -54,8 +52,17 @@ pdf.bounding_box [ 200, 330 ], :width => 300 do
   pdf.move_down 5
   pdf.font_size 16
   pdf.text @registration.address
-  pdf.text "#{@registration.city}, #{@registration.state} #{@registration.zip}"
 end
 
 # Signature line
-pdf.stroke_line [ 200, 100 ], [ pdf.bounds.right, 100 ]
+pdf.font_size 12
+pdf.bounding_box [ 200, 115 ], :width => 80 do
+  pdf.text "Signature:", :style => :bold
+end
+pdf.stroke_line [ 280, 100 ], [ pdf.bounds.right, 100 ]
+
+# Date line
+pdf.bounding_box [ 200, 40 ], :width => 80 do
+  pdf.text "Date:", :style => :bold
+end
+pdf.stroke_line [ 280, 25 ], [ pdf.bounds.right, 25 ]

@@ -22,9 +22,6 @@
           %span.name= h(@voter.name)
         .adr
           .street-address= h(@voter.address)
-          %span.locality= h(@voter.city)
-          %span.region= h(@voter.state)
-          %span.postal-code= h(@voter.zip)
 
       #voter_status
         - status = @voter.voted_digitally? ? "Voted" : "Not yet voted"

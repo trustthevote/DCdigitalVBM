@@ -18,6 +18,8 @@
 # Contributors: Paul Stenbjorn, Aleksey Gureiev, Robin Bahr,
 # Thomas Gaskin, Sean Durham, John Sebes.
 
+MIDDLE_NAMES = ('A' .. 'Z').to_a
+
 Factory.sequence(:vid)    { |i| i.to_s.rjust(9, '0') }
 Factory.sequence(:name)   { |i| "name_#{i}" }
 Factory.sequence(:login)  { |i| "login_#{i}" }
@@ -41,11 +43,11 @@ end
 
 Factory.define :registration do |f|
   f.association       :precinct_split
-  f.name              { Faker::Name.name }
+  f.first_name        { Faker::Name.first_name }
+  f.middle_name       { MIDDLE_NAMES.rand }
+  f.last_name         { Faker::Name.last_name }
   f.pin               '1111'
-  f.address           '140 N Street'
-  f.city              'Washington'
-  f.state             'DC'
+  f.address           '140 N Street, Washington DC 20001'
   f.zip               '20004'
   f.voter_id          { Factory.next(:vid) }
 end

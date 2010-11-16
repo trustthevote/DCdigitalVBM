@@ -37,7 +37,7 @@ class Registration < ActiveRecord::Base
   named_scope :checked_in,  :conditions => "checked_in_at IS NOT NULL OR  completed_at IS NOT NULL"
   named_scope :unfinished,  :conditions => "checked_in_at IS NOT NULL AND completed_at IS NULL"
   named_scope :finished,    :conditions => "completed_at  IS NOT NULL"
-  named_scope :reviewable,  :conditions => { :voted_digitally => true }, :order => "status, name, id"
+  named_scope :reviewable,  :conditions => { :voted_digitally => true }, :order => "status, last_name, id"
   named_scope :returned,    :conditions => { :voted_digitally => true }
   named_scope :unreviewed,  :conditions => { :last_reviewed_at => nil }
   named_scope :reviewed,    :conditions => "last_reviewed_at IS NOT NULL"
@@ -46,14 +46,18 @@ class Registration < ActiveRecord::Base
 
   def self.match(r)
     first(:conditions => {
-      :name     => r[:name],
-      :pin_hash => Registration.hash_pin(r[:pin]),
-      :zip      => r[:zip],
-      :voter_id => r[:voter_id] })
+      :last_name  => r[:last_name],
+      :pin_hash   => Registration.hash_pin(r[:pin]),
+      :zip        => r[:zip],
+      :voter_id   => r[:voter_id] })
   end
 
   def pin=(v)
     self.pin_hash = Registration.hash_pin(v)
+  end
+
+  def name
+    @name ||= [ self.first_name, self.middle_name, self.last_name ].reject(&:blank?).join(' ')
   end
 
   # Returns the blank ballot PDF

@@ -25,7 +25,7 @@ puts "Importing seed data"
 path = File.expand_path(File.join(File.dirname(__FILE__), 'fixtures'))
 
 di = DataImport.new
-di.run("#{path}/AddressID.csv", "#{path}/RegSchema.csv")
+di.run("#{path}/voters.csv", "#{path}/ballots.zip")
 
 # -----------------------------------------------------------------------------
 # Sample record with ballot and attestation for testing
@@ -43,10 +43,18 @@ ballot_style = split.create_ballot_style(:pdf => File.open("#{Rails.root}/db/fix
 # Create a registration
 Registration.create!(
   :precinct_split_id => split.id,
-  :name              => 'Mike',
+  :first_name        => 'Mike',
+  :last_name         => 'Smith',
   :pin               => '1234',
   :zip               => '24001',
   :voter_id          => '1234',
-  :address           => "142 N Street",
-  :city              => "Washington",
-  :state             => "DC")
+  :address           => '142 N Street',
+  :ssn4              => '1234')
+
+# -----------------------------------------------------------------------------
+# LEO reviewer
+# -----------------------------------------------------------------------------
+
+puts "Creating reviewer: reviewer / pass"
+User.destroy_all
+User.create!(:login => 'reviewer', :email => 'reviewer@email.com', :password => 'pass', :password_confirmation => 'pass')

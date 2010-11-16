@@ -81,14 +81,14 @@ describe PagesController do
       it      { should render_template :check_in }
     end
     
-    context "and submitting a valid record" do
+    context "and submitting an invalid record" do
       before  { post :check_in, :registration => { :pin => "unknown" } }
       it      { should render_template :check_in }
       specify { assigns(:registration).should_not be }
     end
     
-    context "and submitting an invalid record" do
-      before  { post :check_in, :registration => { :pin => '1111', :name => registration.name, :zip => registration.zip, :voter_id => registration.voter_id } }
+    context "and submitting a valid record" do
+      before  { post :check_in, :registration => { :pin => '1111', :last_name => registration.last_name, :zip => registration.zip, :voter_id => registration.voter_id } }
       it      { should redirect_to confirm_url }
     end
   end

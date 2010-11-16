@@ -12,9 +12,6 @@
       %span.name= h(@registration.name)
     .adr
       .street-address= h(@registration.address)
-      %span.locality= h(@registration.city)
-      %span.region= h(@registration.state)
-      %span.postal-code= h(@registration.zip)
 
   .checkbox-container
     = check_box_tag "confirm", 1, false, :id => "confirm-checkbox"

@@ -40,9 +40,9 @@ describe VoterNavigation do
   
   context "several unreviewed voters" do
     before do
-      @a = Factory(:voter, :name => "A")
-      @b = Factory(:reviewed_voter, :name => "B")
-      @c = Factory(:voter, :name => "C")
+      @a = Factory(:voter, :last_name => "A")
+      @b = Factory(:reviewed_voter, :last_name => "B")
+      @c = Factory(:voter, :last_name => "C")
     end
     
     it "should return A as first" do
