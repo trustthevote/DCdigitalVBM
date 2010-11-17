@@ -22,22 +22,28 @@ def null
   rand(NULL_PROBABILITY) == 0 ? 'NULL' : nil
 end
 
-str = FasterCSV.generate(:col_sep => "\t") do |csv|
-  csv << [ 'VOTER_ID', 'PIN', 'PIN_HASH', 'LASTNAME', 'FIRSTNAME', 'MIDDLE', 'SSN', 'MAILINGADDRESS', 'ZIP', 'SMD', 'SPLIT' ]
-  addresses.each do |mailingaddress_t, zip, split, smd|
-    RECORDS_PER_ADDRESS.times do |i|
-      mailingaddress = mailingaddress_t % (UNIT_START + i)
-      voter_id       = rand(1000000000).to_s.rjust(9, '0')
-      ssn            = null || rand(10000).to_s.rjust(8, '0')
-      middle_name    = null || MIDDLE_NAMES.rand
-      first_name     = Faker::Name.first_name
-      last_name      = Faker::Name.last_name
-      pin            = Digest::SHA1.hexdigest(mailingaddress + last_name)[0, 16].upcase
-      pin_hash       = Digest::SHA1.hexdigest(pin)
+voters_csv = lookup_csv = nil
+lookup_csv = FasterCSV.generate(:col_sep => "\t") do |lookup|
+  voters_csv = FasterCSV.generate(:col_sep => "\t") do |csv|
+    lookup << [ 'VOTER_ID', 'PIN', 'LASTNAME', 'ZIP' ]
+    csv    << [ 'VOTER_ID', 'PIN_HASH', 'LASTNAME', 'FIRSTNAME', 'MIDDLE', 'SSN', 'MAILINGADDRESS', 'ZIP', 'SMD', 'SPLIT' ]
+    addresses.each do |mailingaddress_t, zip, split, smd|
+      RECORDS_PER_ADDRESS.times do |i|
+        mailingaddress = mailingaddress_t % (UNIT_START + i)
+        voter_id       = rand(1000000000).to_s.rjust(9, '0')
+        ssn            = null || rand(10000).to_s.rjust(8, '0')
+        middle_name    = null || MIDDLE_NAMES.rand
+        first_name     = Faker::Name.first_name
+        last_name      = Faker::Name.last_name
+        pin            = Digest::SHA1.hexdigest(mailingaddress + last_name)[0, 16].upcase
+        pin_hash       = Digest::SHA1.hexdigest(pin)
       
-      csv << [ voter_id, pin, pin_hash, last_name, first_name, middle_name, ssn, mailingaddress, zip, smd, split]
+        lookup << [ voter_id, pin, last_name, zip ]
+        csv    << [ voter_id, pin_hash, last_name, first_name, middle_name, ssn, mailingaddress, zip, smd, split ]
+      end
     end
   end
 end
 
-puts str
+File.open('voters.csv', 'w') { |f| f.write(voters_csv) }
+File.open('voters-lookup.csv', 'w') { |f| f.write(lookup_csv) }
