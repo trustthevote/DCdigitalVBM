@@ -128,8 +128,45 @@ the _public_ folder of your app.
 
 
 
+Switching voting state
+----------------------
+
+At any given moment, the application can be in one of three voting states:
+
+* Before the voting has begun
+* During the period
+* After the voting has finished
+
+Depending on the voting state, your users will see different information on the
+front page, and the application logic will be slightly altered to disallow voting
+during the inactivity periods.
+
+To switch between the three, you can use the following rake tasks:
+
+    $ rake vbm:voting_state:before
+    $ rake vbm:voting_state:during
+    $ rake vbm:voting_state:after
+
+
+
+Importing data
+--------------
+
+To import registration data, you will need two artifacts:
+
+* The list of voter records in a CSV file (see db/fixtures/voters.csv for the format example)
+* The archive of ballots used by the registrations (see db/fixtures/ballots.zip)
+
+Once you have them both, you can run the following rake task:
+
+    $ rake vbm:import voter_csv=path/to/voter.csv ballots_zip=path/to/ballots.zip
+
+It will extract the ballots and reload your database with new voter records.
+
+
+
 Statistics
-==========
+----------
 
 During the normal operation the application records different milestones in user activity, such as:
 
@@ -152,7 +189,7 @@ The sample output is:
 
 
 Attestation Review
-==================
+------------------
 
 After the voting finished, the attestations can be reviewed at <your_app_domain>/leo.
 You will need at least one LEO user registered to be able to log into the reviewing

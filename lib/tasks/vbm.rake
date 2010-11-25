@@ -29,6 +29,14 @@ namespace :vbm do
     Stats.new.run
   end
   
+  desc "Import data"
+  task :import => :environment do
+    voter_csv   = ENV['voter_csv']
+    ballots_zip = ENV['ballots_zip']
+    
+    DataImport.new.run(voter_csv, ballots_zip)
+  end
+  
   namespace :voting_state do
     desc "Switches the voting into the 'before' state"
     task :before => :environment do
