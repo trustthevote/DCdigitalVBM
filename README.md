@@ -212,3 +212,34 @@ this:
 Or for all reviewers:
 
     $ rake leo:log
+
+
+
+Hint: Local DNS config
+----------------------
+
+In order to work with the LEO part locally, you need a subdomain configured as it's
+the only way to access this portion of the app. To configure that locally you need
+to use a DNS configuration trick which is very easy and will come in handy in your
+future work.
+
+1. Open the hosts file:
+  * Windows: c:\windows\system32\drivers\etc\hosts
+  * Unix and Mac OS X: /etc/hosts
+
+2. Add this line to configure virtual domain names:
+
+  127.0.0.1 vbm.local leo.vbm.local
+
+3. Save and close the file, restart (important!) your browser
+
+Having done this, you should be able to access the main part of the application
+locally at:
+
+    http://vbm.local:3000/
+
+... and the LEO part at:
+
+    http://leo.vbm.local:3000/
+  
+
