@@ -32,6 +32,9 @@ gpg_recipient:
 # The state can be conveniently switched with rake tasks vbm:voting_state:{before,during,after}
 state: during
 
+# Show / hide the front page warning.
+warning_enabled: true
+
 development:
   domain: localhost
   gpg_recipient:

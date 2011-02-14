@@ -10,8 +10,23 @@
         %h3= t "date"
     #blanket
 
+- if during_voting? && warning_enabled?
+  - content_for :before_header do
+    #popup.popup.warning
+      %a.close-button
+      %div
+        %strong WARNING:
+        %br
+        %br
+        = t "pages.front.warning"
+    #blanket
+
 
 %section.sidebar
   = render 'software_requirements'
+
+%section.common
+  = t "pages.front.common"
+  %p{ :class => digital_enabled? ? nil : 'grayed' }= t "pages.front.prompt"
 
 = render :partial => digital_enabled? ? "options_with_digital" : "options_without_digital"

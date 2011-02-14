@@ -100,4 +100,5 @@ module ApplicationHelper
   def reviewer_name(user)
     user && user.login
   end
+  
 end

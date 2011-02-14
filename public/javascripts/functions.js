@@ -26,9 +26,8 @@ var Site = window.Site || {};
 Site.EXPAND_HEADER_DURATION = 100;
 
 function showPopup(id) {
-	$(id).show();
-	$("#blanket").show();
-	$('#blanket').height($(document.body).outerHeight());
+	$(id).fadeIn(1000);
+	$("#blanket").show().height($(document.body).outerHeight());
 }
 
 var attestationSeen = false;

@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
-  helper_method :voting_type, :physical?, :digital?, :before_voting?, :after_voting?, :during_voting?, :digital_enabled?
+  helper_method :voting_type, :physical?, :digital?, :before_voting?, :after_voting?, :during_voting?, :digital_enabled?, :warning_enabled?
 
   def voting_type=(type)
     session[:voting_type] = type if type.nil? || %w( digital physical ).include?(type.to_s)
@@ -48,7 +48,11 @@ class ApplicationController < ActionController::Base
   end
 
   def digital_enabled?
-    AppConfig['digital_enabled']
+    !AppConfig['digital_enabled']
+  end
+
+  def warning_enabled?
+    AppConfig['warning_enabled']
   end
   
   def before_voting?
